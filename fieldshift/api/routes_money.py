@@ -54,9 +54,12 @@ def compute(fid: str, body: dict, ctx: dict | None = None) -> dict:
         if key in _mem:
             return _mem[key]
         p = MONEY_CACHE / f"{key}.json"
+        seed = config.PRECOMP / "money" / f"{key}.json"  # committed results for pilot and sample-farm fields
         no_disk = _cache_off()  # test flag: build from committed data only, neither read nor write data/cache/money
         if p.exists() and not no_disk:
             out = json.loads(p.read_text(encoding="utf-8"))
+        elif seed.exists() and not no_disk:
+            out = json.loads(seed.read_text(encoding="utf-8"))
         else:
             if ctx is None:
                 from .main import _ctx  # lazy: main imports this module at start-up

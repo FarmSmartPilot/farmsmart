@@ -1,0 +1,40 @@
+1
+00:00:01,452 --> 00:00:04,535
+One field: soil, crop history and NASA weather
+
+2
+00:00:04,786 --> 00:00:06,437
+Rank its rotations by what matters to you
+
+3
+00:00:06,692 --> 00:00:10,348
+Add each field to your farm, one at a time
+
+4
+00:00:10,599 --> 00:00:12,813
+Three fields in central Iowa, seen as one farm
+
+5
+00:00:13,063 --> 00:00:15,630
+Typical year $154,300 · bad year (1 in 10) $89,800
+
+6
+00:00:15,880 --> 00:00:18,668
+Test a bad stretch: driest years, prices 20 % lower
+
+7
+00:00:18,918 --> 00:00:21,039
+Which crops on which field? FarmSmart searches
+
+8
+00:00:21,289 --> 00:00:23,642
+Change one field: farm score 6.8 → 8.1, less risk
+
+9
+00:00:23,893 --> 00:00:27,724
+More profit and less risk across the whole farm
+
+10
+00:00:28,124 --> 00:00:30,000
+FarmSmart: plan the whole farm, one field at a time. Built on NASA, USDA and NOAA data. You make the call.
+

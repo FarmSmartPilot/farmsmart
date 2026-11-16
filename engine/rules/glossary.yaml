@@ -1,0 +1,98 @@
+# FarmSmart plain-language glossary (grade-8), English and Spanish
+schema_version: 1
+terms:
+  - id: et
+    term_en: "ET (evapotranspiration)"
+    term_es: "ET (evapotranspiración)"
+    en: "The water that leaves a field as vapor: some evaporates from the soil and some is breathed out by the plants' leaves. It is how much water the crop actually uses."
+    es: "El agua que sale del campo como vapor: una parte se evapora del suelo y otra la sueltan las hojas de las plantas. Es cuánta agua usa realmente el cultivo."
+  - id: ndvi
+    term_en: "NDVI"
+    term_es: "NDVI"
+    en: "A number from satellite images that shows how green and leafy the plants are. Higher means more living green cover. It does not measure yield, residue or carbon."
+    es: "Un número tomado de imágenes de satélite que muestra qué tan verdes y frondosas están las plantas. Más alto significa más cobertura verde viva. No mide rendimiento, rastrojo ni carbono."
+  - id: soil_moisture_anomaly
+    term_en: "Soil moisture anomaly"
+    term_es: "Anomalía de humedad del suelo"
+    en: "How much wetter or drier the soil is than normal for that time of year. Satellite values cover a wide area (several kilometers), not one field."
+    es: "Cuánto más húmedo o más seco está el suelo comparado con lo normal para esa época del año. Los datos de satélite cubren un área grande (varios kilómetros), no un solo lote."
+  - id: gdd
+    term_en: "GDD (growing degree days)"
+    term_es: "GDD (grados día de crecimiento)"
+    en: "A count of useful heat. Each day adds the amount the average temperature is above the temperature where the crop starts to grow. Crops need a certain total to mature."
+    es: "Una cuenta del calor útil. Cada día suma cuánto pasa la temperatura media por encima de la temperatura a la que el cultivo empieza a crecer. Los cultivos necesitan cierto total para madurar."
+  - id: frost_risk
+    term_en: "Frost risk"
+    term_es: "Riesgo de helada"
+    en: "The chance that air drops to freezing (0 °C) or lower while the crop is in the field. A killing freeze for corn and soybean is about -2 °C (28 °F)."
+    es: "La probabilidad de que el aire baje a 0 °C o menos mientras el cultivo está en el campo. Una helada que mata al maíz y la soya es de unos -2 °C (28 °F)."
+  - id: water_balance
+    term_en: "Water balance"
+    term_es: "Balance de agua"
+    en: "Water in (rain and irrigation) minus water out (crop use and drainage). If more goes out than comes in, the crop runs short."
+    es: "El agua que entra (lluvia y riego) menos el agua que sale (uso del cultivo y drenaje). Si sale más de la que entra, al cultivo le falta agua."
+  - id: rusle
+    term_en: "RUSLE"
+    term_es: "RUSLE"
+    en: "A standard formula that estimates how much soil rain can wash off a field each year. It multiplies rain power, soil type, slope, crop cover and conservation practices."
+    es: "Una fórmula estándar que estima cuánto suelo puede llevarse la lluvia de un campo cada año. Multiplica la fuerza de la lluvia, el tipo de suelo, la pendiente, la cobertura y las prácticas de conservación."
+  - id: p10_p50_p90
+    term_en: "P10 / P50 / P90"
+    term_es: "P10 / P50 / P90"
+    en: "Ways to describe a range. P50 is the middle (half the years are lower). P10 is a bad year (only 1 year in 10 is lower). P90 is a good year (only 1 in 10 is higher)."
+    es: "Formas de describir un rango. P50 es el valor del medio (la mitad de los años es menor). P10 es un año malo (solo 1 de cada 10 años es menor). P90 es un año bueno (solo 1 de cada 10 es mayor)."
+  - id: cover_crop
+    term_en: "Cover crop"
+    term_es: "Cultivo de cobertura"
+    en: "A crop grown to protect and feed the soil, not to sell. It keeps living roots in the ground when the field would be bare."
+    es: "Un cultivo que se siembra para proteger y alimentar el suelo, no para vender. Mantiene raíces vivas cuando el campo quedaría desnudo."
+  - id: kc
+    term_en: "Kc (crop coefficient)"
+    term_es: "Kc (coeficiente de cultivo)"
+    en: "A multiplier that turns the weather's water demand into a given crop's water use. Small when plants are young, highest at full canopy, lower as they ripen."
+    es: "Un multiplicador que convierte la demanda de agua del clima en el uso de agua de un cultivo. Es bajo cuando las plantas son pequeñas, más alto con el follaje completo y baja al madurar."
+  - id: erosivity
+    term_en: "Erosivity"
+    term_es: "Erosividad"
+    en: "How strongly rain can loosen and move soil. Short, heavy storms have high erosivity. It is highest in certain months, which is when bare soil is most at risk."
+    es: "Qué tan fuerte puede la lluvia soltar y mover el suelo. Las tormentas cortas e intensas tienen erosividad alta. Es mayor en ciertos meses, cuando el suelo desnudo corre más riesgo."
+  - id: ssurgo
+    term_en: "SSURGO"
+    term_es: "SSURGO"
+    en: "The USDA's detailed soil map of the United States. It tells soil type, drainage, how much water the soil can hold and how easily it erodes."
+    es: "El mapa detallado de suelos del USDA para Estados Unidos. Indica el tipo de suelo, el drenaje, cuánta agua puede retener y qué tan fácil se erosiona."
+  - id: cdl
+    term_en: "CDL (Cropland Data Layer)"
+    term_es: "CDL (Capa de Datos de Cultivos)"
+    en: "A yearly USDA map, made from satellites, showing which crop grew in each 30-meter square in the United States. It cannot see cover crops grown between cash crops."
+    es: "Un mapa anual del USDA, hecho con satélites, que muestra qué cultivo creció en cada cuadro de 30 metros en Estados Unidos. No detecta los cultivos de cobertura entre cultivos comerciales."
+  - id: reanalysis
+    term_en: "Reanalysis"
+    term_es: "Reanálisis"
+    en: "A weather record built by a computer model that blends past observations into a complete, gap-free map. Useful for history, but it covers large squares, not one field."
+    es: "Un registro del clima hecho por un modelo de computadora que combina observaciones pasadas en un mapa completo y sin huecos. Sirve para la historia, pero cubre cuadros grandes, no un solo lote."
+  - id: pareto_set
+    term_en: "Pareto set"
+    term_es: "Conjunto de Pareto"
+    en: "The group of options where you cannot make one goal better without making another goal worse. Every option shown is a fair trade-off; none is simply beaten by another."
+    es: "El grupo de opciones donde no se puede mejorar una meta sin empeorar otra. Cada opción mostrada es un intercambio justo; ninguna es simplemente peor que otra."
+  - id: confidence_level
+    term_en: "Confidence level"
+    term_es: "Nivel de confianza"
+    en: "How sure we are about a result. It goes down when data are missing, coarse (cover a large area) or old, and when the model has seen few fields like yours."
+    es: "Qué tan seguros estamos de un resultado. Baja cuando faltan datos, cuando son gruesos (cubren un área grande) o viejos, y cuando el modelo ha visto pocos lotes como el suyo."
+  - id: nitrogen_credit
+    term_en: "Nitrogen credit"
+    term_es: "Crédito de nitrógeno"
+    en: "Nitrogen left in the soil by a legume (like soybean, alfalfa or clover) that the next crop can use, so you can apply less fertilizer."
+    es: "Nitrógeno que deja en el suelo una leguminosa (como soya, alfalfa o trébol) y que el siguiente cultivo puede usar, así que se aplica menos fertilizante."
+  - id: residue
+    term_en: "Residue"
+    term_es: "Rastrojo (residuo)"
+    en: "Stalks, leaves and stems left on the field after harvest. It shields the soil from rain and wind. At least 30% cover after planting is a common conservation target."
+    es: "Tallos y hojas que quedan en el campo después de la cosecha. Protege el suelo de la lluvia y el viento. Una meta común de conservación es al menos 30 % de cobertura después de sembrar."
+  - id: root_zone
+    term_en: "Root zone"
+    term_es: "Zona de raíces"
+    en: "The layer of soil where the crop's roots take up water and nutrients. Deep-rooted crops can reach water that shallow-rooted crops cannot."
+    es: "La capa de suelo donde las raíces del cultivo toman agua y nutrientes. Los cultivos de raíz profunda alcanzan agua que los de raíz corta no pueden."

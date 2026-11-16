@@ -1,0 +1,484 @@
+/* Guided mode (Simple): one step per page with a plain heading and Back / Next. */
+.guided {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s4);
+  width: 100%;
+  max-width: 1600px;
+  margin: 0; /* start right next to the left control panel (centring left a gap on wide screens) */
+  padding: var(--s5) var(--s5) var(--s6);
+}
+.guided__head {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-width: 760px;
+}
+.guided__count {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--field);
+}
+.guided__title {
+  margin: 0;
+  font-size: 30px;
+  line-height: 1.15;
+  font-weight: 800;
+  color: var(--ink);
+}
+.guided__intro {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+.guided__h2 {
+  margin: 0 0 var(--s2);
+  font-size: 18px;
+  font-weight: 750;
+  color: var(--ink);
+}
+.guided__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s4);
+  min-width: 0;
+}
+.guided__foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--s3);
+  flex-wrap: wrap;
+  padding-top: var(--s4);
+  border-top: 1px solid var(--line);
+}
+.guided__done {
+  color: var(--ink-2);
+  font-size: 14px;
+}
+/* Panels flow with the page here (Field Studio gives them fixed heights and inner scrolling). */
+.guided .panel {
+  height: auto;
+}
+.guided .panel__scroll {
+  overflow: visible;
+  max-height: none;
+}
+/* Inner page headings sit under the step heading: make them second-level in size. */
+.guided .page {
+  padding: 0;
+  max-width: none;
+}
+.guided .page__head .fs-h1 {
+  font-size: 20px;
+}
+
+/* Step 2: map and the field's facts side by side. */
+.guided-field {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(300px, 1fr);
+  gap: var(--s4);
+  align-items: start;
+}
+.guided-field__map {
+  min-width: 0;
+}
+.guided-field__map .panel.center {
+  height: 640px;
+}
+.guided-field__map .center__report {
+  overflow-y: auto;
+}
+/* Step 3: priorities beside the ranked options. */
+.guided-compare {
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr);
+  gap: var(--s4);
+  align-items: start;
+}
+.guided-prio {
+  padding: var(--s4);
+  position: sticky;
+  top: var(--s3);
+}
+.guided-compare__options {
+  min-width: 0;
+}
+.guided-timeline .panel {
+  height: auto;
+}
+@media (width < 1100px) {
+  .guided-field,
+  .guided-compare {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .guided-prio {
+    position: static;
+  }
+  .guided-field__map .panel.center {
+    height: 480px;
+  }
+}
+@media (width < 768px) {
+  .guided {
+    padding: var(--s4) var(--s3) var(--s5);
+  }
+  .guided__title {
+    font-size: 24px;
+  }
+  .guided__intro {
+    font-size: 15px;
+  }
+  .guided__foot {
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+  .guided__foot .fs-btn {
+    width: 100%;
+    justify-content: center;
+  }
+  .guided-field__map .panel.center {
+    height: 360px;
+  }
+}
+.guided-twins {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s4);
+  padding: var(--s4);
+  flex-wrap: wrap;
+}
+/* The step heading already says what the page is for: drop the page's own title block (keep its controls). */
+.guided .page__head > div:first-child:has(> .fs-h1) {
+  display: none;
+}
+.guided .page__head {
+  margin-top: 0;
+}
+/* Step 2 map: a fixed-height map with its tools and labels in the bar underneath. */
+.guided-field__map .panel.center {
+  height: auto;
+}
+.guided-field__map .map-wrap {
+  flex: none;
+}
+.guided-field__map .fsm-mapbox {
+  flex: none;
+  height: 480px;
+}
+@media (width < 768px) {
+  .guided-field__map .fsm-mapbox {
+    height: 340px;
+  }
+}
+
+/* ===== Guided front page (step 1): heading, the globe in a panel, a "Your field" card, what happens next ===== */
+.ghome {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s5);
+  max-width: 1600px;
+  padding: var(--s5) var(--s5) var(--s6);
+}
+.ghome__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  gap: var(--s4);
+  align-items: start;
+}
+.ghome__stage.home {
+  position: relative;
+  min-height: 0;
+  height: min(68vh, 640px);
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-1);
+}
+.ghome__side {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s3);
+}
+.ghome__card {
+  padding: var(--s4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s2);
+}
+.ghome__field {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--ink);
+}
+.ghome__or {
+  margin-top: var(--s2);
+}
+.ghome__steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--s3);
+}
+.ghome__step {
+  padding: var(--s4);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.ghome__step h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 750;
+}
+.ghome__step p {
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.45;
+  color: var(--ink-2);
+}
+.ghome__num {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: var(--field);
+}
+.ghome__ticks {
+  margin-top: var(--s3);
+}
+@media (width < 1180px) {
+  .ghome__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .ghome__steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+/* the front page is a normal scrolling page now: light top bar, footer in the flow */
+.app--home.app--rail {
+  height: auto;
+  overflow: visible;
+}
+.app--home.app--rail > .app-body {
+  height: auto;
+  min-height: 100vh;
+}
+.app--home.app--rail .topbar {
+  background: var(--card, #fff);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+.app--home.app--rail .topbar .wordmark,
+.app--home.app--rail .topbar .fs-btn--ghost {
+  color: var(--ink);
+}
+.app--home.app--rail .topbar .search {
+  display: none;
+}
+.app--home.app--rail .footer {
+  position: static;
+  color: var(--ink-2);
+  background: none;
+}
+.app--home.app--rail .footer .fs-link {
+  color: var(--sky-text, #276b9a);
+}
+/* Narrow side card: the search field gets the full width, the button goes under it. */
+.ghome__card .search__form {
+  flex-wrap: wrap;
+  height: auto;
+  row-gap: 8px;
+  padding-bottom: 8px;
+}
+.ghome__card .search__input {
+  flex: 1 1 160px;
+  min-width: 0;
+}
+.ghome__card .search__go {
+  flex: 1 0 100%;
+  justify-content: center;
+}
+
+/* "How it works": the five steps in one row joined by arrows (step 1 highlighted). */
+.ghome__flow {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+}
+.ghome__fstep {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  padding: 12px 34px 12px 14px;
+  background: var(--card, #fff);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  margin-right: 8px;
+}
+.ghome__fstep.is-current {
+  border-color: var(--field);
+  background: var(--field-tint);
+}
+.ghome__fnum {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1.5px solid var(--line-strong);
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--ink-2);
+  background: #fff;
+}
+.ghome__fstep.is-current .ghome__fnum {
+  background: var(--field);
+  border-color: var(--field);
+  color: #fff;
+}
+.ghome__ftext {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+.ghome__ftext strong {
+  font-size: 14px;
+  color: var(--ink);
+}
+.ghome__ftext small {
+  font-size: 12px;
+  line-height: 1.35;
+  color: var(--ink-2);
+}
+.ghome__arrow {
+  position: absolute;
+  right: -17px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--field);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 800;
+  box-shadow: 0 0 0 3px var(--bg, #f4f6f3);
+}
+.ghome__fstep:last-child {
+  margin-right: 0;
+  padding-right: 14px;
+}
+@media (width < 1180px) {
+  .ghome__flow {
+    flex-direction: column;
+    gap: 14px;
+  }
+  .ghome__fstep {
+    margin-right: 0;
+    padding-right: 14px;
+  }
+  .ghome__arrow {
+    right: auto;
+    left: 26px;
+    top: auto;
+    bottom: -21px;
+    transform: rotate(90deg);
+  }
+}
+
+/* Step 1: the globe panel runs as tall as the "Your field" + "Recent fields" column, bottoms aligned. */
+.ghome__grid {
+  align-items: stretch;
+}
+.ghome__stage.home {
+  height: auto;
+  min-height: 560px;
+}
+@media (width < 1180px) {
+  .ghome__stage.home {
+    min-height: 480px;
+    height: min(68vh, 600px);
+  }
+}
+
+/* More space between the top bar and each page heading. */
+.guided,
+.ghome {
+  padding-top: 36px;
+}
+
+/* ===== One look for every page in the panel layout: the same title, intro and top spacing as the step pages ===== */
+.app--rail .page {
+  padding-top: 36px;
+  margin: 0;
+  max-width: 1600px;
+}
+.app--rail .page__head .fs-h1 {
+  font-size: 30px;
+  line-height: 1.15;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+.app--rail .page__head .fs-h1 + .fs-meta {
+  margin-top: 6px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+.guided__title {
+  letter-spacing: -0.01em;
+}
+@media (width < 768px) {
+  .app--rail .page__head .fs-h1 {
+    font-size: 24px;
+  }
+}
+/* Money page inside step 3: keep its "Back to Compare options" link, drop only its own title (the step heading says it). */
+.guided .page__head.money__head > div:first-child:has(> .fs-h1) {
+  display: block;
+}
+.guided .money__head .fs-h1,
+.guided .money__head .money__sub {
+  display: none;
+}
+
+/* Guided pages are normal scrolling pages: undo Field Studio's one-screen lock (desktop and phone). */
+.app--guided.app--studio,
+.app--guided.app--studio.app--rail {
+  height: auto;
+  min-height: 100vh;
+  overflow: visible;
+}
+.app--guided.app--studio .main,
+.app--guided.app--studio.app--rail > .app-body {
+  height: auto;
+  overflow: visible;
+}
+.app--guided.app--studio .main {
+  flex: 1 0 auto;
+}
+@media (width < 768px) {
+  .guided .center__hint {
+    display: none;
+  }
+}

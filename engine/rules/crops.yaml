@@ -1,0 +1,1604 @@
+# FarmSmart crop trait knowledge base (agronomy agent)
+# --------------------------------------------------------------------------
+# Rule: every number below is copied from the source named in `references`
+# (keys resolve in `sources:`). Nothing is estimated. Where no citable value
+# was found the field is null and `notes` says why. Ranges are [min, max].
+#
+# Field conventions
+#   gdd_base_c          base temperature (deg C) for growing degree days
+#   gdd_required        {value: [min,max], unit, base_c, note}; null when no source
+#   days_to_maturity    [min,max] calendar days (Manitoba Table 1 for prairie crops,
+#                       else FAO-56 Table 11 total for the row used in stage_days)
+#   min_frost_free_days lower bound of days_to_maturity for frost-sensitive annuals
+#                       (proxy, see notes); null for winter / perennial crops
+#   frost_kill_c        ECOCROP KTMPR = absolute killing temperature during rest,
+#                       unless notes name another source
+#   heat_stress_c       ECOCROP TOPMX = upper limit of the optimal temperature range
+#   water_need_mm       FAO Irrigation Water Management Manual 3, Table 14
+#                       ("rough estimates", total growing period, often by crop group)
+#   drought_tolerance   inverted from FAO IWM Table 14 "sensitivity to drought":
+#                       low -> high, low-medium -> med, medium-high -> low, high -> low
+#   kc / stage_days     FAO-56 Table 12 / Table 11 (row named in kc_stage_row).
+#                       Kc ini where Table 12 leaves it blank uses the crop-group
+#                       value printed on the group heading line of Table 12.
+#   root_depth_m        FAO-56 Table 22 maximum effective rooting depth Zr [min,max]
+#   rusle_c_growing     OMAFRA Factsheet 23-005 Table 4 "crop type factor" (annual,
+#                       generalised). Multiply by Table 5 tillage factor (fall plow 1.0,
+#                       spring plow 0.90, mulch till 0.60, ridge 0.35, zone/no-till 0.25)
+#                       to get C. Not RUSLE2 daily values (RUSLE2 database not parsed).
+#   residue_cover_after_harvest  ISU PM 1901a Table 1 (adapted from MWPS-45), fraction
+#   ph_range            ECOCROP optimal pH [PHOPMN, PHOPMX]; ph_abs = absolute range
+#   drainage_ok         NRCS drainage classes mapped from ECOCROP DRAR (absolute range):
+#                       "well (dry spells)" -> well, moderately_well
+#                       "excessive (dry/moderately dry)" -> somewhat_excessive, excessive
+#                       "poorly (saturated >50% of year)" -> somewhat_poorly, poorly, very_poorly
+#                       (the mapping is our documented assumption, not an NRCS table)
+#   texture_ok          ECOCROP TEXTR (absolute texture range): heavy / medium / light / organic
+#   max_slope_pct       null for every crop: no crop-specific citable limit found.
+#                       Slope is handled by rules.yaml (slope > 5% erosion rule).
+#   n_credit_next_kg_ha converted from lb N/acre x 1.121
+#   cdl_codes           USDA NASS Cropland Data Layer class codes (legend read from the
+#                       CDL metadata file)
+# --------------------------------------------------------------------------
+schema_version: 1
+
+sources:
+  fao56_t11: {cite: "Allen et al. 1998, FAO Irrigation & Drainage Paper 56, Table 11 (stage lengths)", url: "https://www.fao.org/4/X0490E/x0490e0b.htm"}
+  fao56_t12: {cite: "Allen et al. 1998, FAO-56, Table 12 (single Kc)", url: "https://www.fao.org/4/X0490E/x0490e0b.htm"}
+  fao56_t22: {cite: "Allen et al. 1998, FAO-56, Table 22 (rooting depth Zr, depletion p)", url: "https://www.fao.org/4/X0490E/x0490e0e.htm"}
+  fao_iwm: {cite: "Brouwer & Heibloem 1986, FAO Irrigation Water Management Training Manual 3, Tables 6 and 14", url: "https://www.fao.org/4/s2022e/s2022e07.htm"}
+  ecocrop: {cite: "FAO ECOCROP database (values read from a public export of the ECOCROP DB; re-verify on the FAO portal before publication)", url: "https://gaez.fao.org/pages/ecocrop"}
+  isu_pm1901a: {cite: "Al-Kaisi & Hanna, Iowa State Univ. Extension PM 1901a, Residue Management & Cultural Practices (rev. 2009), Table 1", url: "https://www.mssoy.org/sites/default/files/documents/isu-pm1901a.pdf"}
+  omafra_usle: {cite: "McKague 2023, OMAFRA Factsheet 23-005 Universal Soil Loss Equation, Tables 4-5", url: "https://www.ontario.ca/page/universal-soil-loss-equation"}
+  canola_council_stages: {cite: "Canola Council of Canada, Canola Encyclopedia, Growth stages: emergence 4-15 d after seeding; seeding to first flower 40-60 d; main-stem flowering 14-21 d; seed filling complete about 35-45 d after first flower; lower pods ripe 40-60 d after first flower", url: "https://www.canolacouncil.org/canola-encyclopedia/crop-development/growth-stages/"}
+  mb_agclimate: {cite: "Manitoba Agriculture, Agricultural Climate of Manitoba (Table 1 days to maturity; Table 2 base temperatures; GDD text)", url: "https://gov.mb.ca/agriculture/weather/agricultural-climate-of-mb.html"}
+  isu_frost: {cite: "Licht & Archontoulis 2014, ISU Integrated Crop Management, How much risk of frost do you have (killing freeze 28 F)", url: "https://crops.extension.iastate.edu/cropnews/2014/09/how-much-risk-frost-do-you-have"}
+  cpn_soy_frost: {cite: "Crop Protection Network, Frost injury in soybean (28 F killing freeze)", url: "https://cropprotectionnetwork.org/encyclopedia/frost-damage-in-soybean"}
+  ukagr202: {cite: "Univ. Kentucky AGR-202 citing ISU PMR 1009 (86/50 GDD method, base 50 F)", url: "https://publications.ca.uky.edu/sites/publications.ca.uky.edu/files/agr202.pdf"}
+  fp_corn_gdd: {cite: "Farm Progress / Wallaces Farmer, Can late-planted corn catch up (ISU examples: ~2,400 to ~2,700 GDD F to black layer)", url: "https://www.farmprogress.com/crops/can-late-planted-corn-catch-up-"}
+  ksu_l778: {cite: "Kansas State Univ. L-778, Using Legumes in Crop Rotations (soybean credit about 40 lb N/acre)", url: "https://bookstore.ksre.ksu.edu/pubs/L778.pdf"}
+  uw_a3517: {cite: "Laboski & Peters, UW Extension A3517 Nutrient application guidelines (soybean first-year credit 40 lb N/acre)", url: "https://corn.aae.wisc.edu/Management/pdfs/A3517.pdf"}
+  umn_alfalfa: {cite: "Univ. Minnesota Extension, Tools to predict N needs of corn following alfalfa (50/100/150 lb N/acre by stand)", url: "https://extension.umn.edu/corn-planting/tools-predict-nitrogen-needs-corn-following-alfalfa"}
+  uw_legumes: {cite: "UW IPCM, Using legumes (red clover first-year credit = 80% of alfalfa credit for similar stand)", url: "https://ipcm.wisc.edu/wp-content/uploads/sites/54/2022/11/Usinglegumes.pdf"}
+  preissel2015: {cite: "Preissel et al. 2015, Field Crops Research (next-crop N cut 23-31 kg N/ha after grain legumes)", url: "https://doi.org/10.1016/j.fcr.2015.01.012"}
+  sare_rye: {cite: "SARE, Managing Cover Crops Profitably 3rd ed., Cereal Rye", url: "https://www.sare.org/publications/managing-cover-crops-profitably/nonlegume-cover-crops/cereal-rye/"}
+  sare_oats: {cite: "SARE, Managing Cover Crops Profitably 3rd ed., Oats", url: "https://www.sare.org/publications/managing-cover-crops-profitably/nonlegume-cover-crops/oats/"}
+  sare_vetch: {cite: "SARE, Managing Cover Crops Profitably 3rd ed., Hairy Vetch", url: "https://www.sare.org/publications/managing-cover-crops-profitably/legume-cover-crops/hairy-vetch/"}
+  sare_crimson: {cite: "SARE, Managing Cover Crops Profitably 3rd ed., Crimson Clover", url: "https://www.sare.org/publications/managing-cover-crops-profitably/legume-cover-crops/crimson-clover/"}
+  osu_sag5: {cite: "Ohio State Univ. Extension SAG-5, Oilseed radish (killed at about 20 F)", url: "https://ohioline.osu.edu/factsheet/SAG-5"}
+  msu_radish: {cite: "Michigan State Univ., Oil Seed Radish cover crop fact sheet (winterkills at 20 F)", url: "https://www.canr.msu.edu/cover_crops/uploads/files/Oil Seed Radish.pdf"}
+  cdl_legend: {cite: "USDA NASS Cropland Data Layer metadata, attribute code legend", url: "https://www.nass.usda.gov/Research_and_Science/Cropland/metadata/metadata_ia21.htm"}
+  mb_sclerotinia: {cite: "Manitoba Agriculture, Sclerotinia in sunflowers (host list)", url: "https://gov.mb.ca/agriculture/crops/plant-diseases/sclerotinia-sunflowers.html"}
+  dill_macky2000: {cite: "Dill-Macky & Jones 2000, Plant Disease 84:71-76 (previous crop residue and FHB)", url: "https://doi.org/10.1094/PDIS.2000.84.1.71"}
+
+crops:
+  # ===================== CASH / FORAGE CROPS =====================
+  - id: corn
+    name: Corn (grain maize)
+    name_es: Maíz (grano)
+    family: Poaceae
+    roles: [cash]
+    season: summer
+    gdd_base_c: 10.0
+    gdd_required: {value: [1333, 1500], unit: "deg C days", base_c: 10, note: "ISU examples ~2,400 to ~2,700 GDD (deg F, 86/50 method) to black layer, converted /1.8; depends on hybrid relative maturity"}
+    days_to_maturity: [110, 120]
+    min_frost_free_days: 110
+    frost_kill_c: -2.2
+    heat_stress_c: 33
+    water_need_mm: [500, 800]
+    drought_tolerance: low
+    kc: {ini: 0.30, mid: 1.20, end: [0.35, 0.60]}
+    stage_days: {ini: 30, dev: 40, mid: 50, late: 30}
+    kc_stage_row: "Maize (grain), April planting, Spain / California (150 d)"
+    root_depth_m: [1.0, 1.7]
+    rusle_c_growing: 0.40
+    residue_cover_after_harvest: [0.80, 0.95]
+    n_fixing: false
+    n_need_kg_ha: null
+    n_credit_next_kg_ha: null
+    ph_range: [5.0, 7.0]
+    ph_abs: [4.5, 8.5]
+    drainage_ok: null
+    texture_ok: null
+    max_slope_pct: null
+    equipment: [row_crop_planter, combine]
+    pest_host_groups: [corn_rootworm, fusarium_head_blight_inoculum, tar_spot, gray_leaf_spot]
+    typical_yield_unit: bu/acre
+    nass_commodity: CORN
+    cdl_codes: [1]
+    market_notes: "Deep commodity market (elevators, ethanol, feed). Silage needs forage_harvester and a livestock buyer."
+    blurb_en: "Grain corn is a summer cash crop with a deep market, and its heavy residue helps cover the soil."
+    blurb_es: "El maíz grano es un cultivo comercial de verano con mercado amplio, y su abundante rastrojo protege el suelo."
+    check_first_en:
+      - "corn rootworm pressure if corn follows corn"
+      - "a nitrogen rate from your local extension calculator"
+      - "head scab risk if wheat follows corn"
+    check_first_es:
+      - "presión del gusano de la raíz si va maíz después de maíz"
+      - "la dosis de nitrógeno según la calculadora de extensión local"
+      - "riesgo de fusariosis de la espiga si después va trigo"
+    notes: >-
+      frost_kill_c from ISU (28 F killing freeze), not ECOCROP (blank). ECOCROP drainage/texture blank for Zea mays.
+      n_need_kg_ha null: use the regional MRTN calculator (rate depends on previous crop and prices).
+      Residue 0.80 at 60-120 bu/ac, 0.95 at 120-200 bu/ac; silage 0.15. Corn residue hosts Fusarium graminearum (FHB inoculum for wheat).
+    references: [fao56_t11, fao56_t12, fao56_t22, fao_iwm, ecocrop, isu_frost, ukagr202, fp_corn_gdd, mb_agclimate, isu_pm1901a, omafra_usle, cdl_legend, dill_macky2000]
+
+  - id: soybean
+    name: Soybean
+    name_es: Soya
+    family: Fabaceae
+    roles: [cash, legume]
+    season: summer
+    gdd_base_c: 10.0
+    gdd_required: null
+    days_to_maturity: [140, 140]
+    min_frost_free_days: 140
+    frost_kill_c: -2.2
+    heat_stress_c: 33
+    water_need_mm: [450, 700]
+    drought_tolerance: med
+    kc: {ini: 0.40, mid: 1.15, end: 0.50}
+    stage_days: {ini: 20, dev: 35, mid: 60, late: 25}
+    kc_stage_row: "Soybeans, May planting, Central USA (Dev listed as 30/35)"
+    root_depth_m: [0.6, 1.3]
+    rusle_c_growing: 0.50
+    residue_cover_after_harvest: 0.70
+    n_fixing: true
+    n_need_kg_ha: null
+    n_credit_next_kg_ha: [45, 45]
+    ph_range: [5.5, 6.5]
+    ph_abs: [4.5, 8.4]
+    drainage_ok: [somewhat_poorly, poorly, very_poorly, well, moderately_well, somewhat_excessive, excessive]
+    texture_ok: [heavy, medium, light]
+    max_slope_pct: null
+    equipment: [row_crop_planter, grain_drill, combine]
+    pest_host_groups: [soybean_cyst_nematode, sclerotinia]
+    typical_yield_unit: bu/acre
+    nass_commodity: SOYBEANS
+    cdl_codes: [5, 26, 241, 254]
+    market_notes: "Deep commodity market; food-grade and non-GMO premiums need contracts."
+    blurb_en: "Soybean is a summer cash legume that makes its own nitrogen and leaves some for the next corn crop."
+    blurb_es: "La soya es una leguminosa comercial de verano que fija su propio nitrógeno y deja algo para el maíz siguiente."
+    check_first_en:
+      - "soybean cyst nematode levels from a soil test"
+      - "white mold history in the field"
+      - "a contract if you want food-grade or non-GMO premiums"
+    check_first_es:
+      - "niveles de nematodo del quiste de la soya en un análisis de suelo"
+      - "historial de moho blanco en el lote"
+      - "un contrato si busca primas por grano alimenticio o no transgénico"
+    notes: >-
+      Development is photoperiod driven; no citable single GDD target, so gdd_required is null. Base 10 C from Manitoba Table 2 ("corn and beans").
+      days_to_maturity is the FAO-56 Central USA row total (140 d). Credit 40 lb N/acre (K-State L-778; UW A3517) = 45 kg/ha.
+      OMAFRA factor 0.50 is the "silage corn, beans and canola" class. Fragile residue.
+    references: [fao56_t11, fao56_t12, fao56_t22, fao_iwm, ecocrop, isu_frost, cpn_soy_frost, mb_agclimate, isu_pm1901a, omafra_usle, ksu_l778, uw_a3517, mb_sclerotinia, cdl_legend]
+
+  - id: winter_wheat
+    name: Winter wheat
+    name_es: Trigo de invierno
+    family: Poaceae
+    roles: [cash]
+    season: winter
+    gdd_base_c: 4.7
+    gdd_required: null
+    days_to_maturity: [335, 335]
+    min_frost_free_days: null
+    frost_kill_c: -20
+    heat_stress_c: 23
+    water_need_mm: [450, 650]
+    drought_tolerance: med
+    kc: {ini: 0.40, mid: 1.15, end: [0.25, 0.40]}
+    stage_days: {ini: 160, dev: 75, mid: 75, late: 25}
+    kc_stage_row: "Winter wheat, October planting, Idaho USA (frozen soils; Kc ini 0.4 for frozen soils, 0.7 non-frozen)"
+    root_depth_m: [1.5, 1.8]
+    rusle_c_growing: 0.35
+    residue_cover_after_harvest: [0.50, 0.85]
+    n_fixing: false
+    n_need_kg_ha: null
+    n_credit_next_kg_ha: null
+    ph_range: [6.0, 7.0]
+    ph_abs: [5.5, 8.5]
+    drainage_ok: [well, moderately_well]
+    texture_ok: [heavy, medium]
+    max_slope_pct: null
+    equipment: [grain_drill, combine]
+    pest_host_groups: [fusarium_head_blight, cereal_root_disease]
+    typical_yield_unit: bu/acre
+    nass_commodity: WHEAT
+    cdl_codes: [24, 26, 225, 236, 238]
+    market_notes: "Commodity market; class (HRW, SRW) and protein drive price."
+    blurb_en: "Winter wheat is sown in fall and cut in early summer, keeping the soil covered over winter."
+    blurb_es: "El trigo de invierno se siembra en otoño y se cosecha a inicios del verano, cubriendo el suelo en invierno."
+    check_first_en:
+      - "a drill that can seed small grain"
+      - "head scab risk if it follows corn"
+      - "an elevator that takes your wheat class"
+    check_first_es:
+      - "una sembradora para granos finos"
+      - "riesgo de fusariosis de la espiga si sigue al maíz"
+      - "un centro de acopio que reciba su clase de trigo"
+    notes: >-
+      Kc end printed as 0.25-0.4 in Table 12. Base 4.7 C is Manitoba Table 2 "wheat". Residue 0.50 at 30-60 bu/ac, 0.85 at 60-100 bu/ac.
+      FAO-56 California row (December planting) is 20/60/70/30 = 180 d for mild-winter sites.
+    references: [fao56_t11, fao56_t12, fao56_t22, fao_iwm, ecocrop, mb_agclimate, isu_pm1901a, omafra_usle, cdl_legend, dill_macky2000]
+
+  - id: spring_wheat
+    name: Spring wheat (hard red spring)
+    name_es: Trigo de primavera
+    family: Poaceae
+    roles: [cash]
+    season: summer
+    gdd_base_c: 4.7
+    gdd_required: {value: [1200, 1200], unit: "deg C days", base_c: 5, note: "Manitoba: cereals and oilseeds need a minimum of about 1,200 GDD above 5 C to mature"}
+    days_to_maturity: [90, 100]
+    min_frost_free_days: 90
+    frost_kill_c: -20
+    heat_stress_c: 23
+    water_need_mm: [450, 650]
+    drought_tolerance: med
+    kc: {ini: 0.30, mid: 1.15, end: [0.25, 0.40]}
+    stage_days: {ini: 20, dev: 25, mid: 60, late: 30}
+    kc_stage_row: "Barley/Oats/Wheat, March/April planting, 35-45 deg latitude"
+    root_depth_m: [1.0, 1.5]
+    rusle_c_growing: 0.35
+    residue_cover_after_harvest: [0.50, 0.85]
+    n_fixing: false
+    n_need_kg_ha: null
+    n_credit_next_kg_ha: null
+    ph_range: [6.0, 7.0]
+    ph_abs: [5.5, 8.5]
+    drainage_ok: [well, moderately_well]
+    texture_ok: [heavy, medium]
+    max_slope_pct: null
+    equipment: [grain_drill, combine]
+    pest_host_groups: [fusarium_head_blight, cereal_root_disease]
+    typical_yield_unit: bu/acre
+    nass_commodity: WHEAT
+    cdl_codes: [23]
+    market_notes: "Commodity market; protein premiums."
+    blurb_en: "Spring wheat is a spring-sown small grain for short seasons that breaks disease cycles of canola and pulses."
+    blurb_es: "El trigo de primavera es un cereal para temporadas cortas que interrumpe el ciclo de enfermedades de canola y legumbres."
+    check_first_en:
+      - "a drill that can seed small grain"
+      - "head scab risk where corn residue is nearby"
+      - "protein premiums at your elevator"
+    check_first_es:
+      - "una sembradora para granos finos"
+      - "riesgo de fusariosis de la espiga cerca de rastrojo de maíz"
+      - "primas por proteína en su centro de acopio"
+    notes: "ECOCROP KTMPR (-20 C) is a rest-period value for Triticum aestivum; spring-sown seedlings are less hardy."
+    references: [fao56_t11, fao56_t12, fao56_t22, fao_iwm, ecocrop, mb_agclimate, isu_pm1901a, omafra_usle, cdl_legend]
+
+  - id: durum
+    name: Durum wheat
+    name_es: Trigo duro
+    family: Poaceae
+    roles: [cash]
+    season: summer
+    gdd_base_c: 4.7
+    gdd_required: null
+    days_to_maturity: [120, 180]
+    min_frost_free_days: null
+    frost_kill_c: null
+    heat_stress_c: 25
+    water_need_mm: [450, 650]
+    drought_tolerance: med
+    kc: {ini: 0.30, mid: 1.15, end: [0.25, 0.40]}
+    stage_days: {ini: 20, dev: 25, mid: 60, late: 30}
+    kc_stage_row: "Barley/Oats/Wheat, March/April, 35-45 deg latitude (no durum row in Table 11; spring-sown proxy)"
+    root_depth_m: [1.0, 1.5]
+    rusle_c_growing: 0.35
+    residue_cover_after_harvest: [0.50, 0.85]
+    n_fixing: false
+    n_need_kg_ha: null
+    n_credit_next_kg_ha: null
+    ph_range: [6.0, 7.0]
+    ph_abs: [5.5, 8.5]
+    drainage_ok: [well, moderately_well, somewhat_excessive, excessive]
+    texture_ok: [heavy, medium]
+    max_slope_pct: null
+    equipment: [grain_drill, combine]
+    pest_host_groups: [fusarium_head_blight, cereal_root_disease]
+    typical_yield_unit: bu/acre
+    nass_commodity: WHEAT
+    cdl_codes: [22, 230, 234]
+    market_notes: "Pasta-quality market; falling number and vitreous kernel grades matter."
+    blurb_en: "Durum is a hard wheat sold for pasta, adding a cereal break between broadleaf crops."
+    blurb_es: "El trigo duro se vende para pasta y aporta un descanso de cereal entre cultivos de hoja ancha."
+    check_first_en:
+      - "a pasta-mill buyer and its quality grades"
+      - "head scab risk if it follows corn"
+      - "a drill that can seed small grain"
+    check_first_es:
+      - "un comprador de molino para pasta y sus exigencias de calidad"
+      - "riesgo de fusariosis de la espiga si sigue al maíz"
+      - "una sembradora para granos finos"
+    notes: "days_to_maturity is ECOCROP crop cycle (GMIN-GMAX). Kc and root depth use FAO wheat values. In California durum is fall-sown (see calendars.yaml). ECOCROP has no killing temperature for Triticum durum."
+    references: [fao56_t11, fao56_t12, fao56_t22, fao_iwm, ecocrop, mb_agclimate, isu_pm1901a, omafra_usle, cdl_legend]
+
+  - id: oats
+    name: Oats (grain)
+    name_es: Avena
+    family: Poaceae
+    roles: [cash, forage]
+    season: summer
+    gdd_base_c: 5.0
+    gdd_required: {value: [1200, 1200], unit: "deg C days", base_c: 5, note: "Manitoba minimum for cereals and oilseeds"}
+    days_to_maturity: [85, 88]
+    min_frost_free_days: 85
+    frost_kill_c: -15
+    heat_stress_c: 20
+    water_need_mm: [450, 650]
+    drought_tolerance: med
+    kc: {ini: 0.30, mid: 1.15, end: 0.25}
+    stage_days: {ini: 20, dev: 25, mid: 60, late: 30}
+    kc_stage_row: "Barley/Oats/Wheat, March/April, 35-45 deg latitude"
+    root_depth_m: [1.0, 1.5]
+    rusle_c_growing: 0.35
+    residue_cover_after_harvest: 0.80
+    n_fixing: false
+    n_need_kg_ha: null
+    n_credit_next_kg_ha: null
+    ph_range: [5.0, 6.0]
+    ph_abs: [4.5, 7.5]
+    drainage_ok: [well, moderately_well]
+    texture_ok: [heavy, medium, light]
+    max_slope_pct: null
+    equipment: [grain_drill, combine, baler]
+    pest_host_groups: [fusarium_head_blight]
+    typical_yield_unit: bu/acre
+    nass_commodity: OATS
+    cdl_codes: [28, 226, 240]
+    market_notes: "Thin local markets; milling oats need test-weight contracts; straw has value for livestock."
+    blurb_en: "Oats are a cool-season small grain that can shelter a new clover or alfalfa seeding and give straw."
+    blurb_es: "La avena es un cereal de clima fresco que puede acompañar una siembra de trébol o alfalfa y dar paja."
+    check_first_en:
+      - "a buyer who takes milling or food-grade oats"
+      - "a use for the straw or forage on your farm"
+      - "a drill that can seed small grain"
+    check_first_es:
+      - "un comprador que reciba avena para molienda o consumo humano"
+      - "un uso para la paja o el forraje en su campo"
+      - "una sembradora para granos finos"
+    notes: "Nurse crop for underseeded red clover or alfalfa (Marsden Farm design). Base 5 C is the Manitoba general value."
+    references: [fao56_t11, fao56_t12, fao56_t22, fao_iwm, ecocrop, mb_agclimate, isu_pm1901a, omafra_usle, cdl_legend]
+
+  - id: barley
+    name: Barley
+    name_es: Cebada
+    family: Poaceae
+    roles: [cash, forage]
+    season: summer
+    gdd_base_c: 5.0
+    gdd_required: {value: [1200, 1200], unit: "deg C days", base_c: 5, note: "Manitoba minimum for cereals and oilseeds"}
+    days_to_maturity: [60, 90]
+    min_frost_free_days: 60
+    frost_kill_c: -4
+    heat_stress_c: 20
+    water_need_mm: [450, 650]
+    drought_tolerance: med
+    kc: {ini: 0.30, mid: 1.15, end: 0.25}
+    stage_days: {ini: 20, dev: 25, mid: 60, late: 30}
+    kc_stage_row: "Barley/Oats/Wheat, March/April, 35-45 deg latitude"
+    root_depth_m: [1.0, 1.5]
+    rusle_c_growing: 0.35
+    residue_cover_after_harvest: 0.75
+    n_fixing: false
+    n_need_kg_ha: null
+    n_credit_next_kg_ha: null
+    ph_range: [6.5, 7.5]
+    ph_abs: [6.0, 8.0]
+    drainage_ok: [well, moderately_well]
+    texture_ok: [heavy, medium, light]
+    max_slope_pct: null
+    equipment: [grain_drill, combine]
+    pest_host_groups: [fusarium_head_blight, cereal_root_disease]
+    typical_yield_unit: bu/acre
+    nass_commodity: BARLEY
+    cdl_codes: [21, 233, 235, 237, 254]
+    market_notes: "Malt barley needs contracts and grade; feed barley local."
+    blurb_en: "Barley is a quick small grain sold for malt or feed that breaks pest cycles of row crops."
+    blurb_es: "La cebada, cereal de ciclo corto para malta o alimento animal, corta el ciclo de plagas de cultivos en hilera."
+    check_first_en:
+      - "a malt contract and its grade rules, or a local feed buyer"
+      - "head scab risk if it follows corn"
+      - "a drill that can seed small grain"
+    check_first_es:
+      - "un contrato de malta y sus normas de calidad, o un comprador local de grano forrajero"
+      - "riesgo de fusariosis de la espiga si sigue al maíz"
+      - "una sembradora para granos finos"
+    references: [fao56_t11, fao56_t12, fao56_t22, fao_iwm, ecocrop, mb_agclimate, isu_pm1901a, omafra_usle, cdl_legend]
+
+  - id: sorghum
+    name: Grain sorghum
+    name_es: Sorgo granífero
+    family: Poaceae
+    roles: [cash, drought_tolerant, forage]
+    season: summer
+    gdd_base_c: null
+    gdd_required: null
+    days_to_maturity: [130, 130]
+    min_frost_free_days: 130
+    frost_kill_c: null
+    heat_stress_c: 35
+    water_need_mm: [450, 650]
+    drought_tolerance: high
+    kc: {ini: 0.30, mid: [1.00, 1.10], end: 0.55}
+    stage_days: {ini: 20, dev: 35, mid: 40, late: 30}
+    kc_stage_row: "Sorghum, May/June planting, USA / Pakistan / Mediterranean"
+    root_depth_m: [1.0, 2.0]
+    rusle_c_growing: null
+    residue_cover_after_harvest: 0.75
+    n_fixing: false
+    n_need_kg_ha: null
+    n_credit_next_kg_ha: null
+    ph_range: [5.5, 7.5]
+    ph_abs: [5.0, 8.0]
+    drainage_ok: [well, moderately_well, somewhat_excessive, excessive]
+    texture_ok: [heavy, medium, light, organic]
+    max_slope_pct: null
+    equipment: [row_crop_planter, grain_drill, combine]
+    pest_host_groups: [sugarcane_aphid]
+    typical_yield_unit: bu/acre
+    nass_commodity: SORGHUM
+    cdl_codes: [4, 234, 235, 236]
+    market_notes: "Feed/ethanol/export market; basis often weaker than corn."
+    blurb_en: "Grain sorghum is a summer grain that handles heat and dry spells better than corn."
+    blurb_es: "El sorgo granífero es un grano de verano que tolera calor y sequía mejor que el maíz."
+    check_first_en:
+      - "sugarcane aphid pressure in your area"
+      - "the local price, which is often weaker than corn"
+      - "a buyer for feed, ethanol or export"
+    check_first_es:
+      - "presión del pulgón amarillo del sorgo en su zona"
+      - "el precio local frente al maíz, que suele ser más bajo"
+      - "un comprador para alimento animal, etanol o exportación"
+    notes: >-
+      Base temperature not set: K-State uses a 42 F-based formula but no single maturity GDD was found (half bloom to maturity ~1,500 GDU F).
+      ECOCROP has no killing temperature for Sorghum bicolor. OMAFRA has no sorghum class. Texture "wide" in ECOCROP = all classes.
+      Drought sensitivity "low" in FAO IWM Table 14 (Sorghum/Millet group). sugarcane_aphid listed as a host group label only.
+    references: [fao56_t11, fao56_t12, fao56_t22, fao_iwm, ecocrop, isu_pm1901a, cdl_legend]
+
+  - id: sunflower
+    name: Sunflower (oilseed)
+    name_es: Girasol
+    family: Asteraceae
+    roles: [cash, deep_root, drought_tolerant]
+    season: summer
+    gdd_base_c: null
+    gdd_required: null
+    days_to_maturity: [120, 130]
+    min_frost_free_days: 120
+    frost_kill_c: -10
+    heat_stress_c: 34
+    water_need_mm: [600, 1000]
+    drought_tolerance: med
+    kc: {ini: 0.35, mid: [1.00, 1.15], end: 0.35}
+    stage_days: {ini: 25, dev: 35, mid: 45, late: 25}
+    kc_stage_row: "Sunflower, April/May planting, Mediterranean / California"
+    root_depth_m: [0.8, 1.5]
+    rusle_c_growing: null
+    residue_cover_after_harvest: 0.40
+    n_fixing: false
+    n_need_kg_ha: null
+    n_credit_next_kg_ha: null
+    ph_range: [6.0, 7.5]
+    ph_abs: [5.5, 8.0]
+    drainage_ok: [well, moderately_well]
+    texture_ok: [heavy, medium, light]
+    max_slope_pct: null
+    equipment: [row_crop_planter, combine]
+    pest_host_groups: [sclerotinia]
+    typical_yield_unit: lb/acre
+    nass_commodity: SUNFLOWER
+    cdl_codes: [6]
+    market_notes: "Oil vs confection markets; confection needs contracts and size grades; bird damage risk."
+    blurb_en: "Sunflower is a deep-rooted oilseed that can reach water and nutrients below shallower crops."
+    blurb_es: "El girasol es una oleaginosa de raíz profunda que aprovecha agua y nutrientes que otros cultivos no alcanzan."
+    check_first_en:
+      - "white mold history in the field"
+      - "bird damage risk near trees or water"
+      - "an oil or confection buyer and its grades"
+    check_first_es:
+      - "historial de moho blanco (esclerotinia) en el lote"
+      - "riesgo de daño por aves cerca de montes o agua"
+      - "un comprador de girasol aceitero o confitero y sus calidades"
+    notes: "K-State lists 46 F as the lower optimal threshold (not a maturity GDD base); gdd fields left null. FAO IWM drought sensitivity low-medium -> med. Fragile residue."
+    references: [fao56_t11, fao56_t12, fao56_t22, fao_iwm, ecocrop, mb_agclimate, isu_pm1901a, mb_sclerotinia, cdl_legend]
+
+  - id: canola
+    name: Canola (Argentine, spring)
+    name_es: Canola (colza)
+    family: Brassicaceae
+    roles: [cash]
+    season: summer
+    gdd_base_c: 5.0
+    gdd_required: {value: [1200, 1200], unit: "deg C days", base_c: 5, note: "Manitoba minimum for cereals and oilseeds"}
+    days_to_maturity: [92, 102]
+    min_frost_free_days: 92
+    frost_kill_c: -15
+    heat_stress_c: 25
+    water_need_mm: null
+    drought_tolerance: null
+    kc: {ini: 0.35, mid: [1.00, 1.15], end: 0.35}
+    stage_days: {ini: 20, dev: 30, mid: 40, late: 10}
+    stage_days_note: "DERIVED (data-ground agent, Gate 3), not an FAO-56 table row: FAO-56 Table 11 has no canola row. Mapped from Canola Council growth stages using FAO-56 stage definitions: ini+dev = seeding to first flower (mid of 40-60 = 50 d; effective full cover at flowering), mid = first flower to end of seed fill (about 40 d), late = to ripe lower pods (mid of 40-60 d after first flower = 50 d, so 10 d). Total 100 d, inside days_to_maturity 92-102 (mb_agclimate). Agronomy review needed."
+    kc_stage_row: "Kc from Table 12 'Rapeseed, Canola'; Table 11 has no canola row"
+    root_depth_m: [1.0, 1.5]
+    rusle_c_growing: 0.50
+    residue_cover_after_harvest: 0.65
+    n_fixing: false
+    n_need_kg_ha: null
+    n_credit_next_kg_ha: null
+    ph_range: [6.5, 7.6]
+    ph_abs: [5.5, 8.0]
+    drainage_ok: [well, moderately_well]
+    texture_ok: [heavy, medium, light]
+    max_slope_pct: null
+    equipment: [grain_drill, combine]
+    pest_host_groups: [clubroot, blackleg, sclerotinia, beet_cyst_nematode]
+    typical_yield_unit: bu/acre
+    nass_commodity: CANOLA
+    cdl_codes: [31, 34]
+    market_notes: "Crusher delivery contracts common on the Prairies."
+    blurb_en: "Canola is a cool-season oilseed that breaks cereal disease cycles and is sold to local crushers."
+    blurb_es: "La canola es una oleaginosa de clima fresco que corta enfermedades de cereales y se vende a plantas aceiteras."
+    check_first_en:
+      - "clubroot and blackleg history, and years since the last canola or mustard"
+      - "white mold history in the field"
+      - "a crusher delivery contract"
+    check_first_es:
+      - "historial de hernia de las crucíferas y pie negro, y años desde la última canola o mostaza"
+      - "historial de moho blanco en el lote"
+      - "un contrato de entrega con una planta aceitera"
+    notes: "Days to maturity = Manitoba 'late Argentine'; early Polish 73-83 d. Not in FAO IWM Table 14, so water need and drought tolerance null."
+    references: [fao56_t12, fao56_t22, ecocrop, mb_agclimate, canola_council_stages, isu_pm1901a, omafra_usle, mb_sclerotinia, cdl_legend]
+
+  - id: field_pea
+    name: Field pea (dry)
+    name_es: Arveja seca
+    family: Fabaceae
+    roles: [cash, legume]
+    season: summer
+    gdd_base_c: 5.5
+    gdd_required: null
+    days_to_maturity: [90, 100]
+    min_frost_free_days: 90
+    frost_kill_c: -2
+    heat_stress_c: 24
+    water_need_mm: [350, 500]
+    drought_tolerance: low
+    kc: {ini: 0.40, mid: 1.15, end: 0.30}
+    stage_days: {ini: 35, dev: 25, mid: 30, late: 20}
+    kc_stage_row: "Peas, April planting, Idaho USA"
+    root_depth_m: [0.6, 1.0]
+    rusle_c_growing: null
+    residue_cover_after_harvest: 0.20
+    n_fixing: true
+    n_need_kg_ha: null
+    n_credit_next_kg_ha: [23, 31]
+    ph_range: [5.5, 7.0]
+    ph_abs: [4.5, 8.3]
+    drainage_ok: [well, moderately_well]
+    texture_ok: [heavy, medium, light]
+    max_slope_pct: null
+    equipment: [grain_drill, combine]
+    pest_host_groups: [pulse_root_rot_aphanomyces, sclerotinia]
+    typical_yield_unit: bu/acre
+    nass_commodity: PEAS
+    cdl_codes: [53]
+    market_notes: "Food/feed/protein-fraction buyers; check delivery points."
+    blurb_en: "Field pea is a cool-season pulse that makes its own nitrogen and leaves some for the next cereal."
+    blurb_es: "La arveja es una legumbre de clima fresco que fija su propio nitrógeno y deja algo para el cereal siguiente."
+    check_first_en:
+      - "root rot history and years since the last pulse crop"
+      - "a buyer or delivery point for food or feed peas"
+      - "white mold history in the field"
+    check_first_es:
+      - "historial de pudrición de raíz y años desde la última legumbre"
+      - "un comprador o punto de entrega de arveja para consumo o alimento animal"
+      - "historial de moho blanco en el lote"
+    notes: "N credit range is the European next-crop N saving after grain legumes (Preissel 2015), not a pea-specific US table value. Base 5.5 C from Manitoba Table 2 'peas'."
+    references: [fao56_t11, fao56_t12, fao56_t22, fao_iwm, ecocrop, mb_agclimate, isu_pm1901a, preissel2015, mb_sclerotinia, cdl_legend]
+
+  - id: lentil
+    name: Lentil
+    name_es: Lenteja
+    family: Fabaceae
+    roles: [cash, legume, drought_tolerant]
+    season: summer
+    gdd_base_c: null
+    gdd_required: null
+    days_to_maturity: [85, 100]
+    min_frost_free_days: 85
+    frost_kill_c: null
+    heat_stress_c: 29
+    water_need_mm: null
+    drought_tolerance: null
+    kc: {ini: 0.40, mid: 1.10, end: 0.30}
+    stage_days: {ini: 20, dev: 30, mid: 60, late: 40}
+    kc_stage_row: "Lentil, April planting, Europe"
+    root_depth_m: [0.6, 0.8]
+    rusle_c_growing: null
+    residue_cover_after_harvest: 0.20
+    n_fixing: true
+    n_need_kg_ha: null
+    n_credit_next_kg_ha: [23, 31]
+    ph_range: [5.5, 7.5]
+    ph_abs: [4.5, 8.2]
+    drainage_ok: [well, moderately_well, somewhat_excessive, excessive]
+    texture_ok: [heavy, medium, light]
+    max_slope_pct: null
+    equipment: [grain_drill, combine]
+    pest_host_groups: [pulse_root_rot_aphanomyces, sclerotinia]
+    typical_yield_unit: lb/acre
+    nass_commodity: LENTILS
+    cdl_codes: [52]
+    market_notes: "Export-driven food market; colour/grade discounts."
+    blurb_en: "Lentil is a pulse for drier areas that makes its own nitrogen and sells into export food markets."
+    blurb_es: "La lenteja es una legumbre para zonas secas que fija su propio nitrógeno y se vende a mercados de exportación."
+    check_first_en:
+      - "root rot history and years since the last pulse crop"
+      - "a buyer and its colour and grade rules"
+      - "white mold history in the field"
+    check_first_es:
+      - "historial de pudrición de raíz y años desde la última legumbre"
+      - "un comprador y sus exigencias de color y calidad"
+      - "historial de moho blanco en el lote"
+    notes: "Days to maturity from Manitoba (85-100 d); FAO-56 Europe row totals 150 d. Not in FAO IWM Table 14. Role drought_tolerant follows the planning digest crop-role list ('some pulses'); no FAO numeric support."
+    references: [fao56_t11, fao56_t12, fao56_t22, ecocrop, mb_agclimate, isu_pm1901a, preissel2015, mb_sclerotinia, cdl_legend]
+
+  - id: chickpea
+    name: Chickpea
+    name_es: Garbanzo
+    family: Fabaceae
+    roles: [cash, legume, drought_tolerant]
+    season: summer
+    gdd_base_c: null
+    gdd_required: null
+    days_to_maturity: [90, 180]
+    min_frost_free_days: null
+    frost_kill_c: -9
+    heat_stress_c: 29
+    water_need_mm: null
+    drought_tolerance: null
+    kc: {ini: 0.40, mid: 1.00, end: 0.35}
+    stage_days: null
+    kc_stage_row: "Kc from Table 12 'Chick pea'; Table 11 has no chickpea row"
+    root_depth_m: [0.6, 1.0]
+    rusle_c_growing: null
+    residue_cover_after_harvest: null
+    n_fixing: true
+    n_need_kg_ha: null
+    n_credit_next_kg_ha: [23, 31]
+    ph_range: [6.0, 8.5]
+    ph_abs: [4.7, 9.5]
+    drainage_ok: [well, moderately_well, somewhat_excessive, excessive]
+    texture_ok: [heavy, medium, light]
+    max_slope_pct: null
+    equipment: [grain_drill, combine]
+    pest_host_groups: [ascochyta_blight, sclerotinia]
+    typical_yield_unit: lb/acre
+    nass_commodity: CHICKPEAS
+    cdl_codes: [51]
+    market_notes: "Kabuli/desi food markets; seed-size grades."
+    blurb_en: "Chickpea is a pulse for dry, warm areas that makes its own nitrogen and sells into food markets."
+    blurb_es: "El garbanzo es una legumbre para zonas secas y cálidas que fija su nitrógeno y se vende para consumo."
+    check_first_en:
+      - "ascochyta blight history and a seed treatment plan"
+      - "a buyer for kabuli or desi types and their size grades"
+      - "a season long enough for the crop to mature"
+    check_first_es:
+      - "historial de rabia del garbanzo (ascoquita) y un plan de tratamiento de semilla"
+      - "un comprador de garbanzo kabuli o desi y sus calibres"
+      - "una temporada suficientemente larga para que madure"
+    notes: "Crop cycle from ECOCROP (GMIN-GMAX). Saskatchewan Pulse lists chickpea as a more tolerant option on Aphanomyces fields."
+    references: [fao56_t12, fao56_t22, ecocrop, preissel2015, cdl_legend]
+
+  - id: dry_bean
+    name: Dry edible bean
+    name_es: Frijol seco
+    family: Fabaceae
+    roles: [cash, legume]
+    season: summer
+    gdd_base_c: 10.0
+    gdd_required: null
+    days_to_maturity: [90, 100]
+    min_frost_free_days: 90
+    frost_kill_c: null
+    heat_stress_c: 25
+    water_need_mm: [300, 500]
+    drought_tolerance: low
+    kc: {ini: 0.40, mid: 1.15, end: 0.35}
+    stage_days: {ini: 20, dev: 30, mid: 40, late: 20}
+    kc_stage_row: "Beans (dry), May/June, Continental climates"
+    root_depth_m: [0.6, 0.9]
+    rusle_c_growing: 0.50
+    residue_cover_after_harvest: 0.20
+    n_fixing: true
+    n_need_kg_ha: null
+    n_credit_next_kg_ha: null
+    ph_range: [5.5, 7.5]
+    ph_abs: [4.0, 9.0]
+    drainage_ok: [well, moderately_well]
+    texture_ok: [heavy, medium, light]
+    max_slope_pct: null
+    equipment: [row_crop_planter, combine]
+    pest_host_groups: [sclerotinia, soybean_cyst_nematode]
+    typical_yield_unit: cwt/acre
+    nass_commodity: BEANS
+    cdl_codes: [42]
+    market_notes: "Contract market by class (navy, pinto, black); dealer within hauling distance needed."
+    blurb_en: "Dry bean is a summer legume sold by class under contract, adding a broadleaf break to cereal rotations."
+    blurb_es: "El frijol seco es una leguminosa de verano que se vende por tipo bajo contrato y diversifica rotaciones de cereales."
+    check_first_en:
+      - "a dealer within hauling distance for your bean class"
+      - "white mold history in the field"
+      - "soybean cyst nematode levels from a soil test"
+    check_first_es:
+      - "un acopiador cercano que reciba su tipo de frijol"
+      - "historial de moho blanco en el lote"
+      - "niveles de nematodo del quiste de la soya en un análisis de suelo"
+    notes: "Days to maturity = Manitoba navy beans (black beans 95-105). Dry bean listed as SCN host is a label for check-locally, not a quantified risk."
+    references: [fao56_t11, fao56_t12, fao56_t22, fao_iwm, ecocrop, mb_agclimate, isu_pm1901a, omafra_usle, mb_sclerotinia, cdl_legend]
+
+  - id: alfalfa
+    name: Alfalfa (hay)
+    name_es: Alfalfa
+    family: Fabaceae
+    roles: [forage, legume, deep_root, drought_tolerant]
+    season: perennial
+    gdd_base_c: 5.0
+    gdd_required: null
+    days_to_maturity: null
+    min_frost_free_days: null
+    frost_kill_c: -25
+    heat_stress_c: 27
+    water_need_mm: [800, 1600]
+    drought_tolerance: med
+    kc: {ini: 0.40, mid: 0.95, end: 0.90}
+    stage_days: {ini: 10, dev: 30, mid: 25, late: 10}
+    kc_stage_row: "Kc = 'averaged cutting effects'; stage days = 1st cutting cycle, Idaho (later cycles 5/20/10/10). Season = last -4 C in spring to first -4 C in fall"
+    root_depth_m: [1.0, 2.0]
+    rusle_c_growing: 0.02
+    residue_cover_after_harvest: [0.35, 0.85]
+    n_fixing: true
+    n_need_kg_ha: null
+    n_credit_next_kg_ha: [56, 168]
+    ph_range: [6.5, 7.5]
+    ph_abs: [4.3, 8.7]
+    drainage_ok: [well, moderately_well, somewhat_excessive, excessive]
+    texture_ok: [medium, light]
+    max_slope_pct: null
+    equipment: [grain_drill, baler, forage_harvester]
+    pest_host_groups: [alfalfa_weevil, pulse_root_rot_aphanomyces]
+    typical_yield_unit: tons/acre
+    nass_commodity: HAY
+    cdl_codes: [36]
+    market_notes: "Needs hay buyer or own livestock; quality (RFV) sets price."
+    blurb_en: "Alfalfa is a deep-rooted perennial hay legume that holds soil for years and leaves nitrogen for the next corn."
+    blurb_es: "La alfalfa es una leguminosa perenne de raíz profunda que protege el suelo por años y deja nitrógeno al maíz."
+    check_first_en:
+      - "a hay buyer or your own livestock"
+      - "a baler or forage harvester"
+      - "soil pH and drainage that suit alfalfa"
+    check_first_es:
+      - "un comprador de heno o ganado propio"
+      - "una enfardadora o picadora de forraje"
+      - "pH del suelo y drenaje adecuados para la alfalfa"
+    notes: >-
+      Credit to first-year corn: UMN book values 50/100/150 lb N/acre by stand = 56-168 kg/ha (second year 0-75 lb).
+      Residue 0.35 right after cutting, 0.85 after regrowth. FAO IWM sensitivity low-medium -> med. Base 5 C = Manitoba 'forages'.
+      Aphanomyces euteiches also attacks alfalfa (listed so pulse-spacing rules see it; verify locally).
+    references: [fao56_t11, fao56_t12, fao56_t22, fao_iwm, ecocrop, mb_agclimate, isu_pm1901a, omafra_usle, umn_alfalfa, cdl_legend]
+
+  - id: red_clover
+    name: Red clover
+    name_es: Trébol rojo
+    family: Fabaceae
+    roles: [forage, legume, cover]
+    season: perennial
+    gdd_base_c: 5.0
+    gdd_required: null
+    days_to_maturity: null
+    min_frost_free_days: null
+    frost_kill_c: -5
+    heat_stress_c: 25
+    water_need_mm: null
+    drought_tolerance: null
+    kc: null
+    stage_days: null
+    kc_stage_row: "FAO-56 lists only Berseem clover (0.40/0.90/0.85 averaged cuttings); not applied to red clover"
+    root_depth_m: null
+    rusle_c_growing: 0.02
+    residue_cover_after_harvest: [0.35, 0.85]
+    n_fixing: true
+    n_need_kg_ha: null
+    n_credit_next_kg_ha: [45, 134]
+    ph_range: [6.0, 7.5]
+    ph_abs: [4.5, 8.2]
+    drainage_ok: [somewhat_poorly, poorly, very_poorly, well, moderately_well]
+    texture_ok: [heavy, medium, light]
+    max_slope_pct: null
+    equipment: [grain_drill, baler]
+    pest_host_groups: []
+    typical_yield_unit: tons/acre
+    nass_commodity: HAY
+    cdl_codes: [58, 37]
+    market_notes: "Mostly on-farm forage or green manure; frost-seeded into small grains."
+    blurb_en: "Red clover is a legume seeded into small grains for hay or to add nitrogen for the next crop."
+    blurb_es: "El trébol rojo es una leguminosa que se siembra bajo cereales, para heno o para dar nitrógeno al siguiente cultivo."
+    check_first_en:
+      - "a small grain to seed it into, such as oats or wheat"
+      - "a use for the hay, or a plan to work it into the soil"
+      - "herbicide carryover that could hurt a clover seeding"
+    check_first_es:
+      - "un cereal donde sembrarlo, como avena o trigo"
+      - "un uso para el heno, o un plan para incorporarlo al suelo"
+      - "residuos de herbicidas que puedan dañar la siembra de trébol"
+    notes: "Credit = 80% of the alfalfa credit for a similar stand (UW IPCM) applied to UMN 56-168 kg/ha. Residue uses the ISU 'alfalfa or legume hay' row. CDL has no red clover class: 58 = Clover/Wildflowers, 37 = Other Hay."
+    references: [ecocrop, mb_agclimate, isu_pm1901a, omafra_usle, uw_legumes, umn_alfalfa, cdl_legend]
+
+  - id: cotton
+    name: Cotton (upland)
+    name_es: Algodón
+    family: Malvaceae
+    roles: [cash]
+    season: summer
+    gdd_base_c: null
+    gdd_required: null
+    days_to_maturity: [180, 195]
+    min_frost_free_days: 180
+    frost_kill_c: null
+    heat_stress_c: 36
+    water_need_mm: [700, 1300]
+    drought_tolerance: high
+    kc: {ini: 0.35, mid: [1.15, 1.20], end: [0.50, 0.70]}
+    stage_days: {ini: 30, dev: 50, mid: 55, late: 45}
+    kc_stage_row: "Cotton, April planting, Texas (California/Egypt/Pakistan row: 30/50/60/55)"
+    root_depth_m: [1.0, 1.7]
+    rusle_c_growing: null
+    residue_cover_after_harvest: null
+    n_fixing: false
+    n_need_kg_ha: null
+    n_credit_next_kg_ha: null
+    ph_range: [6.0, 7.5]
+    ph_abs: [5.0, 9.5]
+    drainage_ok: [well, moderately_well]
+    texture_ok: [heavy, medium, light, organic]
+    max_slope_pct: null
+    equipment: [row_crop_planter, cotton_picker]
+    pest_host_groups: [root_knot_nematode]
+    typical_yield_unit: lb lint/acre
+    nass_commodity: COTTON
+    cdl_codes: [2, 232, 238, 239]
+    market_notes: "Gin within hauling distance required."
+    blurb_en: "Cotton is a long-season warm crop that handles heat and dry spells, sold through a local gin."
+    blurb_es: "El algodón es un cultivo cálido de ciclo largo que tolera calor y sequía y se vende a una desmotadora."
+    check_first_en:
+      - "a gin within hauling distance"
+      - "root-knot nematode levels from a soil test"
+      - "a season long enough for the bolls to open"
+    check_first_es:
+      - "una desmotadora a una distancia razonable"
+      - "niveles de nematodo agallador en un análisis de suelo"
+      - "una temporada suficientemente larga para que abran las cápsulas"
+    notes: "Total days from FAO-56 Table 11 (Texas 180, California 195). FAO IWM sensitivity low -> high tolerance."
+    references: [fao56_t11, fao56_t12, fao56_t22, fao_iwm, ecocrop, cdl_legend]
+
+  - id: rice
+    name: Rice (paddy)
+    name_es: Arroz
+    family: Poaceae
+    roles: [cash]
+    season: summer
+    gdd_base_c: null
+    gdd_required: null
+    days_to_maturity: [150, 180]
+    min_frost_free_days: 150
+    frost_kill_c: null
+    heat_stress_c: 30
+    water_need_mm: [450, 700]
+    drought_tolerance: low
+    kc: {ini: 1.05, mid: 1.20, end: [0.60, 0.90]}
+    stage_days: {ini: 30, dev: 30, mid: 60, late: 30}
+    kc_stage_row: "Rice, Dec/May planting, Tropics / Mediterranean"
+    root_depth_m: [0.5, 1.0]
+    rusle_c_growing: null
+    residue_cover_after_harvest: null
+    n_fixing: false
+    n_need_kg_ha: null
+    n_credit_next_kg_ha: null
+    ph_range: [5.5, 7.0]
+    ph_abs: [4.5, 9.0]
+    drainage_ok: [somewhat_poorly, poorly, very_poorly]
+    texture_ok: [heavy, medium, light, organic]
+    max_slope_pct: null
+    equipment: [rice_flooding, combine]
+    pest_host_groups: []
+    typical_yield_unit: cwt/acre
+    nass_commodity: RICE
+    cdl_codes: [3]
+    market_notes: "Mill or government procurement (Punjab) required."
+    blurb_en: "Paddy rice is a flooded summer grain suited to poorly drained fields, sold to a mill or government buyer."
+    blurb_es: "El arroz se cultiva inundado en verano, en lotes mal drenados, y se vende a molinos o al gobierno."
+    check_first_en:
+      - "enough water to keep the field flooded all season"
+      - "local rules on transplanting dates"
+      - "a mill or government buying point"
+    check_first_es:
+      - "agua suficiente para mantener el lote inundado toda la temporada"
+      - "normas locales sobre fechas de trasplante"
+      - "un molino o punto de compra estatal"
+    notes: "FAO IWM water need 450-700 mm excludes puddling/percolation losses; sensitivity high -> low tolerance. Punjab transplanting is regulated (see calendars.yaml)."
+    references: [fao56_t11, fao56_t12, fao56_t22, fao_iwm, ecocrop, cdl_legend]
+
+  - id: proso_millet
+    name: Proso millet
+    name_es: Mijo proso
+    family: Poaceae
+    roles: [cash, drought_tolerant]
+    season: summer
+    gdd_base_c: null
+    gdd_required: null
+    days_to_maturity: [140, 140]
+    min_frost_free_days: null
+    frost_kill_c: null
+    heat_stress_c: 32
+    water_need_mm: [450, 650]
+    drought_tolerance: high
+    kc: {ini: 0.30, mid: 1.00, end: 0.30}
+    stage_days: {ini: 20, dev: 30, mid: 55, late: 35}
+    kc_stage_row: "Millet, April planting, Central USA (generic millet row)"
+    root_depth_m: [1.0, 2.0]
+    rusle_c_growing: null
+    residue_cover_after_harvest: 0.70
+    n_fixing: false
+    n_need_kg_ha: null
+    n_credit_next_kg_ha: null
+    ph_range: [6.0, 6.5]
+    ph_abs: [5.2, 8.2]
+    drainage_ok: [well, moderately_well, somewhat_excessive, excessive]
+    texture_ok: [heavy, medium, light]
+    max_slope_pct: null
+    equipment: [grain_drill, combine]
+    pest_host_groups: []
+    typical_yield_unit: bu/acre
+    nass_commodity: MILLET
+    cdl_codes: [29]
+    market_notes: "Thin bird-seed / food market; check buyer before planting."
+    blurb_en: "Proso millet is a heat-loving summer grain for dry areas that can fit into wheat rotations."
+    blurb_es: "El mijo proso es un grano de verano para zonas secas y calurosas que puede entrar en rotaciones con trigo."
+    check_first_en:
+      - "a bird-seed or food buyer before you plant"
+      - "a combine set up for small seed"
+      - "weed control options for this crop"
+    check_first_es:
+      - "un comprador para alimento de aves o consumo humano antes de sembrar"
+      - "una cosechadora ajustada para semilla pequeña"
+      - "opciones de control de malezas para este cultivo"
+    notes: "FAO-56 and FAO IWM give 'millet' generically, not proso specifically. 140 d is the Central USA FAO-56 row total; ECOCROP crop cycle 55-280 d. min_frost_free_days null (no proso-specific source)."
+    references: [fao56_t11, fao56_t12, fao56_t22, fao_iwm, ecocrop, isu_pm1901a, cdl_legend]
+
+  - id: safflower
+    name: Safflower
+    name_es: Cártamo
+    family: Asteraceae
+    roles: [cash, deep_root, drought_tolerant]
+    season: summer
+    gdd_base_c: null
+    gdd_required: null
+    days_to_maturity: [125, 145]
+    min_frost_free_days: null
+    frost_kill_c: -14
+    heat_stress_c: 32
+    water_need_mm: null
+    drought_tolerance: null
+    kc: {ini: 0.35, mid: [1.00, 1.15], end: 0.25}
+    stage_days: {ini: 20, dev: 35, mid: 45, late: 25}
+    kc_stage_row: "Safflower, April planting, California USA"
+    root_depth_m: [1.0, 2.0]
+    rusle_c_growing: null
+    residue_cover_after_harvest: null
+    n_fixing: false
+    n_need_kg_ha: null
+    n_credit_next_kg_ha: null
+    ph_range: [6.5, 7.5]
+    ph_abs: [5.0, 8.0]
+    drainage_ok: [well, moderately_well, somewhat_excessive, excessive]
+    texture_ok: [heavy, medium, light]
+    max_slope_pct: null
+    equipment: [grain_drill, combine]
+    pest_host_groups: []
+    typical_yield_unit: lb/acre
+    nass_commodity: SAFFLOWER
+    cdl_codes: [33]
+    market_notes: "Contract crop (oil processors)."
+    blurb_en: "Safflower is a deep-rooted oilseed for dry areas, grown under contract with oil processors."
+    blurb_es: "El cártamo es una oleaginosa de raíz profunda para zonas secas que se siembra bajo contrato con aceiteras."
+    check_first_en:
+      - "an oil processor contract"
+      - "a dry harvest period in most years"
+      - "a drill and combine set up for small seed"
+    check_first_es:
+      - "un contrato con una aceitera"
+      - "un período de cosecha seco en la mayoría de los años"
+      - "sembradora y cosechadora ajustadas para semilla pequeña"
+    notes: "Days = FAO-56 California (125) and High Latitudes (145) rows. Not in FAO IWM Table 14. Root depth up to 2.0 m (FAO-56 Table 22) supports deep_root."
+    references: [fao56_t11, fao56_t12, fao56_t22, ecocrop, cdl_legend]
+
+  - id: flax
+    name: Flax (linseed)
+    name_es: Lino
+    family: Linaceae
+    roles: [cash]
+    season: summer
+    gdd_base_c: 5.0
+    gdd_required: {value: [1200, 1200], unit: "deg C days", base_c: 5, note: "Manitoba minimum for cereals and oilseeds"}
+    days_to_maturity: [85, 100]
+    min_frost_free_days: 85
+    frost_kill_c: -6
+    heat_stress_c: 24
+    water_need_mm: null
+    drought_tolerance: null
+    kc: {ini: 0.35, mid: 1.10, end: 0.25}
+    stage_days: {ini: 25, dev: 35, mid: 50, late: 40}
+    kc_stage_row: "Flax, April planting, Europe"
+    root_depth_m: [1.0, 1.5]
+    rusle_c_growing: null
+    residue_cover_after_harvest: null
+    n_fixing: false
+    n_need_kg_ha: null
+    n_credit_next_kg_ha: null
+    ph_range: [6.0, 6.5]
+    ph_abs: [5.5, 7.0]
+    drainage_ok: [well, moderately_well]
+    texture_ok: [heavy, medium]
+    max_slope_pct: null
+    equipment: [grain_drill, combine]
+    pest_host_groups: []
+    typical_yield_unit: bu/acre
+    nass_commodity: FLAXSEED
+    cdl_codes: [32]
+    market_notes: "Specialty oilseed; few delivery points."
+    blurb_en: "Flax is a specialty oilseed that adds variety to cereal rotations without sharing canola diseases."
+    blurb_es: "El lino es una oleaginosa especial que diversifica rotaciones de cereales sin compartir enfermedades con la canola."
+    check_first_en:
+      - "a delivery point that takes flax"
+      - "weed pressure in the field"
+      - "a combine that can handle tough flax straw"
+    check_first_es:
+      - "un punto de entrega que reciba lino"
+      - "la presión de malezas en el lote"
+      - "una cosechadora que pueda con la paja dura del lino"
+    notes: "Kc ini uses the Fibre-crop group value 0.35 (flax is listed under Fibre crops in Table 12)."
+    references: [fao56_t11, fao56_t12, fao56_t22, ecocrop, mb_agclimate, cdl_legend]
+
+  - id: sugar_beet
+    name: Sugar beet
+    name_es: Remolacha azucarera
+    family: Amaranthaceae
+    roles: [cash]
+    season: summer
+    gdd_base_c: null
+    gdd_required: null
+    days_to_maturity: [120, 140]
+    min_frost_free_days: 120
+    frost_kill_c: -3
+    heat_stress_c: 25
+    water_need_mm: [550, 750]
+    drought_tolerance: med
+    kc: {ini: 0.35, mid: 1.20, end: 0.70}
+    stage_days: {ini: 50, dev: 40, mid: 50, late: 40}
+    kc_stage_row: "Sugarbeet, April planting, Idaho USA (Kc end up to 1.0 if late irrigation/rain)"
+    root_depth_m: [0.7, 1.2]
+    rusle_c_growing: null
+    residue_cover_after_harvest: null
+    n_fixing: false
+    n_need_kg_ha: null
+    n_credit_next_kg_ha: null
+    ph_range: [6.0, 7.0]
+    ph_abs: [5.5, 7.5]
+    drainage_ok: [well, moderately_well]
+    texture_ok: [heavy, medium, light]
+    max_slope_pct: null
+    equipment: [row_crop_planter, irrigation]
+    pest_host_groups: [beet_cyst_nematode]
+    typical_yield_unit: tons/acre
+    nass_commodity: SUGARBEETS
+    cdl_codes: [41]
+    market_notes: "Only grown under cooperative/processor contract with shares; needs a beet harvester (not in equipment enum)."
+    blurb_en: "Sugar beet is a root crop grown only under processor contract, adding a broadleaf break to grain rotations."
+    blurb_es: "La remolacha azucarera es un cultivo de raíz, solo con contrato de ingenio, que diversifica rotaciones de granos."
+    check_first_en:
+      - "shares or a contract with a sugar processor"
+      - "a beet harvester you own or can hire"
+      - "beet cyst nematode levels from a soil test"
+    check_first_es:
+      - "acciones o contrato con un ingenio azucarero"
+      - "una cosechadora de remolacha propia o contratada"
+      - "niveles de nematodo del quiste de la remolacha en un análisis de suelo"
+    notes: "Family Chenopodiaceae in ECOCROP = Amaranthaceae (APG IV). Days to maturity from Manitoba; FAO-56 Idaho row = 180 d."
+    references: [fao56_t11, fao56_t12, fao56_t22, fao_iwm, ecocrop, mb_agclimate, cdl_legend]
+
+  - id: processing_tomato
+    name: Processing tomato
+    name_es: Tomate para industria
+    family: Solanaceae
+    roles: [cash]
+    season: summer
+    gdd_base_c: 13.0
+    gdd_required: null
+    days_to_maturity: [155, 155]
+    min_frost_free_days: 155
+    frost_kill_c: null
+    heat_stress_c: 27
+    water_need_mm: [400, 800]
+    drought_tolerance: low
+    kc: {ini: 0.60, mid: 1.15, end: [0.70, 0.90]}
+    stage_days: {ini: 35, dev: 40, mid: 50, late: 30}
+    kc_stage_row: "Tomato, April/May planting, California USA"
+    root_depth_m: [0.7, 1.5]
+    rusle_c_growing: 0.50
+    residue_cover_after_harvest: 0.20
+    n_fixing: false
+    n_need_kg_ha: null
+    n_credit_next_kg_ha: null
+    ph_range: [5.5, 6.8]
+    ph_abs: [5.0, 7.5]
+    drainage_ok: [well, moderately_well]
+    texture_ok: [heavy, medium, light]
+    max_slope_pct: null
+    equipment: [irrigation]
+    pest_host_groups: [root_knot_nematode]
+    typical_yield_unit: tons/acre
+    nass_commodity: TOMATOES
+    cdl_codes: [54]
+    market_notes: "Grown only under cannery contract; transplanter and tomato harvester not in equipment enum."
+    blurb_en: "Processing tomato is an irrigated, high-value crop grown only under cannery contract, adding a break to grain rotations."
+    blurb_es: "El tomate para industria es un cultivo de riego de alto valor que solo se siembra con contrato."
+    check_first_en:
+      - "a cannery contract"
+      - "a transplanter and tomato harvester you own or can hire"
+      - "root-knot nematode levels from a soil test"
+    check_first_es:
+      - "un contrato con una procesadora"
+      - "trasplantadora y cosechadora de tomate propias o contratadas"
+      - "niveles de nematodo agallador en un análisis de suelo"
+    notes: "Base 13 C = Manitoba Table 2 'pumpkins and tomatoes'. OMAFRA 0.50 = seasonal horticultural crops; residue 0.20 = ISU 'vegetables'."
+    references: [fao56_t11, fao56_t12, fao56_t22, fao_iwm, ecocrop, mb_agclimate, isu_pm1901a, omafra_usle, cdl_legend]
+
+  - id: triticale
+    name: Triticale
+    name_es: Triticale
+    family: Poaceae
+    roles: [cash, forage]
+    season: winter
+    gdd_base_c: null
+    gdd_required: null
+    days_to_maturity: null
+    min_frost_free_days: null
+    frost_kill_c: null
+    heat_stress_c: null
+    water_need_mm: null
+    drought_tolerance: null
+    kc: null
+    stage_days: null
+    kc_stage_row: "No triticale row in FAO-56 Tables 11/12"
+    root_depth_m: null
+    rusle_c_growing: 0.35
+    residue_cover_after_harvest: null
+    n_fixing: false
+    n_need_kg_ha: null
+    n_credit_next_kg_ha: null
+    ph_range: null
+    ph_abs: null
+    drainage_ok: null
+    texture_ok: null
+    max_slope_pct: null
+    equipment: [grain_drill, combine, forage_harvester]
+    pest_host_groups: [fusarium_head_blight, cereal_root_disease]
+    typical_yield_unit: bu/acre
+    nass_commodity: null
+    cdl_codes: [205, 228]
+    market_notes: "Mostly on-farm feed or forage; few grain buyers."
+    blurb_en: "Triticale is a wheat-rye cross grown mostly for on-farm feed or forage, sown like winter wheat."
+    blurb_es: "El triticale es un cruce de trigo y centeno, usado sobre todo como alimento o forraje para el ganado propio."
+    check_first_en:
+      - "livestock to feed it to, or a grain buyer"
+      - "head scab risk if it follows corn"
+      - "a forage harvester if you cut it for silage"
+    check_first_es:
+      - "ganado para consumirlo, o un comprador de grano"
+      - "riesgo de fusariosis de la espiga si sigue al maíz"
+      - "una picadora de forraje si lo corta para ensilaje"
+    notes: "Not found in ECOCROP export, FAO-56 or FAO IWM. Only the OMAFRA cereal factor is applied. NASS Quick Stats commodity not confirmed."
+    references: [omafra_usle, cdl_legend]
+
+  # ===================== COVER CROPS =====================
+  - id: cereal_rye
+    name: Cereal rye (cover)
+    name_es: Centeno (cobertura)
+    family: Poaceae
+    roles: [cover]
+    season: cover
+    gdd_base_c: null
+    gdd_required: null
+    days_to_maturity: null
+    min_frost_free_days: null
+    frost_kill_c: -18
+    heat_stress_c: 20
+    water_need_mm: null
+    drought_tolerance: null
+    kc: null
+    stage_days: null
+    kc_stage_row: "No rye row in FAO-56 Tables 11/12"
+    root_depth_m: null
+    rusle_c_growing: null
+    residue_cover_after_harvest: 0.75
+    n_fixing: false
+    n_need_kg_ha: null
+    n_credit_next_kg_ha: null
+    ph_range: [5.5, 6.0]
+    ph_abs: [4.5, 8.2]
+    drainage_ok: [somewhat_poorly, poorly, very_poorly, well, moderately_well, somewhat_excessive, excessive]
+    texture_ok: [heavy, medium, light]
+    max_slope_pct: null
+    equipment: [grain_drill]
+    pest_host_groups: [cereal_root_disease]
+    typical_yield_unit: null
+    nass_commodity: RYE
+    cdl_codes: [27]
+    market_notes: "Cover use; seed cost only. Grain rye has a small market."
+    blurb_en: "Cereal rye is the hardiest winter cover, holding soil and soaking up leftover nitrogen between cash crops."
+    blurb_es: "El centeno es la cobertura de invierno más resistente: protege el suelo y retiene el nitrógeno sobrante entre cultivos."
+    check_first_en:
+      - "a plan to end it at least 10 days before planting corn"
+      - "a drill to seed it soon after harvest"
+      - "seed cost and supply near you"
+    check_first_es:
+      - "un plan para terminarlo al menos 10 días antes de sembrar maíz"
+      - "una sembradora para sembrarlo poco después de la cosecha"
+      - "costo y disponibilidad de semilla en su zona"
+    notes: >-
+      SARE: hardiest cereal; germinates at 34 F; holds 25-50 lb N/A typical, up to 100 lb N/A; immobilizes N as it decomposes;
+      kill at least 10 days before planting corn. Residue 0.75 = ISU 'rye' (grain harvest).
+      Pantoja et al. 2015 (SSSAJ): rye cover cut corn yield 6% at the economic optimum N rate; soybean not affected (see rules.yaml).
+    references: [ecocrop, sare_rye, isu_pm1901a, cdl_legend]
+
+  - id: oats_winterkill
+    name: Oats (winter-killed cover)
+    name_es: Avena de cobertura (muere en invierno)
+    family: Poaceae
+    roles: [cover]
+    season: cover
+    gdd_base_c: null
+    gdd_required: null
+    days_to_maturity: null
+    min_frost_free_days: null
+    frost_kill_c: -15
+    heat_stress_c: 20
+    water_need_mm: null
+    drought_tolerance: null
+    kc: null
+    stage_days: null
+    kc_stage_row: "Cover use; FAO-56 grain-oats values not applied"
+    root_depth_m: null
+    rusle_c_growing: null
+    residue_cover_after_harvest: null
+    n_fixing: false
+    n_need_kg_ha: null
+    n_credit_next_kg_ha: null
+    ph_range: [5.0, 6.0]
+    ph_abs: [4.5, 7.5]
+    drainage_ok: [well, moderately_well]
+    texture_ok: [heavy, medium, light]
+    max_slope_pct: null
+    equipment: [grain_drill]
+    pest_host_groups: []
+    typical_yield_unit: null
+    nass_commodity: null
+    cdl_codes: []
+    market_notes: "No grain sale; possible fall grazing."
+    blurb_en: "Oats sown in late summer make a fast cover that dies in cold winters, so no spring kill is needed."
+    blurb_es: "La avena sembrada a fines del verano da una cobertura rápida que muere con el frío, sin control en primavera."
+    check_first_en:
+      - "winters cold enough to kill it in your area"
+      - "time to seed it 40-60 days before the first killing frost"
+      - "grazing plans, if you want fall feed"
+    check_first_es:
+      - "inviernos suficientemente fríos para que muera en su zona"
+      - "tiempo para sembrarla 40 a 60 días antes de la primera helada fuerte"
+      - "planes de pastoreo, si quiere forraje en otoño"
+    notes: >-
+      SARE: winterkills in Hardiness Zone 6 and colder and much of Zone 7 (no temperature threshold given; ECOCROP KTMPR -15 C shown).
+      Seed 40-60 days before first killing frost; late-summer seeding can take up up to 77 lb N/A in 8-10 weeks; 2,000-4,000 lb DM/A.
+      No spring termination needed where it winterkills. CDL cannot see within-year covers.
+    references: [ecocrop, sare_oats]
+
+  - id: crimson_clover
+    name: Crimson clover (cover)
+    name_es: Trébol encarnado
+    family: Fabaceae
+    roles: [cover, legume]
+    season: cover
+    gdd_base_c: null
+    gdd_required: null
+    days_to_maturity: null
+    min_frost_free_days: null
+    frost_kill_c: null
+    heat_stress_c: 22
+    water_need_mm: null
+    drought_tolerance: null
+    kc: null
+    stage_days: null
+    kc_stage_row: "No FAO-56 row"
+    root_depth_m: null
+    rusle_c_growing: null
+    residue_cover_after_harvest: null
+    n_fixing: true
+    n_need_kg_ha: null
+    n_credit_next_kg_ha: null
+    ph_range: [6.0, 7.0]
+    ph_abs: [4.8, 8.3]
+    drainage_ok: [well, moderately_well]
+    texture_ok: [heavy, medium, light]
+    max_slope_pct: null
+    equipment: [grain_drill]
+    pest_host_groups: []
+    typical_yield_unit: null
+    nass_commodity: null
+    cdl_codes: []
+    market_notes: "Cover use."
+    blurb_en: "Crimson clover is a legume cover sown in fall that adds nitrogen for the next summer crop."
+    blurb_es: "El trébol encarnado es una leguminosa de cobertura sembrada en otoño que aporta nitrógeno al cultivo de verano."
+    check_first_en:
+      - "winters mild enough for it to survive in your area"
+      - "time to seed it 6-8 weeks before the average first frost"
+      - "a plan to end it before planting"
+    check_first_es:
+      - "inviernos suficientemente suaves para que sobreviva en su zona"
+      - "tiempo para sembrarlo 6 a 8 semanas antes de la primera helada promedio"
+      - "un plan para terminarlo antes de sembrar"
+    notes: >-
+      SARE: N contribution 70-150 lb N/A (total N, not a guaranteed credit); overwinters in Zone 8, often lower Zone 6;
+      grown as winter-killed annual in Zone 5 and colder; seed 6-8 weeks before average first frost. No killing temperature in ECOCROP.
+    references: [ecocrop, sare_crimson]
+
+  - id: hairy_vetch
+    name: Hairy vetch (cover)
+    name_es: Veza vellosa
+    family: Fabaceae
+    roles: [cover, legume]
+    season: cover
+    gdd_base_c: null
+    gdd_required: null
+    days_to_maturity: null
+    min_frost_free_days: null
+    frost_kill_c: -15
+    heat_stress_c: null
+    water_need_mm: null
+    drought_tolerance: null
+    kc: null
+    stage_days: null
+    kc_stage_row: "No FAO-56 row"
+    root_depth_m: null
+    rusle_c_growing: null
+    residue_cover_after_harvest: null
+    n_fixing: true
+    n_need_kg_ha: null
+    n_credit_next_kg_ha: [null, 112]
+    ph_range: null
+    ph_abs: null
+    drainage_ok: null
+    texture_ok: null
+    max_slope_pct: null
+    equipment: [grain_drill]
+    pest_host_groups: []
+    typical_yield_unit: null
+    nass_commodity: null
+    cdl_codes: [224]
+    market_notes: "Cover use; seed is costly."
+    blurb_en: "Hairy vetch is a very winter-hardy legume cover that can supply much of the next corn crop's nitrogen."
+    blurb_es: "La veza vellosa es una leguminosa de cobertura muy resistente al invierno que aporta buena parte del nitrógeno del maíz."
+    check_first_en:
+      - "seed cost and supply, since seed is costly"
+      - "time to seed it 30-45 days before the killing frost"
+      - "a plan to end it fully before planting"
+    check_first_es:
+      - "costo y disponibilidad de semilla, que es cara"
+      - "tiempo para sembrarla 30 a 45 días antes de la helada fuerte"
+      - "un plan para terminarla por completo antes de sembrar"
+    notes: >-
+      SARE: winter hardy through Zone 4 (Zone 3 with snow); without snow a freeze below 5 F (-15 C) may kill it.
+      Can replace up to 100 lb N/A (112 kg/ha) in no-till; accumulated 130-180 lb N/A in studies; plant 30-45 days before killing frost.
+      Not in the ECOCROP export.
+    references: [sare_vetch, cdl_legend]
+
+  - id: radish_cover
+    name: Radish (forage / oilseed, cover)
+    name_es: Rábano de cobertura
+    family: Brassicaceae
+    roles: [cover, deep_root]
+    season: cover
+    gdd_base_c: null
+    gdd_required: null
+    days_to_maturity: null
+    min_frost_free_days: null
+    frost_kill_c: -6.7
+    heat_stress_c: 26
+    water_need_mm: null
+    drought_tolerance: null
+    kc: null
+    stage_days: null
+    kc_stage_row: "FAO-56 radish row is the vegetable crop; not applied"
+    root_depth_m: null
+    rusle_c_growing: null
+    residue_cover_after_harvest: null
+    n_fixing: false
+    n_need_kg_ha: null
+    n_credit_next_kg_ha: null
+    ph_range: [6.0, 7.0]
+    ph_abs: [4.3, 8.3]
+    drainage_ok: [well, moderately_well]
+    texture_ok: [heavy, medium, light]
+    max_slope_pct: null
+    equipment: [grain_drill]
+    pest_host_groups: [clubroot, beet_cyst_nematode]
+    typical_yield_unit: null
+    nass_commodity: null
+    cdl_codes: []
+    market_notes: "Cover use."
+    blurb_en: "Radish is a fast fall cover whose thick root can loosen tight soil; it dies in hard frost."
+    blurb_es: "El rábano es una cobertura rápida de otoño cuya raíz gruesa puede aflojar suelo compactado; muere con heladas fuertes."
+    check_first_en:
+      - "years since canola or another brassica, because of clubroot"
+      - "time to seed it in late summer or early fall"
+      - "a drill or spreader that can seed it"
+    check_first_es:
+      - "años desde la última canola u otra crucífera, por la hernia"
+      - "tiempo para sembrarlo a fines del verano o inicios del otoño"
+      - "una sembradora o voleadora para sembrarlo"
+    notes: "Oilseed radish killed at about 20 F (-6.7 C) (OSU SAG-5; MSU); forage radish needs several nights in the low 20s F. Brassica: counts as a clubroot host in canola-spacing rules."
+    references: [ecocrop, osu_sag5, msu_radish]
+
+  - id: winter_camelina
+    name: Winter camelina (cover / oilseed)
+    name_es: Camelina de invierno
+    family: Brassicaceae
+    roles: [cover, cash]
+    season: cover
+    gdd_base_c: null
+    gdd_required: null
+    days_to_maturity: null
+    min_frost_free_days: null
+    frost_kill_c: null
+    heat_stress_c: null
+    water_need_mm: null
+    drought_tolerance: null
+    kc: null
+    stage_days: null
+    kc_stage_row: "No FAO-56 row"
+    root_depth_m: null
+    rusle_c_growing: null
+    residue_cover_after_harvest: null
+    n_fixing: false
+    n_need_kg_ha: null
+    n_credit_next_kg_ha: null
+    ph_range: null
+    ph_abs: null
+    drainage_ok: null
+    texture_ok: null
+    max_slope_pct: null
+    equipment: [grain_drill, combine]
+    pest_host_groups: [clubroot]
+    typical_yield_unit: lb/acre
+    nass_commodity: null
+    cdl_codes: [38]
+    market_notes: "Emerging biofuel-feedstock contracts only."
+    blurb_en: "Winter camelina is an oilseed cover sown in fall that can be harvested for biofuel contracts where they exist."
+    blurb_es: "La camelina de invierno es una oleaginosa de cobertura sembrada en otoño que puede cosecharse para biocombustible bajo contrato."
+    check_first_en:
+      - "a biofuel feedstock contract near you"
+      - "years since canola or another brassica, because of clubroot"
+      - "a combine set up for very small seed"
+    check_first_es:
+      - "un contrato de materia prima para biocombustible en su zona"
+      - "años desde la última canola u otra crucífera, por la hernia"
+      - "una cosechadora ajustada para semilla muy pequeña"
+    notes: "ECOCROP record exists but every parameter is blank. No other parameters verified in this pass. Brassica: treated as clubroot host label (check locally)."
+    references: [ecocrop, cdl_legend]
+
+  - id: cowpea_cover
+    name: Cowpea (summer cover)
+    name_es: Caupí (cobertura de verano)
+    family: Fabaceae
+    roles: [cover, legume, drought_tolerant]
+    season: cover
+    gdd_base_c: null
+    gdd_required: null
+    days_to_maturity: [30, 240]
+    min_frost_free_days: null
+    frost_kill_c: -1
+    heat_stress_c: 35
+    water_need_mm: null
+    drought_tolerance: null
+    kc: {ini: 0.40, mid: 1.05, end: [0.35, 0.60]}
+    stage_days: {ini: 20, dev: 30, mid: 30, late: 20}
+    kc_stage_row: "Green gram and cowpeas, March planting, Mediterranean (grain crop values)"
+    root_depth_m: [0.6, 1.0]
+    rusle_c_growing: null
+    residue_cover_after_harvest: null
+    n_fixing: true
+    n_need_kg_ha: null
+    n_credit_next_kg_ha: null
+    ph_range: [5.5, 7.5]
+    ph_abs: [4.0, 8.8]
+    drainage_ok: [well, moderately_well, somewhat_excessive, excessive]
+    texture_ok: [heavy, medium, light]
+    max_slope_pct: null
+    equipment: [grain_drill, row_crop_planter]
+    pest_host_groups: [root_knot_nematode]
+    typical_yield_unit: null
+    nass_commodity: null
+    cdl_codes: []
+    market_notes: "Cover use."
+    blurb_en: "Cowpea is a heat-loving summer legume cover that adds nitrogen and keeps soil covered in hot, dry spells."
+    blurb_es: "El caupí es una leguminosa de cobertura de verano que aporta nitrógeno y cubre el suelo con calor y sequía."
+    check_first_en:
+      - "root-knot nematode levels, since cowpea can host them"
+      - "a summer gap long enough to grow it"
+      - "a planter or drill that can seed it"
+    check_first_es:
+      - "niveles de nematodo agallador, ya que el caupí puede hospedarlo"
+      - "un período de verano suficientemente largo para cultivarlo"
+      - "una sembradora que pueda sembrarlo"
+    notes: "Kc/stage values are FAO-56 for a grain cowpea crop; a cover terminated early will not reach Kc end. Crop cycle 30-240 d is ECOCROP. Role drought_tolerant follows the planning digest list; no FAO IWM figure."
+    references: [fao56_t11, fao56_t12, fao56_t22, ecocrop]
+
+  - id: sunn_hemp
+    name: Sunn hemp (summer cover)
+    name_es: Crotalaria (cáñamo de Bengala)
+    family: Fabaceae
+    roles: [cover, legume]
+    season: cover
+    gdd_base_c: null
+    gdd_required: null
+    days_to_maturity: [60, 160]
+    min_frost_free_days: null
+    frost_kill_c: -2
+    heat_stress_c: 30
+    water_need_mm: null
+    drought_tolerance: null
+    kc: null
+    stage_days: null
+    kc_stage_row: "No FAO-56 row"
+    root_depth_m: null
+    rusle_c_growing: null
+    residue_cover_after_harvest: null
+    n_fixing: true
+    n_need_kg_ha: null
+    n_credit_next_kg_ha: null
+    ph_range: [6.0, 7.0]
+    ph_abs: [5.0, 8.4]
+    drainage_ok: [well, moderately_well, somewhat_excessive, excessive]
+    texture_ok: [medium, light]
+    max_slope_pct: null
+    equipment: [grain_drill]
+    pest_host_groups: []
+    typical_yield_unit: null
+    nass_commodity: null
+    cdl_codes: []
+    market_notes: "Cover use; common in Brazil (Crotalaria juncea) after soybean."
+    blurb_en: "Sunn hemp is a tall summer legume cover that adds nitrogen and plant material, grown after soybean in Brazil."
+    blurb_es: "La crotalaria es una leguminosa de cobertura de verano que aporta nitrógeno y biomasa, usada tras la soya en Brasil."
+    check_first_en:
+      - "a summer gap long enough to grow it"
+      - "a plan to cut or roll it before it gets too tall"
+      - "seed supply near you"
+    check_first_es:
+      - "un período de verano suficientemente largo para cultivarla"
+      - "un plan para cortarla o rolarla antes de que crezca demasiado"
+      - "disponibilidad de semilla en su zona"
+    notes: "All values from ECOCROP Crotalaria juncea; crop cycle 60-160 d."
+    references: [ecocrop]

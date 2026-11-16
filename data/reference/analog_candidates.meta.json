@@ -1,0 +1,17 @@
+{
+ "rows": 3467,
+ "built": "2026-11-14",
+ "min_crop_share_pct": 15.0,
+ "grid": "1\u00b0 cells (centres at x.5); climate from the nearest NASA POWER 0.5\u00b0x0.625\u00b0 cell",
+ "cropland_mask": "FAO GAEZ v4 GLCSv11_02 cropland share (5 arc-min), mean over each 1\u00b0 cell",
+ "climate": "NASA POWER climatology/regional, MERRA-2 monthly normals",
+ "climate_period": [
+  "20010101",
+  "20251231"
+ ],
+ "power_api": {
+  "version": "v2.10.1",
+  "name": "POWER Climatology API"
+ },
+ "columns": "t = monthly mean of daily T2M (\u00b0C); pr = PRECTOTCORR monthly mean (mm/day); tmax/tmin = POWER climatology T2M_MAX/T2M_MIN monthly values, which are period EXTREMES (not means of daily max/min) and are not used for analog matching"
+}

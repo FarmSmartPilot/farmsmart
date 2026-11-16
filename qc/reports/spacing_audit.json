@@ -1,0 +1,327 @@
+{
+  "1280x800 globe-home": {
+    "hscroll": 89,
+    "offscreen": [],
+    "clipped": [],
+    "small": [],
+    "overlaps": []
+  },
+  "1280x800 field-studio": {
+    "hscroll": 0,
+    "offscreen": [],
+    "clipped": [],
+    "small": [],
+    "overlaps": []
+  },
+  "1280x800 strategy-compare": {
+    "hscroll": 136,
+    "offscreen": [],
+    "clipped": [],
+    "small": [],
+    "overlaps": []
+  },
+  "1280x800 climate-twins": {
+    "hscroll": 136,
+    "offscreen": [],
+    "clipped": [],
+    "small": [],
+    "overlaps": []
+  },
+  "1280x800 drought-replay": {
+    "hscroll": 136,
+    "offscreen": [],
+    "clipped": [],
+    "small": [],
+    "overlaps": []
+  },
+  "1440x900 globe-home": {
+    "hscroll": 29,
+    "offscreen": [],
+    "clipped": [],
+    "small": [],
+    "overlaps": []
+  },
+  "1440x900 field-studio": {
+    "hscroll": 0,
+    "offscreen": [],
+    "clipped": [],
+    "small": [],
+    "overlaps": []
+  },
+  "1440x900 strategy-compare": {
+    "hscroll": 0,
+    "offscreen": [],
+    "clipped": [],
+    "small": [],
+    "overlaps": []
+  },
+  "1440x900 climate-twins": {
+    "hscroll": 0,
+    "offscreen": [],
+    "clipped": [],
+    "small": [],
+    "overlaps": []
+  },
+  "1440x900 drought-replay": {
+    "hscroll": 0,
+    "offscreen": [],
+    "clipped": [],
+    "small": [],
+    "overlaps": []
+  },
+  "1920x1080 globe-home": {
+    "hscroll": 0,
+    "offscreen": [],
+    "clipped": [],
+    "small": [],
+    "overlaps": []
+  },
+  "1920x1080 field-studio": {
+    "hscroll": 0,
+    "offscreen": [],
+    "clipped": [],
+    "small": [],
+    "overlaps": []
+  },
+  "1920x1080 strategy-compare": {
+    "hscroll": 0,
+    "offscreen": [],
+    "clipped": [],
+    "small": [],
+    "overlaps": []
+  },
+  "1920x1080 climate-twins": {
+    "hscroll": 0,
+    "offscreen": [],
+    "clipped": [],
+    "small": [],
+    "overlaps": []
+  },
+  "1920x1080 drought-replay": {
+    "hscroll": 0,
+    "offscreen": [],
+    "clipped": [],
+    "small": [],
+    "overlaps": []
+  },
+  "390x844 globe-home": {
+    "hscroll": 0,
+    "offscreen": [],
+    "clipped": [],
+    "small": [
+      "a “” 59×11"
+    ],
+    "overlaps": []
+  },
+  "390x844 field-studio": {
+    "hscroll": 0,
+    "offscreen": [],
+    "clipped": [],
+    "small": [
+      "button.fs-term “Growing heat (GDD): show definition” 124×20",
+      "button.fs-term “Water demand (ET₀): show definition” 124×20",
+      "button.fs-term “Water balance: show definition” 88×20",
+      "button.fs-term “Root-zone wetness: show definition” 153×24",
+      "button.fs-term “Frost dates: show definition” 93×21",
+      "button.fs-term “Water the soil holds (top 1 m): show def” 223×24",
+      "button.fs-term “K: show definition” 11×24",
+      "button.fs-term “Crop history: show definition” 103×21"
+    ],
+    "overlaps": []
+  },
+  "390x844 strategy-compare": {
+    "hscroll": 0,
+    "offscreen": [],
+    "clipped": [],
+    "small": [
+      "button.fs-term “P10 / P50 / P90: show definition” 99×20",
+      "button.fs-term “Soil lost to water (RUSLE): show definit” 143×39",
+      "button.fs-term “Crop water use: show definition” 96×20",
+      "button.fs-term “Soil lost to water (RUSLE): show definit” 199×24",
+      "button.fs-term “Crop water use: show definition” 120×24"
+    ],
+    "overlaps": []
+  },
+  "390x844 climate-twins": {
+    "hscroll": 0,
+    "offscreen": [],
+    "clipped": [],
+    "small": [
+      "a “” 59×11"
+    ],
+    "overlaps": []
+  },
+  "390x844 drought-replay": {
+    "hscroll": 0,
+    "offscreen": [],
+    "clipped": [],
+    "small": [
+      "button.fs-term “NDVI: show definition” 31×20"
+    ],
+    "overlaps": []
+  },
+  "430x932 globe-home": {
+    "hscroll": 0,
+    "offscreen": [],
+    "clipped": [],
+    "small": [
+      "a “” 59×11"
+    ],
+    "overlaps": []
+  },
+  "430x932 field-studio": {
+    "hscroll": 0,
+    "offscreen": [],
+    "clipped": [],
+    "small": [
+      "button.fs-term “Growing heat (GDD): show definition” 124×20",
+      "button.fs-term “Water demand (ET₀): show definition” 124×20",
+      "button.fs-term “Water balance: show definition” 88×20",
+      "button.fs-term “Root-zone wetness: show definition” 153×24",
+      "button.fs-term “Frost dates: show definition” 93×21",
+      "button.fs-term “Water the soil holds (top 1 m): show def” 223×24",
+      "button.fs-term “K: show definition” 11×24",
+      "button.fs-term “Crop history: show definition” 103×21"
+    ],
+    "overlaps": []
+  },
+  "430x932 strategy-compare": {
+    "hscroll": 0,
+    "offscreen": [],
+    "clipped": [],
+    "small": [
+      "a.fs-link “Crookston et al. 1991, Agron J, MN 9 yr” 267×26",
+      "a.fs-link “Stanger & Lauer 2008, Agron J, WI 35 yr” 272×26",
+      "button.fs-term “P10 / P50 / P90: show definition” 99×20",
+      "button.fs-term “Soil lost to water (RUSLE): show definit” 143×39",
+      "button.fs-term “Crop water use: show definition” 96×20",
+      "a.fs-link “Liebman et al. 2008, Agron J, Boone IA” 262×26",
+      "button.fs-term “Soil lost to water (RUSLE): show definit” 199×24",
+      "button.fs-term “Crop water use: show definition” 120×24"
+    ],
+    "overlaps": []
+  },
+  "430x932 climate-twins": {
+    "hscroll": 0,
+    "offscreen": [],
+    "clipped": [],
+    "small": [
+      "a “” 59×11"
+    ],
+    "overlaps": []
+  },
+  "430x932 drought-replay": {
+    "hscroll": 0,
+    "offscreen": [],
+    "clipped": [],
+    "small": [
+      "button.fs-term “NDVI: show definition” 31×20"
+    ],
+    "overlaps": []
+  },
+  "820x1180 globe-home": {
+    "hscroll": 0,
+    "offscreen": [],
+    "clipped": [],
+    "small": [],
+    "overlaps": []
+  },
+  "820x1180 field-studio": {
+    "hscroll": 0,
+    "offscreen": [],
+    "clipped": [],
+    "small": [],
+    "overlaps": []
+  },
+  "820x1180 strategy-compare": {
+    "hscroll": 0,
+    "offscreen": [],
+    "clipped": [],
+    "small": [],
+    "overlaps": []
+  },
+  "820x1180 climate-twins": {
+    "hscroll": 0,
+    "offscreen": [],
+    "clipped": [],
+    "small": [],
+    "overlaps": []
+  },
+  "820x1180 drought-replay": {
+    "hscroll": 0,
+    "offscreen": [],
+    "clipped": [],
+    "small": [],
+    "overlaps": []
+  },
+  "960x900 globe-home": {
+    "hscroll": 0,
+    "offscreen": [],
+    "clipped": [],
+    "small": [],
+    "overlaps": []
+  },
+  "960x900 field-studio": {
+    "hscroll": 0,
+    "offscreen": [],
+    "clipped": [],
+    "small": [],
+    "overlaps": []
+  },
+  "960x900 strategy-compare": {
+    "hscroll": 0,
+    "offscreen": [],
+    "clipped": [],
+    "small": [],
+    "overlaps": []
+  },
+  "960x900 climate-twins": {
+    "hscroll": 0,
+    "offscreen": [],
+    "clipped": [],
+    "small": [],
+    "overlaps": []
+  },
+  "960x900 drought-replay": {
+    "hscroll": 0,
+    "offscreen": [],
+    "clipped": [],
+    "small": [],
+    "overlaps": []
+  },
+  "1024x768 globe-home": {
+    "hscroll": 0,
+    "offscreen": [],
+    "clipped": [],
+    "small": [],
+    "overlaps": []
+  },
+  "1024x768 field-studio": {
+    "hscroll": 0,
+    "offscreen": [],
+    "clipped": [],
+    "small": [],
+    "overlaps": []
+  },
+  "1024x768 strategy-compare": {
+    "hscroll": 0,
+    "offscreen": [],
+    "clipped": [],
+    "small": [],
+    "overlaps": []
+  },
+  "1024x768 climate-twins": {
+    "hscroll": 0,
+    "offscreen": [],
+    "clipped": [],
+    "small": [],
+    "overlaps": []
+  },
+  "1024x768 drought-replay": {
+    "hscroll": 0,
+    "offscreen": [],
+    "clipped": [],
+    "small": [],
+    "overlaps": []
+  }
+}

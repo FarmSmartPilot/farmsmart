@@ -1,0 +1,785 @@
+/* Wave U5 styles: step bar, Plan, Build your own, Saved plans, How well does it work?, field satellite,
+   rainfall by year and the forecast strip. Uses the design tokens only. */
+
+/* ---------------- step bar ---------------- */
+.stepbar {
+  --stepbar-h: 36px;
+  display: flex;
+  align-items: center;
+  gap: var(--s3);
+  min-height: var(--stepbar-h);
+  padding: 0 var(--s6);
+  border-bottom: 1px solid var(--line);
+  background: var(--surface);
+  flex: none;
+  min-width: 0;
+}
+.stepbar__count {
+  font-size: var(--fs-meta);
+  font-weight: 700;
+  color: var(--ink-2);
+  white-space: nowrap;
+}
+.stepbar__list {
+  display: flex;
+  align-items: center;
+  gap: var(--s1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  min-width: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.stepbar__item {
+  display: flex;
+  align-items: center;
+  flex: none;
+}
+.stepbar__item + .stepbar__item::before {
+  content: "";
+  width: 16px;
+  height: 1px;
+  margin-right: var(--s1);
+  background: var(--line-strong);
+}
+.stepbar__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 28px;
+  padding: 0 var(--s2);
+  border: 0;
+  border-radius: var(--r-pill);
+  background: transparent;
+  color: var(--ink-2);
+  font-size: var(--fs-meta);
+  font-weight: 600;
+  white-space: nowrap;
+}
+.stepbar__btn:hover:not(:disabled) {
+  background: #fff;
+  color: var(--ink);
+}
+.stepbar__btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+.stepbar__num {
+  display: inline-grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1.5px solid var(--line-strong);
+  background: #fff;
+  font-size: 11px;
+  font-weight: 700;
+}
+.stepbar__item.is-done .stepbar__num {
+  border-color: var(--field);
+  color: var(--field-strong);
+}
+.stepbar__item.is-current .stepbar__btn {
+  background: var(--navy);
+  color: #fff;
+}
+.stepbar__item.is-current .stepbar__num {
+  border-color: #fff;
+  background: #fff;
+  color: var(--navy);
+}
+.stepbar--compact {
+  justify-content: space-between;
+  padding: 0 var(--s4);
+  gap: var(--s2);
+}
+.stepbar__now {
+  display: flex;
+  align-items: baseline;
+  gap: var(--s2);
+  min-width: 0;
+  font-size: var(--fs-meta);
+}
+.stepbar__now strong {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.stepbar__next {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  min-height: 32px;
+  padding: 0 var(--s1) 0 var(--s2);
+  border: 0;
+  background: transparent;
+  color: var(--sky-text);
+  font-size: var(--fs-meta);
+  font-weight: 600;
+  white-space: nowrap;
+  flex: none;
+}
+@media (pointer: coarse) {
+  .stepbar {
+    --stepbar-h: 44px;
+  }
+  .stepbar__btn,
+  .stepbar__next {
+    min-height: 44px;
+  }
+}
+/* Field Studio fills the viewport on desktop: make room for the step bar (studio height is set in app.css). */
+@media (width >= 1100px) {
+  .app--steps .studio {
+    height: calc(100vh - 133px - 37px);
+  }
+}
+@media (width >= 1100px) and (pointer: coarse) {
+  .app--steps .studio {
+    height: calc(100vh - 133px - 45px);
+  }
+}
+
+/* ---------------- plan ---------------- */
+.plan-actions {
+  --gap: var(--s2);
+}
+.plan-choose select,
+.plan-page select,
+.by-year select,
+.fsat-pick select,
+.rain-pick select {
+  min-height: 40px;
+  max-width: 100%;
+  padding: 0 var(--s2);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-sm);
+  background: #fff;
+  font: inherit;
+  font-weight: 400;
+  font-size: var(--fs-body);
+  color: var(--ink);
+}
+.plan-choose {
+  max-width: 560px;
+}
+.seq-years {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: var(--s2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.seq-years__yr {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: var(--s2);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  background: #fff;
+  min-width: 0;
+}
+.seq-years__n {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--ink-2);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.seq-years__cash {
+  padding: 4px var(--s2);
+  border-radius: var(--r-sm);
+  font-weight: 700;
+  font-size: var(--fs-body);
+  overflow-wrap: anywhere;
+}
+.seq-years__cover {
+  font-size: var(--fs-meta);
+  color: var(--field-strong);
+}
+.seq-years__cover.is-none {
+  color: var(--ink-3);
+}
+.plan-progress {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s2);
+  font-size: var(--fs-body);
+}
+.plan-progress__track {
+  position: relative;
+  width: 120px;
+  height: 8px;
+  border-radius: var(--r-pill);
+  background: var(--track);
+  overflow: hidden;
+}
+.plan-progress__fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  background: var(--field);
+  border-radius: inherit;
+}
+.plan-stages {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--s3);
+}
+.plan-stage {
+  margin: 0;
+  padding: var(--s3);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  min-width: 0;
+}
+.plan-stage legend {
+  padding: 0 var(--s1);
+  font-weight: 700;
+}
+.plan-items {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.plan-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--s2);
+  min-height: 32px;
+  padding: 4px 0;
+  cursor: pointer;
+}
+.plan-item input {
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  flex: none;
+  accent-color: var(--field);
+}
+.plan-item.is-done > span {
+  color: var(--ink-3);
+  text-decoration: line-through;
+}
+.plan-item__tag {
+  margin-left: var(--s2);
+  vertical-align: middle;
+}
+.plan-notes {
+  width: 100%;
+  min-height: 120px;
+  padding: var(--s2) var(--s3);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-sm);
+  font: inherit;
+  font-weight: 400;
+  font-size: var(--fs-body);
+  resize: vertical;
+}
+@media (width <= 899px) {
+  .plan-stages {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------------- builder ---------------- */
+.by-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 0 var(--s3);
+  border: 2px solid transparent;
+  border-radius: var(--r-pill);
+  background: var(--crop);
+  color: var(--crop-ink);
+  font-weight: 700;
+  cursor: grab;
+}
+.by-chip.is-picked {
+  border-color: var(--navy);
+  box-shadow: 0 0 0 2px #fff inset;
+}
+.by-opt__head {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--s3);
+  flex-wrap: wrap;
+}
+.by-name {
+  flex: 1 1 220px;
+  max-width: 420px;
+}
+.by-name input {
+  width: 100%;
+}
+.by-years {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: var(--s2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.by-year {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: var(--s2);
+  border: 1.5px dashed var(--line-strong);
+  border-radius: var(--r-md);
+  background: var(--surface);
+  min-width: 0;
+}
+.by-year.is-over,
+.by-year.is-target {
+  border-color: var(--navy);
+  background: var(--navy-tint);
+}
+.by-year select {
+  width: 100%;
+}
+.by-year__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.by-year__n {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ink-2);
+}
+.by-x {
+  display: inline-grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border: 0;
+  border-radius: var(--r-sm);
+  background: transparent;
+  color: var(--ink-2);
+}
+.by-x:hover {
+  background: #fff;
+}
+.by-pill {
+  padding: 6px var(--s2);
+  border-radius: var(--r-sm);
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+.by-drop {
+  min-height: 36px;
+  padding: 0 var(--s2);
+  border: 1.5px solid var(--navy);
+  border-radius: var(--r-sm);
+  background: #fff;
+  color: var(--navy);
+  font-weight: 700;
+}
+.by-cover {
+  font-size: var(--fs-meta);
+}
+.by-problems {
+  color: var(--conf-low);
+}
+.by-results {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+  gap: var(--s3);
+}
+.by-res {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s2);
+  padding: var(--s3);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  background: #fff;
+  min-width: 0;
+}
+.by-res.is-custom {
+  border-color: var(--soil);
+  box-shadow: inset 3px 0 0 var(--soil);
+}
+.by-kpis {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--s2);
+  margin: 0;
+}
+.by-kpis dt {
+  font-size: var(--fs-meta);
+  color: var(--ink-2);
+}
+.by-kpis dd {
+  margin: 0;
+  font-weight: 700;
+}
+@media (pointer: coarse) {
+  .by-chip,
+  .by-drop,
+  .by-x,
+  .plan-item,
+  .plan-choose select,
+  .by-year select,
+  .fsat-pick select,
+  .rain-pick select,
+  .val-chip {
+    min-height: 44px;
+  }
+  .by-x {
+    width: 44px;
+  }
+}
+
+/* ---------------- saved plans ---------------- */
+.sp-list {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.sp-row {
+  display: flex;
+  gap: var(--s3);
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: var(--s3) 0;
+  border-top: 1px solid var(--line);
+}
+.sp-row:first-child {
+  border-top: 0;
+}
+.sp-row__main {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  flex: 1 1 260px;
+}
+.sp-row__field {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  overflow-wrap: anywhere;
+}
+.sp-row__act {
+  --gap: var(--s2);
+}
+
+/* ---------------- validation ---------------- */
+.val-cov {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.val-cov__row {
+  display: grid;
+  grid-template-columns: minmax(80px, 140px) minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--s3);
+}
+.val-cov__label {
+  font-weight: 600;
+}
+.val-cov__track {
+  position: relative;
+  height: 12px;
+  border-radius: var(--r-pill);
+  background: var(--track);
+}
+.val-cov__fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  border-radius: inherit;
+  background: var(--si);
+}
+.val-cov__target {
+  position: absolute;
+  top: -3px;
+  bottom: -3px;
+  width: 2px;
+  background: var(--navy);
+}
+.val-cov__val {
+  font-weight: 700;
+  white-space: nowrap;
+}
+.val-chip {
+  cursor: pointer;
+}
+.val-m2 {
+  max-width: 560px;
+}
+
+/* ---------------- field satellite ---------------- */
+.fsat {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s2);
+  min-width: 0;
+}
+.fsat-fig {
+  margin: 0;
+}
+.fsat-dot {
+  cursor: pointer;
+}
+.fsat-key {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1.5px solid var(--field-strong);
+  vertical-align: -1px;
+}
+.fsat-key--s30 {
+  background: var(--field);
+}
+.fsat-key--l30 {
+  background: #fff;
+}
+.fsat-pick {
+  max-width: 100%;
+}
+.fsat-pick select {
+  width: 100%;
+  max-width: 460px;
+}
+.fsat-grid__svg {
+  max-width: 420px;
+  max-height: 420px;
+  margin: 0 auto;
+  border-radius: var(--r-sm);
+}
+.fsat-legend {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-size: var(--fs-meta);
+  color: var(--ink-2);
+}
+.fsat-legend__bar {
+  width: 120px;
+  height: 10px;
+  border-radius: var(--r-pill);
+  background: linear-gradient(90deg, rgb(176, 141, 99), rgb(232, 221, 160) 40%, rgb(26, 110, 58));
+}
+.fsat-legend__mask,
+.fsat-legend__out {
+  width: 12px;
+  height: 12px;
+  margin-left: var(--s2);
+  border-radius: 2px;
+  background: repeating-linear-gradient(45deg, var(--surface) 0 2px, var(--line-strong) 2px 3px);
+}
+.fsat-legend__out {
+  background: rgb(26, 110, 58);
+  opacity: 0.28;
+}
+.fsat-never {
+  padding: var(--s2) var(--s3);
+  border-left: 3px solid var(--wheat);
+  background: var(--wheat-tint);
+  border-radius: var(--r-sm);
+  font-size: var(--fs-meta);
+  font-weight: 600;
+}
+.fsat-et-head {
+  margin-top: var(--s2);
+}
+.is-busy {
+  opacity: 0.6;
+  transition: opacity var(--dur);
+}
+
+/* ---------------- rainfall by year ---------------- */
+.rain-years {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s2);
+  min-width: 0;
+}
+.rain-years__svg {
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.rain-bar {
+  fill: var(--sky);
+  opacity: 0.55;
+}
+.rain-bar.is-dry {
+  fill: var(--wheat);
+  opacity: 0.85;
+}
+.rain-bar.is-partial {
+  opacity: 0.3;
+}
+.rain-bar.is-hover {
+  opacity: 0.9;
+}
+.rain-bar.is-sel {
+  fill: var(--alert);
+  opacity: 1;
+}
+.rain-key {
+  background: var(--sky);
+  opacity: 0.6;
+}
+.rain-key.is-sel {
+  background: var(--alert);
+  opacity: 1;
+}
+.rain-key.is-dry {
+  background: var(--wheat);
+  opacity: 0.85;
+}
+.rain-years__foot {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--s3);
+  flex-wrap: wrap;
+}
+.rain-pick {
+  min-width: 0;
+}
+
+/* ---------------- forecast strip ---------------- */
+.fc {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s2);
+  min-width: 0;
+}
+.fc-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(96px, 1fr));
+  gap: var(--s2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.fc-day {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: var(--s2);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  background: #fff;
+  min-width: 0;
+  font-size: var(--fs-meta);
+}
+.fc-day.is-flagged {
+  border-color: var(--alert);
+  background: var(--alert-tint);
+}
+.fc-day__name {
+  font-weight: 700;
+  font-size: var(--fs-body);
+  text-transform: capitalize;
+}
+.fc-day__date {
+  color: var(--ink-2);
+}
+.fc-day__t {
+  font-size: var(--fs-body);
+}
+.fc-day__flag {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 4px;
+  color: var(--conf-low);
+  font-weight: 600;
+}
+.fc-warn {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s2);
+  margin-top: var(--s2);
+}
+.fc-warn__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.fc-warn__item {
+  padding: var(--s3);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--wheat);
+  border-radius: var(--r-md);
+  background: #fff;
+}
+.fc-warn__item.is-severe,
+.fc-warn__item.is-extreme {
+  border-left-color: var(--alert);
+}
+.fc-warn__head {
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+  flex-wrap: wrap;
+}
+@media (width <= 639px) {
+  .fc-strip {
+    grid-template-columns: repeat(auto-fill, minmax(88px, 1fr));
+  }
+}
+.fsat-grid__img {
+  image-rendering: pixelated;
+}
+/* Narrow phones: the replay header's "compare with" menu and long scale chips wrap instead of overflowing. */
+.page[data-tour="replay"] .page__head label,
+.page[data-tour="replay"] .page__head select {
+  max-width: 100%;
+  min-width: 0;
+}
+.page[data-tour="replay"] .page__head > .fs-cluster {
+  min-width: 0;
+  max-width: 100%;
+}
+.fsat .fs-chip,
+.rain-years .fs-chip {
+  white-space: normal;
+  max-width: 100%;
+  height: auto;
+}
+/* Row headers in these tables are names (places, years), not column labels. */
+.page[data-tour="validation"] .fs-table tbody th,
+.rain-years .fs-table tbody th,
+.fsat .fs-table tbody th {
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: var(--fs-body);
+  color: var(--ink);
+}
+.fsat-legend {
+  column-gap: var(--s4);
+}
+.fsat-legend__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+.fsat-legend__item .fsat-legend__mask,
+.fsat-legend__item .fsat-legend__out {
+  margin-left: 0;
+}

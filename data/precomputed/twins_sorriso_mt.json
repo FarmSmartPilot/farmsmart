@@ -1,0 +1,1117 @@
+{
+ "model_id": "M7",
+ "model_version": "0.1.0",
+ "kind": "process",
+ "field": {
+  "lat": -12.50098,
+  "lon": -55.95973
+ },
+ "periods": {
+  "baseline": [
+   1991,
+   2020
+  ],
+  "model_historical": [
+   1995,
+   2014
+  ],
+  "future": [
+   2041,
+   2060
+  ],
+  "analog_present_day": [
+   "20010101",
+   "20251231"
+  ]
+ },
+ "baseline": {
+  "indicators": {
+   "tmean_c": 25.35,
+   "tmax_warm_c": 36.16,
+   "tmin_cold_c": 17.99,
+   "precip_mm": 1698.0,
+   "gdd10": 5419.0,
+   "hot_days_ge35": 60.4,
+   "frost_free_days": null,
+   "frost_free_years": 30
+  },
+  "scale_label": "regional value (≈50 km, NASA POWER)",
+  "evidence_id": "power-a43eb885869d"
+ },
+ "present_day_self_match": {
+  "lat": -12.5,
+  "lon": -55.5,
+  "country": "Brazil",
+  "iso3": "BRA",
+  "admin1": "Mato Grosso",
+  "near_town": "Sorriso",
+  "near_town_km": 23.0,
+  "cropland_share_pct": 27.5,
+  "distance": 0.021,
+  "km_from_field": 50.0
+ },
+ "scenarios": {
+  "ssp245": {
+   "available": true,
+   "n_models": 6,
+   "indicators": {
+    "tmean_c": {
+     "median": 26.73,
+     "min": 25.81,
+     "max": 27.81,
+     "n": 6
+    },
+    "tmax_warm_c": {
+     "median": 39.08,
+     "min": 37.58,
+     "max": 41.39,
+     "n": 6
+    },
+    "tmin_cold_c": {
+     "median": 18.2,
+     "min": 16.51,
+     "max": 20.02,
+     "n": 6
+    },
+    "precip_mm": {
+     "median": 1696.0,
+     "min": 1546.0,
+     "max": 1803.0,
+     "n": 6
+    },
+    "gdd10": {
+     "median": 5775.0,
+     "min": 5534.0,
+     "max": 5952.0,
+     "n": 6
+    },
+    "hot_days_ge35": {
+     "median": 90.65,
+     "min": 72.7,
+     "max": 120.6,
+     "n": 6
+    },
+    "frost_free_days": {
+     "median": null,
+     "min": null,
+     "max": null,
+     "n": 0
+    },
+    "frost_free_years": {
+     "median": 30.0,
+     "min": 30.0,
+     "max": 30.0,
+     "n": 6
+    }
+   },
+   "deltas": {
+    "annual_d_tmax_c": {
+     "median": 1.64,
+     "min": 0.53,
+     "max": 3.04,
+     "n": 6
+    },
+    "annual_d_tmin_c": {
+     "median": 1.35,
+     "min": 0.38,
+     "max": 1.88,
+     "n": 6
+    },
+    "annual_pr_ratio": {
+     "median": 1.0,
+     "min": 0.91,
+     "max": 1.06,
+     "n": 6
+    }
+   },
+   "analogs": [
+    {
+     "lat": -7.5,
+     "lon": -49.5,
+     "country": "Brazil",
+     "iso3": "BRA",
+     "admin1": "Pará",
+     "near_town": "Floresta do Araguaia",
+     "near_town_km": 24.0,
+     "cropland_share_pct": 18.1,
+     "distance": 0.098,
+     "km_from_field": 900.0,
+     "models_with_analog_within_km": [
+      "MPI-ESM1-2-HR",
+      "MRI-ESM2-0"
+     ],
+     "n_models_agree": 2,
+     "crops": {
+      "scale": "country",
+      "label": "country value (FAOSTAT, national harvested area)",
+      "country": "Brazil",
+      "years": [
+       2020,
+       2024
+      ],
+      "total_harvested_ha": 91593956,
+      "top": [
+       {
+        "crop": "Soya beans",
+        "ha": 41538653,
+        "share": 0.4535
+       },
+       {
+        "crop": "Maize (corn)",
+        "ha": 20362342,
+        "share": 0.2223
+       },
+       {
+        "crop": "Sugar cane",
+        "ha": 9988108,
+        "share": 0.109
+       },
+       {
+        "crop": "Wheat",
+        "ha": 2920840,
+        "share": 0.0319
+       },
+       {
+        "crop": "Beans, dry",
+        "ha": 2606648,
+        "share": 0.0285
+       }
+      ]
+     },
+     "novel": false
+    },
+    {
+     "lat": 9.5,
+     "lon": 105.5,
+     "country": "Vietnam",
+     "iso3": "VNM",
+     "admin1": "Bạc Liêu",
+     "near_town": "Ngã Năm",
+     "near_town_km": 13.0,
+     "cropland_share_pct": 57.2,
+     "distance": 0.115,
+     "km_from_field": 17965.0,
+     "models_with_analog_within_km": [
+      "ACCESS-CM2",
+      "GFDL-ESM4",
+      "MRI-ESM2-0",
+      "UKESM1-0-LL"
+     ],
+     "n_models_agree": 4,
+     "crops": {
+      "scale": "country",
+      "label": "country value (FAOSTAT, national harvested area)",
+      "country": "Viet Nam",
+      "years": [
+       2020,
+       2024
+      ],
+      "total_harvested_ha": 13558105,
+      "top": [
+       {
+        "crop": "Rice",
+        "ha": 7141865,
+        "share": 0.5268
+       },
+       {
+        "crop": "Maize (corn)",
+        "ha": 893587,
+        "share": 0.0659
+       },
+       {
+        "crop": "Other vegetables, fresh n.e.c.",
+        "ha": 883523,
+        "share": 0.0652
+       },
+       {
+        "crop": "Natural rubber in primary forms",
+        "ha": 733333,
+        "share": 0.0541
+       },
+       {
+        "crop": "Coffee, green",
+        "ha": 658440,
+        "share": 0.0486
+       }
+      ]
+     },
+     "novel": false
+    },
+    {
+     "lat": 13.5,
+     "lon": 101.5,
+     "country": "Thailand",
+     "iso3": "THA",
+     "admin1": "Chachoengsao",
+     "near_town": "Phanom Sarakham",
+     "near_town_km": 32.0,
+     "cropland_share_pct": 53.6,
+     "distance": 0.145,
+     "km_from_field": 17571.0,
+     "models_with_analog_within_km": [
+      "MIROC6",
+      "MRI-ESM2-0",
+      "UKESM1-0-LL"
+     ],
+     "n_models_agree": 3,
+     "crops": {
+      "scale": "country",
+      "label": "country value (FAOSTAT, national harvested area)",
+      "country": "Thailand",
+      "years": [
+       2020,
+       2024
+      ],
+      "total_harvested_ha": 22098989,
+      "top": [
+       {
+        "crop": "Rice",
+        "ha": 11074076,
+        "share": 0.5011
+       },
+       {
+        "crop": "Natural rubber in primary forms",
+        "ha": 3550473,
+        "share": 0.1607
+       },
+       {
+        "crop": "Sugar cane",
+        "ha": 1528107,
+        "share": 0.0691
+       },
+       {
+        "crop": "Cassava, fresh",
+        "ha": 1516388,
+        "share": 0.0686
+       },
+       {
+        "crop": "Maize (corn)",
+        "ha": 1032317,
+        "share": 0.0467
+       }
+      ]
+     },
+     "novel": false
+    }
+   ],
+   "agreement": {
+    "n_agree": 3,
+    "n_models": 6,
+    "radius_km": 500.0,
+    "cluster_centre": {
+     "lat": 12.5,
+     "lon": 104.5,
+     "country": "Cambodia",
+     "admin1": "Kâmpóng Chhnang",
+     "near_town": "Kampong Chhnang"
+    },
+    "models_in_cluster": [
+     "ACCESS-CM2",
+     "MIROC6",
+     "UKESM1-0-LL"
+    ]
+   },
+   "novel_climate": {
+    "flag": false,
+    "best_distance": 0.098,
+    "threshold": 0.234,
+    "models_novel": 0
+   },
+   "per_model": {
+    "ACCESS-CM2": {
+     "indicators": {
+      "tmean_c": 27.02,
+      "tmax_warm_c": 37.58,
+      "tmin_cold_c": 20.02,
+      "precip_mm": 1686.0,
+      "gdd10": 5868.0,
+      "hot_days_ge35": 91.3,
+      "frost_free_days": null,
+      "frost_free_years": 30
+     },
+     "annual_d_tmax_c": 1.75,
+     "annual_d_tmin_c": 1.6,
+     "annual_pr_ratio": 0.992,
+     "top_analog": {
+      "lat": 9.5,
+      "lon": 105.5,
+      "country": "Vietnam",
+      "iso3": "VNM",
+      "admin1": "Bạc Liêu",
+      "near_town": "Ngã Năm",
+      "near_town_km": 13.0,
+      "cropland_share_pct": 57.2,
+      "distance": 0.078,
+      "km_from_field": 17965.0
+     },
+     "novel": false
+    },
+    "GFDL-ESM4": {
+     "indicators": {
+      "tmean_c": 26.83,
+      "tmax_warm_c": 38.78,
+      "tmin_cold_c": 19.58,
+      "precip_mm": 1706.0,
+      "gdd10": 5824.0,
+      "hot_days_ge35": 85.9,
+      "frost_free_days": null,
+      "frost_free_years": 30
+     },
+     "annual_d_tmax_c": 1.52,
+     "annual_d_tmin_c": 1.44,
+     "annual_pr_ratio": 1.011,
+     "top_analog": {
+      "lat": 16.5,
+      "lon": 96.5,
+      "country": "Myanmar",
+      "iso3": "MMR",
+      "admin1": "Yangon",
+      "near_town": "Kyauktan",
+      "near_town_km": 24.0,
+      "cropland_share_pct": 21.8,
+      "distance": 0.112,
+      "km_from_field": 17020.0
+     },
+     "novel": false
+    },
+    "MIROC6": {
+     "indicators": {
+      "tmean_c": 26.51,
+      "tmax_warm_c": 41.39,
+      "tmin_cold_c": 16.51,
+      "precip_mm": 1546.0,
+      "gdd10": 5628.0,
+      "hot_days_ge35": 96.6,
+      "frost_free_days": null,
+      "frost_free_years": 30
+     },
+     "annual_d_tmax_c": 1.8,
+     "annual_d_tmin_c": 0.53,
+     "annual_pr_ratio": 0.911,
+     "top_analog": {
+      "lat": 15.5,
+      "lon": 104.5,
+      "country": "Thailand",
+      "iso3": "THA",
+      "admin1": "Ubon Ratchathani",
+      "near_town": "Amnat Charoen",
+      "near_town_km": 42.0,
+      "cropland_share_pct": 44.9,
+      "distance": 0.117,
+      "km_from_field": 17882.0
+     },
+     "novel": false
+    },
+    "MPI-ESM1-2-HR": {
+     "indicators": {
+      "tmean_c": 25.81,
+      "tmax_warm_c": 37.69,
+      "tmin_cold_c": 17.2,
+      "precip_mm": 1760.0,
+      "gdd10": 5534.0,
+      "hot_days_ge35": 72.7,
+      "frost_free_days": null,
+      "frost_free_years": 30
+     },
+     "annual_d_tmax_c": 0.53,
+     "annual_d_tmin_c": 0.38,
+     "annual_pr_ratio": 1.038,
+     "top_analog": {
+      "lat": -6.5,
+      "lon": -51.5,
+      "country": "Brazil",
+      "iso3": "BRA",
+      "admin1": "Pará",
+      "near_town": "Tucumã",
+      "near_town_km": 46.0,
+      "cropland_share_pct": 15.6,
+      "distance": 0.088,
+      "km_from_field": 827.0
+     },
+     "novel": false
+    },
+    "MRI-ESM2-0": {
+     "indicators": {
+      "tmean_c": 26.64,
+      "tmax_warm_c": 39.38,
+      "tmin_cold_c": 18.45,
+      "precip_mm": 1803.0,
+      "gdd10": 5726.0,
+      "hot_days_ge35": 90.0,
+      "frost_free_days": null,
+      "frost_free_years": 30
+     },
+     "annual_d_tmax_c": 1.33,
+     "annual_d_tmin_c": 1.26,
+     "annual_pr_ratio": 1.057,
+     "top_analog": {
+      "lat": -7.5,
+      "lon": -49.5,
+      "country": "Brazil",
+      "iso3": "BRA",
+      "admin1": "Pará",
+      "near_town": "Floresta do Araguaia",
+      "near_town_km": 24.0,
+      "cropland_share_pct": 18.1,
+      "distance": 0.104,
+      "km_from_field": 900.0
+     },
+     "novel": false
+    },
+    "UKESM1-0-LL": {
+     "indicators": {
+      "tmean_c": 27.81,
+      "tmax_warm_c": 41.1,
+      "tmin_cold_c": 17.94,
+      "precip_mm": 1680.0,
+      "gdd10": 5952.0,
+      "hot_days_ge35": 120.6,
+      "frost_free_days": null,
+      "frost_free_years": 30
+     },
+     "annual_d_tmax_c": 3.04,
+     "annual_d_tmin_c": 1.88,
+     "annual_pr_ratio": 0.986,
+     "top_analog": {
+      "lat": 12.5,
+      "lon": 104.5,
+      "country": "Cambodia",
+      "iso3": "KHM",
+      "admin1": "Kâmpóng Chhnang",
+      "near_town": "Kampong Chhnang",
+      "near_town_km": 33.0,
+      "cropland_share_pct": 25.5,
+      "distance": 0.144,
+      "km_from_field": 17894.0
+     },
+     "novel": false
+    }
+   }
+  },
+  "ssp585": {
+   "available": true,
+   "n_models": 6,
+   "indicators": {
+    "tmean_c": {
+     "median": 27.55,
+     "min": 27.07,
+     "max": 28.36,
+     "n": 6
+    },
+    "tmax_warm_c": {
+     "median": 40.27,
+     "min": 38.5,
+     "max": 44.07,
+     "n": 6
+    },
+    "tmin_cold_c": {
+     "median": 20.01,
+     "min": 17.9,
+     "max": 21.2,
+     "n": 6
+    },
+    "precip_mm": {
+     "median": 1525.0,
+     "min": 1243.0,
+     "max": 1872.0,
+     "n": 6
+    },
+    "gdd10": {
+     "median": 5907.5,
+     "min": 5776.0,
+     "max": 6069.0,
+     "n": 6
+    },
+    "hot_days_ge35": {
+     "median": 112.4,
+     "min": 100.8,
+     "max": 130.9,
+     "n": 6
+    },
+    "frost_free_days": {
+     "median": null,
+     "min": null,
+     "max": null,
+     "n": 0
+    },
+    "frost_free_years": {
+     "median": 30.0,
+     "min": 30.0,
+     "max": 30.0,
+     "n": 6
+    }
+   },
+   "deltas": {
+    "annual_d_tmax_c": {
+     "median": 2.58,
+     "min": 1.92,
+     "max": 3.68,
+     "n": 6
+    },
+    "annual_d_tmin_c": {
+     "median": 1.8,
+     "min": 1.24,
+     "max": 2.44,
+     "n": 6
+    },
+    "annual_pr_ratio": {
+     "median": 0.89,
+     "min": 0.73,
+     "max": 1.1,
+     "n": 6
+    }
+   },
+   "analogs": [
+    {
+     "lat": 12.5,
+     "lon": 104.5,
+     "country": "Cambodia",
+     "iso3": "KHM",
+     "admin1": "Kâmpóng Chhnang",
+     "near_town": "Kampong Chhnang",
+     "near_town_km": 33.0,
+     "cropland_share_pct": 25.5,
+     "distance": 0.104,
+     "km_from_field": 17894.0,
+     "models_with_analog_within_km": [
+      "ACCESS-CM2",
+      "GFDL-ESM4",
+      "MIROC6",
+      "UKESM1-0-LL"
+     ],
+     "n_models_agree": 4,
+     "crops": {
+      "scale": "country",
+      "label": "country value (FAOSTAT, national harvested area)",
+      "country": "Cambodia",
+      "years": [
+       2020,
+       2024
+      ],
+      "total_harvested_ha": 5262392,
+      "top": [
+       {
+        "crop": "Rice",
+        "ha": 3533419,
+        "share": 0.6714
+       },
+       {
+        "crop": "Cassava, fresh",
+        "ha": 590221,
+        "share": 0.1122
+       },
+       {
+        "crop": "Natural rubber in primary forms",
+        "ha": 318596,
+        "share": 0.0605
+       },
+       {
+        "crop": "Maize (corn)",
+        "ha": 193596,
+        "share": 0.0368
+       },
+       {
+        "crop": "Jute, raw or retted",
+        "ha": 159594,
+        "share": 0.0303
+       }
+      ]
+     },
+     "novel": false
+    },
+    {
+     "lat": 10.5,
+     "lon": 0.5,
+     "country": "Togo",
+     "iso3": "TGO",
+     "admin1": "Savanes",
+     "near_town": "Mango",
+     "near_town_km": 16.0,
+     "cropland_share_pct": 49.8,
+     "distance": 0.148,
+     "km_from_field": 6738.0,
+     "models_with_analog_within_km": [
+      "GFDL-ESM4",
+      "MIROC6",
+      "MPI-ESM1-2-HR"
+     ],
+     "n_models_agree": 3,
+     "crops": {
+      "scale": "country",
+      "label": "country value (FAOSTAT, national harvested area)",
+      "country": "Togo",
+      "years": [
+       2020,
+       2024
+      ],
+      "total_harvested_ha": 2608481,
+      "top": [
+       {
+        "crop": "Maize (corn)",
+        "ha": 770479,
+        "share": 0.2954
+       },
+       {
+        "crop": "Beans, dry",
+        "ha": 396156,
+        "share": 0.1519
+       },
+       {
+        "crop": "Sorghum",
+        "ha": 317970,
+        "share": 0.1219
+       },
+       {
+        "crop": "Cassava, fresh",
+        "ha": 310515,
+        "share": 0.119
+       },
+       {
+        "crop": "Soya beans",
+        "ha": 232216,
+        "share": 0.089
+       }
+      ]
+     },
+     "novel": false
+    },
+    {
+     "lat": 12.5,
+     "lon": -14.5,
+     "country": "Guinea-Bissau",
+     "iso3": "GNB",
+     "admin1": "Gabú",
+     "near_town": "Gabú",
+     "near_town_km": 39.0,
+     "cropland_share_pct": 19.3,
+     "distance": 0.152,
+     "km_from_field": 5352.0,
+     "models_with_analog_within_km": [
+      "ACCESS-CM2",
+      "MIROC6"
+     ],
+     "n_models_agree": 2,
+     "crops": {
+      "scale": "country",
+      "label": "country value (FAOSTAT, national harvested area)",
+      "country": "Guinea-Bissau",
+      "years": [
+       2020,
+       2024
+      ],
+      "total_harvested_ha": 622592,
+      "top": [
+       {
+        "crop": "Cashew nuts, in shell",
+        "ha": 182360,
+        "share": 0.2929
+       },
+       {
+        "crop": "Rice",
+        "ha": 139417,
+        "share": 0.2239
+       },
+       {
+        "crop": "Groundnuts, excluding shelled",
+        "ha": 112088,
+        "share": 0.18
+       },
+       {
+        "crop": "Millet",
+        "ha": 30061,
+        "share": 0.0483
+       },
+       {
+        "crop": "Sorghum",
+        "ha": 22692,
+        "share": 0.0364
+       }
+      ]
+     },
+     "novel": false
+    }
+   ],
+   "agreement": {
+    "n_agree": 2,
+    "n_models": 6,
+    "radius_km": 500.0,
+    "cluster_centre": {
+     "lat": 10.5,
+     "lon": 106.5,
+     "country": "Vietnam",
+     "admin1": "Long An",
+     "near_town": "Tân An"
+    },
+    "models_in_cluster": [
+     "ACCESS-CM2",
+     "UKESM1-0-LL"
+    ]
+   },
+   "novel_climate": {
+    "flag": false,
+    "best_distance": 0.104,
+    "threshold": 0.234,
+    "models_novel": 0
+   },
+   "per_model": {
+    "ACCESS-CM2": {
+     "indicators": {
+      "tmean_c": 28.06,
+      "tmax_warm_c": 40.62,
+      "tmin_cold_c": 21.2,
+      "precip_mm": 1647.0,
+      "gdd10": 6069.0,
+      "hot_days_ge35": 112.5,
+      "frost_free_days": null,
+      "frost_free_years": 30
+     },
+     "annual_d_tmax_c": 2.98,
+     "annual_d_tmin_c": 2.44,
+     "annual_pr_ratio": 0.972,
+     "top_analog": {
+      "lat": 10.5,
+      "lon": 106.5,
+      "country": "Vietnam",
+      "iso3": "VNM",
+      "admin1": "Long An",
+      "near_town": "Tân An",
+      "near_town_km": 10.0,
+      "cropland_share_pct": 48.7,
+      "distance": 0.21,
+      "km_from_field": 18091.0
+     },
+     "novel": false
+    },
+    "GFDL-ESM4": {
+     "indicators": {
+      "tmean_c": 27.25,
+      "tmax_warm_c": 38.66,
+      "tmin_cold_c": 20.32,
+      "precip_mm": 1243.0,
+      "gdd10": 5907.0,
+      "hot_days_ge35": 100.8,
+      "frost_free_days": null,
+      "frost_free_years": 30
+     },
+     "annual_d_tmax_c": 2.1,
+     "annual_d_tmin_c": 1.71,
+     "annual_pr_ratio": 0.732,
+     "top_analog": {
+      "lat": 10.5,
+      "lon": -6.5,
+      "country": "Côte d'Ivoire",
+      "iso3": "CIV",
+      "admin1": "Savanes",
+      "near_town": "Tengréla",
+      "near_town_km": 10.0,
+      "cropland_share_pct": 28.5,
+      "distance": 0.029,
+      "km_from_field": 6030.0
+     },
+     "novel": false
+    },
+    "MIROC6": {
+     "indicators": {
+      "tmean_c": 27.86,
+      "tmax_warm_c": 44.07,
+      "tmin_cold_c": 17.9,
+      "precip_mm": 1464.0,
+      "gdd10": 5908.0,
+      "hot_days_ge35": 126.1,
+      "frost_free_days": null,
+      "frost_free_years": 30
+     },
+     "annual_d_tmax_c": 3.42,
+     "annual_d_tmin_c": 1.59,
+     "annual_pr_ratio": 0.86,
+     "top_analog": {
+      "lat": 12.5,
+      "lon": -14.5,
+      "country": "Guinea-Bissau",
+      "iso3": "GNB",
+      "admin1": "Gabú",
+      "near_town": "Gabú",
+      "near_town_km": 39.0,
+      "cropland_share_pct": 19.3,
+      "distance": 0.191,
+      "km_from_field": 5352.0
+     },
+     "novel": false
+    },
+    "MPI-ESM1-2-HR": {
+     "indicators": {
+      "tmean_c": 27.07,
+      "tmax_warm_c": 39.93,
+      "tmin_cold_c": 18.52,
+      "precip_mm": 1376.0,
+      "gdd10": 5776.0,
+      "hot_days_ge35": 112.3,
+      "frost_free_days": null,
+      "frost_free_years": 30
+     },
+     "annual_d_tmax_c": 2.19,
+     "annual_d_tmin_c": 1.24,
+     "annual_pr_ratio": 0.81,
+     "top_analog": {
+      "lat": 10.5,
+      "lon": -7.5,
+      "country": "Mali",
+      "iso3": "MLI",
+      "admin1": "Sikasso",
+      "near_town": "Bamba",
+      "near_town_km": 40.0,
+      "cropland_share_pct": 20.2,
+      "distance": 0.11,
+      "km_from_field": 5931.0
+     },
+     "novel": false
+    },
+    "MRI-ESM2-0": {
+     "indicators": {
+      "tmean_c": 27.25,
+      "tmax_warm_c": 38.5,
+      "tmin_cold_c": 20.55,
+      "precip_mm": 1872.0,
+      "gdd10": 5900.0,
+      "hot_days_ge35": 102.8,
+      "frost_free_days": null,
+      "frost_free_years": 30
+     },
+     "annual_d_tmax_c": 1.92,
+     "annual_d_tmin_c": 1.89,
+     "annual_pr_ratio": 1.096,
+     "top_analog": {
+      "lat": -7.5,
+      "lon": 112.5,
+      "country": "Indonesia",
+      "iso3": "IDN",
+      "admin1": "Jawa Timur",
+      "near_town": "Mojokerto",
+      "near_town_km": 8.0,
+      "cropland_share_pct": 35.0,
+      "distance": 0.166,
+      "km_from_field": 17451.0
+     },
+     "novel": false
+    },
+    "UKESM1-0-LL": {
+     "indicators": {
+      "tmean_c": 28.36,
+      "tmax_warm_c": 42.65,
+      "tmin_cold_c": 19.7,
+      "precip_mm": 1586.0,
+      "gdd10": 6050.0,
+      "hot_days_ge35": 130.9,
+      "frost_free_days": null,
+      "frost_free_years": 30
+     },
+     "annual_d_tmax_c": 3.68,
+     "annual_d_tmin_c": 2.33,
+     "annual_pr_ratio": 0.929,
+     "top_analog": {
+      "lat": 14.5,
+      "lon": 105.5,
+      "country": "Laos",
+      "iso3": "LAO",
+      "admin1": "Champasak",
+      "near_town": "Det Udom",
+      "near_town_km": 64.0,
+      "cropland_share_pct": 20.8,
+      "distance": 0.167,
+      "km_from_field": 17999.0
+     },
+     "novel": false
+    }
+   }
+  }
+ },
+ "indicator_units": {
+  "tmean_c": "°C",
+  "tmax_warm_c": "°C",
+  "tmin_cold_c": "°C",
+  "precip_mm": "mm/yr",
+  "gdd10": "°C·day/yr (base 10, cap 30)",
+  "hot_days_ge35": "days/yr (Tmax ≥ 35 °C)",
+  "frost_free_days": "days (median last spring to first fall frost)"
+ },
+ "analog_method": {
+  "features": [
+   "Mean annual temperature (°C)",
+   "Mean temperature of the warmest month (°C)",
+   "Mean temperature of the coldest month (°C)",
+   "Annual precipitation (log mm)",
+   "Growing degree days base 10 °C from monthly means",
+   "Share of precipitation in the 6 warmest months"
+  ],
+  "distance": "RMS of z-scored feature differences (z by the global cropland candidate spread)",
+  "candidates": 3467,
+  "novel_threshold": {
+   "threshold": 0.2344617616458256,
+   "p50": 0.10435180473729563,
+   "p90": 0.1971270957942751,
+   "n": 3467,
+   "definition": "for every present-day cropland cell, the climate distance to its nearest cell more than 300 km away; threshold = P95"
+  },
+  "agreement_radius_km": 500.0,
+  "distinct_analog_km": 400.0
+ },
+ "sampling": {
+  "mode": "full",
+  "years": {
+   "hist": [
+    1995,
+    2000,
+    2005,
+    2010,
+    2014
+   ],
+   "fut": [
+    2041,
+    2045,
+    2050,
+    2055,
+    2060
+   ]
+  },
+  "variables": [
+   "tasmax",
+   "tasmin",
+   "pr"
+  ],
+  "n_files": 270,
+  "n_files_planned": 270,
+  "fetch_seconds": 166.4,
+  "from_cache": false,
+  "nex_cell": [
+   -12.625,
+   -55.875
+  ],
+  "problems": []
+ },
+ "evidence_ids": {
+  "power": "power-a43eb885869d",
+  "nex_gddp": "nex_gddp-2fa8da6d4d35",
+  "candidates": "power_clim-e95aad419429",
+  "cropland_mask": "gaez_lc-cbe975a47fd6",
+  "crops": "faostat-f50eff6acff2"
+ },
+ "evidence": {
+  "power-a43eb885869d": {
+   "id": "power-a43eb885869d",
+   "source": "NASA POWER",
+   "product": "POWER Daily API (AG community)",
+   "version": "v2.x",
+   "is_nasa": true,
+   "observation_start": "1991-01-01",
+   "observation_end": "2020-12-31",
+   "publication_time": null,
+   "retrieval_time": "2026-11-14T10:42:16.637120Z",
+   "footprint": "POWER grid cell centred -12.50, -56.250 (≈50 km); field at -12.5010, -55.9597",
+   "native_res": "0.5° x 0.625° (≈50 km) meteorology; 1° solar",
+   "effective_res": "0.5° x 0.625° (≈50 km) meteorology; 1° solar",
+   "units": "°C, mm",
+   "qa_flags": [],
+   "transformation": "1991-2020 daily baseline; delta method adds NEX-GDDP monthly change",
+   "licence": "Public domain (NASA); attribution requested",
+   "citation": "NASA Langley Research Center POWER Project, funded through the NASA Earth Science Directorate Applied Science Program.",
+   "url": "https://power.larc.nasa.gov/",
+   "lineage": []
+  },
+  "nex_gddp-2fa8da6d4d35": {
+   "id": "nex_gddp-2fa8da6d4d35",
+   "source": "NASA NEX / NCCS",
+   "product": "NEX-GDDP-CMIP6 daily downscaled projections (tasmax, tasmin, pr)",
+   "version": "v1.x/v2.0 (per file)",
+   "is_nasa": true,
+   "observation_start": "1995-01-01",
+   "observation_end": "2060-12-31",
+   "publication_time": null,
+   "retrieval_time": "2026-11-14T10:45:03.077846Z",
+   "footprint": "NEX-GDDP 0.25° cell centred (-12.625, -55.875)",
+   "native_res": "0.25° (≈25 km)",
+   "effective_res": "0.25° (≈25 km)",
+   "units": "K, kg m-2 s-1",
+   "qa_flags": [],
+   "transformation": "monthly ΔTmax/ΔTmin and precip ratio, 2041-2060 vs 1995-2014; sampled years {'hist': [1995, 2000, 2005, 2010, 2014], 'fut': [2041, 2045, 2050, 2055, 2060]}; models ['ACCESS-CM2', 'GFDL-ESM4', 'MIROC6', 'MPI-ESM1-2-HR', 'MRI-ESM2-0', 'UKESM1-0-LL']",
+   "licence": "Open (NASA); CMIP6 model terms CC BY 4.0",
+   "citation": "Thrasher, B., Wang, W., Michaelis, A., Melton, F., Lee, T., Nemani, R. (2022). NASA Global Daily Downscaled Projections, CMIP6. Scientific Data 9, 262. doi:10.1038/s41597-022-01393-4",
+   "url": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-gddp-cmip6",
+   "lineage": []
+  },
+  "power_clim-e95aad419429": {
+   "id": "power_clim-e95aad419429",
+   "source": "NASA POWER",
+   "product": "POWER Climatology regional API (T2M, T2M_MAX, T2M_MIN, PRECTOTCORR)",
+   "version": "v2.x",
+   "is_nasa": true,
+   "observation_start": "2001-01-01",
+   "observation_end": "2025-01-01",
+   "publication_time": null,
+   "retrieval_time": "2026-11-14T10:45:03.077846Z",
+   "footprint": "present-day cropland cells worldwide (1°)",
+   "native_res": "0.5° x 0.625° (≈50 km), MERRA-2",
+   "effective_res": "0.5° x 0.625° (≈50 km), MERRA-2",
+   "units": null,
+   "qa_flags": [],
+   "transformation": "monthly normals -> 6 analog indicators, z-scored",
+   "licence": "Public domain (NASA)",
+   "citation": "NASA Langley Research Center POWER Project.",
+   "url": "https://power.larc.nasa.gov/",
+   "lineage": []
+  },
+  "gaez_lc-cbe975a47fd6": {
+   "id": "gaez_lc-cbe975a47fd6",
+   "source": "FAO / IIASA",
+   "product": "GAEZ v4 land-cover share GLCSv11_02 (cropland %)",
+   "version": "v4",
+   "is_nasa": false,
+   "observation_start": null,
+   "observation_end": null,
+   "publication_time": null,
+   "retrieval_time": "2026-11-14T10:45:03.077846Z",
+   "footprint": "global, aggregated to 1°",
+   "native_res": "5 arc-min (≈9 km)",
+   "effective_res": "5 arc-min (≈9 km)",
+   "units": null,
+   "qa_flags": [],
+   "transformation": "cells with ≥15.0% cropland kept as analog candidates",
+   "licence": "CC BY-NC-SA 3.0 IGO (FAO)",
+   "citation": "FAO & IIASA (2021). Global Agro-Ecological Zones version 4 (GAEZ v4). https://gaez.fao.org",
+   "url": "https://gaez.fao.org/",
+   "lineage": []
+  },
+  "faostat-f50eff6acff2": {
+   "id": "faostat-f50eff6acff2",
+   "source": "FAO",
+   "product": "FAOSTAT Crops and livestock products, Area harvested",
+   "version": "bulk",
+   "is_nasa": false,
+   "observation_start": "2020-01-01",
+   "observation_end": "2024-12-31",
+   "publication_time": null,
+   "retrieval_time": "2026-11-14T10:45:03.077846Z",
+   "footprint": "country",
+   "native_res": "country",
+   "effective_res": "country",
+   "units": "ha harvested",
+   "qa_flags": [],
+   "transformation": "mean of years; top items by area; FAOSTAT aggregates removed",
+   "licence": "CC BY 4.0 (FAO)",
+   "citation": "FAO. FAOSTAT: Crops and livestock products. https://www.fao.org/faostat/en/#data/QCL",
+   "url": "https://www.fao.org/faostat/en/#data/QCL",
+   "lineage": []
+  }
+ },
+ "confidence": {
+  "level": "low",
+  "reasons": [
+   "SSP245: 3 of 6 models put their closest analog within 500 km of a common place (Kâmpóng Chhnang, Cambodia).",
+   "SSP585: 2 of 6 models put their closest analog within 500 km of a common place (Long An, Vietnam).",
+   "6 CMIP6 models; 5 sampled years per period per model (full sampling); few sampled years let year-to-year weather leak into the monthly deltas.",
+   "Baseline is the NASA POWER regional value (≈50 km); future = baseline + model change (delta method).",
+   "Present-day self-check: the field's own 2001-2025 climate matches a cropland cell 50 km away (distance 0.021).",
+   "Crops at the analog are national FAOSTAT harvested areas (country scale), not what grows at that exact spot."
+  ]
+ },
+ "runtime_s": 167.2
+}

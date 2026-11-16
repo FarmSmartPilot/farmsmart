@@ -1,0 +1,465 @@
+/* Welcome page (guided front page). */
+.welcome {
+  display: flex;
+  flex-direction: column;
+  gap: 72px;
+  padding: 0 0 72px;
+  background: var(--bg, #f4f6f3);
+}
+.welcome h2 {
+  margin: 0 0 12px;
+  font-size: clamp(24px, 2.6vw, 34px);
+  line-height: 1.15;
+  font-weight: 800;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+.wel-kicker {
+  margin: 0 0 8px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--field);
+}
+.welcome > section:not(.wel-hero) {
+  width: min(1180px, calc(100% - 64px));
+  margin: 0 auto;
+}
+
+/* ---- hero ---- */
+.wel-hero {
+  position: relative;
+  min-height: min(78vh, 680px);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  color: #fff;
+}
+.wel-hero__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.wel-hero__shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(8, 24, 42, 0.92) 0%, rgba(8, 24, 42, 0.78) 45%, rgba(8, 24, 42, 0.25) 100%);
+}
+.wel-hero__inner {
+  position: relative;
+  width: min(1180px, calc(100% - 64px));
+  margin: 0 auto;
+  padding: 72px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.wel-hero__kicker {
+  margin: 0;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #b9e3a1;
+}
+.wel-hero__h1 {
+  margin: 0;
+  max-width: 760px;
+  font-size: clamp(34px, 4.6vw, 60px);
+  line-height: 1.05;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.wel-hero__lead {
+  margin: 0;
+  max-width: 620px;
+  font-size: clamp(16px, 1.4vw, 19px);
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.88);
+}
+.wel-hero__ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 8px;
+}
+.wel-hero__trust {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+  margin: 4px 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 13.5px;
+  color: rgba(255, 255, 255, 0.85);
+}
+.wel-hero__trust li {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.wel-hero__trust svg {
+  color: #b9e3a1;
+}
+.wel-hero__credit {
+  position: absolute;
+  right: 16px;
+  bottom: 10px;
+  margin: 0;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* ---- benefits ---- */
+.wel-benefits__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+.wel-benefit {
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  background: var(--card, #fff);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.wel-benefit__icon {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--field-tint);
+  color: var(--field);
+}
+.wel-dollar {
+  font-size: 20px;
+  font-weight: 800;
+}
+.wel-benefit h3 {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 750;
+  color: var(--ink);
+}
+.wel-benefit p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+
+/* ---- real example ---- */
+.wel-example {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 40px;
+  align-items: center;
+}
+.wel-example__text p {
+  margin: 0 0 18px;
+  font-size: 15.5px;
+  line-height: 1.6;
+  color: var(--ink-2);
+}
+.wel-example__card {
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  background: var(--card, #fff);
+  box-shadow: var(--shadow-1);
+}
+.wel-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14.5px;
+}
+.wel-table th,
+.wel-table td {
+  padding: 12px 10px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+.wel-table thead th {
+  font-weight: 600;
+  color: var(--ink);
+}
+.wel-table tbody th {
+  font-weight: 600;
+  color: var(--ink-2);
+}
+.wel-table td {
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  color: var(--ink);
+}
+.wel-table td.is-good {
+  color: #1d5c37;
+}
+.wel-tag {
+  display: inline-block;
+  margin-bottom: 4px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--ink-2);
+}
+.wel-tag--best {
+  background: var(--field);
+  border-color: var(--field);
+  color: #fff;
+}
+.wel-rot {
+  display: block;
+  font-size: 13px;
+  line-height: 1.35;
+}
+.wel-note {
+  margin: 12px 0 0;
+  font-size: 12px;
+  color: var(--ink-3);
+}
+
+/* ---- data ---- */
+.wel-data__p {
+  max-width: 720px;
+  margin: 0;
+  font-size: 15.5px;
+  line-height: 1.6;
+  color: var(--ink-2);
+}
+.wel-data__groups {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+.wel-data__group {
+  padding: 18px 20px;
+  border-radius: var(--r-lg);
+  background: var(--card, #fff);
+  border: 1px solid var(--line);
+}
+.wel-data__group h3 {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0 0 10px;
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--navy);
+}
+.wel-data__group ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13.5px;
+  color: var(--ink-2);
+}
+
+/* ---- proof ---- */
+.wel-proof__tiles {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+.wel-proof__tile {
+  padding: 22px;
+  border-radius: var(--r-lg);
+  background: var(--navy, #0e2a47);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.wel-proof__tile strong {
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+.wel-proof__tile span {
+  font-size: 14px;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* ---- closing call to action ---- */
+.wel-cta {
+  padding: 44px;
+  border-radius: var(--r-xl);
+  background: var(--field-tint);
+  border: 1px solid var(--field);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+.wel-cta p {
+  margin: 0 0 8px;
+  color: var(--ink-2);
+  font-size: 16px;
+}
+
+@media (width < 1100px) {
+  .wel-benefits__grid,
+  .wel-data__groups {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .wel-example {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (width < 640px) {
+  .welcome {
+    gap: 48px;
+  }
+  .welcome > section:not(.wel-hero),
+  .wel-hero__inner {
+    width: calc(100% - 32px);
+  }
+  .wel-benefits__grid,
+  .wel-data__groups,
+  .wel-proof__tiles {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .wel-hero__ctas .fs-btn {
+    width: 100%;
+    justify-content: center;
+  }
+  .wel-cta {
+    padding: 28px 18px;
+  }
+}
+
+/* Headline on two lines: each half is its own line on wide screens; it may wrap further on phones. */
+.wel-hero__h1 {
+  max-width: none;
+  font-size: clamp(32px, 3.9vw, 58px);
+}
+.wel-hero__h1 > span {
+  display: block;
+}
+@media (width < 640px) {
+  .wel-hero__h1 > span {
+    display: inline;
+  }
+}
+
+/* ---- wave U9: the four questions, and the whole farm ---- */
+.wel-questions__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+.wel-question {
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  background: var(--card, #fff);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.wel-question h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.25;
+  color: var(--ink);
+}
+.wel-question p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+.wel-question .wel-question__ex {
+  margin-top: auto;
+  padding: 10px 12px;
+  border-radius: var(--r-md);
+  background: var(--field-tint);
+  color: #1d5c37;
+  font-weight: 600;
+  font-size: 13.5px;
+}
+.wel-farm {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 24px;
+  align-items: center;
+  padding: 28px 32px;
+  border-radius: var(--r-xl);
+  border: 1px solid var(--line-strong);
+  background: var(--card, #fff);
+  box-shadow: var(--shadow-1);
+}
+.wel-farm__icon {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background: var(--navy);
+  color: #fff;
+}
+.wel-farm__text p:not(.wel-kicker) {
+  margin: 0;
+  max-width: 680px;
+  font-size: 15.5px;
+  line-height: 1.6;
+  color: var(--ink-2);
+}
+@media (width < 1100px) {
+  .wel-questions__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .wel-benefits__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media (width < 800px) {
+  .wel-benefits__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (width < 640px) {
+  .wel-questions__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .wel-farm {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 22px 18px;
+    gap: 14px;
+  }
+  .wel-farm .fs-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+.wel-worries {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 6px;
+}
+.wel-question__ex2 {
+  display: block;
+  margin-top: 6px;
+  font-weight: 500;
+  color: var(--ink-2);
+}

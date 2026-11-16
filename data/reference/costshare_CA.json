@@ -1,0 +1,315 @@
+{
+ "state": "CA",
+ "state_name": "California",
+ "state_fips": "06",
+ "county_fips_queried": "06019",
+ "cost_list": "California EQIP-1",
+ "fiscal_year": 2027,
+ "fiscal_year_basis": "Federal fiscal year in effect on the retrieval date (2026-11-15). NRCS posts each year's schedule in October–December, so early in a fiscal year the tool can still show last year's rates. Same national FY2027 scenario set as Iowa's ('Any Species', 'Biomass', 'Basic, Multiple Annual Crops').",
+ "retrieved": "2026-11-15T07:55:15+00:00",
+ "url": "https://www.nrcs.usda.gov/getting-assistance/payment-schedules",
+ "citation": "USDA Natural Resources Conservation Service, EQIP payment schedule (payment schedule tool).",
+ "rows": [
+  {
+   "practice": "328",
+   "practice_name": "Conservation Crop Rotation",
+   "component": "Add Crop Organic System",
+   "unit": "Ac",
+   "usd": 89.83
+  },
+  {
+   "practice": "328",
+   "practice_name": "Conservation Crop Rotation",
+   "component": "HU-Add Crop Organic System",
+   "unit": "Ac",
+   "usd": 107.8
+  },
+  {
+   "practice": "328",
+   "practice_name": "Conservation Crop Rotation",
+   "component": "PR-Add Crop Organic System",
+   "unit": "Ac",
+   "usd": 107.8
+  },
+  {
+   "practice": "328",
+   "practice_name": "Conservation Crop Rotation",
+   "component": "Basic, Multiple Annual Crops",
+   "unit": "Ac",
+   "usd": 37.05
+  },
+  {
+   "practice": "328",
+   "practice_name": "Conservation Crop Rotation",
+   "component": "HU-Basic, Multiple Annual Crops",
+   "unit": "Ac",
+   "usd": 44.46
+  },
+  {
+   "practice": "328",
+   "practice_name": "Conservation Crop Rotation",
+   "component": "PR-Basic, Multiple Annual Crops",
+   "unit": "Ac",
+   "usd": 44.46
+  },
+  {
+   "practice": "328",
+   "practice_name": "Conservation Crop Rotation",
+   "component": "HU-Irrigated to Dryland",
+   "unit": "Ac",
+   "usd": 161.77
+  },
+  {
+   "practice": "328",
+   "practice_name": "Conservation Crop Rotation",
+   "component": "Irrigated to Dryland",
+   "unit": "Ac",
+   "usd": 160.46
+  },
+  {
+   "practice": "328",
+   "practice_name": "Conservation Crop Rotation",
+   "component": "PR-Irrigated to Dryland",
+   "unit": "Ac",
+   "usd": 161.77
+  },
+  {
+   "practice": "328",
+   "practice_name": "Conservation Crop Rotation",
+   "component": "HU-Perennial, Short-Term",
+   "unit": "Ac",
+   "usd": 69.45
+  },
+  {
+   "practice": "328",
+   "practice_name": "Conservation Crop Rotation",
+   "component": "Perennial, Short-Term",
+   "unit": "Ac",
+   "usd": 57.87
+  },
+  {
+   "practice": "328",
+   "practice_name": "Conservation Crop Rotation",
+   "component": "PR-Perennial, Short-Term",
+   "unit": "Ac",
+   "usd": 69.45
+  },
+  {
+   "practice": "328",
+   "practice_name": "Conservation Crop Rotation",
+   "component": "Range, Intensive",
+   "unit": "Ac",
+   "usd": 22.5
+  },
+  {
+   "practice": "328",
+   "practice_name": "Conservation Crop Rotation",
+   "component": "HU-Specialty Crop, Small",
+   "unit": "kSqFt",
+   "usd": 42.54
+  },
+  {
+   "practice": "328",
+   "practice_name": "Conservation Crop Rotation",
+   "component": "PR-Specialty Crop, Small",
+   "unit": "kSqFt",
+   "usd": 42.54
+  },
+  {
+   "practice": "328",
+   "practice_name": "Conservation Crop Rotation",
+   "component": "Specialty Crop, Small",
+   "unit": "kSqFt",
+   "usd": 35.45
+  },
+  {
+   "practice": "328",
+   "practice_name": "Conservation Crop Rotation",
+   "component": "HU-Specialty Crops",
+   "unit": "Ac",
+   "usd": 54.8
+  },
+  {
+   "practice": "328",
+   "practice_name": "Conservation Crop Rotation",
+   "component": "PR-Specialty Crops",
+   "unit": "Ac",
+   "usd": 54.8
+  },
+  {
+   "practice": "328",
+   "practice_name": "Conservation Crop Rotation",
+   "component": "Specialty Crops",
+   "unit": "Ac",
+   "usd": 45.67
+  },
+  {
+   "practice": "328",
+   "practice_name": "Conservation Crop Rotation",
+   "component": "HU-Winter or Spring Annual",
+   "unit": "Ac",
+   "usd": 62.1
+  },
+  {
+   "practice": "328",
+   "practice_name": "Conservation Crop Rotation",
+   "component": "PR-Winter or Spring Annual",
+   "unit": "Ac",
+   "usd": 62.1
+  },
+  {
+   "practice": "328",
+   "practice_name": "Conservation Crop Rotation",
+   "component": "Winter or Spring Annual",
+   "unit": "Ac",
+   "usd": 51.75
+  },
+  {
+   "practice": "340",
+   "practice_name": "Cover Crop",
+   "component": "Adaptive Management",
+   "unit": "No",
+   "usd": 2639.82
+  },
+  {
+   "practice": "340",
+   "practice_name": "Cover Crop",
+   "component": "HU-Adaptive Management",
+   "unit": "No",
+   "usd": 3167.79
+  },
+  {
+   "practice": "340",
+   "practice_name": "Cover Crop",
+   "component": "PR-Adaptive Management",
+   "unit": "No",
+   "usd": 3167.79
+  },
+  {
+   "practice": "340",
+   "practice_name": "Cover Crop",
+   "component": "Any Species",
+   "unit": "Ac",
+   "usd": 74.82
+  },
+  {
+   "practice": "340",
+   "practice_name": "Cover Crop",
+   "component": "HU-Any Species",
+   "unit": "Ac",
+   "usd": 89.78
+  },
+  {
+   "practice": "340",
+   "practice_name": "Cover Crop",
+   "component": "PR-Any Species",
+   "unit": "Ac",
+   "usd": 89.78
+  },
+  {
+   "practice": "340",
+   "practice_name": "Cover Crop",
+   "component": "Any Species, Organic",
+   "unit": "Ac",
+   "usd": 100.62
+  },
+  {
+   "practice": "340",
+   "practice_name": "Cover Crop",
+   "component": "HU-Any Species, Organic",
+   "unit": "Ac",
+   "usd": 120.75
+  },
+  {
+   "practice": "340",
+   "practice_name": "Cover Crop",
+   "component": "PR-Any Species, Organic",
+   "unit": "Ac",
+   "usd": 120.75
+  },
+  {
+   "practice": "340",
+   "practice_name": "Cover Crop",
+   "component": "Biomass",
+   "unit": "Ac",
+   "usd": 111.57
+  },
+  {
+   "practice": "340",
+   "practice_name": "Cover Crop",
+   "component": "HU-Biomass",
+   "unit": "Ac",
+   "usd": 133.88
+  },
+  {
+   "practice": "340",
+   "practice_name": "Cover Crop",
+   "component": "PR-Biomass",
+   "unit": "Ac",
+   "usd": 133.88
+  },
+  {
+   "practice": "340",
+   "practice_name": "Cover Crop",
+   "component": "HU-Islands, Any Species",
+   "unit": "Ac",
+   "usd": 297.07
+  },
+  {
+   "practice": "340",
+   "practice_name": "Cover Crop",
+   "component": "Islands, Any Species",
+   "unit": "Ac",
+   "usd": 247.56
+  },
+  {
+   "practice": "340",
+   "practice_name": "Cover Crop",
+   "component": "PR-Islands, Any Species",
+   "unit": "Ac",
+   "usd": 297.07
+  },
+  {
+   "practice": "340",
+   "practice_name": "Cover Crop",
+   "component": "HU-Islands, Legume",
+   "unit": "Ac",
+   "usd": 51.75
+  },
+  {
+   "practice": "340",
+   "practice_name": "Cover Crop",
+   "component": "Islands, Legume",
+   "unit": "Ac",
+   "usd": 43.13
+  },
+  {
+   "practice": "340",
+   "practice_name": "Cover Crop",
+   "component": "PR-Islands, Legume",
+   "unit": "Ac",
+   "usd": 51.75
+  }
+ ],
+ "scenario_descriptions": {
+  "340": {
+   "Adaptive Management": "The practice scenario is for the implementation of cover crops in small replicated plots to allow the producer to learn how to manage cover crops on their operation. Scenario includes implementing replicated strip trials on a field plot to evaluate, identify and implement a particular cover crop management strategy. Follow the guidance in the NRCS Technical Note 10 - Adaptive Management.",
+   "Any Species": "Planting of a single species or mix as a cover crop to achieve one or more conservation practice purposes. The cover crop is planted by interseeding or post harvest of the field crop, and termination occurs prior to planting the subsequent crop, using chemical, mechanical, or winter kill methods.",
+   "Any Species, Organic": "Planting of a single species or mix as a cover crop immediately after harvesting a row crop, followed by a row crop that will utilize the residue as a mulch. The cover crop is planted by interseeding or post harvest of the field crop, and termination occurs prior to planting the subsequent crop. The cost includes certified organic, or other approved NOP, seed and mechanical termination using a roller crimper or other appropriate equipment.",
+   "Islands, Any Species": "Planting of one or more species cover crop mix following harvest for either an organic or inorganic operation. Allow biomass generation without delaying planting of the next crop. The cost includes organic, or other approved seed sources, and mechanical or chemical termination.",
+   "Biomass": "Planting of a multi species mix as a cover crop immediately after harvesting a row crop, but may also be interseeded into a row crop. The cover crop will be terminated prior to planting the subsequent crop to allow biomass generation without delaying planting of the next crop.",
+   "Islands, Legume": "Planting of a legume as a cover crop immediately after harvesting a row crop, followed by a row crop that will utilize fixed nitrogen. Legume seeds must be inoculated with the proper inoculant prior to planting. Allow the cover crop to reach early to mid-bloom before terminating it in accordance with NRCS Cover Crop Termination Guidelines."
+  },
+  "328": {
+   "Basic, Multiple Annual Crops": "Planning of an annual crop rotation with a minimum of two different crop types. Payment is provided to the producer and includes the time needed to plan and implement the logistics of changing the rotation to effectively implement a conservation crop rotation.",
+   "Specialty Crops": "Development of an annual crop rotation of specialty crops with a minimum of two different crops on the same ground over time. Typical crop rotation includes multiple plantings of annual crops during the growing season and within the current crop year. Costs represent annual crop, organic or non-organic, production.",
+   "Specialty Crop, Small": "Development of a crop rotation for a small scale or diversified small farm growing specialty crops, with a minimum of two different specialty crop types. The planned sequence allows for multiple plantings of specialty crops on the same ground in one crop year. Payment includes the costs associated with acquiring the technical knowledge and skills necessary to effectively implement a conservation crop rotation on a typical specialty crop farm. The cost represents typical situations for organic and non-organic producers.",
+   "Winter or Spring Annual": "Addition of a winter annual or small grain to a crop rotation that includes at least two different crop types. Payment includes the time needed to plan and implement the logistics of adding a winter annual or spring-planted small grain into the crop rotation to effectively implement a conservation crop rotation. The cost represents typical situations for conventional and organic producers.",
+   "Perennial, Short-Term": "Addition of a short-term perennial (e.g. alfalfa or intermediate wheatgrass) into a crop rotation that currently includes a minimum of two different crops to effectively implement a conservation crop rotation. The short-term perennial can be for forage, grain, or dual-purpose use in the cropping system while the crop is intended to be harvested and must be grown for a minimum of two years after planting. Payment includes the time needed to plan and implement the logistics of adding a short-term perennial. The cost represents typical situations for conventional and organic producers.",
+   "Improved Resource Conserving Crop Rotation": "Improve crop rotation that already includes at least one resource conserving crop by adding a perennial.",
+   "Resource Conserving Crop Rotation": "Establish a crop rotation with at least one State designated resource conserving crop.",
+   "Add Crop Organic System": "Addition of new crop types to the conservation crop rotation to facilitate building soil organic matter, capturing nitrogen, breaking pest cycles, or other purposes that maintain or enhance natural resources. Costs include the labor, acquiring knowledge about new crop types, and mechanical weed control.",
+   "Irrigated to Dryland": "Conversion of an irrigated cropping system to a dryland cropping system to improve water use efficiency. The cost represents typical situations for conventional (non-organic) producers converting from irrigated cropping to dryland farming. Foregone income is included and based on standard crop rotation of corn and soybean."
+  }
+ }
+}

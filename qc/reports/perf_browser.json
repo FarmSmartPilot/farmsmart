@@ -1,0 +1,14 @@
+{
+  "globe_first_render_ms_logged": 550,
+  "home_to_globe_wall_ms": 1789,
+  "dom_content_loaded_ms": 231,
+  "load_ms": 233,
+  "first_contentful_paint_ms": 348,
+  "in_page_click_to_studio_ms": 114,
+  "pilot_click_to_studio_url_ms": 119,
+  "pilot_click_to_studio_ms": 133,
+  "pilot_click_to_area_report_ms": 986,
+  "compare_click_to_cards_ms": 258,
+  "pilot_click_to_cards_total_ms": 1244,
+  "priority_change_rerun_ms": 2394
+}

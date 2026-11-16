@@ -1,0 +1,107 @@
+
+Running 10 tests using 1 worker
+
+desktop Field Studio: clean
+desktop Strategy Compare: clean
+desktop Climate Twins: clean
+desktop Drought Replay: clean
+desktop Alerts: clean
+desktop Sources & Methods: clean
+  ok  1 [desktop-chromium] › ..\qc\e2e\axe.spec.ts:34:3 › axe desktop (30.5s)
+mobile Field Studio: clean
+mobile Strategy Compare: clean
+mobile Climate Twins: clean
+mobile Drought Replay: clean
+mobile Alerts: clean
+mobile Sources & Methods: clean
+  ok  2 [desktop-chromium] › ..\qc\e2e\axe.spec.ts:34:3 › axe mobile (28.9s)
+Demo tour: 12 steps, 15.9 s at machine speed (step ready → Next immediately).
+
+| # | Step | s to ready |
+|---|---|---|
+| 1 | Area Report | 0.9 |
+| 2 | My field | 0.6 |
+| 3 | Compare rotations | 0.6 |
+| 4 | A strategy card | 0.8 |
+| 5 | Why not others? | 0.7 |
+| 6 | Bare soil meets wind | 0.5 |
+| 7 | Your priorities, live | 0.6 |
+| 8 | Expert: Next Move | 1.2 |
+| 9 | Drought Replay | 0.9 |
+| 10 | Climate Twins | 2.7 |
+| 11 | Alerts | 5.5 |
+| 12 | Export | 0.6 |
+  ok  3 [desktop-chromium] › ..\qc\e2e\demo.spec.ts:6:1 › demo tour timing (16.8s)
+compare cards: 3
+why-not popover has focus: true
+why-not popover closes on Escape: true
+[timing] judge path total: 10.0 s
+  ok  4 [desktop-chromium] › ..\qc\e2e\judge.spec.ts:5:1 › judge path: Story County, Iowa (10.2s)
+{
+  "globe_first_render_ms_logged": 568,
+  "home_to_globe_wall_ms": 2532,
+  "dom_content_loaded_ms": 216,
+  "load_ms": 217,
+  "first_contentful_paint_ms": 304,
+  "in_page_click_to_studio_ms": 101,
+  "pilot_click_to_studio_url_ms": 87,
+  "pilot_click_to_studio_ms": 96,
+  "pilot_click_to_area_report_ms": 505,
+  "compare_click_to_cards_ms": 236,
+  "pilot_click_to_cards_total_ms": 741,
+  "priority_change_rerun_ms": 345
+}
+  ok  5 [desktop-chromium] › ..\qc\e2e\perf.spec.ts:6:1 › performance (6.2s)
+Garden City, Kansas (dryland) coverage flags:
+  - ◆Markets & costsPartialUSDA ERS regional costs and returns
+Garden City, Kansas (dryland): cards=3, no-costs note shown=false
+[timing] core path Garden City, Kansas (dryland): 3.3 s
+  ok  6 [desktop-chromium] › ..\qc\e2e\pilots.spec.ts:12:3 › core path: Garden City, Kansas (dryland) (3.5s)
+Near Regina, Saskatchewan coverage flags:
+  - ◆Soil (SoilGrids 250 m)PartialModelled soil map (SoilGrids 250 m), not a soil survey. Drainage class and wind erodibility not available
+  - ◆Outcome models (water, erosion, carbon)PartialRun with modelled soil values (SoilGrids 250 m)
+  - ◆ForecastsPartialNOAA NWS (US) / Open-Meteo
+  - ○Markets & costsNot availableNo market data for this region yet
+Near Regina, Saskatchewan: cards=3, no-costs note shown=true
+[timing] core path Near Regina, Saskatchewan: 3.1 s
+  ok  7 [desktop-chromium] › ..\qc\e2e\pilots.spec.ts:12:3 › core path: Near Regina, Saskatchewan (3.3s)
+Near Ludhiana, Punjab (India) coverage flags:
+  - ◆Soil (SoilGrids 250 m)PartialModelled soil map (SoilGrids 250 m), not a soil survey. Drainage class and wind erodibility not available
+  - ○Crop historyNot availableNo field crop-history map for this country; enter your rotation (a typical regional rotation is shown until you do)
+  - ◆Outcome models (water, erosion, carbon)PartialRun with modelled soil values (SoilGrids 250 m)
+  - ◆ForecastsPartialNOAA NWS (US) / Open-Meteo
+  - ○Markets & costsNot availableNo market data for this region yet
+Near Ludhiana, Punjab (India): only 2 cards; checking binding-constraint banner
+Near Ludhiana, Punjab (India): cards=2, no-costs note shown=true
+[timing] core path Near Ludhiana, Punjab (India): 3.2 s
+  ok  8 [desktop-chromium] › ..\qc\e2e\pilots.spec.ts:12:3 › core path: Near Ludhiana, Punjab (India) (3.4s)
+1280x800 globe-home: hscroll=0 offscreen=0 clipped=0 small=0 overlaps=0
+1280x800 field-studio: hscroll=0 offscreen=0 clipped=0 small=0 overlaps=0
+1280x800 strategy-compare: hscroll=0 offscreen=0 clipped=0 small=0 overlaps=0
+1280x800 climate-twins: hscroll=0 offscreen=0 clipped=0 small=0 overlaps=0
+1280x800 drought-replay: hscroll=0 offscreen=0 clipped=0 small=0 overlaps=0
+1440x900 globe-home: hscroll=0 offscreen=0 clipped=0 small=0 overlaps=0
+1440x900 field-studio: hscroll=0 offscreen=0 clipped=0 small=0 overlaps=0
+1440x900 strategy-compare: hscroll=0 offscreen=0 clipped=0 small=0 overlaps=0
+1440x900 climate-twins: hscroll=0 offscreen=0 clipped=0 small=0 overlaps=0
+1440x900 drought-replay: hscroll=0 offscreen=0 clipped=0 small=0 overlaps=0
+1920x1080 globe-home: hscroll=0 offscreen=0 clipped=0 small=0 overlaps=0
+1920x1080 field-studio: hscroll=0 offscreen=0 clipped=0 small=0 overlaps=0
+1920x1080 strategy-compare: hscroll=0 offscreen=0 clipped=0 small=0 overlaps=0
+1920x1080 climate-twins: hscroll=0 offscreen=0 clipped=0 small=0 overlaps=0
+1920x1080 drought-replay: hscroll=0 offscreen=0 clipped=0 small=0 overlaps=0
+390x844 globe-home: hscroll=0 offscreen=0 clipped=0 small=1 overlaps=0
+390x844 field-studio: hscroll=0 offscreen=0 clipped=0 small=7 overlaps=0
+390x844 strategy-compare: hscroll=0 offscreen=0 clipped=0 small=5 overlaps=0
+390x844 climate-twins: hscroll=0 offscreen=0 clipped=0 small=1 overlaps=0
+390x844 drought-replay: hscroll=0 offscreen=0 clipped=0 small=1 overlaps=0
+430x932 globe-home: hscroll=0 offscreen=0 clipped=0 small=1 overlaps=0
+430x932 field-studio: hscroll=0 offscreen=0 clipped=0 small=7 overlaps=0
+430x932 strategy-compare: hscroll=0 offscreen=0 clipped=0 small=8 overlaps=0
+430x932 climate-twins: hscroll=0 offscreen=0 clipped=0 small=1 overlaps=0
+430x932 drought-replay: hscroll=0 offscreen=0 clipped=0 small=1 overlaps=0
+  ok  9 [desktop-chromium] › ..\qc\e2e\spacing.spec.ts:114:1 › spacing audit (2.3m)
+[timing] iPhone core path: 10.8 s
+  ok 10 [iphone-chromium-emulated] › ..\qc\e2e\mobile.spec.ts:5:1 › iPhone core path: Story County, Iowa (11.1s)
+
+  10 passed (4.2m)

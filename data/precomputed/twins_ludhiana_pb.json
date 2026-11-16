@@ -1,0 +1,1138 @@
+{
+ "model_id": "M7",
+ "model_version": "0.1.0",
+ "kind": "process",
+ "field": {
+  "lat": 30.79011,
+  "lon": 75.70142
+ },
+ "periods": {
+  "baseline": [
+   1991,
+   2020
+  ],
+  "model_historical": [
+   1995,
+   2014
+  ],
+  "future": [
+   2041,
+   2060
+  ],
+  "analog_present_day": [
+   "20010101",
+   "20251231"
+  ]
+ },
+ "baseline": {
+  "indicators": {
+   "tmean_c": 25.38,
+   "tmax_warm_c": 42.7,
+   "tmin_cold_c": 6.73,
+   "precip_mm": 618.0,
+   "gdd10": 5023.0,
+   "hot_days_ge35": 161.7,
+   "frost_free_days": null,
+   "frost_free_years": 30
+  },
+  "scale_label": "regional value (≈50 km, NASA POWER)",
+  "evidence_id": "power-dea883ea02b0"
+ },
+ "present_day_self_match": {
+  "lat": 30.5,
+  "lon": 76.5,
+  "country": "India",
+  "iso3": "IND",
+  "admin1": "Punjab",
+  "near_town": "Rajpura",
+  "near_town_km": 9.0,
+  "cropland_share_pct": 81.9,
+  "distance": 0.031,
+  "km_from_field": 83.0
+ },
+ "scenarios": {
+  "ssp245": {
+   "available": true,
+   "n_models": 6,
+   "indicators": {
+    "tmean_c": {
+     "median": 26.61,
+     "min": 25.68,
+     "max": 27.38,
+     "n": 6
+    },
+    "tmax_warm_c": {
+     "median": 44.51,
+     "min": 43.29,
+     "max": 45.17,
+     "n": 6
+    },
+    "tmin_cold_c": {
+     "median": 8.42,
+     "min": 6.59,
+     "max": 8.83,
+     "n": 6
+    },
+    "precip_mm": {
+     "median": 652.5,
+     "min": 603.0,
+     "max": 865.0,
+     "n": 6
+    },
+    "gdd10": {
+     "median": 5284.5,
+     "min": 5104.0,
+     "max": 5458.0,
+     "n": 6
+    },
+    "hot_days_ge35": {
+     "median": 186.85,
+     "min": 155.5,
+     "max": 199.2,
+     "n": 6
+    },
+    "frost_free_days": {
+     "median": null,
+     "min": null,
+     "max": null,
+     "n": 0
+    },
+    "frost_free_years": {
+     "median": 30.0,
+     "min": 30.0,
+     "max": 30.0,
+     "n": 6
+    }
+   },
+   "deltas": {
+    "annual_d_tmax_c": {
+     "median": 1.19,
+     "min": -0.02,
+     "max": 1.88,
+     "n": 6
+    },
+    "annual_d_tmin_c": {
+     "median": 1.25,
+     "min": 0.6,
+     "max": 2.16,
+     "n": 6
+    },
+    "annual_pr_ratio": {
+     "median": 1.05,
+     "min": 0.99,
+     "max": 1.41,
+     "n": 6
+    }
+   },
+   "analogs": [
+    {
+     "lat": 31.5,
+     "lon": 74.5,
+     "country": "Pakistan",
+     "iso3": "PAK",
+     "admin1": "Punjab",
+     "near_town": "Manhala",
+     "near_town_km": 6.0,
+     "cropland_share_pct": 85.2,
+     "distance": 0.16,
+     "km_from_field": 139.0,
+     "models_with_analog_within_km": [
+      "ACCESS-CM2",
+      "GFDL-ESM4",
+      "MIROC6",
+      "MPI-ESM1-2-HR",
+      "MRI-ESM2-0",
+      "UKESM1-0-LL"
+     ],
+     "n_models_agree": 6,
+     "crops": {
+      "scale": "country",
+      "label": "country value (FAOSTAT, national harvested area)",
+      "country": "Pakistan",
+      "years": [
+       2020,
+       2024
+      ],
+      "total_harvested_ha": 22537263,
+      "top": [
+       {
+        "crop": "Wheat",
+        "ha": 9143353,
+        "share": 0.4057
+       },
+       {
+        "crop": "Rice",
+        "ha": 3477080,
+        "share": 0.1543
+       },
+       {
+        "crop": "Seed cotton, unginned",
+        "ha": 2125274,
+        "share": 0.0943
+       },
+       {
+        "crop": "Maize (corn)",
+        "ha": 1586228,
+        "share": 0.0704
+       },
+       {
+        "crop": "Sugar cane",
+        "ha": 1223506,
+        "share": 0.0543
+       }
+      ]
+     },
+     "novel": false
+    },
+    {
+     "lat": 27.5,
+     "lon": 77.5,
+     "country": "India",
+     "iso3": "IND",
+     "admin1": "Uttar Pradesh",
+     "near_town": "Govardhan",
+     "near_town_km": 4.0,
+     "cropland_share_pct": 84.2,
+     "distance": 0.242,
+     "km_from_field": 405.0,
+     "models_with_analog_within_km": [
+      "ACCESS-CM2",
+      "GFDL-ESM4",
+      "MIROC6",
+      "MPI-ESM1-2-HR",
+      "MRI-ESM2-0",
+      "UKESM1-0-LL"
+     ],
+     "n_models_agree": 6,
+     "crops": {
+      "scale": "country",
+      "label": "country value (FAOSTAT, national harvested area)",
+      "country": "India",
+      "years": [
+       2020,
+       2024
+      ],
+      "total_harvested_ha": 207506898,
+      "top": [
+       {
+        "crop": "Rice",
+        "ha": 47154959,
+        "share": 0.2272
+       },
+       {
+        "crop": "Wheat",
+        "ha": 31234862,
+        "share": 0.1505
+       },
+       {
+        "crop": "Soya beans",
+        "ha": 12868589,
+        "share": 0.062
+       },
+       {
+        "crop": "Seed cotton, unginned",
+        "ha": 12764836,
+        "share": 0.0615
+       },
+       {
+        "crop": "Beans, dry",
+        "ha": 11764292,
+        "share": 0.0567
+       }
+      ]
+     },
+     "novel": true
+    },
+    {
+     "lat": 25.5,
+     "lon": 81.5,
+     "country": "India",
+     "iso3": "IND",
+     "admin1": "Uttar Pradesh",
+     "near_town": "Bharwāri",
+     "near_town_km": 7.0,
+     "cropland_share_pct": 77.5,
+     "distance": 0.318,
+     "km_from_field": 818.0,
+     "models_with_analog_within_km": [
+      "ACCESS-CM2",
+      "GFDL-ESM4",
+      "MIROC6",
+      "MPI-ESM1-2-HR",
+      "MRI-ESM2-0",
+      "UKESM1-0-LL"
+     ],
+     "n_models_agree": 6,
+     "crops": {
+      "scale": "country",
+      "label": "country value (FAOSTAT, national harvested area)",
+      "country": "India",
+      "years": [
+       2020,
+       2024
+      ],
+      "total_harvested_ha": 207506898,
+      "top": [
+       {
+        "crop": "Rice",
+        "ha": 47154959,
+        "share": 0.2272
+       },
+       {
+        "crop": "Wheat",
+        "ha": 31234862,
+        "share": 0.1505
+       },
+       {
+        "crop": "Soya beans",
+        "ha": 12868589,
+        "share": 0.062
+       },
+       {
+        "crop": "Seed cotton, unginned",
+        "ha": 12764836,
+        "share": 0.0615
+       },
+       {
+        "crop": "Beans, dry",
+        "ha": 11764292,
+        "share": 0.0567
+       }
+      ]
+     },
+     "novel": true
+    }
+   ],
+   "agreement": {
+    "n_agree": 4,
+    "n_models": 6,
+    "radius_km": 500.0,
+    "cluster_centre": {
+     "lat": 31.5,
+     "lon": 74.5,
+     "country": "Pakistan",
+     "admin1": "Punjab",
+     "near_town": "Manhala"
+    },
+    "models_in_cluster": [
+     "MIROC6",
+     "MPI-ESM1-2-HR",
+     "MRI-ESM2-0",
+     "UKESM1-0-LL"
+    ]
+   },
+   "novel_climate": {
+    "flag": false,
+    "best_distance": 0.16,
+    "threshold": 0.234,
+    "models_novel": 0
+   },
+   "per_model": {
+    "ACCESS-CM2": {
+     "indicators": {
+      "tmean_c": 27.38,
+      "tmax_warm_c": 45.16,
+      "tmin_cold_c": 8.83,
+      "precip_mm": 661.0,
+      "gdd10": 5458.0,
+      "hot_days_ge35": 199.2,
+      "frost_free_days": null,
+      "frost_free_years": 30
+     },
+     "annual_d_tmax_c": 1.83,
+     "annual_d_tmin_c": 2.16,
+     "annual_pr_ratio": 1.064,
+     "top_analog": {
+      "lat": 26.5,
+      "lon": 78.5,
+      "country": "India",
+      "iso3": "IND",
+      "admin1": "Madhya Pradesh",
+      "near_town": "Gohad",
+      "near_town_km": 9.0,
+      "cropland_share_pct": 76.9,
+      "distance": 0.219,
+      "km_from_field": 550.0
+     },
+     "novel": false
+    },
+    "GFDL-ESM4": {
+     "indicators": {
+      "tmean_c": 26.1,
+      "tmax_warm_c": 44.27,
+      "tmin_cold_c": 6.59,
+      "precip_mm": 865.0,
+      "gdd10": 5227.0,
+      "hot_days_ge35": 163.1,
+      "frost_free_days": null,
+      "frost_free_years": 30
+     },
+     "annual_d_tmax_c": 0.53,
+     "annual_d_tmin_c": 0.92,
+     "annual_pr_ratio": 1.409,
+     "top_analog": {
+      "lat": 25.5,
+      "lon": 80.5,
+      "country": "India",
+      "iso3": "IND",
+      "admin1": "Uttar Pradesh",
+      "near_town": "Bānda",
+      "near_town_km": 17.0,
+      "cropland_share_pct": 78.8,
+      "distance": 0.166,
+      "km_from_field": 753.0
+     },
+     "novel": false
+    },
+    "MIROC6": {
+     "indicators": {
+      "tmean_c": 26.51,
+      "tmax_warm_c": 43.85,
+      "tmin_cold_c": 6.91,
+      "precip_mm": 603.0,
+      "gdd10": 5269.0,
+      "hot_days_ge35": 183.8,
+      "frost_free_days": null,
+      "frost_free_years": 30
+     },
+     "annual_d_tmax_c": 1.23,
+     "annual_d_tmin_c": 1.03,
+     "annual_pr_ratio": 0.994,
+     "top_analog": {
+      "lat": 31.5,
+      "lon": 74.5,
+      "country": "Pakistan",
+      "iso3": "PAK",
+      "admin1": "Punjab",
+      "near_town": "Manhala",
+      "near_town_km": 6.0,
+      "cropland_share_pct": 85.2,
+      "distance": 0.131,
+      "km_from_field": 139.0
+     },
+     "novel": false
+    },
+    "MPI-ESM1-2-HR": {
+     "indicators": {
+      "tmean_c": 25.68,
+      "tmax_warm_c": 43.29,
+      "tmin_cold_c": 8.33,
+      "precip_mm": 759.0,
+      "gdd10": 5104.0,
+      "hot_days_ge35": 155.5,
+      "frost_free_days": null,
+      "frost_free_years": 30
+     },
+     "annual_d_tmax_c": -0.02,
+     "annual_d_tmin_c": 0.6,
+     "annual_pr_ratio": 1.217,
+     "top_analog": {
+      "lat": 32.5,
+      "lon": 73.5,
+      "country": "Pakistan",
+      "iso3": "PAK",
+      "admin1": "Punjab",
+      "near_town": "Mandi Bahauddin",
+      "near_town_km": 10.0,
+      "cropland_share_pct": 64.8,
+      "distance": 0.142,
+      "km_from_field": 282.0
+     },
+     "novel": false
+    },
+    "MRI-ESM2-0": {
+     "indicators": {
+      "tmean_c": 26.7,
+      "tmax_warm_c": 45.17,
+      "tmin_cold_c": 8.58,
+      "precip_mm": 621.0,
+      "gdd10": 5300.0,
+      "hot_days_ge35": 189.9,
+      "frost_free_days": null,
+      "frost_free_years": 30
+     },
+     "annual_d_tmax_c": 1.16,
+     "annual_d_tmin_c": 1.47,
+     "annual_pr_ratio": 1.017,
+     "top_analog": {
+      "lat": 31.5,
+      "lon": 74.5,
+      "country": "Pakistan",
+      "iso3": "PAK",
+      "admin1": "Punjab",
+      "near_town": "Manhala",
+      "near_town_km": 6.0,
+      "cropland_share_pct": 85.2,
+      "distance": 0.205,
+      "km_from_field": 139.0
+     },
+     "novel": false
+    },
+    "UKESM1-0-LL": {
+     "indicators": {
+      "tmean_c": 27.34,
+      "tmax_warm_c": 44.75,
+      "tmin_cold_c": 8.51,
+      "precip_mm": 644.0,
+      "gdd10": 5430.0,
+      "hot_days_ge35": 198.2,
+      "frost_free_days": null,
+      "frost_free_years": 30
+     },
+     "annual_d_tmax_c": 1.88,
+     "annual_d_tmin_c": 2.06,
+     "annual_pr_ratio": 1.031,
+     "top_analog": {
+      "lat": 31.5,
+      "lon": 74.5,
+      "country": "Pakistan",
+      "iso3": "PAK",
+      "admin1": "Punjab",
+      "near_town": "Manhala",
+      "near_town_km": 6.0,
+      "cropland_share_pct": 85.2,
+      "distance": 0.207,
+      "km_from_field": 139.0
+     },
+     "novel": false
+    }
+   }
+  },
+  "ssp585": {
+   "available": true,
+   "n_models": 6,
+   "indicators": {
+    "tmean_c": {
+     "median": 27.31,
+     "min": 26.47,
+     "max": 27.99,
+     "n": 6
+    },
+    "tmax_warm_c": {
+     "median": 44.48,
+     "min": 43.57,
+     "max": 46.64,
+     "n": 6
+    },
+    "tmin_cold_c": {
+     "median": 8.75,
+     "min": 7.71,
+     "max": 10.19,
+     "n": 6
+    },
+    "precip_mm": {
+     "median": 660.5,
+     "min": 611.0,
+     "max": 797.0,
+     "n": 6
+    },
+    "gdd10": {
+     "median": 5441.0,
+     "min": 5274.0,
+     "max": 5582.0,
+     "n": 6
+    },
+    "hot_days_ge35": {
+     "median": 195.4,
+     "min": 171.8,
+     "max": 209.9,
+     "n": 6
+    },
+    "frost_free_days": {
+     "median": null,
+     "min": null,
+     "max": null,
+     "n": 0
+    },
+    "frost_free_years": {
+     "median": 30.0,
+     "min": 30.0,
+     "max": 30.0,
+     "n": 6
+    }
+   },
+   "deltas": {
+    "annual_d_tmax_c": {
+     "median": 1.91,
+     "min": 0.8,
+     "max": 2.36,
+     "n": 6
+    },
+    "annual_d_tmin_c": {
+     "median": 1.97,
+     "min": 1.38,
+     "max": 2.86,
+     "n": 6
+    },
+    "annual_pr_ratio": {
+     "median": 1.08,
+     "min": 0.98,
+     "max": 1.29,
+     "n": 6
+    }
+   },
+   "analogs": [
+    {
+     "lat": 26.5,
+     "lon": 78.5,
+     "country": "India",
+     "iso3": "IND",
+     "admin1": "Madhya Pradesh",
+     "near_town": "Gohad",
+     "near_town_km": 9.0,
+     "cropland_share_pct": 76.9,
+     "distance": 0.182,
+     "km_from_field": 550.0,
+     "models_with_analog_within_km": [
+      "ACCESS-CM2",
+      "GFDL-ESM4",
+      "MIROC6",
+      "MPI-ESM1-2-HR",
+      "MRI-ESM2-0",
+      "UKESM1-0-LL"
+     ],
+     "n_models_agree": 6,
+     "crops": {
+      "scale": "country",
+      "label": "country value (FAOSTAT, national harvested area)",
+      "country": "India",
+      "years": [
+       2020,
+       2024
+      ],
+      "total_harvested_ha": 207506898,
+      "top": [
+       {
+        "crop": "Rice",
+        "ha": 47154959,
+        "share": 0.2272
+       },
+       {
+        "crop": "Wheat",
+        "ha": 31234862,
+        "share": 0.1505
+       },
+       {
+        "crop": "Soya beans",
+        "ha": 12868589,
+        "share": 0.062
+       },
+       {
+        "crop": "Seed cotton, unginned",
+        "ha": 12764836,
+        "share": 0.0615
+       },
+       {
+        "crop": "Beans, dry",
+        "ha": 11764292,
+        "share": 0.0567
+       }
+      ]
+     },
+     "novel": false
+    },
+    {
+     "lat": 31.5,
+     "lon": 74.5,
+     "country": "Pakistan",
+     "iso3": "PAK",
+     "admin1": "Punjab",
+     "near_town": "Manhala",
+     "near_town_km": 6.0,
+     "cropland_share_pct": 85.2,
+     "distance": 0.211,
+     "km_from_field": 139.0,
+     "models_with_analog_within_km": [
+      "ACCESS-CM2",
+      "GFDL-ESM4",
+      "MIROC6",
+      "MPI-ESM1-2-HR",
+      "MRI-ESM2-0",
+      "UKESM1-0-LL"
+     ],
+     "n_models_agree": 6,
+     "crops": {
+      "scale": "country",
+      "label": "country value (FAOSTAT, national harvested area)",
+      "country": "Pakistan",
+      "years": [
+       2020,
+       2024
+      ],
+      "total_harvested_ha": 22537263,
+      "top": [
+       {
+        "crop": "Wheat",
+        "ha": 9143353,
+        "share": 0.4057
+       },
+       {
+        "crop": "Rice",
+        "ha": 3477080,
+        "share": 0.1543
+       },
+       {
+        "crop": "Seed cotton, unginned",
+        "ha": 2125274,
+        "share": 0.0943
+       },
+       {
+        "crop": "Maize (corn)",
+        "ha": 1586228,
+        "share": 0.0704
+       },
+       {
+        "crop": "Sugar cane",
+        "ha": 1223506,
+        "share": 0.0543
+       }
+      ]
+     },
+     "novel": false
+    },
+    {
+     "lat": 25.5,
+     "lon": 82.5,
+     "country": "India",
+     "iso3": "IND",
+     "admin1": "Uttar Pradesh",
+     "near_town": "Suriānwān",
+     "near_town_km": 9.0,
+     "cropland_share_pct": 75.8,
+     "distance": 0.258,
+     "km_from_field": 889.0,
+     "models_with_analog_within_km": [
+      "ACCESS-CM2",
+      "GFDL-ESM4",
+      "MIROC6",
+      "MPI-ESM1-2-HR",
+      "MRI-ESM2-0",
+      "UKESM1-0-LL"
+     ],
+     "n_models_agree": 6,
+     "crops": {
+      "scale": "country",
+      "label": "country value (FAOSTAT, national harvested area)",
+      "country": "India",
+      "years": [
+       2020,
+       2024
+      ],
+      "total_harvested_ha": 207506898,
+      "top": [
+       {
+        "crop": "Rice",
+        "ha": 47154959,
+        "share": 0.2272
+       },
+       {
+        "crop": "Wheat",
+        "ha": 31234862,
+        "share": 0.1505
+       },
+       {
+        "crop": "Soya beans",
+        "ha": 12868589,
+        "share": 0.062
+       },
+       {
+        "crop": "Seed cotton, unginned",
+        "ha": 12764836,
+        "share": 0.0615
+       },
+       {
+        "crop": "Beans, dry",
+        "ha": 11764292,
+        "share": 0.0567
+       }
+      ]
+     },
+     "novel": true
+    }
+   ],
+   "agreement": {
+    "n_agree": 4,
+    "n_models": 6,
+    "radius_km": 500.0,
+    "cluster_centre": {
+     "lat": 27.5,
+     "lon": 77.5,
+     "country": "India",
+     "admin1": "Uttar Pradesh",
+     "near_town": "Govardhan"
+    },
+    "models_in_cluster": [
+     "ACCESS-CM2",
+     "GFDL-ESM4",
+     "MRI-ESM2-0",
+     "UKESM1-0-LL"
+    ]
+   },
+   "novel_climate": {
+    "flag": false,
+    "best_distance": 0.182,
+    "threshold": 0.234,
+    "models_novel": 1
+   },
+   "per_model": {
+    "ACCESS-CM2": {
+     "indicators": {
+      "tmean_c": 27.99,
+      "tmax_warm_c": 46.64,
+      "tmin_cold_c": 9.82,
+      "precip_mm": 611.0,
+      "gdd10": 5582.0,
+      "hot_days_ge35": 209.9,
+      "frost_free_days": null,
+      "frost_free_years": 30
+     },
+     "annual_d_tmax_c": 2.36,
+     "annual_d_tmin_c": 2.86,
+     "annual_pr_ratio": 0.998,
+     "top_analog": {
+      "lat": 27.5,
+      "lon": 77.5,
+      "country": "India",
+      "iso3": "IND",
+      "admin1": "Uttar Pradesh",
+      "near_town": "Govardhan",
+      "near_town_km": 4.0,
+      "cropland_share_pct": 84.2,
+      "distance": 0.32,
+      "km_from_field": 405.0
+     },
+     "novel": true
+    },
+    "GFDL-ESM4": {
+     "indicators": {
+      "tmean_c": 26.72,
+      "tmax_warm_c": 43.95,
+      "tmin_cold_c": 7.71,
+      "precip_mm": 797.0,
+      "gdd10": 5330.0,
+      "hot_days_ge35": 180.8,
+      "frost_free_days": null,
+      "frost_free_years": 30
+     },
+     "annual_d_tmax_c": 1.19,
+     "annual_d_tmin_c": 1.5,
+     "annual_pr_ratio": 1.293,
+     "top_analog": {
+      "lat": 25.5,
+      "lon": 80.5,
+      "country": "India",
+      "iso3": "IND",
+      "admin1": "Uttar Pradesh",
+      "near_town": "Bānda",
+      "near_town_km": 17.0,
+      "cropland_share_pct": 78.8,
+      "distance": 0.149,
+      "km_from_field": 753.0
+     },
+     "novel": false
+    },
+    "MIROC6": {
+     "indicators": {
+      "tmean_c": 26.95,
+      "tmax_warm_c": 43.57,
+      "tmin_cold_c": 8.53,
+      "precip_mm": 616.0,
+      "gdd10": 5367.0,
+      "hot_days_ge35": 189.9,
+      "frost_free_days": null,
+      "frost_free_years": 30
+     },
+     "annual_d_tmax_c": 1.53,
+     "annual_d_tmin_c": 1.61,
+     "annual_pr_ratio": 0.984,
+     "top_analog": {
+      "lat": 31.5,
+      "lon": 74.5,
+      "country": "Pakistan",
+      "iso3": "PAK",
+      "admin1": "Punjab",
+      "near_town": "Manhala",
+      "near_town_km": 6.0,
+      "cropland_share_pct": 85.2,
+      "distance": 0.155,
+      "km_from_field": 139.0
+     },
+     "novel": false
+    },
+    "MPI-ESM1-2-HR": {
+     "indicators": {
+      "tmean_c": 26.47,
+      "tmax_warm_c": 44.34,
+      "tmin_cold_c": 8.27,
+      "precip_mm": 744.0,
+      "gdd10": 5274.0,
+      "hot_days_ge35": 171.8,
+      "frost_free_days": null,
+      "frost_free_years": 30
+     },
+     "annual_d_tmax_c": 0.8,
+     "annual_d_tmin_c": 1.38,
+     "annual_pr_ratio": 1.2,
+     "top_analog": {
+      "lat": 32.5,
+      "lon": 73.5,
+      "country": "Pakistan",
+      "iso3": "PAK",
+      "admin1": "Punjab",
+      "near_town": "Mandi Bahauddin",
+      "near_town_km": 10.0,
+      "cropland_share_pct": 64.8,
+      "distance": 0.194,
+      "km_from_field": 282.0
+     },
+     "novel": false
+    },
+    "MRI-ESM2-0": {
+     "indicators": {
+      "tmean_c": 27.72,
+      "tmax_warm_c": 44.61,
+      "tmin_cold_c": 10.19,
+      "precip_mm": 657.0,
+      "gdd10": 5526.0,
+      "hot_days_ge35": 206.1,
+      "frost_free_days": null,
+      "frost_free_years": 30
+     },
+     "annual_d_tmax_c": 2.31,
+     "annual_d_tmin_c": 2.36,
+     "annual_pr_ratio": 1.068,
+     "top_analog": {
+      "lat": 26.5,
+      "lon": 78.5,
+      "country": "India",
+      "iso3": "IND",
+      "admin1": "Madhya Pradesh",
+      "near_town": "Gohad",
+      "near_town_km": 9.0,
+      "cropland_share_pct": 76.9,
+      "distance": 0.217,
+      "km_from_field": 550.0
+     },
+     "novel": false
+    },
+    "UKESM1-0-LL": {
+     "indicators": {
+      "tmean_c": 27.68,
+      "tmax_warm_c": 45.32,
+      "tmin_cold_c": 8.96,
+      "precip_mm": 664.0,
+      "gdd10": 5515.0,
+      "hot_days_ge35": 200.9,
+      "frost_free_days": null,
+      "frost_free_years": 30
+     },
+     "annual_d_tmax_c": 2.29,
+     "annual_d_tmin_c": 2.33,
+     "annual_pr_ratio": 1.085,
+     "top_analog": {
+      "lat": 26.5,
+      "lon": 78.5,
+      "country": "India",
+      "iso3": "IND",
+      "admin1": "Madhya Pradesh",
+      "near_town": "Gohad",
+      "near_town_km": 9.0,
+      "cropland_share_pct": 76.9,
+      "distance": 0.213,
+      "km_from_field": 550.0
+     },
+     "novel": false
+    }
+   }
+  }
+ },
+ "indicator_units": {
+  "tmean_c": "°C",
+  "tmax_warm_c": "°C",
+  "tmin_cold_c": "°C",
+  "precip_mm": "mm/yr",
+  "gdd10": "°C·day/yr (base 10, cap 30)",
+  "hot_days_ge35": "days/yr (Tmax ≥ 35 °C)",
+  "frost_free_days": "days (median last spring to first fall frost)"
+ },
+ "analog_method": {
+  "features": [
+   "Mean annual temperature (°C)",
+   "Mean temperature of the warmest month (°C)",
+   "Mean temperature of the coldest month (°C)",
+   "Annual precipitation (log mm)",
+   "Growing degree days base 10 °C from monthly means",
+   "Share of precipitation in the 6 warmest months"
+  ],
+  "distance": "RMS of z-scored feature differences (z by the global cropland candidate spread)",
+  "candidates": 3467,
+  "novel_threshold": {
+   "threshold": 0.2344617616458256,
+   "p50": 0.10435180473729563,
+   "p90": 0.1971270957942751,
+   "n": 3467,
+   "definition": "for every present-day cropland cell, the climate distance to its nearest cell more than 300 km away; threshold = P95"
+  },
+  "agreement_radius_km": 500.0,
+  "distinct_analog_km": 400.0
+ },
+ "sampling": {
+  "mode": "full",
+  "years": {
+   "hist": [
+    1995,
+    2000,
+    2005,
+    2010,
+    2014
+   ],
+   "fut": [
+    2041,
+    2045,
+    2050,
+    2055,
+    2060
+   ]
+  },
+  "variables": [
+   "tasmax",
+   "tasmin",
+   "pr"
+  ],
+  "n_files": 270,
+  "n_files_planned": 270,
+  "fetch_seconds": 167.8,
+  "from_cache": false,
+  "nex_cell": [
+   30.875,
+   75.625
+  ],
+  "problems": []
+ },
+ "evidence_ids": {
+  "power": "power-dea883ea02b0",
+  "nex_gddp": "nex_gddp-1191d47c8ceb",
+  "candidates": "power_clim-e95aad419429",
+  "cropland_mask": "gaez_lc-cbe975a47fd6",
+  "crops": "faostat-f50eff6acff2"
+ },
+ "evidence": {
+  "power-dea883ea02b0": {
+   "id": "power-dea883ea02b0",
+   "source": "NASA POWER",
+   "product": "POWER Daily API (AG community)",
+   "version": "v2.x",
+   "is_nasa": true,
+   "observation_start": "1991-01-01",
+   "observation_end": "2020-12-31",
+   "publication_time": null,
+   "retrieval_time": "2026-11-14T10:39:27.855110Z",
+   "footprint": "POWER grid cell centred 31.00, 75.625 (≈50 km); field at 30.7901, 75.7014",
+   "native_res": "0.5° x 0.625° (≈50 km) meteorology; 1° solar",
+   "effective_res": "0.5° x 0.625° (≈50 km) meteorology; 1° solar",
+   "units": "°C, mm",
+   "qa_flags": [],
+   "transformation": "1991-2020 daily baseline; delta method adds NEX-GDDP monthly change",
+   "licence": "Public domain (NASA); attribution requested",
+   "citation": "NASA Langley Research Center POWER Project, funded through the NASA Earth Science Directorate Applied Science Program.",
+   "url": "https://power.larc.nasa.gov/",
+   "lineage": []
+  },
+  "nex_gddp-1191d47c8ceb": {
+   "id": "nex_gddp-1191d47c8ceb",
+   "source": "NASA NEX / NCCS",
+   "product": "NEX-GDDP-CMIP6 daily downscaled projections (tasmax, tasmin, pr)",
+   "version": "v1.x/v2.0 (per file)",
+   "is_nasa": true,
+   "observation_start": "1995-01-01",
+   "observation_end": "2060-12-31",
+   "publication_time": null,
+   "retrieval_time": "2026-11-14T10:42:15.688100Z",
+   "footprint": "NEX-GDDP 0.25° cell centred (30.875, 75.625)",
+   "native_res": "0.25° (≈25 km)",
+   "effective_res": "0.25° (≈25 km)",
+   "units": "K, kg m-2 s-1",
+   "qa_flags": [],
+   "transformation": "monthly ΔTmax/ΔTmin and precip ratio, 2041-2060 vs 1995-2014; sampled years {'hist': [1995, 2000, 2005, 2010, 2014], 'fut': [2041, 2045, 2050, 2055, 2060]}; models ['ACCESS-CM2', 'GFDL-ESM4', 'MIROC6', 'MPI-ESM1-2-HR', 'MRI-ESM2-0', 'UKESM1-0-LL']",
+   "licence": "Open (NASA); CMIP6 model terms CC BY 4.0",
+   "citation": "Thrasher, B., Wang, W., Michaelis, A., Melton, F., Lee, T., Nemani, R. (2022). NASA Global Daily Downscaled Projections, CMIP6. Scientific Data 9, 262. doi:10.1038/s41597-022-01393-4",
+   "url": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-gddp-cmip6",
+   "lineage": []
+  },
+  "power_clim-e95aad419429": {
+   "id": "power_clim-e95aad419429",
+   "source": "NASA POWER",
+   "product": "POWER Climatology regional API (T2M, T2M_MAX, T2M_MIN, PRECTOTCORR)",
+   "version": "v2.x",
+   "is_nasa": true,
+   "observation_start": "2001-01-01",
+   "observation_end": "2025-01-01",
+   "publication_time": null,
+   "retrieval_time": "2026-11-14T10:42:15.688100Z",
+   "footprint": "present-day cropland cells worldwide (1°)",
+   "native_res": "0.5° x 0.625° (≈50 km), MERRA-2",
+   "effective_res": "0.5° x 0.625° (≈50 km), MERRA-2",
+   "units": null,
+   "qa_flags": [],
+   "transformation": "monthly normals -> 6 analog indicators, z-scored",
+   "licence": "Public domain (NASA)",
+   "citation": "NASA Langley Research Center POWER Project.",
+   "url": "https://power.larc.nasa.gov/",
+   "lineage": []
+  },
+  "gaez_lc-cbe975a47fd6": {
+   "id": "gaez_lc-cbe975a47fd6",
+   "source": "FAO / IIASA",
+   "product": "GAEZ v4 land-cover share GLCSv11_02 (cropland %)",
+   "version": "v4",
+   "is_nasa": false,
+   "observation_start": null,
+   "observation_end": null,
+   "publication_time": null,
+   "retrieval_time": "2026-11-14T10:42:15.688100Z",
+   "footprint": "global, aggregated to 1°",
+   "native_res": "5 arc-min (≈9 km)",
+   "effective_res": "5 arc-min (≈9 km)",
+   "units": null,
+   "qa_flags": [],
+   "transformation": "cells with ≥15.0% cropland kept as analog candidates",
+   "licence": "CC BY-NC-SA 3.0 IGO (FAO)",
+   "citation": "FAO & IIASA (2021). Global Agro-Ecological Zones version 4 (GAEZ v4). https://gaez.fao.org",
+   "url": "https://gaez.fao.org/",
+   "lineage": []
+  },
+  "faostat-f50eff6acff2": {
+   "id": "faostat-f50eff6acff2",
+   "source": "FAO",
+   "product": "FAOSTAT Crops and livestock products, Area harvested",
+   "version": "bulk",
+   "is_nasa": false,
+   "observation_start": "2020-01-01",
+   "observation_end": "2024-12-31",
+   "publication_time": null,
+   "retrieval_time": "2026-11-14T10:42:15.688100Z",
+   "footprint": "country",
+   "native_res": "country",
+   "effective_res": "country",
+   "units": "ha harvested",
+   "qa_flags": [],
+   "transformation": "mean of years; top items by area; FAOSTAT aggregates removed",
+   "licence": "CC BY 4.0 (FAO)",
+   "citation": "FAO. FAOSTAT: Crops and livestock products. https://www.fao.org/faostat/en/#data/QCL",
+   "url": "https://www.fao.org/faostat/en/#data/QCL",
+   "lineage": []
+  }
+ },
+ "confidence": {
+  "level": "high",
+  "reasons": [
+   "SSP245: 4 of 6 models put their closest analog within 500 km of a common place (Punjab, Pakistan).",
+   "SSP585: 4 of 6 models put their closest analog within 500 km of a common place (Uttar Pradesh, India).",
+   "6 CMIP6 models; 5 sampled years per period per model (full sampling); few sampled years let year-to-year weather leak into the monthly deltas.",
+   "Baseline is the NASA POWER regional value (≈50 km); future = baseline + model change (delta method).",
+   "Present-day self-check: the field's own 2001-2025 climate matches a cropland cell 83 km away (distance 0.031).",
+   "Crops at the analog are national FAOSTAT harvested areas (country scale), not what grows at that exact spot."
+  ]
+ },
+ "runtime_s": 168.8
+}

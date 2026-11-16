@@ -1,0 +1,14 @@
+# Render blueprint: public FarmSmart API (no login). Set secrets in the Render dashboard.
+services:
+  - type: web
+    name: farmsmart-api
+    runtime: docker
+    plan: starter
+    healthCheckPath: /api/health
+    envVars:
+      - key: EARTHDATA_TOKEN
+        sync: false
+      - key: NASS_API_KEY
+        sync: false
+      - key: FIELDSHIFT_USER_AGENT
+        value: FarmSmart/0.1 (Space Apps 2026)

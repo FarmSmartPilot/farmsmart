@@ -1,0 +1,1543 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "<project folder>\\web\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "-c",
+      "../qc/e2e",
+      "--project=desktop-chromium",
+      "--project=iphone-chromium-emulated"
+    ],
+    "configFile": "<project folder>\\qc\\e2e\\playwright.config.ts",
+    "rootDir": "<project folder>/qc/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "<project folder>/qc/reports/e2e-artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop-chromium",
+        "name": "desktop-chromium",
+        "testDir": "<project folder>/qc/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "/(judge|pilots|demo|axe|perf|spacing|guided|money|farm|u9)\\.spec\\.ts/"
+        ],
+        "timeout": 180000
+      },
+      {
+        "outputDir": "<project folder>/qc/reports/e2e-artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "iphone-webkit",
+        "name": "iphone-webkit",
+        "testDir": "<project folder>/qc/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "/(mobile|axe-mobile)\\.spec\\.ts/"
+        ],
+        "timeout": 180000
+      },
+      {
+        "outputDir": "<project folder>/qc/reports/e2e-artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "iphone-chromium-emulated",
+        "name": "iphone-chromium-emulated",
+        "testDir": "<project folder>/qc/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "/(mobile|axe-mobile)\\.spec\\.ts/"
+        ],
+        "timeout": 180000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "<project folder>\\qc\\reports\\e2e-artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "desktop-chromium",
+        "testDir": "<project folder>\\qc\\e2e",
+        "snapshotDir": "<project folder>\\qc\\e2e",
+        "testIgnore": [],
+        "testMatch": {},
+        "timeout": 180000,
+        "use": {
+          "baseURL": "http://localhost:5173",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "acceptDownloads": true,
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/159.0.8154.6 Safari/537.36",
+          "viewport": {
+            "width": 1440,
+            "height": 900
+          },
+          "screen": {
+            "width": 1920,
+            "height": 1080
+          },
+          "deviceScaleFactor": 1,
+          "isMobile": false,
+          "hasTouch": false,
+          "defaultBrowserType": "chromium"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "desktop-chromium"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "<project folder>\\qc\\reports\\e2e-artifacts",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "iphone-chromium-emulated",
+        "testDir": "<project folder>\\qc\\e2e",
+        "snapshotDir": "<project folder>\\qc\\e2e",
+        "testIgnore": [],
+        "testMatch": {},
+        "timeout": 180000,
+        "use": {
+          "baseURL": "http://localhost:5173",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "acceptDownloads": true,
+          "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/27.2 Mobile/15E148 Safari/604.1",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "screen": {
+            "width": 390,
+            "height": 844
+          },
+          "deviceScaleFactor": 3,
+          "isMobile": true,
+          "hasTouch": true,
+          "browserName": "chromium"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "iphone-chromium-emulated"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "../reports/e2e_results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.65.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "axe.spec.ts",
+      "file": "axe.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "axe desktop",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 400000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 30834,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "desktop Field Studio: clean\n"
+                    },
+                    {
+                      "text": "desktop Strategy Compare: clean\n"
+                    },
+                    {
+                      "text": "desktop Climate Twins: clean\n"
+                    },
+                    {
+                      "text": "desktop Drought Replay: clean\n"
+                    },
+                    {
+                      "text": "desktop Alerts: clean\n"
+                    },
+                    {
+                      "text": "desktop Sources & Methods: clean\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-15T16:54:02.847Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9abf67be62d153b4ed8c-b8265547205b07f2fbba",
+          "file": "axe.spec.ts",
+          "line": 34,
+          "column": 3
+        },
+        {
+          "title": "axe mobile",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 400000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 27713,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "mobile Field Studio: clean\n"
+                    },
+                    {
+                      "text": "mobile Strategy Compare: clean\n"
+                    },
+                    {
+                      "text": "mobile Climate Twins: clean\n"
+                    },
+                    {
+                      "text": "mobile Drought Replay: clean\n"
+                    },
+                    {
+                      "text": "mobile Alerts: clean\n"
+                    },
+                    {
+                      "text": "mobile Sources & Methods: clean\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-15T16:54:33.811Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "9abf67be62d153b4ed8c-ef6a0dcc50190ae7748f",
+          "file": "axe.spec.ts",
+          "line": 34,
+          "column": 3
+        }
+      ]
+    },
+    {
+      "title": "demo.spec.ts",
+      "file": "demo.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "demo tour timing",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 49585,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "Demo tour: 14 steps, 48.5 s at machine speed (step ready → Next immediately).\n\n| # | Step | s to ready | target found |\n|---|---|---|---|\n| 1 | One farm, from space | 5.3 | yes |\n| 2 | Down to the county | 7.5 | yes |\n| 3 | Real field outlines | 10.3 | yes |\n| 4 | Pick your field | 7.0 | yes |\n| 5 | What the data says here | 0.7 | yes |\n| 6 | Your field, pixel by pixel | 1.1 | yes |\n| 7 | Your field, your facts | 0.8 | yes |\n| 8 | Your best option | 1.6 | yes |\n| 9 | Why not oats? | 1.0 | yes |\n| 10 | When bare soil meets wind | 0.5 | yes |\n| 11 | Water matters most? | 0.8 | yes |\n| 12 | Replay the 2012 drought | 1.5 | yes |\n| 13 | Where your climate is heading | 3.9 | yes |\n| 14 | Make it your plan | 6.0 | yes |\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-15T16:55:01.541Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "05384557491ebd602dd7-abf876d3f818b42f1c0b",
+          "file": "demo.spec.ts",
+          "line": 6,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "farm.spec.ts",
+      "file": "farm.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "whole farm: sample farm, KPIs, plan search (desktop)",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 900000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 16643,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "[farm] KPIs {\"fields\":\"4\",\"acres\":\"561\",\"typical\":\"$180,400\",\"bad\":\"$108,500\",\"ploss\":\"3 %\",\"div\":\"+⁠$2,900\"}\n"
+                    },
+                    {
+                      "text": "[farm] diversification: Because your fields don't all have their bad year at the same time, your farm's bad year is $2,900 better than adding up each field's bad year.\n"
+                    },
+                    {
+                      "text": "[farm] correlation: How closely the fields' yearly results move together: 0.89 on average (1 = always together, 0 = unrelated).\n"
+                    },
+                    {
+                      "text": "[farm] field 1: Story County, Iowa 2023 Soybean · 2024 Corn · 2025 Corn Field size (acres) Plan for Story County, Iowa Keep: Corn, corn, then soybean Corn, corn, then soybean, with a cereal rye cover crop Corn, soybean, then winter wheat, with a hairy vetch cover crop Grows now: Corn, corn, then soybean Lock $58,600 $36,800 Open\n"
+                    },
+                    {
+                      "text": "[farm] field 2: Field 0845 · Boone Co. Boone County, Iowa · 2023 Soybean · 2024 Corn · 2025 Corn Field size (acres) Plan for Field 0845 · Boone Co. Keep: Continuous corn Corn, soybean, then winter wheat, with a hairy vetch cover crop Continuous corn, with a cereal rye cover crop Grows now: Continuous corn Lock $47,900 $19,300 Open\n"
+                    },
+                    {
+                      "text": "[farm] field 3: Field 4306 · Hamilton Co. Hamilton County, Iowa · 2023 Soybean · 2024 Corn · 2025 Soybean Field size (acres) Plan for Field 4306 · Hamilton Co. Keep: Corn, then soybean Corn, soybean, then winter wheat, with a hairy vetch cover crop Corn, then soybean, with a cereal rye cover crop Grows now: Corn, then soybean Lock $50,000 $30,300 Open\n"
+                    },
+                    {
+                      "text": "[farm] field 4: Field 1155 · Marshall Co. Marshall County, Iowa · 2023 Soybean · 2024 Corn · 2025 Soybean Field size (acres) Plan for Field 1155 · Marshall Co. Keep: Corn, then soybean Corn, then soybean, with a cereal rye cover crop Corn, soybean, then winter wheat, with a hairy vetch cover crop Grows now: Corn, then soybean Lock $28,100 $19,200 Open\n"
+                    },
+                    {
+                      "text": "[farm] optimizer (balanced): Suggested: change 1 field\n"
+                    },
+                    {
+                      "text": "[farm]   Story County, Iowa Keeps what it grows now (Corn, corn, then soybean): nothing else did better for the farm.\n"
+                    },
+                    {
+                      "text": "[farm]   Field 0845 · Boone Co. From what it grows now (Continuous corn) to Corn, soybean, then winter wheat, with a hairy vetch cover crop. On its own this change adds −⁠$2,400 to the farm's typical year and +⁠$10,800 to its bad year.\n"
+                    },
+                    {
+                      "text": "[farm]   Field 4306 · Hamilton Co. Keeps what it grows now (Corn, then soybean): nothing else did better for the farm.\n"
+                    },
+                    {
+                      "text": "[farm]   Field 1155 · Marshall Co. Keeps what it grows now (Corn, then soybean): nothing else did better for the farm.\n"
+                    },
+                    {
+                      "text": "[farm]   deltas: Typical year, whole farm −⁠$2,400 $180,400 → $178,000 | Bad year (1 in 10) +⁠$10,800 $108,500 → $119,200 | Chance of a losing year 3 % → 1 % | Soil covered +13.5 days | Soil lost to water −0.69 t/ha | Water the crops use +28.4 mm | Soil carbon trend +0.04 t C/ha/yr\n"
+                    },
+                    {
+                      "text": "[farm]   In past weather and prices, this plan would have beaten your plan as it stands in 4 years out of 10.\n"
+                    },
+                    {
+                      "text": "[farm] optimizer (Most money): Your plan is already the best one found | \n"
+                    },
+                    {
+                      "text": "[farm] optimizer (Safest): Suggested: change 1 field | Field 0845 · Boone Co. From what it grows now (Continuous corn) to Corn, soybean, then winter wheat, with a hairy vetch cover crop. On its own this change adds −⁠$2,400 to the farm's typical year and +⁠$10,800 to its bad year.\n"
+                    },
+                    {
+                      "text": "[farm] optimizer (balanced, max 70 % one crop): Suggested: change 4 fields | Story County, Iowa From what it grows now (Corn, corn, then soybean) to Corn, soybean, then winter wheat, with a hairy vetch cover crop. On its own this change adds −⁠$8,200 to the farm's typical year and −⁠$3,100 to its bad year. It is needed to keep every year within your crop limit. / Field 0845 · Boone Co. From what it grows now (Continuous corn) to Corn, soybean, then winter wheat, with a hairy vetch cover crop. On its own this change adds −⁠$900 to the farm's typical year and +⁠$14,600 to its bad year. / Field 4306 · Hamilton Co. From what it grows now (Corn, then soybean) to Corn, soybean, then winter wheat, with a hairy vetch cover crop. On its own this change adds −⁠$13,200 to the farm's typical year and −⁠$7,300 to its bad year. It is needed to keep every year within your crop limit. / Field 1155 · Marshall Co. From what it grows now (Corn, then soybean) to Corn, soybean, then winter wheat, with a hairy vetch cover crop. On its own this change adds −⁠$7,500 to the farm's typical year and −⁠$4,600 to its bad year. It is needed to keep every year within your crop limit.\n"
+                    },
+                    {
+                      "text": "[farm]   deltas: Typical year, whole farm −⁠$32,800 $180,400 → $147,600 | Bad year (1 in 10) −⁠$5,900 $108,500 → $102,600 | Chance of a losing year 3 % → 4 % | Soil covered +61.7 days | Soil lost to water −4.8 t/ha | Water the crops use +97.1 mm | Soil carbon trend +0.14 t C/ha/yr\n"
+                    },
+                    {
+                      "text": "[farm] after apply: typical $180,400 -> $178,000, bad $119,200\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-15T16:55:51.151Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "18395cc24aced0df51e8-8d661fc659014777d89f",
+          "file": "farm.spec.ts",
+          "line": 28,
+          "column": 1
+        },
+        {
+          "title": "whole farm: Add to my farm on Compare, switch and My fields toggle",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 300000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3375,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-15T16:56:07.805Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "18395cc24aced0df51e8-93f83ef27e5218ba3804",
+          "file": "farm.spec.ts",
+          "line": 139,
+          "column": 1
+        }
+      ],
+      "suites": [
+        {
+          "title": "iPhone width",
+          "file": "farm.spec.ts",
+          "line": 171,
+          "column": 6,
+          "specs": [
+            {
+              "title": "whole farm at 390 px",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 900000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "desktop-chromium",
+                  "projectName": "desktop-chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3296,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-11-15T16:56:11.190Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "18395cc24aced0df51e8-9b7c36910a7cfe0251dd",
+              "file": "farm.spec.ts",
+              "line": 173,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "guided.spec.ts",
+      "file": "guided.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "guided path 960",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10770,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "[timing] guided path 960: 10.6 s\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-15T16:56:14.501Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1935dcf3bdaab541f336-0ce522c3451be6ef6241",
+          "file": "guided.spec.ts",
+          "line": 20,
+          "column": 3
+        },
+        {
+          "title": "guided path 1440",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10936,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "[timing] guided path 1440: 10.8 s\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-15T16:56:25.281Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1935dcf3bdaab541f336-a56d3323f67012c63d11",
+          "file": "guided.spec.ts",
+          "line": 20,
+          "column": 3
+        },
+        {
+          "title": "guided path 390",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 9907,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "[timing] guided path 390: 9.8 s\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-15T16:56:36.226Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1935dcf3bdaab541f336-2677459bc5b8373b9d1f",
+          "file": "guided.spec.ts",
+          "line": 20,
+          "column": 3
+        }
+      ]
+    },
+    {
+      "title": "judge.spec.ts",
+      "file": "judge.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "judge path: Story County, Iowa",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 19758,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "compare cards: 3\n"
+                    },
+                    {
+                      "text": "why-not popover has focus: true\n"
+                    },
+                    {
+                      "text": "why-not popover closes on Escape: true\n"
+                    },
+                    {
+                      "text": "[timing] judge path total: 19.6 s\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-15T16:56:46.149Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fa8fc8ea9923860b26f6-be7a39f6f0e0bc9f9c11",
+          "file": "judge.spec.ts",
+          "line": 5,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "money.spec.ts",
+      "file": "money.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "money calculator from guided step 3 (Story County)",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6543,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "[money] payback: Earns less than staying put over 5 years in a typical year.\n"
+                    },
+                    {
+                      "text": "[money] markets: Corn in Iowa: $4.72/bu in September 2026 · USDA expects about $4.60 this season (2026/27)USDA forecast, not a promise\n"
+                    },
+                    {
+                      "text": "[money] typical with latest corn price: about $58,600 -> about $80,900\n"
+                    },
+                    {
+                      "text": "[money] current rotation typical: about $58,600 -> about $84,600 after corn price 3.86 -> 4.859999999999999\n"
+                    },
+                    {
+                      "text": "[money] drought typical: about $67,400\n"
+                    },
+                    {
+                      "text": "[timing] money calculator: 6.4 s\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-15T16:57:05.926Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5b279863a359564d2d6d-d4160a17a1ffb555e0d0",
+          "file": "money.spec.ts",
+          "line": 11,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "perf.spec.ts",
+      "file": "perf.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "performance",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 11325,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "{\n  \"globe_first_render_ms_logged\": 537,\n  \"home_to_globe_wall_ms\": 1771,\n  \"dom_content_loaded_ms\": 225,\n  \"load_ms\": 227,\n  \"first_contentful_paint_ms\": 352,\n  \"in_page_click_to_studio_ms\": 111,\n  \"pilot_click_to_studio_url_ms\": 119,\n  \"pilot_click_to_studio_ms\": 131,\n  \"pilot_click_to_area_report_ms\": 991,\n  \"compare_click_to_cards_ms\": 257,\n  \"pilot_click_to_cards_total_ms\": 1248,\n  \"priority_change_rerun_ms\": 2295\n}\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-15T16:57:12.486Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "73ed389be8d3d6a89cdb-f8e69832e47e2ccfd2eb",
+          "file": "perf.spec.ts",
+          "line": 6,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "pilots.spec.ts",
+      "file": "pilots.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "core path: Garden City, Kansas (dryland)",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4294,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "Garden City, Kansas (dryland) coverage flags:\n  - ◆Markets & costsPartialUSDA ERS regional costs and returns\n"
+                    },
+                    {
+                      "text": "Garden City, Kansas (dryland): cards=3, no-costs note shown=false\n"
+                    },
+                    {
+                      "text": "[timing] core path Garden City, Kansas (dryland): 4.1 s\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-15T16:57:23.826Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b5de7a58f71cff765715-1459d6e6afc215116155",
+          "file": "pilots.spec.ts",
+          "line": 12,
+          "column": 3
+        },
+        {
+          "title": "core path: Near Regina, Saskatchewan",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4604,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "Near Regina, Saskatchewan coverage flags:\n  - ◆Soil (SoilGrids 250 m)PartialModelled soil map (SoilGrids 250 m), not a soil survey. Drainage class and wind erodibility not available\n  - ◆Outcome models (water, erosion, carbon)PartialRun with modelled soil values (SoilGrids 250 m)\n  - ◆ForecastsPartialNOAA NWS (US) / Open-Meteo\n  - ○Markets & costsNot availableNo market data for this region yet\n"
+                    },
+                    {
+                      "text": "Near Regina, Saskatchewan: cards=3, no-costs note shown=true\n"
+                    },
+                    {
+                      "text": "[timing] core path Near Regina, Saskatchewan: 4.0 s\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-15T16:57:28.129Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b5de7a58f71cff765715-94e6e2d88214b1920963",
+          "file": "pilots.spec.ts",
+          "line": 12,
+          "column": 3
+        },
+        {
+          "title": "core path: Near Ludhiana, Punjab (India)",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4560,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "Near Ludhiana, Punjab (India) coverage flags:\n  - ◆Soil (SoilGrids 250 m)PartialModelled soil map (SoilGrids 250 m), not a soil survey. Drainage class and wind erodibility not available\n  - ○Crop historyNot availableNo field crop-history map for this country; enter your rotation (a typical regional rotation is shown until you do)\n  - ◆Outcome models (water, erosion, carbon)PartialRun with modelled soil values (SoilGrids 250 m)\n  - ◆ForecastsPartialNOAA NWS (US) / Open-Meteo\n  - ○Markets & costsNot availableNo market data for this region yet\n"
+                    },
+                    {
+                      "text": "Near Ludhiana, Punjab (India): only 2 cards; checking binding-constraint banner\n"
+                    },
+                    {
+                      "text": "Near Ludhiana, Punjab (India): cards=2, no-costs note shown=true\n"
+                    },
+                    {
+                      "text": "[timing] core path Near Ludhiana, Punjab (India): 4.0 s\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-15T16:57:32.741Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b5de7a58f71cff765715-412e5d96c8cbbbcfed0c",
+          "file": "pilots.spec.ts",
+          "line": 12,
+          "column": 3
+        }
+      ]
+    },
+    {
+      "title": "spacing.spec.ts",
+      "file": "spacing.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "spacing audit",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 900000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 268188,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "1280x800 globe-home: hscroll=109 offscreen=0 clipped=0 small=0 overlaps=0\n"
+                    },
+                    {
+                      "text": "1280x800 field-studio: hscroll=0 offscreen=0 clipped=0 small=0 overlaps=0\n"
+                    },
+                    {
+                      "text": "1280x800 strategy-compare: hscroll=136 offscreen=0 clipped=0 small=0 overlaps=0\n"
+                    },
+                    {
+                      "text": "1280x800 climate-twins: hscroll=136 offscreen=0 clipped=0 small=0 overlaps=0\n"
+                    },
+                    {
+                      "text": "1280x800 drought-replay: hscroll=136 offscreen=0 clipped=0 small=0 overlaps=0\n"
+                    },
+                    {
+                      "text": "1440x900 globe-home: hscroll=0 offscreen=0 clipped=0 small=0 overlaps=0\n"
+                    },
+                    {
+                      "text": "1440x900 field-studio: hscroll=0 offscreen=0 clipped=0 small=0 overlaps=0\n"
+                    },
+                    {
+                      "text": "1440x900 strategy-compare: hscroll=0 offscreen=0 clipped=0 small=0 overlaps=0\n"
+                    },
+                    {
+                      "text": "1440x900 climate-twins: hscroll=0 offscreen=0 clipped=0 small=0 overlaps=0\n"
+                    },
+                    {
+                      "text": "1440x900 drought-replay: hscroll=0 offscreen=0 clipped=0 small=0 overlaps=0\n"
+                    },
+                    {
+                      "text": "1920x1080 globe-home: hscroll=0 offscreen=0 clipped=0 small=0 overlaps=0\n"
+                    },
+                    {
+                      "text": "1920x1080 field-studio: hscroll=0 offscreen=0 clipped=0 small=0 overlaps=0\n"
+                    },
+                    {
+                      "text": "1920x1080 strategy-compare: hscroll=0 offscreen=0 clipped=0 small=0 overlaps=0\n"
+                    },
+                    {
+                      "text": "1920x1080 climate-twins: hscroll=0 offscreen=0 clipped=0 small=0 overlaps=0\n"
+                    },
+                    {
+                      "text": "1920x1080 drought-replay: hscroll=0 offscreen=0 clipped=0 small=0 overlaps=0\n"
+                    },
+                    {
+                      "text": "390x844 globe-home: hscroll=0 offscreen=0 clipped=0 small=1 overlaps=0\n"
+                    },
+                    {
+                      "text": "390x844 field-studio: hscroll=0 offscreen=0 clipped=0 small=8 overlaps=0\n"
+                    },
+                    {
+                      "text": "390x844 strategy-compare: hscroll=0 offscreen=0 clipped=0 small=5 overlaps=0\n"
+                    },
+                    {
+                      "text": "390x844 climate-twins: hscroll=0 offscreen=0 clipped=0 small=1 overlaps=0\n"
+                    },
+                    {
+                      "text": "390x844 drought-replay: hscroll=0 offscreen=0 clipped=0 small=1 overlaps=0\n"
+                    },
+                    {
+                      "text": "430x932 globe-home: hscroll=0 offscreen=0 clipped=0 small=1 overlaps=0\n"
+                    },
+                    {
+                      "text": "430x932 field-studio: hscroll=0 offscreen=0 clipped=0 small=8 overlaps=0\n"
+                    },
+                    {
+                      "text": "430x932 strategy-compare: hscroll=0 offscreen=0 clipped=0 small=8 overlaps=0\n"
+                    },
+                    {
+                      "text": "430x932 climate-twins: hscroll=0 offscreen=0 clipped=0 small=1 overlaps=0\n"
+                    },
+                    {
+                      "text": "430x932 drought-replay: hscroll=0 offscreen=0 clipped=0 small=1 overlaps=0\n"
+                    },
+                    {
+                      "text": "820x1180 globe-home: hscroll=0 offscreen=0 clipped=0 small=0 overlaps=0\n"
+                    },
+                    {
+                      "text": "820x1180 field-studio: hscroll=0 offscreen=0 clipped=0 small=0 overlaps=0\n"
+                    },
+                    {
+                      "text": "820x1180 strategy-compare: hscroll=0 offscreen=0 clipped=0 small=0 overlaps=0\n"
+                    },
+                    {
+                      "text": "820x1180 climate-twins: hscroll=0 offscreen=0 clipped=0 small=0 overlaps=0\n"
+                    },
+                    {
+                      "text": "820x1180 drought-replay: hscroll=0 offscreen=0 clipped=0 small=0 overlaps=0\n"
+                    },
+                    {
+                      "text": "960x900 globe-home: hscroll=0 offscreen=0 clipped=0 small=0 overlaps=0\n"
+                    },
+                    {
+                      "text": "960x900 field-studio: hscroll=0 offscreen=0 clipped=0 small=0 overlaps=0\n"
+                    },
+                    {
+                      "text": "960x900 strategy-compare: hscroll=0 offscreen=0 clipped=0 small=0 overlaps=0\n"
+                    },
+                    {
+                      "text": "960x900 climate-twins: hscroll=0 offscreen=0 clipped=0 small=0 overlaps=0\n"
+                    },
+                    {
+                      "text": "960x900 drought-replay: hscroll=0 offscreen=0 clipped=0 small=0 overlaps=0\n"
+                    },
+                    {
+                      "text": "1024x768 globe-home: hscroll=0 offscreen=0 clipped=0 small=0 overlaps=0\n"
+                    },
+                    {
+                      "text": "1024x768 field-studio: hscroll=0 offscreen=0 clipped=0 small=0 overlaps=0\n"
+                    },
+                    {
+                      "text": "1024x768 strategy-compare: hscroll=0 offscreen=0 clipped=0 small=0 overlaps=0\n"
+                    },
+                    {
+                      "text": "1024x768 climate-twins: hscroll=0 offscreen=0 clipped=0 small=0 overlaps=0\n"
+                    },
+                    {
+                      "text": "1024x768 drought-replay: hscroll=0 offscreen=0 clipped=0 small=0 overlaps=0\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-15T16:57:37.317Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c8fbe351686a6d91965c-3de766541eab4dccd2a8",
+          "file": "spacing.spec.ts",
+          "line": 118,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "u9.spec.ts",
+      "file": "u9.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "welcome leads with the farmer's questions and the whole farm",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2429,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "[welcome] Iowa example: Corn, corn, then soybean, with a cereal rye cover crop makes about $238 an acre in a typical year, over operating costs.Operating costs counted, per acre: corn $475, soybean $256, cover crop $36 in each cover year (USDA ERS, Heartland region).\n"
+                    },
+                    {
+                      "text": "[welcome] Iowa example: in a bad year (1 in 10) Corn, corn, then soybean, with a cereal rye cover crop still makes about $169 an acre over operating costs.\n"
+                    },
+                    {
+                      "text": "[welcome] Iowa example: 9 rotations tested; for this farmer's priorities the top one is Corn, corn, then soybean, with a cereal rye cover crop.\n"
+                    },
+                    {
+                      "text": "[welcome] Iowa example: Corn, corn, then soybean, with a cereal rye cover crop breaks the pest cycle in 67% of crop changes, against 67% for the rotation grown today.\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-15T17:02:05.549Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "79669869c47504cb3290-06138b9b46419d9c3f0e",
+          "file": "u9.spec.ts",
+          "line": 24,
+          "column": 1
+        },
+        {
+          "title": "money page: gross margin vs net profit, evidence, what's counted, no double counting",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4467,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "[money] Based on 30 real weather sequences (starting 1991–2020, weather from 1991–2025) × 10 price years (2016–2025) = 300 combinations per option.\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-15T17:02:07.986Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "79669869c47504cb3290-5bb233a1cf4741271675",
+          "file": "u9.spec.ts",
+          "line": 56,
+          "column": 1
+        },
+        {
+          "title": "alerts: SMS placeholder is disabled and stores nothing",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1625,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-15T17:02:12.461Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "79669869c47504cb3290-0669f01b936ea3cb0ac2",
+          "file": "u9.spec.ts",
+          "line": 91,
+          "column": 1
+        },
+        {
+          "title": "offline: save a field, then open it without a connection (production build)",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 300000,
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "No service worker at http://localhost:5173: run against a production build (vite preview).",
+                  "location": {
+                    "file": "<project folder>\\qc\\e2e\\u9.spec.ts",
+                    "line": 109,
+                    "column": 8
+                  }
+                }
+              ],
+              "expectedStatus": "skipped",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "skipped",
+                  "duration": 16231,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-15T17:02:14.095Z",
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "No service worker at http://localhost:5173: run against a production build (vite preview).",
+                      "location": {
+                        "file": "<project folder>\\qc\\e2e\\u9.spec.ts",
+                        "line": 109,
+                        "column": 8
+                      }
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "79669869c47504cb3290-070856245d847a7325b3",
+          "file": "u9.spec.ts",
+          "line": 101,
+          "column": 1
+        },
+        {
+          "title": "peers: what farms around you grow, on step 2",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4770,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "[peers] Around your field (≈5 km), 2020–2025, cropland was: 83% corn and soybean only, 14% continuous corn.\n"
+                    },
+                    {
+                      "text": "[peers] Your field in the map: corn and soybean only, like 83% of the cropland around you.\n"
+                    },
+                    {
+                      "text": "[peers] After Corn: Soybeans 72%, Corn 28%After Soybeans: Corn 97%\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-15T17:02:30.336Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "79669869c47504cb3290-f6f419b28f0cddbb67bf",
+          "file": "u9.spec.ts",
+          "line": 149,
+          "column": 1
+        },
+        {
+          "title": "peers: outside crop-map coverage says so plainly",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1786,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-15T17:02:35.118Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "79669869c47504cb3290-f429f4a2692e78bf6602",
+          "file": "u9.spec.ts",
+          "line": 183,
+          "column": 1
+        },
+        {
+          "title": "money page: real yields, ISU budgets, storms and disease weather",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3158,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "[money] The yield in use here (211.1 bu/ac) is 5% above that trend for 2025.\n"
+                    },
+                    {
+                      "text": "[money] In use: Corn following soybeans, operating costs $483.60 an acre and fixed costs $428.38. These budget lines have no USDA line of their own, so they are in the operating total but not in a line: other (miscellaneous, drying (variable)) $52.69, crop insurance $17.10. Changing any single line goes back to adding up the lines. The budget assumes 211 bu/ac; your yield above is unchanged.\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-15T17:02:36.914Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "79669869c47504cb3290-288d41596c4cef6b6af8",
+          "file": "u9.spec.ts",
+          "line": 190,
+          "column": 1
+        },
+        {
+          "title": "step 2: disease weather with SI and NASA buttons, rotation hosts; outside the Midwest says so",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3247,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "[disease] In a typical summer, 0% of days from July 1 to August 15 had weather that favoured tar spot; in 2025, 0%; 1 summer in 10, 7% or more.\n"
+                    },
+                    {
+                      "text": "[disease] The model's average score over July 1 – August 15: 100% in a typical summer, 100% in 2025.\n"
+                    },
+                    {
+                      "text": "[disease] In a typical summer, 0% of days from July 1 to August 15 had weather that favoured white mold, dryland; in 2025, 0%; 1 summer in 10, 56% or more.\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-15T17:02:40.081Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "79669869c47504cb3290-da64db427520b43b3a6b",
+          "file": "u9.spec.ts",
+          "line": 231,
+          "column": 1
+        },
+        {
+          "title": "Spanish: disease panel and rule messages from the API in Spanish",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3878,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-15T17:02:43.336Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "79669869c47504cb3290-984c88af349976f4cc12",
+          "file": "u9.spec.ts",
+          "line": 256,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "mobile.spec.ts",
+      "file": "mobile.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "iPhone core path: Story County, Iowa",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "iphone-chromium-emulated",
+              "projectName": "iphone-chromium-emulated",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 15922,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "[timing] iPhone core path: 15.6 s\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-15T17:02:49.831Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "e79c838550b25e92508e-cf88c440bacd0181697f",
+          "file": "mobile.spec.ts",
+          "line": 5,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-15T16:54:02.261Z",
+    "duration": 543819.983,
+    "expected": 25,
+    "skipped": 1,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

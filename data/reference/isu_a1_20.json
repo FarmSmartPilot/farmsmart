@@ -1,0 +1,2361 @@
+{
+ "meta": {
+  "source": "Iowa State University Extension and Outreach, Ag Decision Maker",
+  "product": "A1-20 Estimated Costs of Crop Production in Iowa – 2026",
+  "year": 2026,
+  "url": "https://www.extension.iastate.edu/agdm/crops/html/a1-20.html",
+  "pdf_url": "https://www.extension.iastate.edu/agdm/crops/pdf/a1-20.pdf",
+  "citation": "Chad Hart. Estimated Costs of Crop Production in Iowa – 2026. Ag Decision Maker File A1-20 (FM 1712, revised January 2026). Iowa State University Extension and Outreach. https://www.extension.iastate.edu/agdm/crops/html/a1-20.html",
+  "state_fips": "19",
+  "retrieved": "2026-11-15T16:26:46+00:00",
+  "problems": {},
+  "method": "Each budget is the Example sheet of ISU's A1-20 Excel tool (the publication's values at its middle yield level); total cost per acre checked against the PDF text.",
+  "operating_definition": "ISU 'variable' costs: seed, fertilizer and lime, pesticides, crop insurance, miscellaneous, interest on pre-harvest variable costs, and machinery fuel, oil and repairs (incl. drying, hauling and handling per bushel)",
+  "fixed_definition": "ISU 'fixed' costs: machinery depreciation, interest, insurance and housing; operator labour; land (cash rent equivalent)"
+ },
+ "budgets": [
+  {
+   "id": "a1-20cfs_tbl2",
+   "crop": "corn",
+   "label": "Corn following soybeans",
+   "label_es": "Maíz después de soya",
+   "title": "Corn Following Soybeans",
+   "url": "https://www.extension.iastate.edu/agdm/crops/xls/a1-20cfs_tbl2.xlsx",
+   "year": 2026,
+   "yield_assumption": 211.0,
+   "unit": "bu/ac",
+   "operating_usd_ac": 483.6,
+   "fixed_usd_ac": 428.38,
+   "total_usd_ac": 911.98,
+   "items": [
+    {
+     "section": "preharvest_machinery",
+     "label": "Tandem disk",
+     "fixed_usd_ac": 8.1,
+     "variable_usd_ac": 4.9,
+     "usd_ac": 13.0
+    },
+    {
+     "section": "preharvest_machinery",
+     "label": "Apply nitrogen",
+     "fixed_usd_ac": 7.6,
+     "variable_usd_ac": 6.3,
+     "usd_ac": 13.9
+    },
+    {
+     "section": "preharvest_machinery",
+     "label": "Field cultivate",
+     "fixed_usd_ac": 4.7,
+     "variable_usd_ac": 3.8,
+     "usd_ac": 8.5
+    },
+    {
+     "section": "preharvest_machinery",
+     "label": "Plant",
+     "fixed_usd_ac": 10.4,
+     "variable_usd_ac": 6.8,
+     "usd_ac": 17.2
+    },
+    {
+     "section": "preharvest_machinery",
+     "label": "Spray",
+     "fixed_usd_ac": 4.0,
+     "variable_usd_ac": 2.8,
+     "usd_ac": 6.8
+    },
+    {
+     "section": "inputs",
+     "label": "Seed",
+     "fixed_usd_ac": 0.0,
+     "variable_usd_ac": 113.7,
+     "usd_ac": 113.7
+    },
+    {
+     "section": "inputs",
+     "label": "Nitrogen",
+     "fixed_usd_ac": 0.0,
+     "variable_usd_ac": 84.27,
+     "usd_ac": 84.27
+    },
+    {
+     "section": "inputs",
+     "label": "Phosphate",
+     "fixed_usd_ac": 0.0,
+     "variable_usd_ac": 56.88,
+     "usd_ac": 56.88
+    },
+    {
+     "section": "inputs",
+     "label": "Potash",
+     "fixed_usd_ac": 0.0,
+     "variable_usd_ac": 24.57,
+     "usd_ac": 24.57
+    },
+    {
+     "section": "inputs",
+     "label": "Lime (annual cost)",
+     "fixed_usd_ac": 0.0,
+     "variable_usd_ac": 3.72,
+     "usd_ac": 3.72
+    },
+    {
+     "section": "inputs",
+     "label": "Herbicide",
+     "fixed_usd_ac": 0.0,
+     "variable_usd_ac": 56.0,
+     "usd_ac": 56.0
+    },
+    {
+     "section": "inputs",
+     "label": "Crop insurance",
+     "fixed_usd_ac": 0.0,
+     "variable_usd_ac": 17.1,
+     "usd_ac": 17.1
+    },
+    {
+     "section": "inputs",
+     "label": "Miscellaneous",
+     "fixed_usd_ac": 0.0,
+     "variable_usd_ac": 13.7,
+     "usd_ac": 13.7
+    },
+    {
+     "section": "inputs",
+     "label": "Interest on preharvest variable costs",
+     "fixed_usd_ac": 0.0,
+     "variable_usd_ac": 19.65,
+     "usd_ac": 19.65
+    },
+    {
+     "section": "harvest_machinery",
+     "label": "Combine",
+     "fixed_usd_ac": 23.0,
+     "variable_usd_ac": 9.5,
+     "usd_ac": 32.5
+    },
+    {
+     "section": "harvest_machinery",
+     "label": "Grain cart",
+     "fixed_usd_ac": 11.1,
+     "variable_usd_ac": 4.1,
+     "usd_ac": 15.2
+    },
+    {
+     "section": "harvest_machinery",
+     "label": "Haul",
+     "fixed_usd_ac": 16.25,
+     "variable_usd_ac": 10.97,
+     "usd_ac": 27.22
+    },
+    {
+     "section": "harvest_machinery",
+     "label": "Drying",
+     "fixed_usd_ac": 10.55,
+     "variable_usd_ac": 38.99,
+     "usd_ac": 49.54
+    },
+    {
+     "section": "harvest_machinery",
+     "label": "Handling",
+     "fixed_usd_ac": 6.67,
+     "variable_usd_ac": 5.84,
+     "usd_ac": 12.51
+    },
+    {
+     "section": "labor",
+     "label": "Operator",
+     "fixed_usd_ac": 52.02,
+     "variable_usd_ac": 0.0,
+     "usd_ac": 52.02
+    },
+    {
+     "section": "land",
+     "label": "Cash rent equivalent",
+     "fixed_usd_ac": 274.0,
+     "variable_usd_ac": 0.0,
+     "usd_ac": 274.0
+    }
+   ],
+   "calculator_lines": [
+    {
+     "id": "seed",
+     "usd_ac": 113.7,
+     "from": [
+      "Seed"
+     ],
+     "group": "operating"
+    },
+    {
+     "id": "fertilizer",
+     "usd_ac": 169.44,
+     "from": [
+      "Nitrogen",
+      "Phosphate",
+      "Potash",
+      "Lime (annual cost)"
+     ],
+     "group": "operating"
+    },
+    {
+     "id": "chemicals",
+     "usd_ac": 56.0,
+     "from": [
+      "Herbicide"
+     ],
+     "group": "operating"
+    },
+    {
+     "id": "fuel",
+     "usd_ac": 55.01,
+     "from": [
+      "Tandem disk (variable)",
+      "Apply nitrogen (variable)",
+      "Field cultivate (variable)",
+      "Plant (variable)",
+      "Spray (variable)",
+      "Combine (variable)",
+      "Grain cart (variable)",
+      "Haul (variable)",
+      "Handling (variable)"
+     ],
+     "group": "operating",
+     "note": "ISU's variable machinery cost: fuel, oil and repairs together (USDA ERS splits fuel and repairs)"
+    },
+    {
+     "id": "other",
+     "usd_ac": 52.69,
+     "from": [
+      "Miscellaneous",
+      "Drying (variable)"
+     ],
+     "group": "operating"
+    },
+    {
+     "id": "interest",
+     "usd_ac": 19.65,
+     "from": [
+      "Interest on preharvest variable costs"
+     ],
+     "group": "operating"
+    },
+    {
+     "id": "crop_insurance",
+     "usd_ac": 17.1,
+     "from": [
+      "Crop insurance"
+     ],
+     "group": "operating",
+     "note": "Crop insurance premium: not a USDA ERS cost line"
+    },
+    {
+     "id": "machinery",
+     "usd_ac": 102.37,
+     "from": [
+      "Tandem disk (fixed)",
+      "Apply nitrogen (fixed)",
+      "Field cultivate (fixed)",
+      "Plant (fixed)",
+      "Spray (fixed)",
+      "Combine (fixed)",
+      "Grain cart (fixed)",
+      "Haul (fixed)",
+      "Drying (fixed)",
+      "Handling (fixed)"
+     ],
+     "group": "overhead",
+     "note": "ISU's fixed machinery cost: depreciation, interest, insurance and housing"
+    },
+    {
+     "id": "labor",
+     "usd_ac": 52.02,
+     "from": [
+      "Operator"
+     ],
+     "group": "overhead",
+     "note": "Operator labour valued at ISU's hourly rate"
+    },
+    {
+     "id": "land",
+     "usd_ac": 274.0,
+     "from": [
+      "Cash rent equivalent"
+     ],
+     "group": "overhead",
+     "note": "Cash rent equivalent"
+    }
+   ],
+   "items_match_total": true,
+   "total_in_pdf": true,
+   "yield_in_pdf": true,
+   "tool_version": "Version 2.0_12026",
+   "tool_date": "2026-01-16"
+  },
+  {
+   "id": "a1-20cfc_tbl1",
+   "crop": "corn",
+   "label": "Corn following corn",
+   "label_es": "Maíz después de maíz",
+   "title": "Corn Following Corn",
+   "url": "https://www.extension.iastate.edu/agdm/crops/xls/a1-20cfc_tbl1.xlsx",
+   "year": 2026,
+   "yield_assumption": 193.0,
+   "unit": "bu/ac",
+   "operating_usd_ac": 522.99,
+   "fixed_usd_ac": 437.03,
+   "total_usd_ac": 960.02,
+   "items": [
+    {
+     "section": "preharvest_machinery",
+     "label": "Chisel plow",
+     "fixed_usd_ac": 6.4,
+     "variable_usd_ac": 5.5,
+     "usd_ac": 11.9
+    },
+    {
+     "section": "preharvest_machinery",
+     "label": "Tandem disk",
+     "fixed_usd_ac": 8.1,
+     "variable_usd_ac": 4.9,
+     "usd_ac": 13.0
+    },
+    {
+     "section": "preharvest_machinery",
+     "label": "Apply nitrogen",
+     "fixed_usd_ac": 7.6,
+     "variable_usd_ac": 6.3,
+     "usd_ac": 13.9
+    },
+    {
+     "section": "preharvest_machinery",
+     "label": "Field cultivate",
+     "fixed_usd_ac": 4.7,
+     "variable_usd_ac": 3.8,
+     "usd_ac": 8.5
+    },
+    {
+     "section": "preharvest_machinery",
+     "label": "Plant",
+     "fixed_usd_ac": 10.4,
+     "variable_usd_ac": 6.8,
+     "usd_ac": 17.2
+    },
+    {
+     "section": "preharvest_machinery",
+     "label": "Spray",
+     "fixed_usd_ac": 4.0,
+     "variable_usd_ac": 2.8,
+     "usd_ac": 6.8
+    },
+    {
+     "section": "inputs",
+     "label": "Seed",
+     "fixed_usd_ac": 0.0,
+     "variable_usd_ac": 113.7,
+     "usd_ac": 113.7
+    },
+    {
+     "section": "inputs",
+     "label": "Nitrogen",
+     "fixed_usd_ac": 0.0,
+     "variable_usd_ac": 102.82,
+     "usd_ac": 102.82
+    },
+    {
+     "section": "inputs",
+     "label": "Phosphate",
+     "fixed_usd_ac": 0.0,
+     "variable_usd_ac": 51.84,
+     "usd_ac": 51.84
+    },
+    {
+     "section": "inputs",
+     "label": "Potash",
+     "fixed_usd_ac": 0.0,
+     "variable_usd_ac": 22.62,
+     "usd_ac": 22.62
+    },
+    {
+     "section": "inputs",
+     "label": "Lime (annual cost)",
+     "fixed_usd_ac": 0.0,
+     "variable_usd_ac": 3.72,
+     "usd_ac": 3.72
+    },
+    {
+     "section": "inputs",
+     "label": "Herbicide",
+     "fixed_usd_ac": 0.0,
+     "variable_usd_ac": 56.0,
+     "usd_ac": 56.0
+    },
+    {
+     "section": "inputs",
+     "label": "Insecticide",
+     "fixed_usd_ac": 0.0,
+     "variable_usd_ac": 25.0,
+     "usd_ac": 25.0
+    },
+    {
+     "section": "inputs",
+     "label": "Crop insurance",
+     "fixed_usd_ac": 0.0,
+     "variable_usd_ac": 17.1,
+     "usd_ac": 17.1
+    },
+    {
+     "section": "inputs",
+     "label": "Miscellaneous",
+     "fixed_usd_ac": 0.0,
+     "variable_usd_ac": 13.7,
+     "usd_ac": 13.7
+    },
+    {
+     "section": "inputs",
+     "label": "Interest on preharvest variable costs",
+     "fixed_usd_ac": 0.0,
+     "variable_usd_ac": 21.74,
+     "usd_ac": 21.74
+    },
+    {
+     "section": "harvest_machinery",
+     "label": "Combine",
+     "fixed_usd_ac": 23.0,
+     "variable_usd_ac": 9.5,
+     "usd_ac": 32.5
+    },
+    {
+     "section": "harvest_machinery",
+     "label": "Grain cart",
+     "fixed_usd_ac": 11.1,
+     "variable_usd_ac": 4.1,
+     "usd_ac": 15.2
+    },
+    {
+     "section": "harvest_machinery",
+     "label": "Haul",
+     "fixed_usd_ac": 14.86,
+     "variable_usd_ac": 10.04,
+     "usd_ac": 24.9
+    },
+    {
+     "section": "harvest_machinery",
+     "label": "Drying",
+     "fixed_usd_ac": 9.65,
+     "variable_usd_ac": 35.67,
+     "usd_ac": 45.32
+    },
+    {
+     "section": "harvest_machinery",
+     "label": "Handling",
+     "fixed_usd_ac": 6.1,
+     "variable_usd_ac": 5.35,
+     "usd_ac": 11.44
+    },
+    {
+     "section": "labor",
+     "label": "Operator",
+     "fixed_usd_ac": 57.12,
+     "variable_usd_ac": 0.0,
+     "usd_ac": 57.12
+    },
+    {
+     "section": "land",
+     "label": "Cash rent equivalent",
+     "fixed_usd_ac": 274.0,
+     "variable_usd_ac": 0.0,
+     "usd_ac": 274.0
+    }
+   ],
+   "calculator_lines": [
+    {
+     "id": "seed",
+     "usd_ac": 113.7,
+     "from": [
+      "Seed"
+     ],
+     "group": "operating"
+    },
+    {
+     "id": "fertilizer",
+     "usd_ac": 181.0,
+     "from": [
+      "Nitrogen",
+      "Phosphate",
+      "Potash",
+      "Lime (annual cost)"
+     ],
+     "group": "operating"
+    },
+    {
+     "id": "chemicals",
+     "usd_ac": 81.0,
+     "from": [
+      "Herbicide",
+      "Insecticide"
+     ],
+     "group": "operating"
+    },
+    {
+     "id": "fuel",
+     "usd_ac": 59.09,
+     "from": [
+      "Chisel plow (variable)",
+      "Tandem disk (variable)",
+      "Apply nitrogen (variable)",
+      "Field cultivate (variable)",
+      "Plant (variable)",
+      "Spray (variable)",
+      "Combine (variable)",
+      "Grain cart (variable)",
+      "Haul (variable)",
+      "Handling (variable)"
+     ],
+     "group": "operating",
+     "note": "ISU's variable machinery cost: fuel, oil and repairs together (USDA ERS splits fuel and repairs)"
+    },
+    {
+     "id": "other",
+     "usd_ac": 49.37,
+     "from": [
+      "Miscellaneous",
+      "Drying (variable)"
+     ],
+     "group": "operating"
+    },
+    {
+     "id": "interest",
+     "usd_ac": 21.74,
+     "from": [
+      "Interest on preharvest variable costs"
+     ],
+     "group": "operating"
+    },
+    {
+     "id": "crop_insurance",
+     "usd_ac": 17.1,
+     "from": [
+      "Crop insurance"
+     ],
+     "group": "operating",
+     "note": "Crop insurance premium: not a USDA ERS cost line"
+    },
+    {
+     "id": "machinery",
+     "usd_ac": 105.91,
+     "from": [
+      "Chisel plow (fixed)",
+      "Tandem disk (fixed)",
+      "Apply nitrogen (fixed)",
+      "Field cultivate (fixed)",
+      "Plant (fixed)",
+      "Spray (fixed)",
+      "Combine (fixed)",
+      "Grain cart (fixed)",
+      "Haul (fixed)",
+      "Drying (fixed)",
+      "Handling (fixed)"
+     ],
+     "group": "overhead",
+     "note": "ISU's fixed machinery cost: depreciation, interest, insurance and housing"
+    },
+    {
+     "id": "labor",
+     "usd_ac": 57.12,
+     "from": [
+      "Operator"
+     ],
+     "group": "overhead",
+     "note": "Operator labour valued at ISU's hourly rate"
+    },
+    {
+     "id": "land",
+     "usd_ac": 274.0,
+     "from": [
+      "Cash rent equivalent"
+     ],
+     "group": "overhead",
+     "note": "Cash rent equivalent"
+    }
+   ],
+   "items_match_total": true,
+   "total_in_pdf": true,
+   "yield_in_pdf": true,
+   "tool_version": "Version 2.0_12026",
+   "tool_date": "2026-01-16"
+  },
+  {
+   "id": "a1-20striptillcfstbl5",
+   "crop": "corn",
+   "label": "Corn following soybeans, strip-till",
+   "label_es": "Maíz después de soya, labranza en franjas",
+   "title": "Strip Till Corn Following Soybeans",
+   "url": "https://www.extension.iastate.edu/agdm/crops/xls/a1-20striptillcfstbl5.xlsx",
+   "year": 2026,
+   "yield_assumption": 211.0,
+   "unit": "bu/ac",
+   "operating_usd_ac": 500.71,
+   "fixed_usd_ac": 407.26,
+   "total_usd_ac": 907.97,
+   "items": [
+    {
+     "section": "preharvest_machinery",
+     "label": "Strip till",
+     "fixed_usd_ac": 5.4,
+     "variable_usd_ac": 4.3,
+     "usd_ac": 9.7
+    },
+    {
+     "section": "preharvest_machinery",
+     "label": "Plant",
+     "fixed_usd_ac": 10.4,
+     "variable_usd_ac": 6.8,
+     "usd_ac": 17.2
+    },
+    {
+     "section": "preharvest_machinery",
+     "label": "Spray",
+     "fixed_usd_ac": 4.0,
+     "variable_usd_ac": 2.8,
+     "usd_ac": 6.8
+    },
+    {
+     "section": "inputs",
+     "label": "Seed",
+     "fixed_usd_ac": 0.0,
+     "variable_usd_ac": 113.7,
+     "usd_ac": 113.7
+    },
+    {
+     "section": "inputs",
+     "label": "Nitrogen",
+     "fixed_usd_ac": 0.0,
+     "variable_usd_ac": 84.27,
+     "usd_ac": 84.27
+    },
+    {
+     "section": "inputs",
+     "label": "Phosphate",
+     "fixed_usd_ac": 0.0,
+     "variable_usd_ac": 56.88,
+     "usd_ac": 56.88
+    },
+    {
+     "section": "inputs",
+     "label": "Potash",
+     "fixed_usd_ac": 0.0,
+     "variable_usd_ac": 24.57,
+     "usd_ac": 24.57
+    },
+    {
+     "section": "inputs",
+     "label": "Lime (annual cost)",
+     "fixed_usd_ac": 0.0,
+     "variable_usd_ac": 3.72,
+     "usd_ac": 3.72
+    },
+    {
+     "section": "inputs",
+     "label": "Herbicide",
+     "fixed_usd_ac": 0.0,
+     "variable_usd_ac": 83.0,
+     "usd_ac": 83.0
+    },
+    {
+     "section": "inputs",
+     "label": "Crop insurance",
+     "fixed_usd_ac": 0.0,
+     "variable_usd_ac": 17.1,
+     "usd_ac": 17.1
+    },
+    {
+     "section": "inputs",
+     "label": "Miscellaneous",
+     "fixed_usd_ac": 0.0,
+     "variable_usd_ac": 13.7,
+     "usd_ac": 13.7
+    },
+    {
+     "section": "inputs",
+     "label": "Interest on preharvest variable costs",
+     "fixed_usd_ac": 0.0,
+     "variable_usd_ac": 20.46,
+     "usd_ac": 20.46
+    },
+    {
+     "section": "harvest_machinery",
+     "label": "Combine",
+     "fixed_usd_ac": 23.0,
+     "variable_usd_ac": 9.5,
+     "usd_ac": 32.5
+    },
+    {
+     "section": "harvest_machinery",
+     "label": "Grain cart",
+     "fixed_usd_ac": 11.1,
+     "variable_usd_ac": 4.1,
+     "usd_ac": 15.2
+    },
+    {
+     "section": "harvest_machinery",
+     "label": "Haul",
+     "fixed_usd_ac": 16.25,
+     "variable_usd_ac": 10.97,
+     "usd_ac": 27.22
+    },
+    {
+     "section": "harvest_machinery",
+     "label": "Drying",
+     "fixed_usd_ac": 10.55,
+     "variable_usd_ac": 38.99,
+     "usd_ac": 49.54
+    },
+    {
+     "section": "harvest_machinery",
+     "label": "Handling",
+     "fixed_usd_ac": 6.67,
+     "variable_usd_ac": 5.84,
+     "usd_ac": 12.51
+    },
+    {
+     "section": "labor",
+     "label": "Operator",
+     "fixed_usd_ac": 45.9,
+     "variable_usd_ac": 0.0,
+     "usd_ac": 45.9
+    },
+    {
+     "section": "land",
+     "label": "Cash rent equivalent",
+     "fixed_usd_ac": 274.0,
+     "variable_usd_ac": 0.0,
+     "usd_ac": 274.0
+    }
+   ],
+   "calculator_lines": [
+    {
+     "id": "seed",
+     "usd_ac": 113.7,
+     "from": [
+      "Seed"
+     ],
+     "group": "operating"
+    },
+    {
+     "id": "fertilizer",
+     "usd_ac": 169.44,
+     "from": [
+      "Nitrogen",
+      "Phosphate",
+      "Potash",
+      "Lime (annual cost)"
+     ],
+     "group": "operating"
+    },
+    {
+     "id": "chemicals",
+     "usd_ac": 83.0,
+     "from": [
+      "Herbicide"
+     ],
+     "group": "operating"
+    },
+    {
+     "id": "fuel",
+     "usd_ac": 44.31,
+     "from": [
+      "Strip till (variable)",
+      "Plant (variable)",
+      "Spray (variable)",
+      "Combine (variable)",
+      "Grain cart (variable)",
+      "Haul (variable)",
+      "Handling (variable)"
+     ],
+     "group": "operating",
+     "note": "ISU's variable machinery cost: fuel, oil and repairs together (USDA ERS splits fuel and repairs)"
+    },
+    {
+     "id": "other",
+     "usd_ac": 52.69,
+     "from": [
+      "Miscellaneous",
+      "Drying (variable)"
+     ],
+     "group": "operating"
+    },
+    {
+     "id": "interest",
+     "usd_ac": 20.46,
+     "from": [
+      "Interest on preharvest variable costs"
+     ],
+     "group": "operating"
+    },
+    {
+     "id": "crop_insurance",
+     "usd_ac": 17.1,
+     "from": [
+      "Crop insurance"
+     ],
+     "group": "operating",
+     "note": "Crop insurance premium: not a USDA ERS cost line"
+    },
+    {
+     "id": "machinery",
+     "usd_ac": 87.37,
+     "from": [
+      "Strip till (fixed)",
+      "Plant (fixed)",
+      "Spray (fixed)",
+      "Combine (fixed)",
+      "Grain cart (fixed)",
+      "Haul (fixed)",
+      "Drying (fixed)",
+      "Handling (fixed)"
+     ],
+     "group": "overhead",
+     "note": "ISU's fixed machinery cost: depreciation, interest, insurance and housing"
+    },
+    {
+     "id": "labor",
+     "usd_ac": 45.9,
+     "from": [
+      "Operator"
+     ],
+     "group": "overhead",
+     "note": "Operator labour valued at ISU's hourly rate"
+    },
+    {
+     "id": "land",
+     "usd_ac": 274.0,
+     "from": [
+      "Cash rent equivalent"
+     ],
+     "group": "overhead",
+     "note": "Cash rent equivalent"
+    }
+   ],
+   "items_match_total": true,
+   "total_in_pdf": true,
+   "yield_in_pdf": true,
+   "tool_version": "Version 2.0_12026",
+   "tool_date": "2026-01-16"
+  },
+  {
+   "id": "a1-20lowtillcfstbl6",
+   "crop": "corn",
+   "label": "Corn following soybeans, low-till",
+   "label_es": "Maíz después de soya, labranza reducida",
+   "title": "Low-till Corn Following Soybeans",
+   "url": "https://www.extension.iastate.edu/agdm/crops/xls/a1-20lowtillcfstbl6.xlsx",
+   "year": 2026,
+   "yield_assumption": 211.0,
+   "unit": "bu/ac",
+   "operating_usd_ac": 506.8,
+   "fixed_usd_ac": 414.16,
+   "total_usd_ac": 920.96,
+   "items": [
+    {
+     "section": "preharvest_machinery",
+     "label": "Apply nitrogen",
+     "fixed_usd_ac": 7.6,
+     "variable_usd_ac": 6.3,
+     "usd_ac": 13.9
+    },
+    {
+     "section": "preharvest_machinery",
+     "label": "Field cultivate",
+     "fixed_usd_ac": 4.7,
+     "variable_usd_ac": 3.8,
+     "usd_ac": 8.5
+    },
+    {
+     "section": "preharvest_machinery",
+     "label": "Plant",
+     "fixed_usd_ac": 10.4,
+     "variable_usd_ac": 6.8,
+     "usd_ac": 17.2
+    },
+    {
+     "section": "preharvest_machinery",
+     "label": "Spray",
+     "fixed_usd_ac": 4.0,
+     "variable_usd_ac": 2.8,
+     "usd_ac": 6.8
+    },
+    {
+     "section": "inputs",
+     "label": "Seed",
+     "fixed_usd_ac": 0.0,
+     "variable_usd_ac": 113.7,
+     "usd_ac": 113.7
+    },
+    {
+     "section": "inputs",
+     "label": "Nitrogen",
+     "fixed_usd_ac": 0.0,
+     "variable_usd_ac": 84.27,
+     "usd_ac": 84.27
+    },
+    {
+     "section": "inputs",
+     "label": "Phosphate",
+     "fixed_usd_ac": 0.0,
+     "variable_usd_ac": 56.88,
+     "usd_ac": 56.88
+    },
+    {
+     "section": "inputs",
+     "label": "Potash",
+     "fixed_usd_ac": 0.0,
+     "variable_usd_ac": 24.57,
+     "usd_ac": 24.57
+    },
+    {
+     "section": "inputs",
+     "label": "Lime (annual cost)",
+     "fixed_usd_ac": 0.0,
+     "variable_usd_ac": 3.72,
+     "usd_ac": 3.72
+    },
+    {
+     "section": "inputs",
+     "label": "Herbicide",
+     "fixed_usd_ac": 0.0,
+     "variable_usd_ac": 83.0,
+     "usd_ac": 83.0
+    },
+    {
+     "section": "inputs",
+     "label": "Crop insurance",
+     "fixed_usd_ac": 0.0,
+     "variable_usd_ac": 17.1,
+     "usd_ac": 17.1
+    },
+    {
+     "section": "inputs",
+     "label": "Miscellaneous",
+     "fixed_usd_ac": 0.0,
+     "variable_usd_ac": 13.7,
+     "usd_ac": 13.7
+    },
+    {
+     "section": "inputs",
+     "label": "Interest on preharvest variable costs",
+     "fixed_usd_ac": 0.0,
+     "variable_usd_ac": 20.75,
+     "usd_ac": 20.75
+    },
+    {
+     "section": "harvest_machinery",
+     "label": "Combine",
+     "fixed_usd_ac": 23.0,
+     "variable_usd_ac": 9.5,
+     "usd_ac": 32.5
+    },
+    {
+     "section": "harvest_machinery",
+     "label": "Grain cart",
+     "fixed_usd_ac": 11.1,
+     "variable_usd_ac": 4.1,
+     "usd_ac": 15.2
+    },
+    {
+     "section": "harvest_machinery",
+     "label": "Haul",
+     "fixed_usd_ac": 16.25,
+     "variable_usd_ac": 10.97,
+     "usd_ac": 27.22
+    },
+    {
+     "section": "harvest_machinery",
+     "label": "Drying",
+     "fixed_usd_ac": 10.55,
+     "variable_usd_ac": 38.99,
+     "usd_ac": 49.54
+    },
+    {
+     "section": "harvest_machinery",
+     "label": "Handling",
+     "fixed_usd_ac": 6.67,
+     "variable_usd_ac": 5.84,
+     "usd_ac": 12.51
+    },
+    {
+     "section": "labor",
+     "label": "Operator",
+     "fixed_usd_ac": 45.9,
+     "variable_usd_ac": 0.0,
+     "usd_ac": 45.9
+    },
+    {
+     "section": "land",
+     "label": "Cash rent equivalent",
+     "fixed_usd_ac": 274.0,
+     "variable_usd_ac": 0.0,
+     "usd_ac": 274.0
+    }
+   ],
+   "calculator_lines": [
+    {
+     "id": "seed",
+     "usd_ac": 113.7,
+     "from": [
+      "Seed"
+     ],
+     "group": "operating"
+    },
+    {
+     "id": "fertilizer",
+     "usd_ac": 169.44,
+     "from": [
+      "Nitrogen",
+      "Phosphate",
+      "Potash",
+      "Lime (annual cost)"
+     ],
+     "group": "operating"
+    },
+    {
+     "id": "chemicals",
+     "usd_ac": 83.0,
+     "from": [
+      "Herbicide"
+     ],
+     "group": "operating"
+    },
+    {
+     "id": "fuel",
+     "usd_ac": 50.11,
+     "from": [
+      "Apply nitrogen (variable)",
+      "Field cultivate (variable)",
+      "Plant (variable)",
+      "Spray (variable)",
+      "Combine (variable)",
+      "Grain cart (variable)",
+      "Haul (variable)",
+      "Handling (variable)"
+     ],
+     "group": "operating",
+     "note": "ISU's variable machinery cost: fuel, oil and repairs together (USDA ERS splits fuel and repairs)"
+    },
+    {
+     "id": "other",
+     "usd_ac": 52.69,
+     "from": [
+      "Miscellaneous",
+      "Drying (variable)"
+     ],
+     "group": "operating"
+    },
+    {
+     "id": "interest",
+     "usd_ac": 20.75,
+     "from": [
+      "Interest on preharvest variable costs"
+     ],
+     "group": "operating"
+    },
+    {
+     "id": "crop_insurance",
+     "usd_ac": 17.1,
+     "from": [
+      "Crop insurance"
+     ],
+     "group": "operating",
+     "note": "Crop insurance premium: not a USDA ERS cost line"
+    },
+    {
+     "id": "machinery",
+     "usd_ac": 94.27,
+     "from": [
+      "Apply nitrogen (fixed)",
+      "Field cultivate (fixed)",
+      "Plant (fixed)",
+      "Spray (fixed)",
+      "Combine (fixed)",
+      "Grain cart (fixed)",
+      "Haul (fixed)",
+      "Drying (fixed)",
+      "Handling (fixed)"
+     ],
+     "group": "overhead",
+     "note": "ISU's fixed machinery cost: depreciation, interest, insurance and housing"
+    },
+    {
+     "id": "labor",
+     "usd_ac": 45.9,
+     "from": [
+      "Operator"
+     ],
+     "group": "overhead",
+     "note": "Operator labour valued at ISU's hourly rate"
+    },
+    {
+     "id": "land",
+     "usd_ac": 274.0,
+     "from": [
+      "Cash rent equivalent"
+     ],
+     "group": "overhead",
+     "note": "Cash rent equivalent"
+    }
+   ],
+   "items_match_total": true,
+   "total_in_pdf": true,
+   "yield_in_pdf": true,
+   "tool_version": "Version 2.0_12026",
+   "tool_date": "2026-01-16"
+  },
+  {
+   "id": "a1-20sfc_tbl4",
+   "crop": "soybean",
+   "label": "Herbicide-tolerant soybeans following corn",
+   "label_es": "Soya tolerante a herbicidas después de maíz",
+   "title": "Herbicide Tolerant Soybeans Following Corn",
+   "url": "https://www.extension.iastate.edu/agdm/crops/xls/a1-20sfc_tbl4.xlsx",
+   "year": 2026,
+   "yield_assumption": 61.0,
+   "unit": "bu/ac",
+   "operating_usd_ac": 290.21,
+   "fixed_usd_ac": 388.9,
+   "total_usd_ac": 679.11,
+   "items": [
+    {
+     "section": "preharvest_machinery",
+     "label": "Chisel plow",
+     "fixed_usd_ac": 6.4,
+     "variable_usd_ac": 5.5,
+     "usd_ac": 11.9
+    },
+    {
+     "section": "preharvest_machinery",
+     "label": "Tandem disk",
+     "fixed_usd_ac": 8.1,
+     "variable_usd_ac": 4.9,
+     "usd_ac": 13.0
+    },
+    {
+     "section": "preharvest_machinery",
+     "label": "Field cultivate",
+     "fixed_usd_ac": 4.7,
+     "variable_usd_ac": 3.8,
+     "usd_ac": 8.5
+    },
+    {
+     "section": "preharvest_machinery",
+     "label": "Plant",
+     "fixed_usd_ac": 10.4,
+     "variable_usd_ac": 6.8,
+     "usd_ac": 17.2
+    },
+    {
+     "section": "preharvest_machinery",
+     "label": "Spray",
+     "fixed_usd_ac": 4.0,
+     "variable_usd_ac": 2.8,
+     "usd_ac": 6.8
+    },
+    {
+     "section": "preharvest_machinery",
+     "label": "Spray",
+     "fixed_usd_ac": 4.0,
+     "variable_usd_ac": 2.8,
+     "usd_ac": 6.8
+    },
+    {
+     "section": "inputs",
+     "label": "Seed",
+     "fixed_usd_ac": 0.0,
+     "variable_usd_ac": 63.1,
+     "usd_ac": 63.1
+    },
+    {
+     "section": "inputs",
+     "label": "Phosphate",
+     "fixed_usd_ac": 0.0,
+     "variable_usd_ac": 35.28,
+     "usd_ac": 35.28
+    },
+    {
+     "section": "inputs",
+     "label": "Potash",
+     "fixed_usd_ac": 0.0,
+     "variable_usd_ac": 35.88,
+     "usd_ac": 35.88
+    },
+    {
+     "section": "inputs",
+     "label": "Lime (annual cost)",
+     "fixed_usd_ac": 0.0,
+     "variable_usd_ac": 3.72,
+     "usd_ac": 3.72
+    },
+    {
+     "section": "inputs",
+     "label": "Herbicide",
+     "fixed_usd_ac": 0.0,
+     "variable_usd_ac": 75.0,
+     "usd_ac": 75.0
+    },
+    {
+     "section": "inputs",
+     "label": "Crop insurance",
+     "fixed_usd_ac": 0.0,
+     "variable_usd_ac": 9.1,
+     "usd_ac": 9.1
+    },
+    {
+     "section": "inputs",
+     "label": "Miscellaneous",
+     "fixed_usd_ac": 0.0,
+     "variable_usd_ac": 13.7,
+     "usd_ac": 13.7
+    },
+    {
+     "section": "inputs",
+     "label": "Interest on preharvest variable costs",
+     "fixed_usd_ac": 0.0,
+     "variable_usd_ac": 13.07,
+     "usd_ac": 13.07
+    },
+    {
+     "section": "harvest_machinery",
+     "label": "Combine",
+     "fixed_usd_ac": 14.7,
+     "variable_usd_ac": 5.8,
+     "usd_ac": 20.5
+    },
+    {
+     "section": "harvest_machinery",
+     "label": "Grain cart",
+     "fixed_usd_ac": 11.1,
+     "variable_usd_ac": 4.1,
+     "usd_ac": 15.2
+    },
+    {
+     "section": "harvest_machinery",
+     "label": "Haul",
+     "fixed_usd_ac": 4.7,
+     "variable_usd_ac": 3.17,
+     "usd_ac": 7.87
+    },
+    {
+     "section": "harvest_machinery",
+     "label": "Handling",
+     "fixed_usd_ac": 1.93,
+     "variable_usd_ac": 1.69,
+     "usd_ac": 3.62
+    },
+    {
+     "section": "labor",
+     "label": "Operator",
+     "fixed_usd_ac": 44.88,
+     "variable_usd_ac": 0.0,
+     "usd_ac": 44.88
+    },
+    {
+     "section": "land",
+     "label": "Cash rent equivalent",
+     "fixed_usd_ac": 274.0,
+     "variable_usd_ac": 0.0,
+     "usd_ac": 274.0
+    }
+   ],
+   "calculator_lines": [
+    {
+     "id": "seed",
+     "usd_ac": 63.1,
+     "from": [
+      "Seed"
+     ],
+     "group": "operating"
+    },
+    {
+     "id": "fertilizer",
+     "usd_ac": 74.88,
+     "from": [
+      "Phosphate",
+      "Potash",
+      "Lime (annual cost)"
+     ],
+     "group": "operating"
+    },
+    {
+     "id": "chemicals",
+     "usd_ac": 75.0,
+     "from": [
+      "Herbicide"
+     ],
+     "group": "operating"
+    },
+    {
+     "id": "fuel",
+     "usd_ac": 41.36,
+     "from": [
+      "Chisel plow (variable)",
+      "Tandem disk (variable)",
+      "Field cultivate (variable)",
+      "Plant (variable)",
+      "Spray (variable)",
+      "Spray (variable)",
+      "Combine (variable)",
+      "Grain cart (variable)",
+      "Haul (variable)",
+      "Handling (variable)"
+     ],
+     "group": "operating",
+     "note": "ISU's variable machinery cost: fuel, oil and repairs together (USDA ERS splits fuel and repairs)"
+    },
+    {
+     "id": "other",
+     "usd_ac": 13.7,
+     "from": [
+      "Miscellaneous"
+     ],
+     "group": "operating"
+    },
+    {
+     "id": "interest",
+     "usd_ac": 13.07,
+     "from": [
+      "Interest on preharvest variable costs"
+     ],
+     "group": "operating"
+    },
+    {
+     "id": "crop_insurance",
+     "usd_ac": 9.1,
+     "from": [
+      "Crop insurance"
+     ],
+     "group": "operating",
+     "note": "Crop insurance premium: not a USDA ERS cost line"
+    },
+    {
+     "id": "machinery",
+     "usd_ac": 70.03,
+     "from": [
+      "Chisel plow (fixed)",
+      "Tandem disk (fixed)",
+      "Field cultivate (fixed)",
+      "Plant (fixed)",
+      "Spray (fixed)",
+      "Spray (fixed)",
+      "Combine (fixed)",
+      "Grain cart (fixed)",
+      "Haul (fixed)",
+      "Handling (fixed)"
+     ],
+     "group": "overhead",
+     "note": "ISU's fixed machinery cost: depreciation, interest, insurance and housing"
+    },
+    {
+     "id": "labor",
+     "usd_ac": 44.88,
+     "from": [
+      "Operator"
+     ],
+     "group": "overhead",
+     "note": "Operator labour valued at ISU's hourly rate"
+    },
+    {
+     "id": "land",
+     "usd_ac": 274.0,
+     "from": [
+      "Cash rent equivalent"
+     ],
+     "group": "overhead",
+     "note": "Cash rent equivalent"
+    }
+   ],
+   "items_match_total": true,
+   "total_in_pdf": true,
+   "yield_in_pdf": true,
+   "tool_version": "Version 2.0_12026",
+   "tool_date": "2026-01-16"
+  },
+  {
+   "id": "a1-20nontolerant_sfc",
+   "crop": "soybean",
+   "label": "Non-herbicide-tolerant soybeans following corn",
+   "label_es": "Soya no tolerante a herbicidas después de maíz",
+   "title": "Non-Herbicide Tolerant Soybeans Following Corn",
+   "url": "https://www.extension.iastate.edu/agdm/crops/xls/a1-20nontolerant_sfc.xlsx",
+   "year": 2026,
+   "yield_assumption": 61.0,
+   "unit": "bu/ac",
+   "operating_usd_ac": 273.01,
+   "fixed_usd_ac": 393.68,
+   "total_usd_ac": 666.69,
+   "items": [
+    {
+     "section": "preharvest_machinery",
+     "label": "Chisel plow",
+     "fixed_usd_ac": 6.4,
+     "variable_usd_ac": 5.5,
+     "usd_ac": 11.9
+    },
+    {
+     "section": "preharvest_machinery",
+     "label": "Tandem disk",
+     "fixed_usd_ac": 8.1,
+     "variable_usd_ac": 4.9,
+     "usd_ac": 13.0
+    },
+    {
+     "section": "preharvest_machinery",
+     "label": "Field cultivate",
+     "fixed_usd_ac": 4.7,
+     "variable_usd_ac": 3.8,
+     "usd_ac": 8.5
+    },
+    {
+     "section": "preharvest_machinery",
+     "label": "Plant",
+     "fixed_usd_ac": 10.4,
+     "variable_usd_ac": 6.8,
+     "usd_ac": 17.2
+    },
+    {
+     "section": "preharvest_machinery",
+     "label": "Cultivate",
+     "fixed_usd_ac": 4.7,
+     "variable_usd_ac": 3.3,
+     "usd_ac": 8.0
+    },
+    {
+     "section": "preharvest_machinery",
+     "label": "Spray",
+     "fixed_usd_ac": 4.0,
+     "variable_usd_ac": 2.8,
+     "usd_ac": 6.8
+    },
+    {
+     "section": "inputs",
+     "label": "Seed",
+     "fixed_usd_ac": 0.0,
+     "variable_usd_ac": 36.21,
+     "usd_ac": 36.21
+    },
+    {
+     "section": "inputs",
+     "label": "Phosphate",
+     "fixed_usd_ac": 0.0,
+     "variable_usd_ac": 35.28,
+     "usd_ac": 35.28
+    },
+    {
+     "section": "inputs",
+     "label": "Potash",
+     "fixed_usd_ac": 0.0,
+     "variable_usd_ac": 35.88,
+     "usd_ac": 35.88
+    },
+    {
+     "section": "inputs",
+     "label": "Lime (annual cost)",
+     "fixed_usd_ac": 0.0,
+     "variable_usd_ac": 3.72,
+     "usd_ac": 3.72
+    },
+    {
+     "section": "inputs",
+     "label": "Herbicide",
+     "fixed_usd_ac": 0.0,
+     "variable_usd_ac": 85.0,
+     "usd_ac": 85.0
+    },
+    {
+     "section": "inputs",
+     "label": "Crop insurance",
+     "fixed_usd_ac": 0.0,
+     "variable_usd_ac": 9.1,
+     "usd_ac": 9.1
+    },
+    {
+     "section": "inputs",
+     "label": "Miscellaneous",
+     "fixed_usd_ac": 0.0,
+     "variable_usd_ac": 13.7,
+     "usd_ac": 13.7
+    },
+    {
+     "section": "inputs",
+     "label": "Interest on preharvest variable costs",
+     "fixed_usd_ac": 0.0,
+     "variable_usd_ac": 12.25,
+     "usd_ac": 12.25
+    },
+    {
+     "section": "harvest_machinery",
+     "label": "Combine",
+     "fixed_usd_ac": 14.7,
+     "variable_usd_ac": 5.8,
+     "usd_ac": 20.5
+    },
+    {
+     "section": "harvest_machinery",
+     "label": "Grain cart",
+     "fixed_usd_ac": 11.1,
+     "variable_usd_ac": 4.1,
+     "usd_ac": 15.2
+    },
+    {
+     "section": "harvest_machinery",
+     "label": "Haul",
+     "fixed_usd_ac": 4.7,
+     "variable_usd_ac": 3.17,
+     "usd_ac": 7.87
+    },
+    {
+     "section": "harvest_machinery",
+     "label": "Handling",
+     "fixed_usd_ac": 1.93,
+     "variable_usd_ac": 1.69,
+     "usd_ac": 3.62
+    },
+    {
+     "section": "labor",
+     "label": "Operator",
+     "fixed_usd_ac": 48.96,
+     "variable_usd_ac": 0.0,
+     "usd_ac": 48.96
+    },
+    {
+     "section": "land",
+     "label": "Cash rent equivalent",
+     "fixed_usd_ac": 274.0,
+     "variable_usd_ac": 0.0,
+     "usd_ac": 274.0
+    }
+   ],
+   "calculator_lines": [
+    {
+     "id": "seed",
+     "usd_ac": 36.21,
+     "from": [
+      "Seed"
+     ],
+     "group": "operating"
+    },
+    {
+     "id": "fertilizer",
+     "usd_ac": 74.88,
+     "from": [
+      "Phosphate",
+      "Potash",
+      "Lime (annual cost)"
+     ],
+     "group": "operating"
+    },
+    {
+     "id": "chemicals",
+     "usd_ac": 85.0,
+     "from": [
+      "Herbicide"
+     ],
+     "group": "operating"
+    },
+    {
+     "id": "fuel",
+     "usd_ac": 41.86,
+     "from": [
+      "Chisel plow (variable)",
+      "Tandem disk (variable)",
+      "Field cultivate (variable)",
+      "Plant (variable)",
+      "Cultivate (variable)",
+      "Spray (variable)",
+      "Combine (variable)",
+      "Grain cart (variable)",
+      "Haul (variable)",
+      "Handling (variable)"
+     ],
+     "group": "operating",
+     "note": "ISU's variable machinery cost: fuel, oil and repairs together (USDA ERS splits fuel and repairs)"
+    },
+    {
+     "id": "other",
+     "usd_ac": 13.7,
+     "from": [
+      "Miscellaneous"
+     ],
+     "group": "operating"
+    },
+    {
+     "id": "interest",
+     "usd_ac": 12.25,
+     "from": [
+      "Interest on preharvest variable costs"
+     ],
+     "group": "operating"
+    },
+    {
+     "id": "crop_insurance",
+     "usd_ac": 9.1,
+     "from": [
+      "Crop insurance"
+     ],
+     "group": "operating",
+     "note": "Crop insurance premium: not a USDA ERS cost line"
+    },
+    {
+     "id": "machinery",
+     "usd_ac": 70.73,
+     "from": [
+      "Chisel plow (fixed)",
+      "Tandem disk (fixed)",
+      "Field cultivate (fixed)",
+      "Plant (fixed)",
+      "Cultivate (fixed)",
+      "Spray (fixed)",
+      "Combine (fixed)",
+      "Grain cart (fixed)",
+      "Haul (fixed)",
+      "Handling (fixed)"
+     ],
+     "group": "overhead",
+     "note": "ISU's fixed machinery cost: depreciation, interest, insurance and housing"
+    },
+    {
+     "id": "labor",
+     "usd_ac": 48.96,
+     "from": [
+      "Operator"
+     ],
+     "group": "overhead",
+     "note": "Operator labour valued at ISU's hourly rate"
+    },
+    {
+     "id": "land",
+     "usd_ac": 274.0,
+     "from": [
+      "Cash rent equivalent"
+     ],
+     "group": "overhead",
+     "note": "Cash rent equivalent"
+    }
+   ],
+   "items_match_total": true,
+   "total_in_pdf": true,
+   "yield_in_pdf": true,
+   "tool_version": "Version 2.0_12026",
+   "tool_date": "2026-01-16"
+  },
+  {
+   "id": "a1-20striptillsfctbl5",
+   "crop": "soybean",
+   "label": "Soybeans following corn, strip-till",
+   "label_es": "Soya después de maíz, labranza en franjas",
+   "title": "Strip Till Herbicide Tolerant Drilled Soybeans Following Corn",
+   "url": "https://www.extension.iastate.edu/agdm/crops/xls/a1-20striptillsfctbl5.xlsx",
+   "year": 2026,
+   "yield_assumption": 61.0,
+   "unit": "bu/ac",
+   "operating_usd_ac": 303.56,
+   "fixed_usd_ac": 365.2,
+   "total_usd_ac": 668.76,
+   "items": [
+    {
+     "section": "preharvest_machinery",
+     "label": "No-till drill",
+     "fixed_usd_ac": 16.1,
+     "variable_usd_ac": 10.7,
+     "usd_ac": 26.8
+    },
+    {
+     "section": "preharvest_machinery",
+     "label": "Spray",
+     "fixed_usd_ac": 4.0,
+     "variable_usd_ac": 2.8,
+     "usd_ac": 6.8
+    },
+    {
+     "section": "preharvest_machinery",
+     "label": "Spray",
+     "fixed_usd_ac": 4.0,
+     "variable_usd_ac": 2.8,
+     "usd_ac": 6.8
+    },
+    {
+     "section": "inputs",
+     "label": "Seed",
+     "fixed_usd_ac": 0.0,
+     "variable_usd_ac": 72.11,
+     "usd_ac": 72.11
+    },
+    {
+     "section": "inputs",
+     "label": "Phosphate",
+     "fixed_usd_ac": 0.0,
+     "variable_usd_ac": 35.28,
+     "usd_ac": 35.28
+    },
+    {
+     "section": "inputs",
+     "label": "Potash",
+     "fixed_usd_ac": 0.0,
+     "variable_usd_ac": 35.88,
+     "usd_ac": 35.88
+    },
+    {
+     "section": "inputs",
+     "label": "Lime (annual cost)",
+     "fixed_usd_ac": 0.0,
+     "variable_usd_ac": 3.72,
+     "usd_ac": 3.72
+    },
+    {
+     "section": "inputs",
+     "label": "Herbicide",
+     "fixed_usd_ac": 0.0,
+     "variable_usd_ac": 89.0,
+     "usd_ac": 89.0
+    },
+    {
+     "section": "inputs",
+     "label": "Crop insurance",
+     "fixed_usd_ac": 0.0,
+     "variable_usd_ac": 9.1,
+     "usd_ac": 9.1
+    },
+    {
+     "section": "inputs",
+     "label": "Miscellaneous",
+     "fixed_usd_ac": 0.0,
+     "variable_usd_ac": 13.7,
+     "usd_ac": 13.7
+    },
+    {
+     "section": "inputs",
+     "label": "Interest on preharvest variable costs",
+     "fixed_usd_ac": 0.0,
+     "variable_usd_ac": 13.7,
+     "usd_ac": 13.7
+    },
+    {
+     "section": "harvest_machinery",
+     "label": "Combine",
+     "fixed_usd_ac": 14.7,
+     "variable_usd_ac": 5.8,
+     "usd_ac": 20.5
+    },
+    {
+     "section": "harvest_machinery",
+     "label": "Grain cart",
+     "fixed_usd_ac": 11.1,
+     "variable_usd_ac": 4.1,
+     "usd_ac": 15.2
+    },
+    {
+     "section": "harvest_machinery",
+     "label": "Haul",
+     "fixed_usd_ac": 4.7,
+     "variable_usd_ac": 3.17,
+     "usd_ac": 7.87
+    },
+    {
+     "section": "harvest_machinery",
+     "label": "Handling",
+     "fixed_usd_ac": 1.93,
+     "variable_usd_ac": 1.69,
+     "usd_ac": 3.62
+    },
+    {
+     "section": "labor",
+     "label": "Operator",
+     "fixed_usd_ac": 34.68,
+     "variable_usd_ac": 0.0,
+     "usd_ac": 34.68
+    },
+    {
+     "section": "land",
+     "label": "Cash rent equivalent",
+     "fixed_usd_ac": 274.0,
+     "variable_usd_ac": 0.0,
+     "usd_ac": 274.0
+    }
+   ],
+   "calculator_lines": [
+    {
+     "id": "seed",
+     "usd_ac": 72.11,
+     "from": [
+      "Seed"
+     ],
+     "group": "operating"
+    },
+    {
+     "id": "fertilizer",
+     "usd_ac": 74.88,
+     "from": [
+      "Phosphate",
+      "Potash",
+      "Lime (annual cost)"
+     ],
+     "group": "operating"
+    },
+    {
+     "id": "chemicals",
+     "usd_ac": 89.0,
+     "from": [
+      "Herbicide"
+     ],
+     "group": "operating"
+    },
+    {
+     "id": "fuel",
+     "usd_ac": 31.06,
+     "from": [
+      "No-till drill (variable)",
+      "Spray (variable)",
+      "Spray (variable)",
+      "Combine (variable)",
+      "Grain cart (variable)",
+      "Haul (variable)",
+      "Handling (variable)"
+     ],
+     "group": "operating",
+     "note": "ISU's variable machinery cost: fuel, oil and repairs together (USDA ERS splits fuel and repairs)"
+    },
+    {
+     "id": "other",
+     "usd_ac": 13.7,
+     "from": [
+      "Miscellaneous"
+     ],
+     "group": "operating"
+    },
+    {
+     "id": "interest",
+     "usd_ac": 13.7,
+     "from": [
+      "Interest on preharvest variable costs"
+     ],
+     "group": "operating"
+    },
+    {
+     "id": "crop_insurance",
+     "usd_ac": 9.1,
+     "from": [
+      "Crop insurance"
+     ],
+     "group": "operating",
+     "note": "Crop insurance premium: not a USDA ERS cost line"
+    },
+    {
+     "id": "machinery",
+     "usd_ac": 56.53,
+     "from": [
+      "No-till drill (fixed)",
+      "Spray (fixed)",
+      "Spray (fixed)",
+      "Combine (fixed)",
+      "Grain cart (fixed)",
+      "Haul (fixed)",
+      "Handling (fixed)"
+     ],
+     "group": "overhead",
+     "note": "ISU's fixed machinery cost: depreciation, interest, insurance and housing"
+    },
+    {
+     "id": "labor",
+     "usd_ac": 34.68,
+     "from": [
+      "Operator"
+     ],
+     "group": "overhead",
+     "note": "Operator labour valued at ISU's hourly rate"
+    },
+    {
+     "id": "land",
+     "usd_ac": 274.0,
+     "from": [
+      "Cash rent equivalent"
+     ],
+     "group": "overhead",
+     "note": "Cash rent equivalent"
+    }
+   ],
+   "items_match_total": true,
+   "total_in_pdf": true,
+   "yield_in_pdf": true,
+   "tool_version": "Version 2.0_12026",
+   "tool_date": "2026-01-16"
+  },
+  {
+   "id": "a1-20lowtillsfctbl6",
+   "crop": "soybean",
+   "label": "Soybeans following corn, low-till",
+   "label_es": "Soya después de maíz, labranza reducida",
+   "title": "Low-till Herbicide Tolerant Drilled Soybeans Following Corn",
+   "url": "https://www.extension.iastate.edu/agdm/crops/xls/a1-20lowtillsfctbl6.xlsx",
+   "year": 2026,
+   "yield_assumption": 61.0,
+   "unit": "bu/ac",
+   "operating_usd_ac": 303.45,
+   "fixed_usd_ac": 365.2,
+   "total_usd_ac": 668.66,
+   "items": [
+    {
+     "section": "preharvest_machinery",
+     "label": "Tandem disk",
+     "fixed_usd_ac": 8.1,
+     "variable_usd_ac": 4.9,
+     "usd_ac": 13.0
+    },
+    {
+     "section": "preharvest_machinery",
+     "label": "Drill",
+     "fixed_usd_ac": 8.0,
+     "variable_usd_ac": 5.7,
+     "usd_ac": 13.7
+    },
+    {
+     "section": "preharvest_machinery",
+     "label": "Spray",
+     "fixed_usd_ac": 4.0,
+     "variable_usd_ac": 2.8,
+     "usd_ac": 6.8
+    },
+    {
+     "section": "preharvest_machinery",
+     "label": "Spray",
+     "fixed_usd_ac": 4.0,
+     "variable_usd_ac": 2.8,
+     "usd_ac": 6.8
+    },
+    {
+     "section": "inputs",
+     "label": "Seed",
+     "fixed_usd_ac": 0.0,
+     "variable_usd_ac": 72.11,
+     "usd_ac": 72.11
+    },
+    {
+     "section": "inputs",
+     "label": "Phosphate",
+     "fixed_usd_ac": 0.0,
+     "variable_usd_ac": 35.28,
+     "usd_ac": 35.28
+    },
+    {
+     "section": "inputs",
+     "label": "Potash",
+     "fixed_usd_ac": 0.0,
+     "variable_usd_ac": 35.88,
+     "usd_ac": 35.88
+    },
+    {
+     "section": "inputs",
+     "label": "Lime (annual cost)",
+     "fixed_usd_ac": 0.0,
+     "variable_usd_ac": 3.72,
+     "usd_ac": 3.72
+    },
+    {
+     "section": "inputs",
+     "label": "Herbicide",
+     "fixed_usd_ac": 0.0,
+     "variable_usd_ac": 89.0,
+     "usd_ac": 89.0
+    },
+    {
+     "section": "inputs",
+     "label": "Crop insurance",
+     "fixed_usd_ac": 0.0,
+     "variable_usd_ac": 9.1,
+     "usd_ac": 9.1
+    },
+    {
+     "section": "inputs",
+     "label": "Miscellaneous",
+     "fixed_usd_ac": 0.0,
+     "variable_usd_ac": 13.7,
+     "usd_ac": 13.7
+    },
+    {
+     "section": "inputs",
+     "label": "Interest on preharvest variable costs",
+     "fixed_usd_ac": 0.0,
+     "variable_usd_ac": 13.69,
+     "usd_ac": 13.69
+    },
+    {
+     "section": "harvest_machinery",
+     "label": "Combine",
+     "fixed_usd_ac": 14.7,
+     "variable_usd_ac": 5.8,
+     "usd_ac": 20.5
+    },
+    {
+     "section": "harvest_machinery",
+     "label": "Grain cart",
+     "fixed_usd_ac": 11.1,
+     "variable_usd_ac": 4.1,
+     "usd_ac": 15.2
+    },
+    {
+     "section": "harvest_machinery",
+     "label": "Haul",
+     "fixed_usd_ac": 4.7,
+     "variable_usd_ac": 3.17,
+     "usd_ac": 7.87
+    },
+    {
+     "section": "harvest_machinery",
+     "label": "Handling",
+     "fixed_usd_ac": 1.93,
+     "variable_usd_ac": 1.69,
+     "usd_ac": 3.62
+    },
+    {
+     "section": "labor",
+     "label": "Operator",
+     "fixed_usd_ac": 34.68,
+     "variable_usd_ac": 0.0,
+     "usd_ac": 34.68
+    },
+    {
+     "section": "land",
+     "label": "Cash rent equivalent",
+     "fixed_usd_ac": 274.0,
+     "variable_usd_ac": 0.0,
+     "usd_ac": 274.0
+    }
+   ],
+   "calculator_lines": [
+    {
+     "id": "seed",
+     "usd_ac": 72.11,
+     "from": [
+      "Seed"
+     ],
+     "group": "operating"
+    },
+    {
+     "id": "fertilizer",
+     "usd_ac": 74.88,
+     "from": [
+      "Phosphate",
+      "Potash",
+      "Lime (annual cost)"
+     ],
+     "group": "operating"
+    },
+    {
+     "id": "chemicals",
+     "usd_ac": 89.0,
+     "from": [
+      "Herbicide"
+     ],
+     "group": "operating"
+    },
+    {
+     "id": "fuel",
+     "usd_ac": 30.96,
+     "from": [
+      "Tandem disk (variable)",
+      "Drill (variable)",
+      "Spray (variable)",
+      "Spray (variable)",
+      "Combine (variable)",
+      "Grain cart (variable)",
+      "Haul (variable)",
+      "Handling (variable)"
+     ],
+     "group": "operating",
+     "note": "ISU's variable machinery cost: fuel, oil and repairs together (USDA ERS splits fuel and repairs)"
+    },
+    {
+     "id": "other",
+     "usd_ac": 13.7,
+     "from": [
+      "Miscellaneous"
+     ],
+     "group": "operating"
+    },
+    {
+     "id": "interest",
+     "usd_ac": 13.69,
+     "from": [
+      "Interest on preharvest variable costs"
+     ],
+     "group": "operating"
+    },
+    {
+     "id": "crop_insurance",
+     "usd_ac": 9.1,
+     "from": [
+      "Crop insurance"
+     ],
+     "group": "operating",
+     "note": "Crop insurance premium: not a USDA ERS cost line"
+    },
+    {
+     "id": "machinery",
+     "usd_ac": 56.53,
+     "from": [
+      "Tandem disk (fixed)",
+      "Drill (fixed)",
+      "Spray (fixed)",
+      "Spray (fixed)",
+      "Combine (fixed)",
+      "Grain cart (fixed)",
+      "Haul (fixed)",
+      "Handling (fixed)"
+     ],
+     "group": "overhead",
+     "note": "ISU's fixed machinery cost: depreciation, interest, insurance and housing"
+    },
+    {
+     "id": "labor",
+     "usd_ac": 34.68,
+     "from": [
+      "Operator"
+     ],
+     "group": "overhead",
+     "note": "Operator labour valued at ISU's hourly rate"
+    },
+    {
+     "id": "land",
+     "usd_ac": 274.0,
+     "from": [
+      "Cash rent equivalent"
+     ],
+     "group": "overhead",
+     "note": "Cash rent equivalent"
+    }
+   ],
+   "items_match_total": true,
+   "total_in_pdf": true,
+   "yield_in_pdf": true,
+   "tool_version": "Version 2.0_12026",
+   "tool_date": "2026-01-16"
+  },
+  {
+   "id": "a1-15-20oatsmallgrainbudget",
+   "crop": "oats",
+   "label": "Oats (small grain) for grain and straw",
+   "label_es": "Avena (cereal menor) para grano y paja",
+   "title": "Production Costs for Oat Crop or Other Small Grain",
+   "url": "https://www.extension.iastate.edu/agdm/crops/xls/a1-15-20oatsmallgrainbudget.xlsx",
+   "year": 2026,
+   "yield_assumption": 80.0,
+   "unit": "bu/ac",
+   "operating_usd_ac": 235.63,
+   "fixed_usd_ac": 242.78,
+   "total_usd_ac": 478.41,
+   "items": [
+    {
+     "section": "preharvest_machinery",
+     "label": "Tandem disk (2 times)",
+     "fixed_usd_ac": 16.2,
+     "variable_usd_ac": 9.8,
+     "usd_ac": 26.0
+    },
+    {
+     "section": "preharvest_machinery",
+     "label": "Spread fertilizer",
+     "fixed_usd_ac": 3.5,
+     "variable_usd_ac": 2.2,
+     "usd_ac": 5.7
+    },
+    {
+     "section": "preharvest_machinery",
+     "label": "Harrow",
+     "fixed_usd_ac": 3.6,
+     "variable_usd_ac": 2.1,
+     "usd_ac": 5.7
+    },
+    {
+     "section": "preharvest_machinery",
+     "label": "Seed (drill)",
+     "fixed_usd_ac": 8.0,
+     "variable_usd_ac": 5.7,
+     "usd_ac": 13.7
+    },
+    {
+     "section": "inputs",
+     "label": "Seed",
+     "fixed_usd_ac": 0.0,
+     "variable_usd_ac": 35.18,
+     "usd_ac": 35.18
+    },
+    {
+     "section": "inputs",
+     "label": "Nitrogen",
+     "fixed_usd_ac": 0.0,
+     "variable_usd_ac": 31.8,
+     "usd_ac": 31.8
+    },
+    {
+     "section": "inputs",
+     "label": "Phosphate",
+     "fixed_usd_ac": 0.0,
+     "variable_usd_ac": 32.4,
+     "usd_ac": 32.4
+    },
+    {
+     "section": "inputs",
+     "label": "Potash",
+     "fixed_usd_ac": 0.0,
+     "variable_usd_ac": 50.7,
+     "usd_ac": 50.7
+    },
+    {
+     "section": "inputs",
+     "label": "Lime (annual cost)",
+     "fixed_usd_ac": 0.0,
+     "variable_usd_ac": 40.0,
+     "usd_ac": 40.0
+    },
+    {
+     "section": "inputs",
+     "label": "Crop insurance",
+     "fixed_usd_ac": 0.0,
+     "variable_usd_ac": 4.1,
+     "usd_ac": 4.1
+    },
+    {
+     "section": "labor",
+     "label": "Operator",
+     "fixed_usd_ac": 20.4,
+     "variable_usd_ac": 0.0,
+     "usd_ac": 20.4
+    },
+    {
+     "section": "land",
+     "label": "Cash rent equivalent",
+     "fixed_usd_ac": 150.0,
+     "variable_usd_ac": 0.0,
+     "usd_ac": 150.0
+    },
+    {
+     "section": "harvest_machinery",
+     "label": "Combine",
+     "fixed_usd_ac": 13.3,
+     "variable_usd_ac": 4.3,
+     "usd_ac": 17.6
+    },
+    {
+     "section": "harvest_machinery",
+     "label": "Haul",
+     "fixed_usd_ac": 6.16,
+     "variable_usd_ac": 4.16,
+     "usd_ac": 10.32
+    },
+    {
+     "section": "harvest_machinery",
+     "label": "Rake",
+     "fixed_usd_ac": 5.6,
+     "variable_usd_ac": 2.8,
+     "usd_ac": 8.4
+    },
+    {
+     "section": "harvest_machinery",
+     "label": "Small square baler",
+     "fixed_usd_ac": 12.4,
+     "variable_usd_ac": 5.9,
+     "usd_ac": 18.3
+    },
+    {
+     "section": "harvest_machinery",
+     "label": "Haul Straw",
+     "fixed_usd_ac": 3.62,
+     "variable_usd_ac": 4.49,
+     "usd_ac": 8.11
+    }
+   ],
+   "calculator_lines": [
+    {
+     "id": "seed",
+     "usd_ac": 35.18,
+     "from": [
+      "Seed"
+     ],
+     "group": "operating"
+    },
+    {
+     "id": "fertilizer",
+     "usd_ac": 154.9,
+     "from": [
+      "Nitrogen",
+      "Phosphate",
+      "Potash",
+      "Lime (annual cost)"
+     ],
+     "group": "operating"
+    },
+    {
+     "id": "fuel",
+     "usd_ac": 41.45,
+     "from": [
+      "Tandem disk (2 times) (variable)",
+      "Spread fertilizer (variable)",
+      "Harrow (variable)",
+      "Seed (drill) (variable)",
+      "Combine (variable)",
+      "Haul (variable)",
+      "Rake (variable)",
+      "Small square baler (variable)",
+      "Haul Straw (variable)"
+     ],
+     "group": "operating",
+     "note": "ISU's variable machinery cost: fuel, oil and repairs together (USDA ERS splits fuel and repairs)"
+    },
+    {
+     "id": "crop_insurance",
+     "usd_ac": 4.1,
+     "from": [
+      "Crop insurance"
+     ],
+     "group": "operating",
+     "note": "Crop insurance premium: not a USDA ERS cost line"
+    },
+    {
+     "id": "machinery",
+     "usd_ac": 72.38,
+     "from": [
+      "Tandem disk (2 times) (fixed)",
+      "Spread fertilizer (fixed)",
+      "Harrow (fixed)",
+      "Seed (drill) (fixed)",
+      "Combine (fixed)",
+      "Haul (fixed)",
+      "Rake (fixed)",
+      "Small square baler (fixed)",
+      "Haul Straw (fixed)"
+     ],
+     "group": "overhead",
+     "note": "ISU's fixed machinery cost: depreciation, interest, insurance and housing"
+    },
+    {
+     "id": "labor",
+     "usd_ac": 20.4,
+     "from": [
+      "Operator"
+     ],
+     "group": "overhead",
+     "note": "Operator labour valued at ISU's hourly rate"
+    },
+    {
+     "id": "land",
+     "usd_ac": 150.0,
+     "from": [
+      "Cash rent equivalent"
+     ],
+     "group": "overhead",
+     "note": "Cash rent equivalent"
+    }
+   ],
+   "items_match_total": true,
+   "total_in_pdf": false,
+   "yield_in_pdf": true,
+   "tool_version": "Version 2.0_12026",
+   "tool_date": "2026-01-16"
+  }
+ ]
+}

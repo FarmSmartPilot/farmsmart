@@ -1,0 +1,409 @@
+/* Shared styles for GlobeView, FlatMap, FieldMap and WindRose (owner: globe-map).
+   Uses design tokens from web/src/design/tokens.css when present, with fallbacks. */
+
+.fsm-root {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 240px;
+  overflow: hidden;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  color: var(--ink, #0e2a47);
+}
+.fsm-root:focus-visible {
+  outline: 3px solid var(--sky, #2f7fb5);
+  outline-offset: -3px;
+}
+.fsm-canvas,
+.fsm-canvas.maplibregl-map {
+  /* maplibre-gl.css sets .maplibregl-map { position: relative }, which collapsed the 2D map to 0 px height. */
+  position: absolute;
+  inset: 0;
+}
+.fsm-globe {
+  background: radial-gradient(ellipse at 50% 45%, #0e2a47 0%, #08182a 75%);
+}
+/* Hide Cesium's own widget chrome we don't use */
+.fsm-globe .cesium-viewer-bottom {
+  display: none !important;
+}
+.fsm-globe .cesium-viewer,
+.fsm-globe .cesium-widget,
+.fsm-globe .cesium-widget canvas {
+  width: 100%;
+  height: 100%;
+}
+
+/* ---- Controls (zoom, north, spin, 2D/3D) ---- */
+.fsm-controls {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  z-index: 3;
+}
+.fsm-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-width: 36px;
+  height: 36px;
+  padding: 0 10px;
+  border: 1px solid var(--line, #dde3ea);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.96);
+  color: var(--navy, #0e2a47);
+  font: 600 13px/1 Inter, system-ui, sans-serif;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(14, 42, 71, 0.18);
+}
+.fsm-btn:hover {
+  background: #fff;
+  border-color: var(--line-strong, #c3ccd6);
+}
+.fsm-btn:focus-visible {
+  outline: 3px solid var(--sky, #2f7fb5);
+  outline-offset: 1px;
+}
+.fsm-btn[aria-pressed='true'] {
+  background: var(--navy, #0e2a47);
+  color: #fff;
+  border-color: var(--navy, #0e2a47);
+}
+.fsm-btn svg {
+  width: 16px;
+  height: 16px;
+}
+@media (pointer: coarse) {
+  .fsm-btn {
+    min-width: 44px;
+    height: 44px;
+  }
+}
+
+/* ---- Attribution: small but always visible ---- */
+.fsm-attrib {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: max-content;
+  max-width: min(100%, 720px);
+  padding: 2px 6px;
+  font-size: 10px;
+  line-height: 1.35;
+  color: #22303f;
+  background: rgba(255, 255, 255, 0.82);
+  border-top-left-radius: 4px;
+  z-index: 2;
+}
+.fsm-attrib a {
+  color: inherit;
+}
+.fsm-attrib .cesium-widget-credits {
+  position: static;
+  display: inline;
+  padding: 0;
+  font-size: inherit;
+  color: inherit;
+  background: none;
+  white-space: normal;
+}
+.fsm-attrib .cesium-credit-textContainer,
+.fsm-attrib .cesium-credit-logoContainer {
+  display: inline;
+}
+.fsm-attrib .cesium-credit-logoContainer img {
+  height: 12px;
+  vertical-align: middle;
+}
+.fsm-attrib .cesium-credit-expand-link {
+  display: none !important;
+}
+
+.maplibregl-ctrl-attrib {
+  font-size: 10px !important;
+}
+
+/* ---- Chips (imagery stamp, notes) ---- */
+.fsm-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 28px;
+  padding: 0 10px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--navy, #0e2a47);
+  font: 600 12px/1 Inter, system-ui, sans-serif;
+  box-shadow: 0 1px 3px rgba(14, 42, 71, 0.18);
+  white-space: nowrap;
+}
+.fsm-chip--muted {
+  color: var(--ink-2, #4a5b6e);
+  font-weight: 500;
+}
+.fsm-chip--warn {
+  background: var(--wheat-tint, #f7eedd);
+  color: #6b4a0e;
+}
+.fsm-topleft {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  z-index: 3;
+  max-width: calc(100% - 80px);
+}
+.fsm-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+/* ---- Status / loading ---- */
+.fsm-status {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 8px 14px;
+  border-radius: 8px;
+  background: rgba(14, 42, 71, 0.8);
+  color: #fff;
+  font-size: 14px;
+  z-index: 4;
+}
+
+/* ---- Legend ---- */
+.fsm-legend {
+  position: absolute;
+  left: 12px;
+  bottom: 44px;
+  z-index: 3;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 1px 3px rgba(14, 42, 71, 0.18);
+  font-size: 12px;
+  max-width: 260px;
+}
+.fsm-legend h4 {
+  margin: 0 0 4px;
+  font-size: 12px;
+  font-weight: 700;
+}
+.fsm-legend .fsm-ramp {
+  height: 10px;
+  width: 200px;
+  border-radius: 2px;
+}
+.fsm-legend .fsm-ramp-labels {
+  display: flex;
+  justify-content: space-between;
+  width: 200px;
+  color: var(--ink-2, #4a5b6e);
+}
+.fsm-legend p {
+  margin: 4px 0 0;
+  color: var(--ink-2, #4a5b6e);
+}
+.fsm-swatch {
+  display: inline-block;
+  width: 14px;
+  height: 10px;
+  margin-right: 4px;
+  vertical-align: middle;
+  border: 1.5px solid #fff;
+  background: repeating-linear-gradient(45deg, #fff 0 1.5px, transparent 1.5px 4px), rgba(47, 127, 181, 0.5);
+}
+
+/* ---- Draw toolbar ---- */
+.fsm-draw-hint {
+  position: absolute;
+  left: 50%;
+  bottom: 32px;
+  transform: translateX(-50%);
+  z-index: 3;
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: rgba(14, 42, 71, 0.88);
+  color: #fff;
+  font-size: 13px;
+  max-width: calc(100% - 24px);
+  text-align: center;
+}
+.fsm-crosshair {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 22px;
+  height: 22px;
+  margin: -11px 0 0 -11px;
+  pointer-events: none;
+  z-index: 2;
+  background:
+    linear-gradient(#fff, #fff) center / 2px 100% no-repeat,
+    linear-gradient(#fff, #fff) center / 100% 2px no-repeat;
+  filter: drop-shadow(0 0 1px #000);
+}
+.fsm-drawing .maplibregl-canvas {
+  cursor: crosshair;
+}
+
+/* ---- Wind rose inset ---- */
+.fsm-windrose-inset {
+  position: absolute;
+  top: 12px;
+  right: 84px;
+  z-index: 3;
+}
+.fsm-windrose {
+  display: inline-block;
+  max-width: 200px;
+  padding: 8px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 1px 3px rgba(14, 42, 71, 0.18);
+  font-size: 11px;
+  color: var(--ink, #0e2a47);
+}
+.fsm-windrose h4 {
+  margin: 0 0 2px;
+  font-size: 12px;
+  font-weight: 700;
+}
+.fsm-windrose .fsm-wr-sub {
+  color: var(--ink-2, #4a5b6e);
+  margin: 0 0 4px;
+}
+.fsm-windrose .fsm-wr-legend {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+.fsm-windrose .fsm-wr-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+.fsm-windrose .fsm-wr-legend i {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+}
+.fsm-windrose .fsm-wr-src {
+  margin-top: 4px;
+  color: var(--ink-2, #4a5b6e);
+  font-size: 10px;
+}
+.fsm-sr-only {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 600px) {
+  .fsm-windrose-inset {
+    right: auto;
+    left: 12px;
+    top: auto;
+    bottom: 120px;
+  }
+  .fsm-legend {
+    bottom: 24px;
+  }
+}
+
+/* ---- Stacked layout: map on top, everything else in a bar below so nothing covers the field ---- */
+.fsm-root--stack {
+  display: flex;
+  flex-direction: column;
+  overflow: visible;
+}
+.fsm-mapbox {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 260px;
+  overflow: hidden;
+}
+.fsm-root--stack .fsm-controls {
+  top: 10px;
+  right: 10px;
+}
+.fsm-below {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px 12px 12px;
+  background: var(--card, #fff);
+  border-top: 1px solid var(--line, #dde3ea);
+}
+.fsm-tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+.fsm-tools .fsm-btn {
+  height: 34px;
+}
+.fsm-tools__sep {
+  flex: 1 1 8px;
+}
+.fsm-root--stack .fsm-topleft,
+.fsm-notes {
+  position: static;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  max-width: none;
+}
+.fsm-notes:empty {
+  display: none;
+}
+.fsm-notes .fsm-chip {
+  box-shadow: none;
+  border: 1px solid var(--line, #dde3ea);
+}
+.fsm-legends {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: flex-start;
+}
+.fsm-legends:empty {
+  display: none;
+}
+.fsm-root--stack .fsm-windrose-inset,
+.fsm-root--stack .fsm-legend {
+  position: static;
+  box-shadow: none;
+  border: 1px solid var(--line, #dde3ea);
+}
+@media (pointer: coarse) {
+  .fsm-tools .fsm-btn {
+    min-height: 44px;
+  }
+}
+
+/* Satellite | Map segmented switch */
+.fsm-seg { display: inline-flex; }
+.fsm-seg .fsm-btn:first-child { border-top-right-radius: 0; border-bottom-right-radius: 0; }
+.fsm-seg .fsm-btn:last-child { border-top-left-radius: 0; border-bottom-left-radius: 0; margin-left: -1px; }

@@ -1,0 +1,314 @@
+# FarmSmart planting / harvest calendars per pilot region (agronomy agent)
+# --------------------------------------------------------------------------
+# Window format (month-day strings, "MM-DD"):
+#   plant:   {begin, most_active: [start, end], end}
+#   harvest: {begin, most_active: [start, end], end}
+# A window that crosses the new year is allowed (begin later than end).
+# null = no citable value found for this region (do not fill by guessing).
+# Relative windows (cover crops) use:
+#   relative: {anchor: first_fall_frost | cash_planting | cash_harvest, days: [min, max]}
+#   negative days = before the anchor; positive = after. The engine resolves the
+#   anchor from the region's frost climatology (NASA POWER / station data).
+# Scale: US windows are STATE level (NASS AH-628), not county or field level.
+# NASS AH-628 data are 2010 and describe "usual" dates; local practice can differ.
+# Where AH-628's crop-section table and its by-state page disagree (e.g. Iowa corn
+# harvest), the by-state page is used.
+# --------------------------------------------------------------------------
+schema_version: 1
+
+sources:
+  nass_ah628: {cite: "USDA NASS 2010, Field Crops Usual Planting and Harvesting Dates, Agricultural Handbook 628 (state pages for California, Iowa, Kansas)", url: "https://downloads.usda.library.cornell.edu/usda-esmis/files/vm40xr56k/dv13zw65p/w9505297d/planting-10-29-2010.pdf"}
+  fao56_t11: {cite: "Allen et al. 1998, FAO-56 Table 11 (plant date and stage lengths by region)", url: "https://www.fao.org/4/X0490E/x0490e0b.htm"}
+  sare_rye: {cite: "SARE, Managing Cover Crops Profitably, Cereal Rye (seed late summer to mid-fall in Zones 3-7; kill at least 10 days before corn)", url: "https://www.sare.org/publications/managing-cover-crops-profitably/nonlegume-cover-crops/cereal-rye/"}
+  sare_oats: {cite: "SARE, Managing Cover Crops Profitably, Oats (seed 40-60 days before first killing frost)", url: "https://www.sare.org/publications/managing-cover-crops-profitably/nonlegume-cover-crops/oats/"}
+  sare_crimson: {cite: "SARE, Managing Cover Crops Profitably, Crimson Clover (seed 6-8 weeks before average first frost)", url: "https://www.sare.org/publications/managing-cover-crops-profitably/legume-cover-crops/crimson-clover/"}
+  sare_vetch: {cite: "SARE, Managing Cover Crops Profitably, Hairy Vetch (plant 30-45 days before killing frost; corn about 10 days after late-April/early-May kill)", url: "https://www.sare.org/publications/managing-cover-crops-profitably/legume-cover-crops/hairy-vetch/"}
+  rma_mgr19017: {cite: "USDA RMA Managers Bulletin MGR-19-017 (NRCS Cover Crop Termination Guidelines v4, June 2019, apply from 2020 crop year)", url: "https://rma.usda.gov/policy-procedure/bulletins-memos/managers-bulletin/2019/mgr-19-017"}
+  scic_2026: {cite: "APAS news release 26 May 2026 (SCIC final seeding deadline June 20)", url: "https://apas.ca/pub/documents/News%20Releases/2026/apas-news-release---request-for-clarity-on-crop-insurnace-seeding-deadlines-may-26-2026.pdf"}
+  sk_winter_wheat: {cite: "Grainews, Winter wheat and crop insurance deadlines (seeding after Sept 15 loses winterkill coverage; older source)", url: "https://www.grainews.ca/features/winter-wheat-and-crop-insurance-deadlines"}
+  mb_agclimate: {cite: "Manitoba Agriculture, Agricultural Climate of Manitoba, Table 1 days to maturity", url: "https://gov.mb.ca/agriculture/weather/agricultural-climate-of-mb.html"}
+  pau_wheat: {cite: "PAU Ludhiana via The Tribune: first fortnight of November optimum; sow by Nov 15", url: "https://www.tribuneindia.com/news/punjab/sow-wheat-by-nov-15-to-prevent-grain-shrivelling-pau-to-farmers-448039"}
+  punjab_act2009: {cite: "Punjab Preservation of Subsoil Water Act 2009 (no nursery before May 10, no transplanting before June 10; state notifies the date each year)", url: "https://leap.unep.org/en/countries/in/national-legislation/punjab-preservation-subsoil-water-act-2009"}
+  mt_soy_2026: {cite: "CNA / IN Conjunta Sedec-Indea-MT: soybean-free period Jun 8 - Sep 6 2026; sowing allowed Sep 7 2026 - Jan 7 2027", url: "https://cnabrasil.org.br/noticias/calendario-da-soja-em-mt-mantem-vazio-sanitario-de-junho-a-setembro-para-2026"}
+  conab_mt_cotton: {cite: "Conab Mato Grosso crop bulletin: cotton planting normally starts in December", url: "https://www.gov.br/conab/pt-br/atuacao/informacoes-agropecuarias/safras/safra-de-graos/boletim-da-safra-de-graos/5o-levantamento-safra-2025-26/e-book_boletim-de-safras-5o-levantamento_2026.pdf"}
+  conab_calendar: {cite: "Conab, Calendario de Plantio e Colheita de Graos no Brasil 2022 (to read for MT month windows)", url: "https://www.gov.br/conab/pt-br"}
+  sk_crop_report_2026: {cite: "Saskatchewan Ministry of Agriculture, Crop Report 2026 (weekly). Province-wide all-crop progress, 5-year average 2021-2025: seeded 12% May 4, 28% May 11, 55% May 18, 74% May 25, 91% Jun 1, 97% Jun 8; combined 6% Aug 10, 15% Aug 17, 24% Aug 24, 39% Aug 31, 58% Sep 7, 71% Sep 14, 82% Sep 21, 91% Sep 28, 97% Oct 5", url: "https://www.saskatchewan.ca/business/agriculture-natural-resources-and-industry/agribusiness-farmers-and-ranchers/market-and-trade-statistics/crops-statistics/crop-report/previous-crop-reports"}
+  pau_kharif_2026: {cite: "Punjab Agricultural University, Package of Practices for Crops of Punjab, Kharif 2026 (Vol. 43 No. 1): rice transplanting 20 June - 10 July, PR 126 not beyond 15 July; recommended varieties mature 93-117 days after transplanting (most about 105-112); cotton sowing 1 April - 15 May; cotton picking period mid-September to November; kharif maize sown last week of May to end of June, hybrids mature in about 95-99 days; recommended rotations include Rice-Wheat and Maize-Wheat", url: "https://www.pau.edu/content/ccil/pf/pp_kharif.pdf"}
+  pau_rabi_2025: {cite: "Punjab Agricultural University, Package of Practices for Crops of Punjab, Rabi 2025-26 (Vol. 42 No. 2): wheat optimum first fortnight of November, varieties sown 4th week October - 4th week November, timely-sown varieties mature in about 145-158 days; irrigated gram sown 25 October - 10 November, varieties mature in about 153-170 days", url: "https://www.pau.edu/content/ccil/pf/pp_rabi.pdf"}
+  conab_2026_n5: {cite: "Conab, Acompanhamento da Safra Brasileira de Graos v.13 safra 2025/26 n.5 (Feb 2026), crop-stage tables for Norte Mato-grossense: soja S Sep-Oct, C Jan-Mar (Quadro 7); milho segunda safra S Jan-Feb, C Jun-Jul (Quadro 6); algodao 1a safra S Dec, C Jun-Aug (Quadro 1). Month resolution", url: "https://www.gov.br/conab/pt-br/atuacao/informacoes-agropecuarias/safras/safra-de-graos/boletim-da-safra-de-graos/5o-levantamento-safra-2025-26/e-book_boletim-de-safras-5o-levantamento_2026.pdf"}
+
+regions:
+  iowa_central:
+    label: "Central Iowa (Story County pilot)"
+    scale_note: "Iowa state-level usual dates (NASS AH-628, 2010)"
+    crops:
+      corn:
+        plant: {begin: "04-19", most_active: ["04-25", "05-18"], end: "05-26"}
+        harvest: {begin: "09-21", most_active: ["10-05", "11-09"], end: "11-21"}
+        sources: [nass_ah628]
+      soybean:
+        plant: {begin: "05-02", most_active: ["05-08", "06-02"], end: "06-16"}
+        harvest: {begin: "09-21", most_active: ["09-28", "10-20"], end: "10-31"}
+        sources: [nass_ah628]
+      oats:
+        plant: {begin: "03-25", most_active: ["04-02", "05-02"], end: "05-13"}
+        harvest: {begin: "07-09", most_active: ["07-17", "08-05"], end: "08-11"}
+        sources: [nass_ah628]
+      winter_wheat:
+        plant: {begin: "09-06", most_active: ["09-26", "10-15"], end: "10-30"}
+        harvest: {begin: "06-24", most_active: ["07-06", "07-22"], end: "08-07"}
+        sources: [nass_ah628]
+      alfalfa:
+        plant: null
+        harvest: {begin: "05-24", most_active: ["05-30", "09-15"], end: "09-29"}
+        note: "Hay cutting window; AH-628 gives no seeding dates (NA)."
+        sources: [nass_ah628]
+    covers:
+      cereal_rye:
+        seed: {relative: {anchor: cash_harvest, days: [0, null]}, note: "SARE: Zones 3-7 seed late summer to mid-fall; can be planted into November in much of the country"}
+        terminate: {relative: {anchor: cash_planting, days: [null, -10]}, note: "SARE: kill at least 10 days before planting corn. Insurance: NRCS termination guidelines v4 zone rules apply (check locally)."}
+        sources: [sare_rye, rma_mgr19017]
+      oats_winterkill:
+        seed: {relative: {anchor: first_fall_frost, days: [-60, -40]}}
+        terminate: {note: "Winterkills in Zone 6 and colder; no spring termination needed"}
+        sources: [sare_oats]
+      hairy_vetch:
+        seed: {relative: {anchor: first_fall_frost, days: [-45, -30]}}
+        terminate: {relative: {anchor: cash_planting, days: [null, -10]}, note: "SARE Maryland trials: kill late April / early May, corn about 10 days later"}
+        sources: [sare_vetch, rma_mgr19017]
+      radish_cover:
+        seed: null
+        terminate: {note: "Winterkills after several nights at about 20 F (see crops.yaml)"}
+        sources: []
+
+  kansas_west:
+    label: "Western Kansas (Finney County pilot)"
+    scale_note: "Kansas STATE-level usual dates (NASS AH-628, 2010); western Kansas may differ"
+    crops:
+      winter_wheat:
+        plant: {begin: "09-10", most_active: ["09-15", "10-20"], end: "11-01"}
+        harvest: {begin: "06-15", most_active: ["06-20", "07-05"], end: "07-15"}
+        sources: [nass_ah628]
+      corn:
+        plant: {begin: "04-05", most_active: ["04-15", "05-15"], end: "05-25"}
+        harvest: {begin: "09-01", most_active: ["09-10", "10-25"], end: "11-10"}
+        sources: [nass_ah628]
+      sorghum:
+        plant: {begin: "05-05", most_active: ["05-15", "06-20"], end: "07-15"}
+        harvest: {begin: "09-10", most_active: ["09-25", "11-10"], end: "11-25"}
+        sources: [nass_ah628]
+      soybean:
+        plant: {begin: "05-05", most_active: ["05-15", "06-20"], end: "07-01"}
+        harvest: {begin: "09-20", most_active: ["10-01", "11-01"], end: "11-15"}
+        sources: [nass_ah628]
+      sunflower:
+        plant: {begin: "05-15", most_active: ["05-25", "06-30"], end: "07-10"}
+        harvest: {begin: "09-15", most_active: ["10-01", "11-15"], end: "11-30"}
+        sources: [nass_ah628]
+      cotton:
+        plant: {begin: "05-10", most_active: ["05-20", "06-15"], end: "06-25"}
+        harvest: {begin: "10-15", most_active: ["10-25", "12-15"], end: "12-30"}
+        sources: [nass_ah628]
+      oats:
+        plant: {begin: "02-20", most_active: ["03-05", "04-01"], end: "05-01"}
+        harvest: {begin: "07-10", most_active: ["07-15", "08-01"], end: "08-10"}
+        sources: [nass_ah628]
+      barley:
+        plant: {begin: "03-01", most_active: ["03-05", "04-01"], end: "05-01"}
+        harvest: {begin: "06-20", most_active: ["06-25", "07-01"], end: "07-10"}
+        note: "Spring barley row"
+        sources: [nass_ah628]
+      alfalfa:
+        plant: null
+        harvest: {begin: "05-10", most_active: ["05-20", "10-15"], end: "11-01"}
+        sources: [nass_ah628]
+      proso_millet:
+        plant: null
+        harvest: null
+        note: "Not in AH-628. Needs K-State / CSU source."
+        sources: []
+    covers:
+      cereal_rye:
+        seed: {relative: {anchor: cash_harvest, days: [0, null]}}
+        terminate: {relative: {anchor: cash_planting, days: [null, -10]}, note: "Water use of covers in a dry (P20) year is checked in rules.yaml"}
+        sources: [sare_rye, rma_mgr19017]
+
+  california_sjv:
+    label: "San Joaquin Valley, California"
+    scale_note: "California STATE-level usual dates (NASS AH-628, 2010)"
+    crops:
+      winter_wheat:
+        plant: {begin: "09-25", most_active: ["10-20", "01-01"], end: "02-01"}
+        harvest: {begin: "05-20", most_active: ["06-01", "07-05"], end: "07-15"}
+        sources: [nass_ah628]
+      durum:
+        plant: {begin: "09-25", most_active: ["10-20", "01-01"], end: "02-01"}
+        harvest: {begin: "05-20", most_active: ["06-10", "07-15"], end: "08-01"}
+        sources: [nass_ah628]
+      corn:
+        plant: {begin: "03-15", most_active: ["04-01", "07-01"], end: "07-15"}
+        harvest: {begin: "09-01", most_active: ["10-01", "11-01"], end: "11-15"}
+        sources: [nass_ah628]
+      cotton:
+        plant: {begin: "04-01", most_active: ["04-10", "05-05"], end: "05-15"}
+        harvest: {begin: "10-05", most_active: ["10-10", "11-01"], end: "11-20"}
+        sources: [nass_ah628]
+      rice:
+        plant: {begin: "04-20", most_active: ["05-01", "05-25"], end: "06-10"}
+        harvest: {begin: "09-05", most_active: ["09-15", "11-01"], end: "11-10"}
+        note: "Statewide (mostly Sacramento Valley)."
+        sources: [nass_ah628]
+      sunflower:
+        plant: {begin: "03-21", most_active: ["04-01", "05-31"], end: "08-01"}
+        harvest: {begin: "06-01", most_active: ["07-01", "08-31"], end: "10-01"}
+        sources: [nass_ah628]
+      sugar_beet:
+        plant: {begin: "08-15", most_active: ["09-15", "10-15"], end: "10-30"}
+        harvest: {begin: "04-01", most_active: ["04-15", "08-01"], end: "08-15"}
+        sources: [nass_ah628]
+      barley:
+        plant: {begin: "09-15", most_active: ["10-01", "04-15"], end: "04-30"}
+        harvest: {begin: "05-15", most_active: ["06-01", "07-15"], end: "08-15"}
+        note: "Fall barley row"
+        sources: [nass_ah628]
+      oats:
+        plant: {begin: "09-15", most_active: ["10-01", "03-01"], end: "03-15"}
+        harvest: {begin: "06-15", most_active: ["07-15", "09-01"], end: "09-15"}
+        note: "Fall oat row"
+        sources: [nass_ah628]
+      alfalfa:
+        plant: null
+        harvest: {begin: "02-15", most_active: null, end: "11-20"}
+        sources: [nass_ah628]
+      processing_tomato:
+        plant: {begin: null, most_active: ["04-01", "05-31"], end: null}
+        harvest: null
+        note: "FAO-56 Table 11 'Tomato, Apr/May, Calif. USA' (35/40/50/30 = 155 d). Harvest window not taken from a calendar source; engine may derive plant + 155 d and must label it derived."
+        sources: [fao56_t11]
+      safflower:
+        plant: {begin: null, most_active: ["04-01", "04-30"], end: null}
+        harvest: null
+        note: "FAO-56 Table 11 'Safflower, April, California USA' (125 d). UC ANR Pub 21565 not yet read."
+        sources: [fao56_t11]
+    covers:
+      cereal_rye:
+        seed: null
+        terminate: null
+        note: "Zone 8+: SARE says seed fall to midwinter. Specific SJV dates not sourced."
+        sources: [sare_rye]
+      crimson_clover:
+        seed: {relative: {anchor: first_fall_frost, days: [-56, -42]}}
+        terminate: null
+        sources: [sare_crimson]
+
+  saskatchewan:
+    label: "Saskatchewan (Canadian Prairies)"
+    scale_note: "Province-level; SCIC recommended seeding dates vary by rural municipality (SCIC Seeding Date Tool). Plant/harvest windows for spring-sown crops are the province-wide ALL-CROP progress (Crop Report 5-year average 2021-2025): begin = first weekly report, most_active = about 10-90 % done, end = SCIC final seeding date (June 20) / 97 % combined. Crop-specific timing differs (cereals and pulses earlier, canola later)."
+    crops:
+      spring_wheat:
+        plant: {begin: "04-28", most_active: ["05-04", "06-01"], end: "06-20"}
+        harvest: {begin: "08-10", most_active: ["08-17", "09-28"], end: "10-05"}
+        days_to_maturity: [90, 100]
+        sources: [sk_crop_report_2026, scic_2026, mb_agclimate]
+      canola:
+        plant: {begin: "04-28", most_active: ["05-04", "06-01"], end: "06-20"}
+        harvest: {begin: "08-10", most_active: ["08-17", "09-28"], end: "10-05"}
+        days_to_maturity: [92, 102]
+        note: "Argentine; Polish 73-83 d. Recommended date varies by RM and variety."
+        sources: [sk_crop_report_2026, scic_2026, mb_agclimate]
+      field_pea:
+        plant: {begin: "04-28", most_active: ["05-04", "06-01"], end: "06-20"}
+        harvest: {begin: "08-10", most_active: ["08-17", "09-28"], end: "10-05"}
+        days_to_maturity: [90, 100]
+        sources: [sk_crop_report_2026, scic_2026, mb_agclimate]
+      lentil:
+        plant: {begin: "04-28", most_active: ["05-04", "06-01"], end: null}
+        harvest: {begin: "08-10", most_active: ["08-17", "09-28"], end: "10-05"}
+        days_to_maturity: [85, 100]
+        note: "Seeding begin/most-active and harvest from the all-crop provincial Crop Report averages (not lentil-specific). Older reports: lentil and chickpea were excluded from deadline extensions because they need more days; current SCIC date not confirmed."
+        sources: [sk_crop_report_2026, mb_agclimate]
+      durum:
+        plant: {begin: "04-28", most_active: ["05-04", "06-01"], end: "06-20"}
+        harvest: {begin: "08-10", most_active: ["08-17", "09-28"], end: "10-05"}
+        sources: [sk_crop_report_2026, scic_2026]
+      barley:
+        plant: {begin: "04-28", most_active: ["05-04", "06-01"], end: "06-20"}
+        harvest: {begin: "08-10", most_active: ["08-17", "09-28"], end: "10-05"}
+        days_to_maturity: [60, 90]
+        sources: [sk_crop_report_2026, scic_2026, mb_agclimate]
+      oats:
+        plant: {begin: "04-28", most_active: ["05-04", "06-01"], end: "06-20"}
+        harvest: {begin: "08-10", most_active: ["08-17", "09-28"], end: "10-05"}
+        days_to_maturity: [85, 88]
+        sources: [sk_crop_report_2026, scic_2026, mb_agclimate]
+      flax:
+        plant: {begin: "04-28", most_active: ["05-04", "06-01"], end: "06-20"}
+        harvest: {begin: "08-10", most_active: ["08-17", "09-28"], end: "10-05"}
+        days_to_maturity: [85, 100]
+        sources: [sk_crop_report_2026, scic_2026, mb_agclimate]
+      winter_wheat:
+        plant: {begin: null, most_active: null, end: "09-15"}
+        harvest: null
+        note: "Sept 15 = last date for winterkill insurance coverage (older source; confirm with SCIC)."
+        sources: [sk_winter_wheat]
+    covers: {}
+
+  punjab_in:
+    label: "Punjab, India (rice-wheat system)"
+    scale_note: "State-level recommendations (PAU Package of Practices); transplanting date notified each year. Rice and wheat are grown in the same year (kharif then rabi)."
+    crops:
+      wheat:
+        crop_id: winter_wheat
+        plant: {begin: "10-22", most_active: ["11-01", "11-15"], end: "11-28"}
+        harvest: {begin: "03-16", most_active: ["04-04", "04-18"], end: "05-05"}
+        double_after: [rice, cotton, corn]
+        note: "PAU: first fortnight of November optimum (4th week Oct - 4th week Nov by variety); later sowing raises heat (grain shrivelling) risk. Harvest DERIVED = PAU sowing dates + PAU variety maturity (145-158 d; most_active uses about 154 d), not a published harvest calendar. Grown as the second (rabi) crop after rice in the same year."
+        sources: [pau_rabi_2025, pau_wheat]
+      rice:
+        plant: {begin: "06-10", most_active: ["06-20", "07-10"], end: "07-15"}
+        harvest: {begin: "09-21", most_active: ["10-09", "10-29"], end: "11-09"}
+        note: "Plant = transplanting. Act floor June 10 (the state notifies a date each year, recent years later); PAU recommends 20 June - 10 July, PR 126 by 15 July. Harvest DERIVED = transplanting dates + PAU maturity 93-117 days after transplanting (most_active uses 111 d), not a published harvest calendar."
+        sources: [pau_kharif_2026, punjab_act2009]
+      cotton:
+        plant: {begin: "04-01", most_active: null, end: "05-15"}
+        harvest: {begin: "09-15", most_active: null, end: "11-30"}
+        note: "PAU: sow 1 April - 15 May; picking period mid-September to November."
+        sources: [pau_kharif_2026]
+      corn:
+        plant: {begin: "05-25", most_active: null, end: "06-30"}
+        harvest: {begin: "08-28", most_active: null, end: "10-07"}
+        note: "Kharif maize. PAU: sow last week of May to end of June; recommended hybrids mature in about 95-99 days. Harvest DERIVED = sowing dates + 95-99 d, not a published harvest calendar. PAU lists Maize-Wheat among recommended rotations."
+        sources: [pau_kharif_2026]
+      chickpea:
+        plant: {begin: "10-10", most_active: ["10-25", "11-10"], end: "11-10"}
+        harvest: null
+        note: "PAU gram: rainfed desi 10-25 October, irrigated desi and kabuli 25 October - 10 November. Harvest not dated by PAU (varieties mature in about 153-170 days)."
+        sources: [pau_rabi_2025]
+    covers: {}
+
+  mato_grosso_br:
+    label: "Mato Grosso, Brazil (soy - safrinha system)"
+    scale_note: "State legal soybean calendar + Conab month-resolution stage tables for Norte Mato-grossense (mesoregion). Soybean and safrinha corn are grown in the same season."
+    crops:
+      soybean:
+        plant: {begin: "09-07", most_active: ["09-07", "10-31"], end: "01-07"}
+        harvest: {begin: "01-01", most_active: null, end: "03-31"}
+        note: "Legal sowing window 2026/27 (begin/end); soybean-free period (vazio sanitario) Jun 8 - Sep 6. No live soybean allowed in that period. most_active = Conab sowing months for Norte Mato-grossense (Sep-Oct); harvest = Conab harvest months (Jan-Mar). Month resolution."
+        sources: [mt_soy_2026, conab_2026_n5]
+      cotton:
+        plant: {begin: "12-01", most_active: null, end: "12-31"}
+        harvest: {begin: "06-01", most_active: null, end: "08-31"}
+        note: "First-crop cotton, Norte Mato-grossense (Conab: sown December, harvested June-August). Second-crop cotton after soybean is sown in January (Conab) and is not modelled separately yet."
+        sources: [conab_mt_cotton, conab_2026_n5]
+      corn:
+        plant: {begin: "01-01", most_active: null, end: "02-28"}
+        harvest: {begin: "06-01", most_active: null, end: "07-31"}
+        double_after: [soybean]
+        note: "Second-crop (safrinha) corn sown right after the soybean harvest. Conab Norte Mato-grossense: sown January-February, harvested June-July (month resolution). First-crop (summer) corn is a small share in MT and is not modelled."
+        sources: [conab_2026_n5]
+    covers:
+      sunn_hemp:
+        seed: null
+        terminate: null
+        note: "Must not host soybean in the vazio period; no dated window sourced."
+        sources: []

@@ -1,0 +1,1 @@
+{"available": false, "reason": "The next-crop model (M3) is trained on USDA CDL sequences; it does not apply to this field's crop history"}

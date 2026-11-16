@@ -1,0 +1,41 @@
+{
+  "report_cached_s": 0.028477900003053946,
+  "compare_cached_s": 0.03469789999871864,
+  "compare_rerun_new_priorities_s": 1.4689276999997674,
+  "compare_rerun_dry_scenario_s": 1.3666042999975616,
+  "compare_rerun_custom_slider_s": 1.3797894999988785,
+  "new_field": {
+    "lat": 42.05,
+    "lon": -93.3,
+    "field_id": "0a31592e4a1f",
+    "fields_at_s": 0.005142999998497544,
+    "context_job_s": 3.020178599999781,
+    "status": "done",
+    "failures": [],
+    "first_compare_s": 1.6489853999992192,
+    "total_to_cards_s": 4.674306999997498,
+    "second_compare_s": 0.022599299998546485,
+    "job_trace": [
+      [
+        0.0,
+        "running",
+        "Fetching NASA weather, soil, terrain and crop maps"
+      ],
+      [
+        3.0,
+        "done",
+        "done"
+      ]
+    ]
+  },
+  "new_field_cold_region_nebraska": {
+    "lat": 40.92,
+    "lon": -98.05,
+    "fields_at_s": 4.7133419000019785,
+    "context_job_s": 3.5368574999993143,
+    "status": "done",
+    "failures": [],
+    "first_compare_s": 1.0856593000025896,
+    "total_s": 9.335858700003882
+  }
+}

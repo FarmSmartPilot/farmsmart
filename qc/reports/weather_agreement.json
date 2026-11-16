@@ -1,0 +1,96 @@
+[
+ {
+  "pilot": "Story County, IA",
+  "station": "USC00130203",
+  "station_name": "Ames 8 WSW (GHCN-Daily)",
+  "lat": 42.11119,
+  "lon": -93.46928,
+  "period": [
+   "2001-01-01",
+   "2024-12-31"
+  ],
+  "tmax_daily": {
+   "n": 8733,
+   "bias": 0.416,
+   "mae": 3.648,
+   "r": 0.929
+  },
+  "tmin_daily": {
+   "n": 8732,
+   "bias": 1.209,
+   "mae": 2.675,
+   "r": 0.957
+  },
+  "precip_daily": {
+   "n": 8757,
+   "bias": -0.373,
+   "mae": 3.301,
+   "r": 0.325
+  },
+  "precip_monthly": {
+   "n": 288,
+   "bias": -11.248,
+   "mae": 18.524,
+   "r": 0.917
+  },
+  "annual_precip_mean_mm": {
+   "power": 840.2,
+   "station": 975.2
+  },
+  "heavy_rain_days": {
+   "station_events": 229,
+   "power_same_day_hits": 19,
+   "power_within_1_day": 87,
+   "power_false_alarms": 87,
+   "hit_rate_same_day": 0.083,
+   "hit_rate_within_1_day": 0.38
+  }
+ },
+ {
+  "pilot": "Garden City, KS",
+  "station": "USW00023064",
+  "station_name": "Garden City Regional Airport (GHCN-Daily)",
+  "lat": 37.92785,
+  "lon": -100.69216,
+  "period": [
+   "2001-01-01",
+   "2024-12-31"
+  ],
+  "tmax_daily": {
+   "n": 8741,
+   "bias": 0.41,
+   "mae": 1.526,
+   "r": 0.984
+  },
+  "tmin_daily": {
+   "n": 8743,
+   "bias": 2.265,
+   "mae": 2.523,
+   "r": 0.978
+  },
+  "precip_daily": {
+   "n": 8750,
+   "bias": 0.289,
+   "mae": 1.088,
+   "r": 0.7
+  },
+  "precip_monthly": {
+   "n": 288,
+   "bias": 8.793,
+   "mae": 13.877,
+   "r": 0.904
+  },
+  "annual_precip_mean_mm": {
+   "power": 540.4,
+   "station": 434.9
+  },
+  "heavy_rain_days": {
+   "station_events": 95,
+   "power_same_day_hits": 28,
+   "power_within_1_day": 38,
+   "power_false_alarms": 19,
+   "hit_rate_same_day": 0.295,
+   "hit_rate_within_1_day": 0.4
+  }
+ }
+]

@@ -1,0 +1,1133 @@
+{
+ "model_id": "M7",
+ "model_version": "0.1.0",
+ "kind": "process",
+ "field": {
+  "lat": 37.97,
+  "lon": -100.87
+ },
+ "periods": {
+  "baseline": [
+   1991,
+   2020
+  ],
+  "model_historical": [
+   1995,
+   2014
+  ],
+  "future": [
+   2041,
+   2060
+  ],
+  "analog_present_day": [
+   "20010101",
+   "20251231"
+  ]
+ },
+ "baseline": {
+  "indicators": {
+   "tmean_c": 13.45,
+   "tmax_warm_c": 34.22,
+   "tmin_cold_c": -4.85,
+   "precip_mm": 556.0,
+   "gdd10": 2520.0,
+   "hot_days_ge35": 40.4,
+   "frost_free_days": 193,
+   "frost_free_years": 0
+  },
+  "scale_label": "regional value (≈50 km, NASA POWER)",
+  "evidence_id": "power-bbf3d208fc28"
+ },
+ "present_day_self_match": {
+  "lat": 38.5,
+  "lon": -100.5,
+  "country": "United States of America",
+  "iso3": "USA",
+  "admin1": "Kansas",
+  "near_town": "Garden City",
+  "near_town_km": 67.0,
+  "cropland_share_pct": 45.2,
+  "distance": 0.045,
+  "km_from_field": 67.0
+ },
+ "scenarios": {
+  "ssp245": {
+   "available": true,
+   "n_models": 6,
+   "indicators": {
+    "tmean_c": {
+     "median": 15.13,
+     "min": 14.51,
+     "max": 16.05,
+     "n": 6
+    },
+    "tmax_warm_c": {
+     "median": 36.72,
+     "min": 35.21,
+     "max": 38.43,
+     "n": 6
+    },
+    "tmin_cold_c": {
+     "median": -4.11,
+     "min": -7.21,
+     "max": -2.88,
+     "n": 6
+    },
+    "precip_mm": {
+     "median": 608.5,
+     "min": 548.0,
+     "max": 737.0,
+     "n": 6
+    },
+    "gdd10": {
+     "median": 2855.0,
+     "min": 2717.0,
+     "max": 3051.0,
+     "n": 6
+    },
+    "hot_days_ge35": {
+     "median": 65.1,
+     "min": 50.3,
+     "max": 75.6,
+     "n": 6
+    },
+    "frost_free_days": {
+     "median": 206.5,
+     "min": 202.0,
+     "max": 215.0,
+     "n": 6
+    },
+    "frost_free_years": {
+     "median": 0.0,
+     "min": 0.0,
+     "max": 0.0,
+     "n": 6
+    }
+   },
+   "deltas": {
+    "annual_d_tmax_c": {
+     "median": 2.04,
+     "min": 0.68,
+     "max": 3.28,
+     "n": 6
+    },
+    "annual_d_tmin_c": {
+     "median": 1.45,
+     "min": 1.28,
+     "max": 2.4,
+     "n": 6
+    },
+    "annual_pr_ratio": {
+     "median": 1.08,
+     "min": 0.98,
+     "max": 1.33,
+     "n": 6
+    }
+   },
+   "analogs": [
+    {
+     "lat": 36.5,
+     "lon": -100.5,
+     "country": "United States of America",
+     "iso3": "USA",
+     "admin1": "Texas",
+     "near_town": "Liberal",
+     "near_town_km": 71.0,
+     "cropland_share_pct": 19.8,
+     "distance": 0.153,
+     "km_from_field": 167.0,
+     "models_with_analog_within_km": [
+      "ACCESS-CM2",
+      "GFDL-ESM4",
+      "MIROC6",
+      "MPI-ESM1-2-HR",
+      "MRI-ESM2-0",
+      "UKESM1-0-LL"
+     ],
+     "n_models_agree": 6,
+     "crops": {
+      "scale": "country",
+      "label": "country value (FAOSTAT, national harvested area)",
+      "country": "United States of America",
+      "years": [
+       2020,
+       2024
+      ],
+      "total_harvested_ha": 99197348,
+      "top": [
+       {
+        "crop": "Soya beans",
+        "ha": 34269882,
+        "share": 0.3455
+       },
+       {
+        "crop": "Maize (corn)",
+        "ha": 33622862,
+        "share": 0.3389
+       },
+       {
+        "crop": "Wheat",
+        "ha": 14986480,
+        "share": 0.1511
+       },
+       {
+        "crop": "Seed cotton, unginned",
+        "ha": 3331658,
+        "share": 0.0336
+       },
+       {
+        "crop": "Sorghum",
+        "ha": 2256148,
+        "share": 0.0227
+       }
+      ]
+     },
+     "novel": false
+    },
+    {
+     "lat": 34.5,
+     "lon": 114.5,
+     "country": "China",
+     "iso3": "CHN",
+     "admin1": "Henan",
+     "near_town": "Kaifeng",
+     "near_town_km": 38.0,
+     "cropland_share_pct": 64.7,
+     "distance": 0.244,
+     "km_from_field": 11169.0,
+     "models_with_analog_within_km": [
+      "ACCESS-CM2",
+      "GFDL-ESM4",
+      "MIROC6",
+      "MPI-ESM1-2-HR",
+      "MRI-ESM2-0"
+     ],
+     "n_models_agree": 5,
+     "crops": {
+      "scale": "country",
+      "label": "country value (FAOSTAT, national harvested area)",
+      "country": "China, mainland",
+      "years": [
+       2020,
+       2024
+      ],
+      "total_harvested_ha": 183301191,
+      "top": [
+       {
+        "crop": "Maize (corn)",
+        "ha": 43322740,
+        "share": 0.2363
+       },
+       {
+        "crop": "Rice",
+        "ha": 29481440,
+        "share": 0.1608
+       },
+       {
+        "crop": "Wheat",
+        "ha": 23536600,
+        "share": 0.1284
+       },
+       {
+        "crop": "Other vegetables, fresh n.e.c.",
+        "ha": 10387429,
+        "share": 0.0567
+       },
+       {
+        "crop": "Soya beans",
+        "ha": 9867098,
+        "share": 0.0538
+       }
+      ]
+     },
+     "novel": true
+    },
+    {
+     "lat": 34.5,
+     "lon": 109.5,
+     "country": "China",
+     "iso3": "CHN",
+     "admin1": "Shaanxi",
+     "near_town": "Weinan",
+     "near_town_km": 1.0,
+     "cropland_share_pct": 43.4,
+     "distance": 0.273,
+     "km_from_field": 11369.0,
+     "models_with_analog_within_km": [
+      "ACCESS-CM2",
+      "GFDL-ESM4",
+      "MIROC6",
+      "MPI-ESM1-2-HR",
+      "MRI-ESM2-0"
+     ],
+     "n_models_agree": 5,
+     "crops": {
+      "scale": "country",
+      "label": "country value (FAOSTAT, national harvested area)",
+      "country": "China, mainland",
+      "years": [
+       2020,
+       2024
+      ],
+      "total_harvested_ha": 183301191,
+      "top": [
+       {
+        "crop": "Maize (corn)",
+        "ha": 43322740,
+        "share": 0.2363
+       },
+       {
+        "crop": "Rice",
+        "ha": 29481440,
+        "share": 0.1608
+       },
+       {
+        "crop": "Wheat",
+        "ha": 23536600,
+        "share": 0.1284
+       },
+       {
+        "crop": "Other vegetables, fresh n.e.c.",
+        "ha": 10387429,
+        "share": 0.0567
+       },
+       {
+        "crop": "Soya beans",
+        "ha": 9867098,
+        "share": 0.0538
+       }
+      ]
+     },
+     "novel": true
+    }
+   ],
+   "agreement": {
+    "n_agree": 5,
+    "n_models": 6,
+    "radius_km": 500.0,
+    "cluster_centre": {
+     "lat": 36.5,
+     "lon": -101.5,
+     "country": "United States of America",
+     "admin1": "Texas",
+     "near_town": "Liberal"
+    },
+    "models_in_cluster": [
+     "ACCESS-CM2",
+     "GFDL-ESM4",
+     "MIROC6",
+     "MPI-ESM1-2-HR",
+     "UKESM1-0-LL"
+    ]
+   },
+   "novel_climate": {
+    "flag": false,
+    "best_distance": 0.153,
+    "threshold": 0.234,
+    "models_novel": 0
+   },
+   "per_model": {
+    "ACCESS-CM2": {
+     "indicators": {
+      "tmean_c": 16.05,
+      "tmax_warm_c": 36.6,
+      "tmin_cold_c": -3.79,
+      "precip_mm": 548.0,
+      "gdd10": 3051.0,
+      "hot_days_ge35": 75.6,
+      "frost_free_days": 202,
+      "frost_free_years": 0
+     },
+     "annual_d_tmax_c": 3.28,
+     "annual_d_tmin_c": 1.9,
+     "annual_pr_ratio": 0.983,
+     "top_analog": {
+      "lat": 36.5,
+      "lon": -101.5,
+      "country": "United States of America",
+      "iso3": "USA",
+      "admin1": "Texas",
+      "near_town": "Liberal",
+      "near_town_km": 79.0,
+      "cropland_share_pct": 44.0,
+      "distance": 0.22,
+      "km_from_field": 173.0
+     },
+     "novel": false
+    },
+    "GFDL-ESM4": {
+     "indicators": {
+      "tmean_c": 14.51,
+      "tmax_warm_c": 35.21,
+      "tmin_cold_c": -4.92,
+      "precip_mm": 737.0,
+      "gdd10": 2717.0,
+      "hot_days_ge35": 50.3,
+      "frost_free_days": 207,
+      "frost_free_years": 0
+     },
+     "annual_d_tmax_c": 0.68,
+     "annual_d_tmin_c": 1.44,
+     "annual_pr_ratio": 1.326,
+     "top_analog": {
+      "lat": 37.5,
+      "lon": -98.5,
+      "country": "United States of America",
+      "iso3": "USA",
+      "admin1": "Kansas",
+      "near_town": "Hutchinson",
+      "near_town_km": 80.0,
+      "cropland_share_pct": 39.4,
+      "distance": 0.092,
+      "km_from_field": 215.0
+     },
+     "novel": false
+    },
+    "MIROC6": {
+     "indicators": {
+      "tmean_c": 15.36,
+      "tmax_warm_c": 36.84,
+      "tmin_cold_c": -2.88,
+      "precip_mm": 628.0,
+      "gdd10": 2853.0,
+      "hot_days_ge35": 70.6,
+      "frost_free_days": 203,
+      "frost_free_years": 0
+     },
+     "annual_d_tmax_c": 2.49,
+     "annual_d_tmin_c": 1.34,
+     "annual_pr_ratio": 1.11,
+     "top_analog": {
+      "lat": 35.5,
+      "lon": -99.5,
+      "country": "United States of America",
+      "iso3": "USA",
+      "admin1": "Oklahoma",
+      "near_town": "Altus",
+      "near_town_km": 97.0,
+      "cropland_share_pct": 19.5,
+      "distance": 0.119,
+      "km_from_field": 301.0
+     },
+     "novel": false
+    },
+    "MPI-ESM1-2-HR": {
+     "indicators": {
+      "tmean_c": 14.66,
+      "tmax_warm_c": 35.21,
+      "tmin_cold_c": -4.24,
+      "precip_mm": 589.0,
+      "gdd10": 2759.0,
+      "hot_days_ge35": 56.8,
+      "frost_free_days": 207,
+      "frost_free_years": 0
+     },
+     "annual_d_tmax_c": 0.95,
+     "annual_d_tmin_c": 1.46,
+     "annual_pr_ratio": 1.046,
+     "top_analog": {
+      "lat": 35.5,
+      "lon": -99.5,
+      "country": "United States of America",
+      "iso3": "USA",
+      "admin1": "Oklahoma",
+      "near_town": "Altus",
+      "near_town_km": 97.0,
+      "cropland_share_pct": 19.5,
+      "distance": 0.119,
+      "km_from_field": 301.0
+     },
+     "novel": false
+    },
+    "MRI-ESM2-0": {
+     "indicators": {
+      "tmean_c": 14.91,
+      "tmax_warm_c": 37.77,
+      "tmin_cold_c": -7.21,
+      "precip_mm": 700.0,
+      "gdd10": 2857.0,
+      "hot_days_ge35": 59.6,
+      "frost_free_days": 206,
+      "frost_free_years": 0
+     },
+     "annual_d_tmax_c": 1.63,
+     "annual_d_tmin_c": 1.28,
+     "annual_pr_ratio": 1.253,
+     "top_analog": {
+      "lat": 34.5,
+      "lon": 114.5,
+      "country": "China",
+      "iso3": "CHN",
+      "admin1": "Henan",
+      "near_town": "Kaifeng",
+      "near_town_km": 38.0,
+      "cropland_share_pct": 64.7,
+      "distance": 0.225,
+      "km_from_field": 11169.0
+     },
+     "novel": false
+    },
+    "UKESM1-0-LL": {
+     "indicators": {
+      "tmean_c": 15.9,
+      "tmax_warm_c": 38.43,
+      "tmin_cold_c": -3.98,
+      "precip_mm": 555.0,
+      "gdd10": 2959.0,
+      "hot_days_ge35": 72.9,
+      "frost_free_days": 215,
+      "frost_free_years": 0
+     },
+     "annual_d_tmax_c": 2.44,
+     "annual_d_tmin_c": 2.4,
+     "annual_pr_ratio": 1.018,
+     "top_analog": {
+      "lat": 34.5,
+      "lon": -99.5,
+      "country": "United States of America",
+      "iso3": "USA",
+      "admin1": "Oklahoma",
+      "near_town": "Altus",
+      "near_town_km": 22.0,
+      "cropland_share_pct": 39.8,
+      "distance": 0.223,
+      "km_from_field": 405.0
+     },
+     "novel": false
+    }
+   }
+  },
+  "ssp585": {
+   "available": true,
+   "n_models": 6,
+   "indicators": {
+    "tmean_c": {
+     "median": 15.71,
+     "min": 15.11,
+     "max": 17.46,
+     "n": 6
+    },
+    "tmax_warm_c": {
+     "median": 37.15,
+     "min": 35.31,
+     "max": 40.98,
+     "n": 6
+    },
+    "tmin_cold_c": {
+     "median": -3.53,
+     "min": -5.61,
+     "max": -2.15,
+     "n": 6
+    },
+    "precip_mm": {
+     "median": 615.0,
+     "min": 518.0,
+     "max": 865.0,
+     "n": 6
+    },
+    "gdd10": {
+     "median": 2949.0,
+     "min": 2840.0,
+     "max": 3223.0,
+     "n": 6
+    },
+    "hot_days_ge35": {
+     "median": 69.7,
+     "min": 58.4,
+     "max": 92.9,
+     "n": 6
+    },
+    "frost_free_days": {
+     "median": 210.5,
+     "min": 204.0,
+     "max": 221.0,
+     "n": 6
+    },
+    "frost_free_years": {
+     "median": 0.0,
+     "min": 0.0,
+     "max": 0.0,
+     "n": 6
+    }
+   },
+   "deltas": {
+    "annual_d_tmax_c": {
+     "median": 2.21,
+     "min": 1.72,
+     "max": 4.25,
+     "n": 6
+    },
+    "annual_d_tmin_c": {
+     "median": 2.31,
+     "min": 1.48,
+     "max": 3.72,
+     "n": 6
+    },
+    "annual_pr_ratio": {
+     "median": 1.1,
+     "min": 0.93,
+     "max": 1.54,
+     "n": 6
+    }
+   },
+   "analogs": [
+    {
+     "lat": 35.5,
+     "lon": -99.5,
+     "country": "United States of America",
+     "iso3": "USA",
+     "admin1": "Oklahoma",
+     "near_town": "Altus",
+     "near_town_km": 97.0,
+     "cropland_share_pct": 19.5,
+     "distance": 0.116,
+     "km_from_field": 301.0,
+     "models_with_analog_within_km": [
+      "ACCESS-CM2",
+      "GFDL-ESM4",
+      "MIROC6",
+      "MPI-ESM1-2-HR",
+      "MRI-ESM2-0",
+      "UKESM1-0-LL"
+     ],
+     "n_models_agree": 6,
+     "crops": {
+      "scale": "country",
+      "label": "country value (FAOSTAT, national harvested area)",
+      "country": "United States of America",
+      "years": [
+       2020,
+       2024
+      ],
+      "total_harvested_ha": 99197348,
+      "top": [
+       {
+        "crop": "Soya beans",
+        "ha": 34269882,
+        "share": 0.3455
+       },
+       {
+        "crop": "Maize (corn)",
+        "ha": 33622862,
+        "share": 0.3389
+       },
+       {
+        "crop": "Wheat",
+        "ha": 14986480,
+        "share": 0.1511
+       },
+       {
+        "crop": "Seed cotton, unginned",
+        "ha": 3331658,
+        "share": 0.0336
+       },
+       {
+        "crop": "Sorghum",
+        "ha": 2256148,
+        "share": 0.0227
+       }
+      ]
+     },
+     "novel": false
+    },
+    {
+     "lat": 34.5,
+     "lon": 114.5,
+     "country": "China",
+     "iso3": "CHN",
+     "admin1": "Henan",
+     "near_town": "Kaifeng",
+     "near_town_km": 38.0,
+     "cropland_share_pct": 64.7,
+     "distance": 0.287,
+     "km_from_field": 11169.0,
+     "models_with_analog_within_km": [
+      "ACCESS-CM2",
+      "GFDL-ESM4",
+      "MIROC6",
+      "MRI-ESM2-0"
+     ],
+     "n_models_agree": 4,
+     "crops": {
+      "scale": "country",
+      "label": "country value (FAOSTAT, national harvested area)",
+      "country": "China, mainland",
+      "years": [
+       2020,
+       2024
+      ],
+      "total_harvested_ha": 183301191,
+      "top": [
+       {
+        "crop": "Maize (corn)",
+        "ha": 43322740,
+        "share": 0.2363
+       },
+       {
+        "crop": "Rice",
+        "ha": 29481440,
+        "share": 0.1608
+       },
+       {
+        "crop": "Wheat",
+        "ha": 23536600,
+        "share": 0.1284
+       },
+       {
+        "crop": "Other vegetables, fresh n.e.c.",
+        "ha": 10387429,
+        "share": 0.0567
+       },
+       {
+        "crop": "Soya beans",
+        "ha": 9867098,
+        "share": 0.0538
+       }
+      ]
+     },
+     "novel": true
+    },
+    {
+     "lat": 34.5,
+     "lon": 109.5,
+     "country": "China",
+     "iso3": "CHN",
+     "admin1": "Shaanxi",
+     "near_town": "Weinan",
+     "near_town_km": 1.0,
+     "cropland_share_pct": 43.4,
+     "distance": 0.314,
+     "km_from_field": 11369.0,
+     "models_with_analog_within_km": [
+      "ACCESS-CM2",
+      "GFDL-ESM4",
+      "MIROC6",
+      "MRI-ESM2-0"
+     ],
+     "n_models_agree": 4,
+     "crops": {
+      "scale": "country",
+      "label": "country value (FAOSTAT, national harvested area)",
+      "country": "China, mainland",
+      "years": [
+       2020,
+       2024
+      ],
+      "total_harvested_ha": 183301191,
+      "top": [
+       {
+        "crop": "Maize (corn)",
+        "ha": 43322740,
+        "share": 0.2363
+       },
+       {
+        "crop": "Rice",
+        "ha": 29481440,
+        "share": 0.1608
+       },
+       {
+        "crop": "Wheat",
+        "ha": 23536600,
+        "share": 0.1284
+       },
+       {
+        "crop": "Other vegetables, fresh n.e.c.",
+        "ha": 10387429,
+        "share": 0.0567
+       },
+       {
+        "crop": "Soya beans",
+        "ha": 9867098,
+        "share": 0.0538
+       }
+      ]
+     },
+     "novel": true
+    }
+   ],
+   "agreement": {
+    "n_agree": 4,
+    "n_models": 6,
+    "radius_km": 500.0,
+    "cluster_centre": {
+     "lat": 35.5,
+     "lon": -99.5,
+     "country": "United States of America",
+     "admin1": "Oklahoma",
+     "near_town": "Altus"
+    },
+    "models_in_cluster": [
+     "ACCESS-CM2",
+     "GFDL-ESM4",
+     "MPI-ESM1-2-HR",
+     "UKESM1-0-LL"
+    ]
+   },
+   "novel_climate": {
+    "flag": false,
+    "best_distance": 0.116,
+    "threshold": 0.234,
+    "models_novel": 1
+   },
+   "per_model": {
+    "ACCESS-CM2": {
+     "indicators": {
+      "tmean_c": 15.95,
+      "tmax_warm_c": 36.91,
+      "tmin_cold_c": -4.78,
+      "precip_mm": 617.0,
+      "gdd10": 3027.0,
+      "hot_days_ge35": 73.4,
+      "frost_free_days": 212,
+      "frost_free_years": 0
+     },
+     "annual_d_tmax_c": 2.6,
+     "annual_d_tmin_c": 2.36,
+     "annual_pr_ratio": 1.103,
+     "top_analog": {
+      "lat": 35.5,
+      "lon": -99.5,
+      "country": "United States of America",
+      "iso3": "USA",
+      "admin1": "Oklahoma",
+      "near_town": "Altus",
+      "near_town_km": 97.0,
+      "cropland_share_pct": 19.5,
+      "distance": 0.139,
+      "km_from_field": 301.0
+     },
+     "novel": false
+    },
+    "GFDL-ESM4": {
+     "indicators": {
+      "tmean_c": 16.13,
+      "tmax_warm_c": 37.02,
+      "tmin_cold_c": -3.48,
+      "precip_mm": 518.0,
+      "gdd10": 3050.0,
+      "hot_days_ge35": 73.8,
+      "frost_free_days": 212,
+      "frost_free_years": 0
+     },
+     "annual_d_tmax_c": 3.0,
+     "annual_d_tmin_c": 2.37,
+     "annual_pr_ratio": 0.931,
+     "top_analog": {
+      "lat": 34.5,
+      "lon": -100.5,
+      "country": "United States of America",
+      "iso3": "USA",
+      "admin1": "Texas",
+      "near_town": "Altus",
+      "near_town_km": 108.0,
+      "cropland_share_pct": 21.3,
+      "distance": 0.113,
+      "km_from_field": 387.0
+     },
+     "novel": false
+    },
+    "MIROC6": {
+     "indicators": {
+      "tmean_c": 15.19,
+      "tmax_warm_c": 35.31,
+      "tmin_cold_c": -3.03,
+      "precip_mm": 865.0,
+      "gdd10": 2840.0,
+      "hot_days_ge35": 58.4,
+      "frost_free_days": 206,
+      "frost_free_years": 0
+     },
+     "annual_d_tmax_c": 1.83,
+     "annual_d_tmin_c": 1.67,
+     "annual_pr_ratio": 1.539,
+     "top_analog": {
+      "lat": 33.5,
+      "lon": 114.5,
+      "country": "China",
+      "iso3": "CHN",
+      "admin1": "Henan",
+      "near_town": "Zhoukou",
+      "near_town_km": 19.0,
+      "cropland_share_pct": 59.3,
+      "distance": 0.088,
+      "km_from_field": 11267.0
+     },
+     "novel": false
+    },
+    "MPI-ESM1-2-HR": {
+     "indicators": {
+      "tmean_c": 15.46,
+      "tmax_warm_c": 37.28,
+      "tmin_cold_c": -3.58,
+      "precip_mm": 613.0,
+      "gdd10": 2858.0,
+      "hot_days_ge35": 66.0,
+      "frost_free_days": 209,
+      "frost_free_years": 0
+     },
+     "annual_d_tmax_c": 1.72,
+     "annual_d_tmin_c": 2.27,
+     "annual_pr_ratio": 1.09,
+     "top_analog": {
+      "lat": 35.5,
+      "lon": -99.5,
+      "country": "United States of America",
+      "iso3": "USA",
+      "admin1": "Oklahoma",
+      "near_town": "Altus",
+      "near_town_km": 97.0,
+      "cropland_share_pct": 19.5,
+      "distance": 0.11,
+      "km_from_field": 301.0
+     },
+     "novel": false
+    },
+    "MRI-ESM2-0": {
+     "indicators": {
+      "tmean_c": 15.11,
+      "tmax_warm_c": 38.3,
+      "tmin_cold_c": -5.61,
+      "precip_mm": 714.0,
+      "gdd10": 2871.0,
+      "hot_days_ge35": 64.0,
+      "frost_free_days": 204,
+      "frost_free_years": 0
+     },
+     "annual_d_tmax_c": 1.79,
+     "annual_d_tmin_c": 1.48,
+     "annual_pr_ratio": 1.267,
+     "top_analog": {
+      "lat": 34.5,
+      "lon": 114.5,
+      "country": "China",
+      "iso3": "CHN",
+      "admin1": "Henan",
+      "near_town": "Kaifeng",
+      "near_town_km": 38.0,
+      "cropland_share_pct": 64.7,
+      "distance": 0.223,
+      "km_from_field": 11169.0
+     },
+     "novel": false
+    },
+    "UKESM1-0-LL": {
+     "indicators": {
+      "tmean_c": 17.46,
+      "tmax_warm_c": 40.98,
+      "tmin_cold_c": -2.15,
+      "precip_mm": 552.0,
+      "gdd10": 3223.0,
+      "hot_days_ge35": 92.9,
+      "frost_free_days": 221,
+      "frost_free_years": 0
+     },
+     "annual_d_tmax_c": 4.25,
+     "annual_d_tmin_c": 3.72,
+     "annual_pr_ratio": 1.003,
+     "top_analog": {
+      "lat": 33.5,
+      "lon": -99.5,
+      "country": "United States of America",
+      "iso3": "USA",
+      "admin1": "Texas",
+      "near_town": "Wichita Falls",
+      "near_town_km": 104.0,
+      "cropland_share_pct": 27.5,
+      "distance": 0.321,
+      "km_from_field": 512.0
+     },
+     "novel": true
+    }
+   }
+  }
+ },
+ "indicator_units": {
+  "tmean_c": "°C",
+  "tmax_warm_c": "°C",
+  "tmin_cold_c": "°C",
+  "precip_mm": "mm/yr",
+  "gdd10": "°C·day/yr (base 10, cap 30)",
+  "hot_days_ge35": "days/yr (Tmax ≥ 35 °C)",
+  "frost_free_days": "days (median last spring to first fall frost)"
+ },
+ "analog_method": {
+  "features": [
+   "Mean annual temperature (°C)",
+   "Mean temperature of the warmest month (°C)",
+   "Mean temperature of the coldest month (°C)",
+   "Annual precipitation (log mm)",
+   "Growing degree days base 10 °C from monthly means",
+   "Share of precipitation in the 6 warmest months"
+  ],
+  "distance": "RMS of z-scored feature differences (z by the global cropland candidate spread)",
+  "candidates": 3467,
+  "novel_threshold": {
+   "threshold": 0.2344617616458256,
+   "p50": 0.10435180473729563,
+   "p90": 0.1971270957942751,
+   "n": 3467,
+   "definition": "for every present-day cropland cell, the climate distance to its nearest cell more than 300 km away; threshold = P95"
+  },
+  "agreement_radius_km": 500.0,
+  "distinct_analog_km": 400.0
+ },
+ "sampling": {
+  "mode": "full",
+  "years": {
+   "hist": [
+    1995,
+    2000,
+    2005,
+    2010,
+    2014
+   ],
+   "fut": [
+    2041,
+    2045,
+    2050,
+    2055,
+    2060
+   ]
+  },
+  "variables": [
+   "tasmax",
+   "tasmin",
+   "pr"
+  ],
+  "n_files": 270,
+  "n_files_planned": 270,
+  "fetch_seconds": 221.2,
+  "from_cache": false,
+  "nex_cell": [
+   37.875,
+   -100.875
+  ],
+  "problems": []
+ },
+ "evidence_ids": {
+  "power": "power-bbf3d208fc28",
+  "nex_gddp": "nex_gddp-b073ba135731",
+  "candidates": "power_clim-e95aad419429",
+  "cropland_mask": "gaez_lc-cbe975a47fd6",
+  "crops": "faostat-f50eff6acff2"
+ },
+ "evidence": {
+  "power-bbf3d208fc28": {
+   "id": "power-bbf3d208fc28",
+   "source": "NASA POWER",
+   "product": "POWER Daily API (AG community)",
+   "version": "v2.x",
+   "is_nasa": true,
+   "observation_start": "1991-01-01",
+   "observation_end": "2020-12-31",
+   "publication_time": null,
+   "retrieval_time": "2026-11-14T09:58:58.680769Z",
+   "footprint": "POWER grid cell centred 38.00, -100.625 (≈50 km); field at 37.9700, -100.8700",
+   "native_res": "0.5° x 0.625° (≈50 km) meteorology; 1° solar",
+   "effective_res": "0.5° x 0.625° (≈50 km) meteorology; 1° solar",
+   "units": "°C, mm",
+   "qa_flags": [],
+   "transformation": "1991-2020 daily baseline; delta method adds NEX-GDDP monthly change",
+   "licence": "Public domain (NASA); attribution requested",
+   "citation": "NASA Langley Research Center POWER Project, funded through the NASA Earth Science Directorate Applied Science Program.",
+   "url": "https://power.larc.nasa.gov/",
+   "lineage": []
+  },
+  "nex_gddp-b073ba135731": {
+   "id": "nex_gddp-b073ba135731",
+   "source": "NASA NEX / NCCS",
+   "product": "NEX-GDDP-CMIP6 daily downscaled projections (tasmax, tasmin, pr)",
+   "version": "v1.x/v2.0 (per file)",
+   "is_nasa": true,
+   "observation_start": "1995-01-01",
+   "observation_end": "2060-12-31",
+   "publication_time": null,
+   "retrieval_time": "2026-11-14T10:02:39.857065Z",
+   "footprint": "NEX-GDDP 0.25° cell centred (37.875, -100.875)",
+   "native_res": "0.25° (≈25 km)",
+   "effective_res": "0.25° (≈25 km)",
+   "units": "K, kg m-2 s-1",
+   "qa_flags": [],
+   "transformation": "monthly ΔTmax/ΔTmin and precip ratio, 2041-2060 vs 1995-2014; sampled years {'hist': [1995, 2000, 2005, 2010, 2014], 'fut': [2041, 2045, 2050, 2055, 2060]}; models ['ACCESS-CM2', 'GFDL-ESM4', 'MIROC6', 'MPI-ESM1-2-HR', 'MRI-ESM2-0', 'UKESM1-0-LL']",
+   "licence": "Open (NASA); CMIP6 model terms CC BY 4.0",
+   "citation": "Thrasher, B., Wang, W., Michaelis, A., Melton, F., Lee, T., Nemani, R. (2022). NASA Global Daily Downscaled Projections, CMIP6. Scientific Data 9, 262. doi:10.1038/s41597-022-01393-4",
+   "url": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-gddp-cmip6",
+   "lineage": []
+  },
+  "power_clim-e95aad419429": {
+   "id": "power_clim-e95aad419429",
+   "source": "NASA POWER",
+   "product": "POWER Climatology regional API (T2M, T2M_MAX, T2M_MIN, PRECTOTCORR)",
+   "version": "v2.x",
+   "is_nasa": true,
+   "observation_start": "2001-01-01",
+   "observation_end": "2025-01-01",
+   "publication_time": null,
+   "retrieval_time": "2026-11-14T10:02:39.857065Z",
+   "footprint": "present-day cropland cells worldwide (1°)",
+   "native_res": "0.5° x 0.625° (≈50 km), MERRA-2",
+   "effective_res": "0.5° x 0.625° (≈50 km), MERRA-2",
+   "units": null,
+   "qa_flags": [],
+   "transformation": "monthly normals -> 6 analog indicators, z-scored",
+   "licence": "Public domain (NASA)",
+   "citation": "NASA Langley Research Center POWER Project.",
+   "url": "https://power.larc.nasa.gov/",
+   "lineage": []
+  },
+  "gaez_lc-cbe975a47fd6": {
+   "id": "gaez_lc-cbe975a47fd6",
+   "source": "FAO / IIASA",
+   "product": "GAEZ v4 land-cover share GLCSv11_02 (cropland %)",
+   "version": "v4",
+   "is_nasa": false,
+   "observation_start": null,
+   "observation_end": null,
+   "publication_time": null,
+   "retrieval_time": "2026-11-14T10:02:39.857065Z",
+   "footprint": "global, aggregated to 1°",
+   "native_res": "5 arc-min (≈9 km)",
+   "effective_res": "5 arc-min (≈9 km)",
+   "units": null,
+   "qa_flags": [],
+   "transformation": "cells with ≥15.0% cropland kept as analog candidates",
+   "licence": "CC BY-NC-SA 3.0 IGO (FAO)",
+   "citation": "FAO & IIASA (2021). Global Agro-Ecological Zones version 4 (GAEZ v4). https://gaez.fao.org",
+   "url": "https://gaez.fao.org/",
+   "lineage": []
+  },
+  "faostat-f50eff6acff2": {
+   "id": "faostat-f50eff6acff2",
+   "source": "FAO",
+   "product": "FAOSTAT Crops and livestock products, Area harvested",
+   "version": "bulk",
+   "is_nasa": false,
+   "observation_start": "2020-01-01",
+   "observation_end": "2024-12-31",
+   "publication_time": null,
+   "retrieval_time": "2026-11-14T10:02:39.857065Z",
+   "footprint": "country",
+   "native_res": "country",
+   "effective_res": "country",
+   "units": "ha harvested",
+   "qa_flags": [],
+   "transformation": "mean of years; top items by area; FAOSTAT aggregates removed",
+   "licence": "CC BY 4.0 (FAO)",
+   "citation": "FAO. FAOSTAT: Crops and livestock products. https://www.fao.org/faostat/en/#data/QCL",
+   "url": "https://www.fao.org/faostat/en/#data/QCL",
+   "lineage": []
+  }
+ },
+ "confidence": {
+  "level": "high",
+  "reasons": [
+   "SSP245: 5 of 6 models put their closest analog within 500 km of a common place (Texas, United States of America).",
+   "SSP585: 4 of 6 models put their closest analog within 500 km of a common place (Oklahoma, United States of America).",
+   "6 CMIP6 models; 5 sampled years per period per model (full sampling); few sampled years let year-to-year weather leak into the monthly deltas.",
+   "Baseline is the NASA POWER regional value (≈50 km); future = baseline + model change (delta method).",
+   "Present-day self-check: the field's own 2001-2025 climate matches a cropland cell 67 km away (distance 0.045).",
+   "Crops at the analog are national FAOSTAT harvested areas (country scale), not what grows at that exact spot."
+  ]
+ },
+ "runtime_s": 222.1
+}

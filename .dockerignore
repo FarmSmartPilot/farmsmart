@@ -1,0 +1,9 @@
+.env
+.env.*
+.git
+web
+data/cache
+node_modules
+**/__pycache__
+alerts/outbox
+*.db

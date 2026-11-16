@@ -1,0 +1,269 @@
+# FarmSmart pathogen and pest host groups (agronomy agent, wave U9)
+# --------------------------------------------------------------------------
+# One entry per pathogen or pest group. `id` is the value used in
+# crops.yaml `pest_host_groups`; every crop that lists the id is in `hosts`
+# (checked by kb.pathogen_consistency()).
+#
+# Fields
+#   hosts            crop ids (cash, forage and cover) from crops.yaml that the
+#                    group damages or multiplies on. Only crops a cited source
+#                    names are listed; other crops are not "proven non-hosts".
+#   inoculum_group   (optional) a second crops.yaml id for crops that carry the
+#                    inoculum in their residue without being the crop at risk
+#   inoculum_sources (optional) crops listed under inoculum_group
+#   survival_years   [lo, hi] years the survival structure lasts in soil or
+#                    residue, as the sources state it; null when no source in
+#                    `sources` gives a number
+#   break_years      non-host seasons the sources advise between hosts; null when
+#                    no number is given (the rule then only looks at the
+#                    season directly before, the minimum any source implies)
+#   in_rule          false for groups with a single host in our crop list (the
+#                    cross-crop rule cannot fire); they stay here for the
+#                    disease panel and the weather models
+#   advice_en/es     one plain sentence used in the shared_pathogen_host message
+#
+# Rule use: rules.yaml `shared_pathogen_host` (see rules_engine.shared_pathogens).
+# Rhizoctonia solani is not listed: its anastomosis groups attack corn, soybean,
+# dry bean and sugar beet differently, and we did not find an extension source
+# that gives a rotation interval by crop pair. Listing it would flag almost
+# every row-crop rotation without a sourced reason.
+# --------------------------------------------------------------------------
+schema_version: 1
+
+sources:
+  cpn_white_mold: {cite: "Crop Protection Network, Encyclopedia: White Mold of Soybean (beans, peas, sunflowers and cole crops should not be in rotation with soybean where white mold is a risk; at least two or three years of a non-host crop reduce sclerotia)", url: "https://cropprotectionnetwork.org/encyclopedia/white-mold-of-soybean"}
+  cpn_white_mold_overview: {cite: "Crop Protection Network, An Overview of White Mold (broadleaf hosts: edible beans, canola, cole crops, peas, chickpeas, lentils, sunflowers, potatoes; sclerotia survive at least eight years; two to three years of corn, flax or small grains)", url: "https://cropprotectionnetwork.org/publications/an-overview-of-white-mold"}
+  mb_white_mould: {cite: "Manitoba Agriculture, White Mould (Sclerotinia): hosts include dry beans, field peas, canola, sunflowers, lentils, mustard, potatoes", url: "https://manitoba.ca/agriculture/crops/plant-diseases/white-mould.html"}
+  ndsu_scn: {cite: "NDSU Extension PP1732, Soybean Cyst Nematode (feeds on roots of soybean, dry bean and a few weeds; rotate to non-host crops)", url: "https://www.ndsu.edu/agriculture/extension/publications/soybean-cyst-nematode"}
+  isu_scn_covers: {cite: "Tylka, ISU Integrated Crop Management 2014, Cover crops and SCN: almost no SCN reproduction on berseem, crimson, red, sweet and white clover, cowpea, Austrian winter pea and field pea", url: "https://crops.extension.iastate.edu/cropnews/2014/09/cover-crops-and-scn-whats-connection"}
+  cpn_fhb: {cite: "Crop Protection Network, Encyclopedia: Fusarium Head Blight of Wheat (pathogen survives on host residue; rotate away from a host crop, corn or small grains, for at least one year)", url: "https://cropprotectionnetwork.org/encyclopedia/fusarium-head-blight-of-wheat"}
+  ndsu_crw: {cite: "NDSU Extension, Corn rootworm: crop rotation (corn is the preferred host; rotation with non-hosts breaks the life cycle; some northern corn rootworm eggs stay in diapause two or more winters; western variant lays eggs in soybean)", url: "https://ndsu.edu/agriculture/node/1953"}
+  umn_ncr_diapause: {cite: "Univ. Minnesota Extension 2023, Northern corn rootworm and extended diapause", url: "https://blog-crop-news.extension.umn.edu/2023/07/northern-corn-rootworm-and-extended.html"}
+  skpulse_aphanomyces: {cite: "Saskatchewan Pulse Growers, Testing for Aphanomyces and other root rot pathogens (6 to 8 years between susceptible hosts such as peas, lentils and alfalfa once confirmed)", url: "https://saskpulse.com/resources/testing-for-aphanomyces-and-other-root-rot-pathogens/"}
+  sk_clubroot_plan: {cite: "Saskatchewan Ministry of Agriculture, Clubroot management plan (hosts: canola, mustard, camelina, oilseed radish and other crucifers; susceptible crops no more than once every four years)", url: "https://publications.saskatchewan.ca/api/v1/products/102185/formats/113037/download"}
+  ndsu_clubroot: {cite: "NDSU Extension PP1998, Canola Diseases: Clubroot (affects camelina, canola, mustards, radishes and other crucifers)", url: "https://www.ag.ndsu.edu/publicationS/crops/canola-diseases-clubroot"}
+  ccc_blackleg: {cite: "Canola Council of Canada, Canola Watch: Six basics of blackleg management (two-year break from canola, three where infection is high)", url: "https://www.canolacouncil.org/canola-watch/fundamentals/six-basics-of-blackleg-management/"}
+  cpn_tar_spot: {cite: "Crop Protection Network, Encyclopedia: Tar Spot of Corn (Phyllachora maydis overwinters on corn residue; residue management, rotation and hybrid choice may reduce it)", url: "https://cropprotectionnetwork.org/encyclopedia/tar-spot-of-corn"}
+  cpn_gls: {cite: "Crop Protection Network, Encyclopedia: Gray Leaf Spot of Corn (Cercospora zeae-maydis survives in corn residue; more severe in corn after corn; rotation and tillage reduce survival)", url: "https://cropprotectionnetwork.org/encyclopedia/gray-leaf-spot-of-corn"}
+  pnw_takeall: {cite: "Pacific Northwest Plant Disease Management Handbook, Wheat: Take-all (at least one year out of wheat or barley is very effective; corn, annual legumes, oilseeds and vegetables are not hosts)", url: "https://pnwhandbooks.org/plantdisease/host-disease/wheat-triticum-aestivum-take-all"}
+  rothrock1991: {cite: "Rothrock & Cunfer 1991, Plant Disease 75:1050-1052, take-all of wheat after wheat, barley, triticale, rye and oats (oats the only resistant small grain; rye built inoculum without loss of its own)", url: "https://apsnet.org/publications/plantdisease/backissues/Documents/1991Abstracts/PD_75_1050.htm"}
+  cpn_takeall: {cite: "Crop Protection Network, Encyclopedia: Take-All of Wheat (rotate with a non-host such as corn or a legume; kill volunteer and grass hosts)", url: "https://cropprotectionnetwork.org/encyclopedia/take-all-of-wheat"}
+  ucipm_cotton_rkn: {cite: "UC IPM Cotton Pest Management Guidelines, Root-knot nematode (cotton susceptible to Meloidogyne incognita; resistant cowpea and resistant processing tomatoes are rotation crops that reduce it)", url: "https://ipm.ucanr.edu/PMG/r114200111.html"}
+  ucipm_tomato_rkn: {cite: "UC IPM Tomato Pest Management Guidelines, Root-knot nematodes (resistant cultivars work against M. incognita, M. javanica, M. arenaria, not M. hapla)", url: "https://ipm.ucanr.edu/agriculture/tomato/root-knot-nematodes/"}
+  pnw_bcn: {cite: "Pacific Northwest Plant Disease Management Handbook, Sugar beet: Beet cyst nematode (crop hosts include table beet, cabbage family, rape, turnip and radish)", url: "https://pnwhandbooks.org/plantdisease/host-disease/sugar-beet-beta-vulgaris-nematode-beet-cyst"}
+  skpulse_ascochyta: {cite: "Saskatchewan Pulse Growers, Ascochyta blight of chickpea fungicide decision checklist (lower risk on land without chickpeas for at least three years)", url: "https://saskpulse.com/?p=3341"}
+  ksu_sca: {cite: "Kansas State Univ. Agronomy eUpdate, Start scouting soon for sugarcane aphids (overwinters on Johnsongrass and sorghum stubble in the south; migrates north)", url: "https://eupdate.agronomy.ksu.edu/article/start-scouting-soon-for-sugarcane-aphids-641-2"}
+  psu_alfalfa_weevil: {cite: "Penn State Extension, Alfalfa Weevil (larval feeding reduces alfalfa yield, quality and stand)", url: "https://extension.psu.edu/alfalfa-weevil"}
+
+pathogens:
+  - id: sclerotinia
+    name_en: "White mold (Sclerotinia stem rot)"
+    name_es: "Moho blanco (esclerotinia)"
+    organism: "Sclerotinia sclerotiorum"
+    kind: disease
+    hosts: [soybean, dry_bean, canola, sunflower, field_pea, lentil, chickpea]
+    survival_years: [3, 8]
+    break_years: 2
+    in_rule: true
+    advice_en: "Sclerotia last for years in the soil; leave at least two or three years of corn, flax or small grains between these crops."
+    advice_es: "Los esclerocios duran años en el suelo; deje al menos dos o tres años de maíz, lino o cereales entre estos cultivos."
+    notes: "Over 400 plant species are hosts, including many broadleaf weeds (CPN). Survival: 3-7 years (Manitoba/NDSU wording in rules.yaml) to at least 8 years (CPN overview). Covers: no source here names radish, camelina, clovers or vetch for S. sclerotiorum in field rotations, so they are not listed."
+    sources: [cpn_white_mold, cpn_white_mold_overview, mb_white_mould, mb_sclerotinia]
+
+  - id: soybean_cyst_nematode
+    name_en: "Soybean cyst nematode (SCN)"
+    name_es: "Nematodo del quiste de la soya"
+    organism: "Heterodera glycines"
+    kind: nematode
+    hosts: [soybean, dry_bean]
+    survival_years: null
+    break_years: null
+    in_rule: true
+    advice_en: "Test the soil for SCN, grow resistant soybean varieties and rotate to non-host crops."
+    advice_es: "Analice el suelo para el nematodo, siembre soya resistente y rote con cultivos no hospederos."
+    notes: "Clovers (berseem, crimson, red, sweet, white), cowpea, Austrian winter pea and field pea showed almost no SCN reproduction in ISU greenhouse tests (2014); later ISU work found juveniles in crimson clover roots, so crimson clover is not called a host or a non-host here. Weed hosts (henbit, field pennycress) matter too."
+    sources: [ndsu_scn, isu_scn_covers]
+
+  - id: fusarium_head_blight
+    name_en: "Fusarium head blight (scab)"
+    name_es: "Fusariosis de la espiga"
+    organism: "Fusarium graminearum (Gibberella zeae)"
+    kind: disease
+    hosts: [winter_wheat, spring_wheat, durum, barley, oats, triticale]
+    inoculum_group: fusarium_head_blight_inoculum
+    inoculum_sources: [corn]
+    survival_years: null
+    break_years: 1
+    in_rule: true
+    advice_en: "The fungus lives on corn and small-grain residue; keep at least one season of a non-host before wheat or barley and watch the scab forecast at flowering."
+    advice_es: "El hongo vive en el rastrojo de maíz y cereales; deje al menos una temporada sin hospedero antes del trigo o la cebada y siga el pronóstico en la floración."
+    notes: "Corn is the main residue source (Gibberella stalk and ear rot) and is listed as an inoculum source, not as the crop at risk. Corn directly before a small grain is already handled by rules.yaml wheat_after_corn_fhb."
+    sources: [cpn_fhb, dill_macky2000]
+
+  - id: corn_rootworm
+    name_en: "Corn rootworm"
+    name_es: "Gusano de la raíz del maíz"
+    organism: "Diabrotica virgifera virgifera, D. barberi"
+    kind: insect
+    hosts: [corn]
+    survival_years: [1, 2]
+    break_years: 1
+    in_rule: false
+    advice_en: "One year out of corn usually breaks the cycle; extended-diapause northern rootworm and the western soybean variant can survive it."
+    advice_es: "Un año sin maíz suele cortar el ciclo; la variante con diapausa prolongada y la variante occidental que pone huevos en soya pueden sobrevivir."
+    notes: "Eggs overwinter once; some northern corn rootworm eggs stay in diapause two or more winters (MN, SD, IA, WI, NE). Volunteer corn and foxtails are alternate hosts. Corn after corn is handled by continuous_corn."
+    sources: [ndsu_crw, umn_ncr_diapause]
+
+  - id: pulse_root_rot_aphanomyces
+    name_en: "Aphanomyces root rot"
+    name_es: "Pudrición de raíz por Aphanomyces"
+    organism: "Aphanomyces euteiches"
+    kind: disease
+    hosts: [field_pea, lentil, alfalfa]
+    survival_years: null
+    break_years: 6
+    in_rule: true
+    advice_en: "If a soil test finds Aphanomyces, keep peas, lentils and alfalfa six to eight years apart."
+    advice_es: "Si un análisis encuentra Aphanomyces, separe arveja, lenteja y alfalfa de seis a ocho años."
+    notes: "Interval applies once the pathogen is confirmed (SPG). Many alfalfa varieties are susceptible, some are resistant. Some bean varieties are susceptible; dry bean is not listed because the source does not say which. The rule skips this group when the farmer says a soil test found no Aphanomyces."
+    sources: [skpulse_aphanomyces, skpulse_rootrot]
+
+  - id: clubroot
+    name_en: "Clubroot"
+    name_es: "Hernia de las crucíferas"
+    organism: "Plasmodiophora brassicae"
+    kind: disease
+    hosts: [canola, radish_cover, winter_camelina]
+    survival_years: null
+    break_years: 2
+    in_rule: true
+    advice_en: "Brassica cover crops such as radish and camelina also feed clubroot; keep at least two years (three in Saskatchewan) without any brassica before canola."
+    advice_es: "Las coberturas crucíferas como rábano y camelina también alimentan la hernia; deje al menos dos años (tres en Saskatchewan) sin crucíferas antes de la canola."
+    notes: "Canola Council minimum is a two-year break; Saskatchewan advises susceptible crops (resistant varieties included) no more than once in four years. Cruciferous weeds are hosts too. Camelina showed the least disease of the brassicas in an NDSU trial but was still infected."
+    sources: [ccc_rotation, sk_clubroot, sk_clubroot_plan, ndsu_clubroot]
+
+  - id: blackleg
+    name_en: "Blackleg"
+    name_es: "Pierna negra"
+    organism: "Leptosphaeria maculans"
+    kind: disease
+    hosts: [canola]
+    survival_years: null
+    break_years: 2
+    in_rule: false
+    advice_en: "Spores come from old canola stubble; a two-year break (three where infection is high) lets it break down."
+    advice_es: "Las esporas salen del rastrojo viejo de canola; un descanso de dos años (tres con mucha infección) deja que se descomponga."
+    notes: "Only canola among our crops; canola-on-canola timing is handled by canola_frequency."
+    sources: [ccc_blackleg, ccc_rotation]
+
+  - id: tar_spot
+    name_en: "Tar spot of corn"
+    name_es: "Mancha de asfalto del maíz"
+    organism: "Phyllachora maydis"
+    kind: disease
+    hosts: [corn]
+    survival_years: null
+    break_years: null
+    in_rule: false
+    advice_en: "It overwinters on corn residue; rotation and residue management may help, but how many years are needed is not yet known."
+    advice_es: "Pasa el invierno en el rastrojo de maíz; la rotación y el manejo del rastrojo pueden ayudar, pero no se sabe cuántos años hacen falta."
+    notes: "Weather risk: Tarspotter model in fieldshift/engine/disease.py."
+    sources: [cpn_tar_spot]
+
+  - id: gray_leaf_spot
+    name_en: "Gray leaf spot of corn"
+    name_es: "Mancha gris de la hoja del maíz"
+    organism: "Cercospora zeae-maydis"
+    kind: disease
+    hosts: [corn]
+    survival_years: null
+    break_years: null
+    in_rule: false
+    advice_en: "It survives in corn residue and is worse in corn after corn; rotation and tillage reduce it."
+    advice_es: "Sobrevive en el rastrojo de maíz y es peor en maíz tras maíz; la rotación y la labranza la reducen."
+    notes: "Weather risk: gray leaf spot model in fieldshift/engine/disease.py."
+    sources: [cpn_gls]
+
+  - id: cereal_root_disease
+    name_en: "Take-all (cereal root rot)"
+    name_es: "Pietín (pudrición de raíz de cereales)"
+    organism: "Gaeumannomyces tritici (G. graminis var. tritici)"
+    kind: disease
+    hosts: [winter_wheat, spring_wheat, durum, barley, triticale, cereal_rye]
+    survival_years: null
+    break_years: 1
+    in_rule: true
+    advice_en: "Take-all builds up on wheat, barley, triticale and rye (a rye cover too); one year of corn, a legume or an oilseed brings it down. Oats do not host it."
+    advice_es: "El pietín aumenta en trigo, cebada, triticale y centeno (también como cobertura); un año de maíz, leguminosa u oleaginosa lo reduce. La avena no lo hospeda."
+    notes: "Rye showed no loss itself but built enough inoculum to damage the next wheat (Rothrock & Cunfer 1991). Grass weeds (quackgrass, bromes, bentgrass) are hosts. Oats are resistant unless the oat strain (var. avenae) is present."
+    sources: [pnw_takeall, rothrock1991, cpn_takeall]
+
+  - id: root_knot_nematode
+    name_en: "Root-knot nematode"
+    name_es: "Nematodo agallador"
+    organism: "Meloidogyne incognita (and other Meloidogyne spp.)"
+    kind: nematode
+    hosts: [cotton, processing_tomato, cowpea_cover]
+    survival_years: null
+    break_years: null
+    in_rule: true
+    advice_en: "Cotton, tomatoes and cowpea can all feed root-knot nematodes unless you grow resistant varieties; check a nematode sample."
+    advice_es: "Algodón, tomate y caupí pueden alimentar al nematodo agallador si no son variedades resistentes; haga un muestreo de nematodos."
+    notes: "Resistant processing tomatoes (Mi gene) and resistant cowpea reduce M. incognita and are used as rotation crops (UC IPM); Mi does not work against M. hapla. Hosts here are the susceptible forms."
+    sources: [ucipm_cotton_rkn, ucipm_tomato_rkn]
+
+  - id: beet_cyst_nematode
+    name_en: "Beet cyst nematode"
+    name_es: "Nematodo del quiste de la remolacha"
+    organism: "Heterodera schachtii"
+    kind: nematode
+    hosts: [sugar_beet, canola, radish_cover]
+    survival_years: null
+    break_years: null
+    in_rule: true
+    advice_en: "Canola and radish also host beet cyst nematode; keep them away from sugar beet and test the soil."
+    advice_es: "La canola y el rábano también hospedan al nematodo de la remolacha; manténgalos lejos de la remolacha y analice el suelo."
+    notes: "PNW handbook lists rape and radish among crop hosts. Some oilseed radish cultivars are bred as resistant trap crops; the generic radish cover here is treated as a host."
+    sources: [pnw_bcn]
+
+  - id: ascochyta_blight
+    name_en: "Ascochyta blight of chickpea"
+    name_es: "Rabia del garbanzo (ascochyta)"
+    organism: "Ascochyta rabiei"
+    kind: disease
+    hosts: [chickpea]
+    survival_years: null
+    break_years: 3
+    in_rule: false
+    advice_en: "Land without chickpeas for at least three years carries lower risk."
+    advice_es: "Un lote sin garbanzo por al menos tres años tiene menos riesgo."
+    notes: "Chickpea ascochyta is a different species from the ascochyta of pea and lentil."
+    sources: [skpulse_ascochyta]
+
+  - id: sugarcane_aphid
+    name_en: "Sugarcane (sorghum) aphid"
+    name_es: "Pulgón de la caña de azúcar (del sorgo)"
+    organism: "Melanaphis sacchari"
+    kind: insect
+    hosts: [sorghum]
+    survival_years: null
+    break_years: null
+    in_rule: false
+    advice_en: "It migrates north each year from Johnsongrass and sorghum in the south; rotation does not control it, scouting does."
+    advice_es: "Llega cada año desde el sur (sorgo de Alepo y sorgo); la rotación no lo controla, el monitoreo sí."
+    notes: "Cannot overwinter where it freezes (K-State)."
+    sources: [ksu_sca]
+
+  - id: alfalfa_weevil
+    name_en: "Alfalfa weevil"
+    name_es: "Gorgojo de la alfalfa"
+    organism: "Hypera postica"
+    kind: insect
+    hosts: [alfalfa]
+    survival_years: null
+    break_years: null
+    in_rule: false
+    advice_en: "Scout alfalfa in spring; rotation is not the control."
+    advice_es: "Monitoree la alfalfa en primavera; la rotación no es el control."
+    notes: "Perennial forage pest."
+    sources: [psu_alfalfa_weevil]

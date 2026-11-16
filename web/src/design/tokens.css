@@ -1,0 +1,179 @@
+/* FarmSmart design tokens. Owner: design agent. Source: docs/design/DESIGN_DIGEST.md Part 3. */
+
+:root {
+  /* Brand palette */
+  --navy: #0e2a47;
+  --field: #2e7d4f;
+  --field-strong: #24653f;
+  --wheat: #c8902a;
+  --sky: #2f7fb5;
+  --sky-text: #276b9a; /* sky for text and links: 5.7:1 on white, 4.9:1 on sky-tint (QC contrast fix) */
+  --soil: #8a5a3b;
+  --alert: #c2483a;
+  --purple: #6b4fa0;
+  --si: #1e8e4e;
+  /* SI dot fill behind the white "SI" letters. #1E8E4E gives 4.17:1 with white, below WCAG AA for
+     7.5-8.5 px text; this is the same hue ~10 % darker (4.98:1). The brand token above stays #1E8E4E. */
+  --si-dot: #1a8046;
+  --surface: #f6f8fa;
+  --card: #ffffff;
+
+  /* Tints (chip fills, selected cards) */
+  --field-tint: #e6f1ea;
+  --wheat-tint: #f7eedd;
+  --sky-tint: #e5eff7;
+  --alert-tint: #f7e6e4;
+  --soil-tint: #f1ebe6;
+  --purple-tint: #eeeaf5;
+  --navy-tint: #e3e8ee;
+
+  /* Neutrals / ink */
+  --ink: #0e2a47;
+  --ink-2: #4a5b6e;
+  --ink-3: #5e6d7f; /* darkened (was #6B7A8C, 4.38:1) to pass 4.5:1 on white and the #F6F8FA surface */
+  --line: #dde3ea;
+  --line-strong: #c3ccd6;
+  --track: #e6ecf0;
+  --other-data: #6f7d8c; /* gray data button (non-NASA); 4.5:1 with white glyph */
+  --overlay: rgba(14, 42, 71, 0.55);
+
+  /* Okabe-Ito categorical (colorblind safe) */
+  --cat-1: #e69f00;
+  --cat-2: #56b4e9;
+  --cat-3: #009e73;
+  --cat-4: #f0e442;
+  --cat-5: #0072b2;
+  --cat-6: #d55e00;
+  --cat-7: #cc79a7;
+  --cat-8: #000000;
+
+  /* Crop palette */
+  --crop-corn: #d9a53a;
+  --crop-soybean: #5fa36a;
+  --crop-wheat: #c9b37e;
+  --crop-oats: #b9a270;
+  --crop-rye: #287a6a; /* darkened from #2F8C7A so white labels pass 4.5:1 */
+  --crop-clover: #a3568a;
+  --crop-alfalfa: #2e6b3e;
+  --crop-sorghum: #a9592f; /* darkened from #B4613A so white labels pass 4.5:1 */
+  --crop-fallow: var(--alert); /* always drawn as .fs-hatch-bare, never solid */
+
+  /* Confidence */
+  --conf-high: var(--field-strong); /* text on field-tint: 6.0:1 (field green was 4.35:1) */
+  --conf-high-tint: var(--field-tint);
+  --conf-med: #845a0d; /* wheat darkened for text: 5.3:1 on wheat-tint (was #9A6A12, 4.1:1) */
+  --conf-med-tint: var(--wheat-tint);
+  --conf-low: #a63b2f; /* alert red darkened for text on alert-tint: 5.3:1 (was 4.06:1) */
+  --conf-low-tint: var(--alert-tint);
+
+  /* Spacing: 4px base */
+  --s1: 4px;
+  --s2: 8px;
+  --s3: 12px;
+  --s4: 16px;
+  --s5: 20px;
+  --s6: 24px;
+  --s8: 32px;
+  --s10: 40px;
+  --s12: 48px;
+
+  /* Radii */
+  --r-xs: 4px;
+  --r-sm: 6px;
+  --r-md: 8px;
+  --r-lg: 12px;
+  --r-xl: 16px;
+  --r-pill: 999px;
+
+  /* Shadows */
+  --shadow-1: 0 1px 2px rgba(14, 42, 71, 0.06);
+  --shadow-2: 0 2px 8px rgba(14, 42, 71, 0.1);
+  --shadow-3: 0 8px 28px rgba(14, 42, 71, 0.18);
+
+  /* Type */
+  --font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: ui-monospace, "Cascadia Mono", Consolas, monospace;
+  --fs-meta: 12px;
+  --fs-body: 14px;
+  --fs-title: 16px;
+  --fs-h2: 20px;
+  --fs-h1: 24px;
+  --fs-kpi: 32px;
+  --fs-kpi-lg: 40px;
+  --lh-tight: 1.25;
+  --lh-body: 1.5;
+
+  /* Focus ring */
+  --focus-ring: 0 0 0 2px #fff, 0 0 0 4px var(--sky);
+
+  /* Touch target */
+  --tap-min: 32px;
+
+  /* Motion */
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --dur-fast: 120ms;
+  --dur: 200ms;
+  --dur-slow: 360ms;
+
+  /* Layers */
+  --z-popover: 900;
+  --z-sheet: 950;
+  --z-tour: 1000;
+}
+
+/* Mobile: body 16px, bigger tap targets */
+@media (max-width: 639px) {
+  :root {
+    --fs-meta: 13px;
+    --fs-body: 16px;
+    --fs-title: 17px;
+  }
+}
+@media (pointer: coarse) {
+  :root {
+    --tap-min: 44px;
+  }
+}
+
+/* Reduced motion: honor OS setting and an app-level override (data-motion="reduce" on <html>) */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-fast: 0ms;
+    --dur: 0ms;
+    --dur-slow: 0ms;
+  }
+}
+:root[data-motion="reduce"] {
+  --dur-fast: 0ms;
+  --dur: 0ms;
+  --dur-slow: 0ms;
+}
+
+/* Bare-soil hatch: red diagonal 45deg, 2px stroke on alert tint, 6px pitch */
+.fs-hatch-bare {
+  background-color: var(--alert-tint);
+  background-image: repeating-linear-gradient(
+    45deg,
+    var(--alert) 0,
+    var(--alert) 2px,
+    transparent 2px,
+    transparent 6px
+  );
+}
+
+/* Label over imagery: dark plate + text shadow keeps contrast on any pixel */
+.fs-on-imagery {
+  color: #fff;
+  background: rgba(8, 24, 42, 0.78);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+  border-radius: var(--r-sm);
+  padding: 2px var(--s2);
+  font-size: var(--fs-meta);
+  font-weight: 600;
+  line-height: 1.4;
+}
+.fs-on-imagery--light {
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.92);
+  text-shadow: none;
+}

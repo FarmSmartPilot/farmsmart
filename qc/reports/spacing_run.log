@@ -1,0 +1,31 @@
+
+Running 1 test using 1 worker
+
+1280x800 globe-home: hscroll=0 offscreen=0 clipped=0 small=0 overlaps=0
+1280x800 field-studio: hscroll=0 offscreen=0 clipped=0 small=0 overlaps=0
+1280x800 strategy-compare: hscroll=0 offscreen=0 clipped=0 small=0 overlaps=0
+1280x800 climate-twins: hscroll=0 offscreen=0 clipped=0 small=0 overlaps=0
+1280x800 drought-replay: hscroll=0 offscreen=0 clipped=0 small=0 overlaps=0
+1440x900 globe-home: hscroll=0 offscreen=0 clipped=0 small=0 overlaps=0
+1440x900 field-studio: hscroll=0 offscreen=0 clipped=0 small=0 overlaps=0
+1440x900 strategy-compare: hscroll=0 offscreen=0 clipped=0 small=0 overlaps=0
+1440x900 climate-twins: hscroll=0 offscreen=0 clipped=0 small=0 overlaps=0
+1440x900 drought-replay: hscroll=0 offscreen=0 clipped=0 small=0 overlaps=0
+1920x1080 globe-home: hscroll=0 offscreen=0 clipped=0 small=0 overlaps=0
+1920x1080 field-studio: hscroll=0 offscreen=0 clipped=0 small=0 overlaps=0
+1920x1080 strategy-compare: hscroll=0 offscreen=0 clipped=0 small=0 overlaps=0
+1920x1080 climate-twins: hscroll=0 offscreen=0 clipped=0 small=0 overlaps=0
+1920x1080 drought-replay: hscroll=0 offscreen=0 clipped=0 small=0 overlaps=0
+390x844 globe-home: hscroll=0 offscreen=0 clipped=0 small=1 overlaps=0
+390x844 field-studio: hscroll=0 offscreen=0 clipped=0 small=7 overlaps=0
+390x844 strategy-compare: hscroll=0 offscreen=0 clipped=0 small=5 overlaps=0
+390x844 climate-twins: hscroll=0 offscreen=0 clipped=0 small=1 overlaps=0
+390x844 drought-replay: hscroll=0 offscreen=0 clipped=0 small=1 overlaps=0
+430x932 globe-home: hscroll=0 offscreen=0 clipped=0 small=1 overlaps=0
+430x932 field-studio: hscroll=0 offscreen=0 clipped=0 small=7 overlaps=0
+430x932 strategy-compare: hscroll=0 offscreen=0 clipped=0 small=5 overlaps=0
+430x932 climate-twins: hscroll=0 offscreen=0 clipped=0 small=1 overlaps=0
+430x932 drought-replay: hscroll=0 offscreen=0 clipped=0 small=1 overlaps=0
+  ok 1 [desktop-chromium] › ..\qc\e2e\spacing.spec.ts:114:1 › spacing audit (2.3m)
+
+  1 passed (2.3m)

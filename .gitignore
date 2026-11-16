@@ -1,0 +1,46 @@
+# secrets
+.env
+.env.*
+!.env.example
+.netrc
+*.pem
+
+# python
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+
+# node / web
+node_modules/
+web/dist/
+web/.vite/
+
+# data and large artifacts
+data/cache/
+models/artifacts/*.pkl
+models/artifacts/*.joblib
+*.tif
+*.nc
+*.h5
+*.zarr/
+fieldshift.db
+alerts/outbox/*.eml
+
+# qc output
+qc/playwright-report/
+qc/test-results/
+
+# deploy tooling and local exports
+.vercel/
+release/
+
+# os / editors
+.DS_Store
+Thumbs.db
+.vscode/
+
+# playwright output
+qc/reports/e2e-artifacts/
+qc/e2e/test-results/
+qc/video/out/

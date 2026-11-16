@@ -1,0 +1,412 @@
+# FarmSmart agronomy rules engine spec (agronomy agent)
+# ==========================================================================
+# The engine walks a candidate rotation year by year. For each transition it
+# binds the context below, evaluates every rule's `condition`, and applies the
+# `effect`. Rules never invent numbers: every numeric effect quotes a source in
+# `sources` (keys resolve in `sources:` here or in crops.yaml).
+#
+# ---------------- CONDITION DSL (v1) ----------------
+# Context objects (read-only):
+#   prev        crop record (crops.yaml) of the previous cash/forage crop
+#   next        crop record of the crop being placed
+#   cover       crop record of the cover crop between prev and next, or null
+#   seq         list of crop records for the whole rotation, oldest first
+#   history     list of crop ids from CDL for the field, oldest first (may be empty)
+#   field       site facts: slope_pct, drainage_class, texture_class, ph,
+#               frost_free_days_p50, frost_free_days_p20, gdd_p50, gdd_p20,
+#               eto_season_mm, rain_eff_season_p20_mm, irrigation_mm (0 if none),
+#               peak_erosivity_months (list of 1..12), bare_months (list, computed),
+#               region (calendars.yaml key), aphanomyces_confirmed (bool|null)
+#   farm        farmer answers: equipment (list), markets (list of crop ids),
+#               livestock (bool), hay_buyer (bool), n_rate_kg_ha (number|null),
+#               custom_hire (bool)
+#   rules_env   constants defined in `constants:` below
+# Operators:  == != < <= > >=  and or not  in  not_in
+# Literals:   numbers, 'strings', [lists], null, true, false
+# Functions:
+#   has(list, x)                 true if x in list
+#   any_in(list_a, list_b)       true if lists intersect
+#   all_in(list_a, list_b)       true if every item of a is in b
+#   years_since(seq, pred)       years back to the most recent crop matching pred
+#                                (pred is a boolean expression over `c`); 99 if none
+#   count(seq, pred, window=n)   how many of the last n crops (incl. next) match pred
+#   season_etc_mm(next, field)   sum over stages of Kc x ETo (FAO-56 single Kc)
+#   overlap(list_a, list_b)      list intersection
+#   len(list)                    list length
+# Derived fields the engine adds to `next` from calendars.yaml for the field's region:
+#   next.plant_date ('MM-DD'), next.growth_months (list of 'MM' strings)
+# Sub-rules: `sub_rules` are evaluated only when the parent rule is evaluated
+#   (whether or not the parent condition fired) and add their own effects.
+# Effects (keys an effect may carry):
+#   unless: "<expr>"             skip this effect when the expression is true
+#   exclude: true                drop the candidate (hard filter)
+#   yield_mult: [lo, hi]         multiply expected yield of `next` (range kept for P10/P90)
+#   n_rate_delta_kg_ha: [lo,hi]  change to the recommended N rate of `next` (negative = less N)
+#   score: {criterion: delta}    ordinal score change (-2..+2) for a card criterion
+#   flag: <flag_id>              show a risk flag on the card
+#   check_locally: <text id>     add to the "check locally" list
+#   require: <practice>          candidate kept only if the practice is added
+#   confidence: -1               lower card confidence one level
+# A rule whose number is null still fires its flag; it just changes no number.
+# ==========================================================================
+schema_version: 1
+
+constants:
+  lb_to_kg_ha: 1.121
+  legume_credit_fade_n_rate_kg_ha: 150     # Cernay 2017 / Zhao 2022: legume pre-crop effect negligible above ~150 kg N/ha
+  slope_erosion_threshold_pct: 5           # BP s.7.4 rule (planning digest s.6.2)
+  residue_min_conservation: 0.30           # ISU PM 1901a: at least 30% residue after planting
+  residue_min_steep: [0.50, 0.60]          # ISU PM 1901a: steeper/longer slopes need 50-60%
+  rye_kill_days_before_corn: 10            # SARE Cereal Rye
+
+sources:
+  seifert2017: {cite: "Seifert, Roberts & Lobell 2017, Agron J, 748,374 Midwest field-years", url: "https://doi.org/10.2134/agronj2016.03.0134"}
+  crookston1991: {cite: "Crookston et al. 1991, Agron J, MN 9 yr", url: "https://doi.org/10.2134/agronj1991.00021962008300010026x"}
+  bennett2012: {cite: "Bennett et al. 2012, Biol Rev, short-rotation yield decline review", url: "https://doi.org/10.1111/j.1469-185X.2011.00184.x"}
+  dill_macky2000: {cite: "Dill-Macky & Jones 2000, Plant Disease 84:71-76, previous crop residue and Fusarium head blight of wheat", url: "https://doi.org/10.1094/PDIS.2000.84.1.71"}
+  zhao2022: {cite: "Zhao et al. 2022, Nat Commun, legume pre-crop +20% (32% low-yield vs 7% high-yield environments)", url: "https://doi.org/10.1038/s41467-022-32464-0"}
+  cernay2017: {cite: "Cernay et al. 2017, Env Chem Lett, cereals after grain legumes +29%, negligible above ~150 kg N/ha", url: "https://doi.org/10.1007/s10311-017-0698-z"}
+  preissel2015: {cite: "Preissel et al. 2015, Field Crops Res, next-crop N cut 23-31 kg N/ha", url: "https://doi.org/10.1016/j.fcr.2015.01.012"}
+  angus2015: {cite: "Angus et al. 2015, Crop Pasture Sci, wheat after break crops +0.5 (oats) to +1.2 t/ha (grain legumes)", url: "https://doi.org/10.1071/CP14252"}
+  umn_alfalfa: {cite: "Univ. Minnesota Extension, N credits after alfalfa", url: "https://extension.umn.edu/corn-planting/tools-predict-nitrogen-needs-corn-following-alfalfa"}
+  ksu_l778: {cite: "Kansas State L-778, Using Legumes in Crop Rotations", url: "https://bookstore.ksre.ksu.edu/pubs/L778.pdf"}
+  stanger2008: {cite: "Stanger & Lauer 2008, Agron J, 1st-yr corn after alfalfa needed no added N", url: "https://doi.org/10.2134/agronj2007.0280"}
+  ccc_rotation: {cite: "Canola Council of Canada: at least two years between canola crops (1 in 3) for blackleg and clubroot", url: "https://canolacouncil.org/?p=18199"}
+  sk_clubroot: {cite: "Saskatchewan Agriculture recommends 1-in-4-year canola (Western Producer report)", url: "https://www.producer.com/news/longer-canola-rotations-better-for-combatting-clubroot"}
+  skpulse_rootrot: {cite: "Saskatchewan Pulse Growers, Lentils/peas root rot: 6+ years off peas/lentils where Aphanomyces is confirmed", url: "https://saskpulse.com/?p=2971"}
+  ndsu_sunflower: {cite: "NDSU sunflower disease guidance: four-year rotation recommended", url: "https://www.ndsu.edu/agriculture/sites/default/files/2026-07/pp2300.pdf"}
+  mb_sclerotinia: {cite: "Manitoba Agriculture, Sclerotinia in sunflowers: 5 years between susceptible crops; host list", url: "https://gov.mb.ca/agriculture/crops/plant-diseases/sclerotinia-sunflowers.html"}
+  label_rotation: {cite: "Herbicide product labels, rotational crop restriction sections (legal requirement); summarised in state weed control guides", url: "https://www.epa.gov/pesticide-labels"}
+  fao56: {cite: "Allen et al. 1998, FAO-56 Crop evapotranspiration", url: "https://www.fao.org/4/X0490E/x0490e00.htm"}
+  fao33: {cite: "Doorenbos & Kassam 1979, FAO-33 Yield response to water (1 - Ya/Ym = Ky (1 - ETa/ETm))", url: "https://www.fao.org/4/i2800e/i2800e.pdf"}
+  isu_pm1901a: {cite: "Al-Kaisi & Hanna, ISU PM 1901a (>=30% residue; 50-60% on steeper or longer slopes)", url: "https://www.mssoy.org/sites/default/files/documents/isu-pm1901a.pdf"}
+  sare_rye: {cite: "SARE, Managing Cover Crops Profitably, Cereal Rye", url: "https://www.sare.org/publications/managing-cover-crops-profitably/nonlegume-cover-crops/cereal-rye/"}
+  rma_mgr19017: {cite: "USDA RMA MGR-19-017: NRCS Cover Crop Termination Guidelines v4 (June 2019); cover not terminated per guidelines may affect insurability", url: "https://rma.usda.gov/policy-procedure/bulletins-memos/managers-bulletin/2019/mgr-19-017"}
+  pantoja2015: {cite: "Pantoja, Woli, Sawyer & Barker 2015, SSSAJ 79:1482-1495, rye cover: corn yield -6% at EONR, soybean unaffected (Iowa)", url: "https://doi.org/10.2136/sssaj2015.02.0084"}
+  marcillo2017: {cite: "Marcillo & Miguez 2017, JSWC, grass covers ~0 effect on corn; legume covers +30-33% at low N / no-till", url: "https://doi.org/10.2489/jswc.72.3.226"}
+  abdalla2019: {cite: "Abdalla et al. 2019, Glob Change Biol, covers -4% yield on average; legume/non-legume mixtures +13%", url: "https://doi.org/10.1111/gcb.14644"}
+  wang2025: {cite: "Wang et al. 2025, Crop Sci, second cereal year = yield drag (spring wheat worst), N. Great Plains", url: "https://doi.org/10.1002/csc2.70047"}
+  digest: {cite: "FarmSmart planning digest s.6.2 (BP s.7.4 rule table)", url: "docs/reference/PLANNING_DIGEST.md"}
+  punjab_act2009: {cite: "Punjab Preservation of Subsoil Water Act 2009", url: "https://leap.unep.org/en/countries/in/national-legislation/punjab-preservation-subsoil-water-act-2009"}
+  mt_soy_2026: {cite: "IN Conjunta Sedec/Indea-MT calendar via CNA (soy-free period Jun 8 - Sep 6)", url: "https://cnabrasil.org.br/noticias/calendario-da-soja-em-mt-mantem-vazio-sanitario-de-junho-a-setembro-para-2026"}
+
+rules:
+  # ---------------- sequence / pest-disease ----------------
+  - id: same_family_back_to_back
+    description: "Same botanical family two years running carries over pests and diseases (crop-specific rules below add numbers where they exist)."
+    type: penalty
+    condition: "prev.family == next.family and not (prev.id == 'corn' and next.id == 'corn') and not (prev.id == 'soybean' and next.id == 'soybean')"
+    effect: {yield_mult: null, score: {pest_break: -1}, flag: pest_carryover}
+    message_en: "Same plant family as last year. Pests and diseases that live on this family get another year to build up."
+    message_es: "Misma familia de plantas que el año pasado. Las plagas y enfermedades de esta familia tienen otro año para crecer."
+    sources: [bennett2012, digest]
+
+  - id: continuous_corn
+    description: "Corn after corn: -4.3% yield vs rotated corn; penalty levels off after about 3 years; larger in dry and low-yield sites; irrigation reduces it."
+    type: penalty
+    condition: "prev.id == 'corn' and next.id == 'corn'"
+    effect: {yield_mult: [0.957, 0.957], score: {pest_break: -2}, flag: continuous_corn, note: "Seifert 2017 reports a larger penalty in dry/low-yield conditions; engine should widen the low end only with a cited value"}
+    message_en: "Corn after corn: across 748,000 Midwest field-years this cut yield about 4.3% (more in dry years)."
+    message_es: "Maíz tras maíz: en 748.000 lotes-año del Medio Oeste bajó el rendimiento cerca de 4,3 % (más en años secos)."
+    sources: [seifert2017]
+
+  - id: continuous_soybean
+    description: "Soybean after soybean: -10.3% yield; penalty keeps growing up to 5 years."
+    type: penalty
+    condition: "prev.id == 'soybean' and next.id == 'soybean'"
+    effect: {yield_mult: [0.897, 0.897], score: {pest_break: -2}, flag: continuous_soybean}
+    message_en: "Soybean after soybean: across 748,000 Midwest field-years this cut yield about 10.3%, and it gets worse each year up to 5 years."
+    message_es: "Soya tras soya: en 748.000 lotes-año del Medio Oeste bajó el rendimiento cerca de 10,3 % y empeora cada año hasta 5 años."
+    sources: [seifert2017]
+
+  - id: corn_after_soybean
+    description: "Rotation effect: rotated corn +10% vs continuous corn; first-year corn after 5 years of soybean +15%. Rotated soybean +8%, first-year soybean +17% (Crookston 1991, MN)."
+    type: credit
+    condition: "next.id == 'corn' and prev.id == 'soybean'"
+    effect: {yield_mult: [1.10, 1.15], baseline: continuous_corn, score: {pest_break: 1}}
+    message_en: "Corn after soybean: in a 9-year Minnesota study, rotated corn yielded about 10% more than corn after corn."
+    message_es: "Maíz después de soya: en un estudio de 9 años en Minnesota, el maíz rotado rindió cerca de 10 % más que maíz tras maíz."
+    sources: [crookston1991]
+
+  - id: soybean_after_corn
+    description: "Rotated soybean +8% vs continuous soybean; first-year soybean +17% (Crookston 1991)."
+    type: credit
+    condition: "next.id == 'soybean' and prev.id == 'corn'"
+    effect: {yield_mult: [1.08, 1.17], baseline: continuous_soybean}
+    message_en: "Soybean after corn: rotated soybean yielded about 8% more than soybean after soybean (Minnesota, 9 years)."
+    message_es: "Soya después de maíz: la soya rotada rindió cerca de 8 % más que soya tras soya (Minnesota, 9 años)."
+    sources: [crookston1991]
+
+  - id: wheat_after_corn_fhb
+    description: "Small grains after corn sit on Fusarium graminearum-infested residue: higher Fusarium head blight (scab) and DON risk."
+    type: flag
+    condition: "has(['corn'], prev.id) and has(next.pest_host_groups, 'fusarium_head_blight')"
+    effect: {flag: fhb_scab_risk, score: {pest_break: -1}, check_locally: fhb_forecast_and_variety}
+    message_en: "Wheat or barley after corn has a higher scab (head blight) risk. Pick a resistant variety and watch the local scab forecast at flowering."
+    message_es: "Trigo o cebada después de maíz tiene más riesgo de fusariosis de la espiga. Elija una variedad resistente y siga el pronóstico local en la floración."
+    sources: [dill_macky2000, digest]
+
+  - id: second_cereal_year
+    description: "A second cereal year in a row carries a yield drag (spring wheat worst) in the Northern Great Plains."
+    type: flag
+    condition: "prev.family == 'Poaceae' and next.family == 'Poaceae' and has(['spring_wheat','durum','barley','oats','winter_wheat'], next.id) and has(['spring_wheat','durum','barley','oats','winter_wheat'], prev.id)"
+    effect: {flag: cereal_on_cereal, yield_mult: null}
+    message_en: "Second cereal in a row. Northern Plains trials show a yield drag, worst for spring wheat."
+    message_es: "Segundo cereal seguido. Ensayos en las Grandes Llanuras del norte muestran menor rendimiento, peor en trigo de primavera."
+    sources: [wang2025]
+
+  # ---------------- nitrogen ----------------
+  - id: legume_before_high_n_crop
+    description: "Legume (grain or forage) before a cereal or other high-N crop: N credit and a yield bonus that shrinks as the N rate rises."
+    type: credit
+    condition: "prev.n_fixing == true and next.n_fixing == false and next.family in ['Poaceae','Brassicaceae','Asteraceae','Malvaceae']"
+    effect:
+      n_rate_delta_kg_ha: "-prev.n_credit_next_kg_ha"
+      yield_mult: [1.07, 1.32]
+      yield_mult_note: "Zhao 2022: +7% in high-yield to +32% in low-yield environments (+20% mean). Set to 1.00 when farm.n_rate_kg_ha > constants.legume_credit_fade_n_rate_kg_ha (Cernay 2017)."
+      score: {n_self_sufficiency: 1}
+    message_en: "The legume before this crop leaves nitrogen behind. You can usually cut fertilizer N; the yield boost is biggest where little N is applied."
+    message_es: "La leguminosa anterior deja nitrógeno en el suelo. Por lo general puede reducir el abono nitrogenado; el aumento de rendimiento es mayor con poco nitrógeno."
+    sources: [zhao2022, cernay2017, preissel2015, ksu_l778, umn_alfalfa, stanger2008]
+
+  - id: pulse_before_wheat_bonus
+    description: "Wheat after a grain-legume break +1.2 t/ha vs +0.5 t/ha after oats (Angus 2015 ranking)."
+    type: credit
+    condition: "has(['field_pea','lentil','chickpea','dry_bean'], prev.id) and has(['winter_wheat','spring_wheat','durum'], next.id)"
+    effect: {yield_add_t_ha: [1.2, 1.2], baseline: wheat_after_wheat}
+    message_en: "Wheat after peas, lentils or chickpeas yielded about 1.2 t/ha more than wheat after wheat in a review of over 900 comparisons."
+    message_es: "El trigo después de arveja, lenteja o garbanzo rindió cerca de 1,2 t/ha más que trigo tras trigo en una revisión de más de 900 comparaciones."
+    sources: [angus2015]
+
+  # ---------------- frequency rules ----------------
+  - id: canola_frequency
+    description: "Canola (and other brassica hosts) at least two years apart (1 in 3, Canola Council minimum); Saskatchewan recommends 1 in 4 (clubroot, blackleg)."
+    type: penalty
+    condition: "next.family == 'Brassicaceae' and has(next.roles, 'cash') and years_since(seq, c.family == 'Brassicaceae') < 3"
+    effect: {score: {pest_break: -2}, flag: clubroot_blackleg_short_break, yield_mult: null}
+    sub_rules:
+      - condition: "next.family == 'Brassicaceae' and has(next.roles, 'cash') and years_since(seq, c.family == 'Brassicaceae') < 4"
+        effect: {flag: below_saskatchewan_1_in_4}
+    message_en: "Canola less than 2 years after another canola or mustard crop. Clubroot and blackleg build up; leave at least 2 years (3 in Saskatchewan)."
+    message_es: "Canola a menos de 2 años de otra canola o mostaza. La hernia de las crucíferas y la pierna negra aumentan; deje al menos 2 años (3 en Saskatchewan)."
+    sources: [ccc_rotation, sk_clubroot]
+
+  - id: pulses_back_to_back
+    description: "Pea or lentil after a pulse: root-rot build-up. Where Aphanomyces is confirmed, keep peas/lentils off the field 6+ years (SPG)."
+    type: penalty
+    condition: "has(['field_pea','lentil','chickpea','dry_bean'], prev.id) and has(['field_pea','lentil','chickpea','dry_bean'], next.id)"
+    effect: {score: {pest_break: -2}, flag: pulse_root_rot, yield_mult: null}
+    sub_rules:
+      - condition: "field.aphanomyces_confirmed == true and has(['field_pea','lentil'], next.id) and years_since(seq, has(['field_pea','lentil','alfalfa'], c.id)) < 6"
+        effect: {exclude: true}
+      - condition: "field.aphanomyces_confirmed == null and has(['field_pea','lentil'], next.id)"
+        effect: {check_locally: aphanomyces_soil_test}
+    message_en: "Pulse after pulse raises root-rot risk. If a soil test finds Aphanomyces, keep peas and lentils out for at least 6 years."
+    message_es: "Leguminosa de grano tras otra aumenta la pudrición de raíz. Si un análisis encuentra Aphanomyces, no siembre arveja ni lenteja por al menos 6 años."
+    sources: [skpulse_rootrot]
+
+  - id: sunflower_sclerotinia_spacing
+    description: "Sunflower within 4 years of a Sclerotinia host (sunflower, canola, mustard, dry bean, pea, lentil, soybean)."
+    type: penalty
+    condition: "next.id == 'sunflower' and years_since(seq, has(c.pest_host_groups, 'sclerotinia')) < 4"
+    effect: {score: {pest_break: -1}, flag: sclerotinia_short_break, yield_mult: null, note: "Manitoba advises 5 years between susceptible crops; NDSU 4."}
+    message_en: "Sunflower less than 4 years after another white-mold host. Sclerotia can survive 3-7 years in soil."
+    message_es: "Girasol a menos de 4 años de otro cultivo hospedero de moho blanco. Los esclerocios sobreviven de 3 a 7 años en el suelo."
+    sources: [ndsu_sunflower, mb_sclerotinia]
+
+  - id: shared_pathogen_host
+    description: "The crop being placed, or the cover sown just before it, hosts a pathogen or pest group (pathogens.yaml) that a different crop or cover grown within that group's break_years also hosts. Works across plant families (e.g. soybean then canola: white mold). Pairs a crop-specific rule already handles are skipped (continuous_corn, continuous_soybean, pulses_back_to_back, wheat_after_corn_fhb, sunflower_sclerotinia_spacing, canola_frequency); a back-to-back pair of the same family is named but not scored again (same_family_back_to_back). The message is built per transition from pathogens.yaml (rules_engine.shared_pathogens)."
+    type: penalty
+    dynamic_message: shared_hosts
+    condition: "len(shared_hosts.penalised) > 0"
+    effect: {score: {pest_break: -1}, flag: shared_pathogen_host, check_locally: shared_pathogen_history, hits: penalised, yield_mult: null}
+    sub_rules:
+      - condition: "len(shared_hosts.penalised) == 0 and len(shared_hosts.flag_only) > 0"
+        effect: {flag: shared_pathogen_host, hits: flag_only}
+    message_en: "This crop shares a disease or pest with a recent crop or cover crop."
+    message_es: "Este cultivo comparte una enfermedad o plaga con un cultivo o cobertura reciente."
+    sources: [cpn_white_mold, ndsu_scn, cpn_fhb, skpulse_aphanomyces, ccc_rotation, pnw_takeall, ucipm_cotton_rkn, pnw_bcn]
+
+  - id: residual_herbicide_carryover
+    description: "Any change of crop after a residual herbicide program may break a label rotational restriction."
+    type: check_locally
+    condition: "prev.id != next.id"
+    effect: {check_locally: herbicide_rotation_restriction, confidence: 0}
+    message_en: "Check last year's herbicide labels. Some products have waiting periods before this crop can be planted."
+    message_es: "Revise las etiquetas de los herbicidas del año pasado. Algunos productos exigen un tiempo de espera antes de sembrar este cultivo."
+    sources: [label_rotation, digest]
+
+  # ---------------- climate fit ----------------
+  - id: season_length_fit
+    description: "Frost-free days and GDD must cover the crop's need; median-year shortfall excludes, dry/cool-year (P20) shortfall flags 'tight'."
+    type: hard_filter
+    condition: "next.min_frost_free_days != null and field.frost_free_days_p50 < next.min_frost_free_days"
+    effect: {exclude: true}
+    sub_rules:
+      - condition: "next.min_frost_free_days != null and field.frost_free_days_p20 < next.min_frost_free_days"
+        effect: {flag: season_tight, confidence: -1}
+      - condition: "next.gdd_required != null and field.gdd_p50 < next.gdd_required.value[0]"
+        effect: {exclude: true}
+      - condition: "next.gdd_required != null and field.gdd_p20 < next.gdd_required.value[0]"
+        effect: {flag: season_tight}
+      - condition: "next.min_frost_free_days == null and next.gdd_required == null"
+        effect: {check_locally: maturity_fit_unknown, confidence: -1}
+    message_en: "The growing season here may be too short for this crop in a normal year (or tight in 1 year out of 5)."
+    message_es: "La temporada aquí puede ser muy corta para este cultivo en un año normal (o justa en 1 de cada 5 años)."
+    sources: [digest]
+
+  - id: water_budget_dry_year
+    description: "Seasonal crop ET (FAO-56 Kc x ETo) compared with effective rain in a dry (P20) year plus irrigation. Deficit converts to a yield loss with FAO-33 Ky when Ky is sourced."
+    type: penalty
+    condition: "season_etc_mm(next, field) > field.rain_eff_season_p20_mm + field.irrigation_mm"
+    effect:
+      flag: dry_year_water_deficit
+      yield_mult: "1 - next.ky * (1 - (field.rain_eff_season_p20_mm + field.irrigation_mm) / season_etc_mm(next, field))"
+      yield_mult_note: "next.ky is not yet in crops.yaml (FAO-33 table not read); until added, flag only."
+      score: {water: -1}
+    sub_rules:
+      - condition: "field.irrigation_mm == 0 and next.drought_tolerance == 'low' and season_etc_mm(next, field) > field.rain_eff_season_p20_mm"
+        effect: {score: {profit_risk: -1}}
+    message_en: "In a dry year (driest 1 in 5), rain plus irrigation may not cover what this crop uses."
+    message_es: "En un año seco (el más seco de cada 5), la lluvia más el riego quizás no cubran lo que usa este cultivo."
+    sources: [fao56, fao33, digest]
+
+  # ---------------- soil and erosion ----------------
+  - id: slope_bare_erosivity
+    description: "Slope > 5% and soil bare during the peak erosivity months: require a cover crop or residue."
+    type: hard_filter
+    condition: "field.slope_pct > constants.slope_erosion_threshold_pct and len(overlap(field.bare_months, field.peak_erosivity_months)) > 0"
+    effect: {require: cover_or_residue, require_residue_min: [0.50, 0.60], score: {erosion: -2}}
+    message_en: "This slope is steep and the soil would be bare in the months with the heaviest rain. Add a cover crop or keep at least 50-60% residue."
+    message_es: "La pendiente es fuerte y el suelo quedaría desnudo en los meses de lluvias más intensas. Agregue un cultivo de cobertura o deje al menos 50-60 % de rastrojo."
+    sources: [digest, isu_pm1901a]
+
+  - id: soil_ph_fit
+    description: "Soil pH above the ECOCROP absolute range, or more than 1 unit below it, excludes. Acid soils within 1 unit of the limit are flagged as needing lime (routine practice, e.g. Cerrado soils); outside the optimal range only penalises. The 1-unit liming margin is a FarmSmart assumption, shown to the user."
+    type: hard_filter
+    condition: "next.ph_abs != null and (field.ph < next.ph_abs[0] - 1.0 or field.ph > next.ph_abs[1])"
+    effect: {exclude: true}
+    sub_rules:
+      - condition: "next.ph_abs != null and field.ph < next.ph_abs[0] and field.ph >= next.ph_abs[0] - 1.0"
+        effect: {flag: ph_needs_lime, check_locally: lime_requirement, confidence: -1,
+                 message_en: "This soil is more acid than this crop tolerates. It would need liming first; check a soil test and the lime cost.",
+                 message_es: "Este suelo es más ácido de lo que tolera el cultivo. Necesitaría encalado; revise un análisis de suelo y el costo de la cal."}
+      - condition: "next.ph_range != null and field.ph >= next.ph_abs[0] and (field.ph < next.ph_range[0] or field.ph > next.ph_range[1])"
+        effect: {score: {profit_risk: -1}, flag: ph_suboptimal,
+                 message_en: "Soil pH is a little outside this crop's ideal range, so yield may be slightly lower. A soil test can confirm.",
+                 message_es: "El pH del suelo está un poco fuera del rango ideal del cultivo; el rendimiento podría bajar un poco. Un análisis de suelo lo confirma."}
+    message_en: "Soil pH is outside the range this crop tolerates."
+    message_es: "El pH del suelo está fuera del rango que tolera este cultivo."
+    sources: [digest]
+
+  - id: soil_drainage_fit
+    description: "SSURGO drainage class not in the crop's drainage_ok list (ECOCROP-derived mapping in crops.yaml)."
+    type: penalty
+    condition: "next.drainage_ok != null and not has(next.drainage_ok, field.drainage_class)"
+    effect: {flag: drainage_mismatch, check_locally: tile_and_spring_workability, confidence: -1}
+    message_en: "This soil's drainage is not a good match for this crop. Check tile drainage and spring workability."
+    message_es: "El drenaje de este suelo no es ideal para este cultivo. Revise el drenaje subterráneo y si se puede trabajar en primavera."
+    sources: [digest]
+
+  # ---------------- covers ----------------
+  - id: cover_termination_insurance
+    description: "Cover crop termination timing must fit the next planting and NRCS termination guidelines (v4) for crop insurance."
+    type: check_locally
+    condition: "cover != null and cover.id not_in ['oats_winterkill','radish_cover']"
+    effect: {check_locally: cover_termination_insurance_zone}
+    message_en: "Check when you must end this cover crop. Insurance follows NRCS termination rules for your zone; ending it late can affect coverage."
+    message_es: "Revise cuándo debe terminar este cultivo de cobertura. El seguro sigue las reglas de terminación del NRCS para su zona; terminarlo tarde puede afectar la cobertura."
+    sources: [rma_mgr19017]
+
+  - id: rye_before_corn
+    description: "Cereal rye cover before corn: N immobilization; Iowa trials -6% corn yield at the economic optimum N rate; grass covers average about 0 across studies."
+    type: flag
+    condition: "cover != null and cover.id == 'cereal_rye' and next.id == 'corn'"
+    effect:
+      yield_mult: [0.94, 1.00]
+      flag: rye_n_tieup
+      check_locally: rye_termination_10_days
+      mitigation: "Terminate at least 10 days before planting corn (SARE); pairing rye with a legume offsets tie-up (SARE)."
+    message_en: "Cereal rye before corn can tie up nitrogen. In Iowa trials corn yielded about 6% less. End the rye at least 10 days before planting."
+    message_es: "El centeno antes del maíz puede retener nitrógeno. En ensayos de Iowa el maíz rindió cerca de 6 % menos. Termine el centeno al menos 10 días antes de sembrar."
+    sources: [pantoja2015, marcillo2017, sare_rye]
+
+  - id: rye_before_soybean
+    description: "Cereal rye before soybean: soybean yield not affected in the Iowa trials."
+    type: credit
+    condition: "cover != null and cover.id == 'cereal_rye' and next.id == 'soybean'"
+    effect: {yield_mult: [1.00, 1.00], score: {erosion: 2}}
+    message_en: "Cereal rye before soybean protected the soil without lowering soybean yield in Iowa trials."
+    message_es: "El centeno antes de la soya protegió el suelo sin bajar el rendimiento de la soya en ensayos de Iowa."
+    sources: [pantoja2015]
+
+  - id: legume_cover_before_corn
+    description: "Legume cover before corn: +30-33% at low N or under no-till; mixtures +13% globally."
+    type: credit
+    condition: "cover != null and cover.n_fixing == true and next.id == 'corn'"
+    effect: {yield_mult: [1.00, 1.33], yield_mult_note: "Upper end only at low N / no-till (Marcillo & Miguez 2017)", score: {n_self_sufficiency: 1}}
+    message_en: "A legume cover before corn can add nitrogen; the gain was largest at low N rates or under no-till."
+    message_es: "Una cobertura de leguminosa antes del maíz puede aportar nitrógeno; la ganancia fue mayor con poco nitrógeno o en siembra directa."
+    sources: [marcillo2017, abdalla2019]
+
+  # ---------------- farm reality: hard filters ----------------
+  - id: equipment_filter
+    description: "Crop needs equipment the farm does not have (and did not say it can hire)."
+    type: hard_filter
+    condition: "not all_in(next.equipment, farm.equipment)"
+    effect: {exclude: true, unless: "farm.custom_hire == true"}
+    message_en: "This crop needs equipment that is not on your farm's list. If you have or can hire it, tick it in My Field."
+    message_es: "Este cultivo necesita maquinaria que no está en la lista de su finca. Si la tiene o puede contratarla, márquela en Mi lote."
+    sources: [digest]
+
+  - id: market_filter
+    description: "Cash crop with no confirmed buyer within reach."
+    type: hard_filter
+    condition: "has(next.roles, 'cash') and next.id not_in farm.markets and not has(['corn','soybean','winter_wheat','spring_wheat'], next.id)"
+    effect: {exclude: true, check_locally: buyer_within_hauling_distance}
+    message_en: "No buyer for this crop is confirmed near you. Find one before planting."
+    message_es: "No hay un comprador confirmado para este cultivo cerca de usted. Consiga uno antes de sembrar."
+    sources: [digest]
+
+  - id: livestock_filter
+    description: "Forage-only crop without livestock or a hay buyer."
+    type: hard_filter
+    condition: "has(next.roles, 'forage') and not has(next.roles, 'cash') and farm.livestock == false and farm.hay_buyer == false"
+    effect: {exclude: true}
+    message_en: "This is a forage crop and you have no livestock or hay buyer."
+    message_es: "Este es un cultivo forrajero y usted no tiene ganado ni comprador de heno."
+    sources: [digest]
+
+  # ---------------- legal calendars ----------------
+  - id: mato_grosso_soy_free_period
+    description: "No live soybean in Mato Grosso during the soybean-free period (vazio sanitario)."
+    type: hard_filter
+    condition: "field.region == 'mato_grosso_br' and (next.id == 'soybean' or (cover != null and cover.id == 'soybean')) and has(['06','07','08'], next.growth_months)"
+    effect: {exclude: true}
+    message_en: "Soybean cannot be growing in Mato Grosso during the soybean-free period (June-early September)."
+    message_es: "No puede haber soya en pie en Mato Grosso durante el vacío sanitario (junio a inicios de septiembre)."
+    sources: [mt_soy_2026]
+
+  - id: punjab_rice_transplant_date
+    description: "Paddy may not be transplanted before the notified date (Act floor June 10)."
+    type: hard_filter
+    condition: "field.region == 'punjab_in' and next.id == 'rice' and next.plant_date < '06-10'"
+    effect: {exclude: true, check_locally: punjab_notified_transplant_date}
+    message_en: "Punjab law does not allow transplanting rice before the notified date (not before June 10)."
+    message_es: "La ley de Punjab no permite trasplantar arroz antes de la fecha notificada (no antes del 10 de junio)."
+    sources: [punjab_act2009]
+
+check_locally_texts:
+  lime_requirement: {en: "Soil test lime requirement and lime cost before planting this crop", es: "Necesidad de cal según análisis de suelo y su costo antes de sembrar este cultivo"}
+  fhb_forecast_and_variety: {en: "Scab (FHB) risk forecast at flowering and variety resistance rating", es: "Pronóstico de fusariosis en floración y resistencia de la variedad"}
+  aphanomyces_soil_test: {en: "Soil test for Aphanomyces root rot before peas or lentils", es: "Análisis de suelo para Aphanomyces antes de arveja o lenteja", crops: [field_pea, lentil, chickpea, alfalfa]}
+  herbicide_rotation_restriction: {en: "Herbicide carry-over: label waiting periods before this crop", es: "Residuos de herbicida: tiempos de espera en la etiqueta antes de este cultivo"}
+  maturity_fit_unknown: {en: "No sourced season length for this crop: ask local seed dealer for maturity", es: "Sin dato de duración del ciclo: consulte la madurez con su proveedor de semilla"}
+  tile_and_spring_workability: {en: "Tile drainage, compaction and spring workability", es: "Drenaje, compactación y piso para trabajar en primavera"}
+  cover_termination_insurance_zone: {en: "NRCS cover-crop termination zone and your insurance agent", es: "Zona de terminación de coberturas del NRCS y su agente de seguros"}
+  rye_termination_10_days: {en: "Plan to end rye at least 10 days before corn planting", es: "Planee terminar el centeno al menos 10 días antes de sembrar maíz"}
+  buyer_within_hauling_distance: {en: "Buyer, grade, delivery point and price within hauling distance", es: "Comprador, calidad, punto de entrega y precio a distancia de acarreo"}
+  punjab_notified_transplant_date: {en: "This year's state-notified paddy transplanting date", es: "Fecha de trasplante de arroz notificada este año por el estado"}
+  shared_pathogen_history: {en: "Field history of the shared disease or pest (scouting notes, soil test) before planting a second host", es: "Historial del lote para la enfermedad o plaga compartida (notas de monitoreo, análisis de suelo) antes de sembrar otro hospedero"}
+  scn_test: {en: "Soybean cyst nematode soil test", es: "Análisis de suelo para nematodo del quiste de la soya", crops: [soybean, dry_bean]}
+  irrigation_rights: {en: "Irrigation rights, well capacity and allocation", es: "Derechos de riego, capacidad del pozo y asignación"}

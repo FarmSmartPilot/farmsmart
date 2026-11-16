@@ -1,0 +1,1386 @@
+{
+ "generated": "2026-11-14",
+ "imerg": [
+  {
+   "pilot": "Story County, IA",
+   "station": "USC00130203",
+   "station_name": "Ames 8 WSW (GHCN-Daily)",
+   "lat": 42.11119,
+   "lon": -93.46928,
+   "available": false,
+   "reason": "IMERG not retrieved. giovanni: Giovanni time series: token not accepted (approve GES DISC / Giovanni in your Earthdata profile) | opendap: HTTP 403 at opendap.earthdata.nasa.gov (token rejected or app not approved)",
+   "fix": "Account owner: sign in to Earthdata and approve the GES DISC application at https://urs.earthdata.nasa.gov/approve_app?client_id=e2WVk8Pw6weeLUKZYOxvTQ"
+  },
+  {
+   "pilot": "Garden City, KS",
+   "station": "USW00023064",
+   "station_name": "Garden City Regional Airport (GHCN-Daily)",
+   "lat": 37.92785,
+   "lon": -100.69216,
+   "available": false,
+   "reason": "IMERG not retrieved. giovanni: Giovanni time series: token not accepted (approve GES DISC / Giovanni in your Earthdata profile) | opendap: HTTP 403 at opendap.earthdata.nasa.gov (token rejected or app not approved)",
+   "fix": "Account owner: sign in to Earthdata and approve the GES DISC application at https://urs.earthdata.nasa.gov/approve_app?client_id=e2WVk8Pw6weeLUKZYOxvTQ"
+  }
+ ],
+ "smap": [
+  {
+   "field_id": "b96d39c7a833",
+   "name": "Story County, Iowa",
+   "available": true,
+   "period": [
+    "2015-04-01",
+    "2026-11-10"
+   ],
+   "weekly_raw": {
+    "n": 607,
+    "r": 0.818,
+    "spearman": 0.833
+   },
+   "weekly_anomaly": {
+    "n": 607,
+    "r": 0.867,
+    "spearman": 0.891
+   },
+   "empirical_vs_product_percentile": {
+    "n": 607,
+    "r": 0.935,
+    "spearman": 0.938
+   },
+   "smap_mean_m3m3": 0.287,
+   "power_gwetroot_mean": 0.497
+  },
+  {
+   "field_id": "fbeaa0ba7fe7",
+   "name": "Story County, Iowa (continuous corn)",
+   "available": true,
+   "period": [
+    "2015-04-01",
+    "2026-11-10"
+   ],
+   "weekly_raw": {
+    "n": 607,
+    "r": 0.811,
+    "spearman": 0.826
+   },
+   "weekly_anomaly": {
+    "n": 607,
+    "r": 0.836,
+    "spearman": 0.858
+   },
+   "empirical_vs_product_percentile": {
+    "n": 607,
+    "r": 0.939,
+    "spearman": 0.943
+   },
+   "smap_mean_m3m3": 0.289,
+   "power_gwetroot_mean": 0.588
+  },
+  {
+   "field_id": "b20f28194396",
+   "name": "Garden City, Kansas (dryland)",
+   "available": true,
+   "period": [
+    "2015-04-01",
+    "2026-11-10"
+   ],
+   "weekly_raw": {
+    "n": 607,
+    "r": 0.867,
+    "spearman": 0.858
+   },
+   "weekly_anomaly": {
+    "n": 607,
+    "r": 0.866,
+    "spearman": 0.854
+   },
+   "empirical_vs_product_percentile": {
+    "n": 156,
+    "r": 0.932,
+    "spearman": 0.946
+   },
+   "smap_mean_m3m3": 0.214,
+   "power_gwetroot_mean": 0.3
+  },
+  {
+   "field_id": "dd12f9cae7ba",
+   "name": "Garden City, Kansas (irrigated corn)",
+   "available": true,
+   "period": [
+    "2015-04-01",
+    "2026-11-10"
+   ],
+   "weekly_raw": {
+    "n": 607,
+    "r": 0.86,
+    "spearman": 0.857
+   },
+   "weekly_anomaly": {
+    "n": 607,
+    "r": 0.858,
+    "spearman": 0.854
+   },
+   "empirical_vs_product_percentile": {
+    "n": 89,
+    "r": 0.908,
+    "spearman": 0.931
+   },
+   "smap_mean_m3m3": 0.234,
+   "power_gwetroot_mean": 0.3
+  },
+  {
+   "field_id": "6a41e1befbd9",
+   "name": "San Joaquin Valley, California",
+   "available": true,
+   "period": [
+    "2015-04-01",
+    "2026-11-10"
+   ],
+   "weekly_raw": {
+    "n": 607,
+    "r": 0.961,
+    "spearman": 0.948
+   },
+   "weekly_anomaly": {
+    "n": 607,
+    "r": 0.887,
+    "spearman": 0.832
+   },
+   "empirical_vs_product_percentile": {
+    "n": 283,
+    "r": 0.933,
+    "spearman": 0.925
+   },
+   "smap_mean_m3m3": 0.279,
+   "power_gwetroot_mean": 0.476
+  },
+  {
+   "field_id": "f0855a8f0648",
+   "name": "Near Regina, Saskatchewan",
+   "available": true,
+   "period": [
+    "2015-04-01",
+    "2026-11-10"
+   ],
+   "weekly_raw": {
+    "n": 607,
+    "r": 0.583,
+    "spearman": 0.583
+   },
+   "weekly_anomaly": {
+    "n": 607,
+    "r": 0.627,
+    "spearman": 0.628
+   },
+   "empirical_vs_product_percentile": {
+    "n": 607,
+    "r": 0.907,
+    "spearman": 0.935
+   },
+   "smap_mean_m3m3": 0.249,
+   "power_gwetroot_mean": 0.469
+  },
+  {
+   "field_id": "1dd4586f88da",
+   "name": "Near Ludhiana, Punjab (India)",
+   "available": true,
+   "period": [
+    "2015-04-01",
+    "2026-11-10"
+   ],
+   "weekly_raw": {
+    "n": 607,
+    "r": 0.7,
+    "spearman": 0.774
+   },
+   "weekly_anomaly": {
+    "n": 607,
+    "r": 0.631,
+    "spearman": 0.622
+   },
+   "empirical_vs_product_percentile": {
+    "n": 192,
+    "r": 0.608,
+    "spearman": 0.615
+   },
+   "smap_mean_m3m3": 0.17,
+   "power_gwetroot_mean": 0.444
+  },
+  {
+   "field_id": "5dac81dfbd56",
+   "name": "Near Sorriso, Mato Grosso (Brazil)",
+   "available": true,
+   "period": [
+    "2015-04-01",
+    "2026-11-10"
+   ],
+   "weekly_raw": {
+    "n": 607,
+    "r": 0.788,
+    "spearman": 0.814
+   },
+   "weekly_anomaly": {
+    "n": 607,
+    "r": 0.537,
+    "spearman": 0.536
+   },
+   "empirical_vs_product_percentile": {
+    "n": 249,
+    "r": 0.9,
+    "spearman": 0.929
+   },
+   "smap_mean_m3m3": 0.358,
+   "power_gwetroot_mean": 0.681
+  }
+ ],
+ "hls": [
+  {
+   "field_id": "b96d39c7a833",
+   "name": "Story County, Iowa",
+   "available": true,
+   "years": [
+    {
+     "year": 2022,
+     "cdl_crop": "corn",
+     "comparable": true,
+     "note": "ok",
+     "months_with_clear_scene": 12,
+     "agree_months": 11,
+     "agreement": 0.917,
+     "agreement_at_0_30": 0.917,
+     "months": [
+      {
+       "month": 1,
+       "model_crop_in_field": false,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.23
+      },
+      {
+       "month": 2,
+       "model_crop_in_field": false,
+       "hls_status": "green",
+       "hls_ndvi": 0.258
+      },
+      {
+       "month": 3,
+       "model_crop_in_field": false,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.248
+      },
+      {
+       "month": 4,
+       "model_crop_in_field": false,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.229
+      },
+      {
+       "month": 5,
+       "model_crop_in_field": true,
+       "hls_status": "green",
+       "hls_ndvi": 0.261
+      },
+      {
+       "month": 6,
+       "model_crop_in_field": true,
+       "hls_status": "green",
+       "hls_ndvi": 0.696
+      },
+      {
+       "month": 7,
+       "model_crop_in_field": true,
+       "hls_status": "green",
+       "hls_ndvi": 0.911
+      },
+      {
+       "month": 8,
+       "model_crop_in_field": true,
+       "hls_status": "green",
+       "hls_ndvi": 0.914
+      },
+      {
+       "month": 9,
+       "model_crop_in_field": true,
+       "hls_status": "green",
+       "hls_ndvi": 0.796
+      },
+      {
+       "month": 10,
+       "model_crop_in_field": true,
+       "hls_status": "green",
+       "hls_ndvi": 0.352
+      },
+      {
+       "month": 11,
+       "model_crop_in_field": false,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.224
+      },
+      {
+       "month": 12,
+       "model_crop_in_field": false,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.235
+      }
+     ]
+    },
+    {
+     "year": 2023,
+     "cdl_crop": "soybean",
+     "comparable": false,
+     "note": "soybean not in the card's 2-year window"
+    },
+    {
+     "year": 2024,
+     "cdl_crop": "corn",
+     "comparable": true,
+     "note": "ok",
+     "months_with_clear_scene": 12,
+     "agree_months": 10,
+     "agreement": 0.833,
+     "agreement_at_0_30": 0.75,
+     "months": [
+      {
+       "month": 1,
+       "model_crop_in_field": false,
+       "hls_status": "green",
+       "hls_ndvi": 0.358
+      },
+      {
+       "month": 2,
+       "model_crop_in_field": false,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.215
+      },
+      {
+       "month": 3,
+       "model_crop_in_field": false,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.22
+      },
+      {
+       "month": 4,
+       "model_crop_in_field": false,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.222
+      },
+      {
+       "month": 5,
+       "model_crop_in_field": true,
+       "hls_status": "green",
+       "hls_ndvi": 0.28
+      },
+      {
+       "month": 6,
+       "model_crop_in_field": true,
+       "hls_status": "green",
+       "hls_ndvi": 0.511
+      },
+      {
+       "month": 7,
+       "model_crop_in_field": true,
+       "hls_status": "green",
+       "hls_ndvi": 0.9
+      },
+      {
+       "month": 8,
+       "model_crop_in_field": true,
+       "hls_status": "green",
+       "hls_ndvi": 0.882
+      },
+      {
+       "month": 9,
+       "model_crop_in_field": true,
+       "hls_status": "green",
+       "hls_ndvi": 0.571
+      },
+      {
+       "month": 10,
+       "model_crop_in_field": true,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.242
+      },
+      {
+       "month": 11,
+       "model_crop_in_field": false,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.223
+      },
+      {
+       "month": 12,
+       "model_crop_in_field": false,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.21
+      }
+     ]
+    }
+   ],
+   "scenes_read": 420,
+   "scenes_usable": 256
+  },
+  {
+   "field_id": "fbeaa0ba7fe7",
+   "name": "Story County, Iowa (continuous corn)",
+   "available": true,
+   "years": [
+    {
+     "year": 2022,
+     "cdl_crop": "soybean",
+     "comparable": true,
+     "note": "ok",
+     "months_with_clear_scene": 12,
+     "agree_months": 9,
+     "agreement": 0.75,
+     "agreement_at_0_30": 0.833,
+     "months": [
+      {
+       "month": 1,
+       "model_crop_in_field": false,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.242
+      },
+      {
+       "month": 2,
+       "model_crop_in_field": false,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.219
+      },
+      {
+       "month": 3,
+       "model_crop_in_field": false,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.201
+      },
+      {
+       "month": 4,
+       "model_crop_in_field": false,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.212
+      },
+      {
+       "month": 5,
+       "model_crop_in_field": true,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.223
+      },
+      {
+       "month": 6,
+       "model_crop_in_field": true,
+       "hls_status": "green",
+       "hls_ndvi": 0.386
+      },
+      {
+       "month": 7,
+       "model_crop_in_field": true,
+       "hls_status": "green",
+       "hls_ndvi": 0.872
+      },
+      {
+       "month": 8,
+       "model_crop_in_field": true,
+       "hls_status": "green",
+       "hls_ndvi": 0.927
+      },
+      {
+       "month": 9,
+       "model_crop_in_field": true,
+       "hls_status": "green",
+       "hls_ndvi": 0.852
+      },
+      {
+       "month": 10,
+       "model_crop_in_field": true,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.243
+      },
+      {
+       "month": 11,
+       "model_crop_in_field": false,
+       "hls_status": "green",
+       "hls_ndvi": 0.261
+      },
+      {
+       "month": 12,
+       "model_crop_in_field": false,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.231
+      }
+     ]
+    },
+    {
+     "year": 2023,
+     "cdl_crop": "corn",
+     "comparable": true,
+     "note": "ok",
+     "months_with_clear_scene": 12,
+     "agree_months": 10,
+     "agreement": 0.833,
+     "agreement_at_0_30": 0.75,
+     "months": [
+      {
+       "month": 1,
+       "model_crop_in_field": false,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.217
+      },
+      {
+       "month": 2,
+       "model_crop_in_field": false,
+       "hls_status": "green",
+       "hls_ndvi": 0.382
+      },
+      {
+       "month": 3,
+       "model_crop_in_field": false,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.231
+      },
+      {
+       "month": 4,
+       "model_crop_in_field": false,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.226
+      },
+      {
+       "month": 5,
+       "model_crop_in_field": true,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.232
+      },
+      {
+       "month": 6,
+       "model_crop_in_field": true,
+       "hls_status": "green",
+       "hls_ndvi": 0.379
+      },
+      {
+       "month": 7,
+       "model_crop_in_field": true,
+       "hls_status": "green",
+       "hls_ndvi": 0.85
+      },
+      {
+       "month": 8,
+       "model_crop_in_field": true,
+       "hls_status": "green",
+       "hls_ndvi": 0.849
+      },
+      {
+       "month": 9,
+       "model_crop_in_field": true,
+       "hls_status": "green",
+       "hls_ndvi": 0.73
+      },
+      {
+       "month": 10,
+       "model_crop_in_field": true,
+       "hls_status": "green",
+       "hls_ndvi": 0.265
+      },
+      {
+       "month": 11,
+       "model_crop_in_field": false,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.218
+      },
+      {
+       "month": 12,
+       "model_crop_in_field": false,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.219
+      }
+     ]
+    },
+    {
+     "year": 2024,
+     "cdl_crop": "soybean",
+     "comparable": true,
+     "note": "ok",
+     "months_with_clear_scene": 12,
+     "agree_months": 10,
+     "agreement": 0.833,
+     "agreement_at_0_30": 0.75,
+     "months": [
+      {
+       "month": 1,
+       "model_crop_in_field": false,
+       "hls_status": "green",
+       "hls_ndvi": 0.322
+      },
+      {
+       "month": 2,
+       "model_crop_in_field": false,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.214
+      },
+      {
+       "month": 3,
+       "model_crop_in_field": false,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.224
+      },
+      {
+       "month": 4,
+       "model_crop_in_field": false,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.229
+      },
+      {
+       "month": 5,
+       "model_crop_in_field": true,
+       "hls_status": "green",
+       "hls_ndvi": 0.27
+      },
+      {
+       "month": 6,
+       "model_crop_in_field": true,
+       "hls_status": "green",
+       "hls_ndvi": 0.327
+      },
+      {
+       "month": 7,
+       "model_crop_in_field": true,
+       "hls_status": "green",
+       "hls_ndvi": 0.865
+      },
+      {
+       "month": 8,
+       "model_crop_in_field": true,
+       "hls_status": "green",
+       "hls_ndvi": 0.916
+      },
+      {
+       "month": 9,
+       "model_crop_in_field": true,
+       "hls_status": "green",
+       "hls_ndvi": 0.603
+      },
+      {
+       "month": 10,
+       "model_crop_in_field": true,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.229
+      },
+      {
+       "month": 11,
+       "model_crop_in_field": false,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.231
+      },
+      {
+       "month": 12,
+       "model_crop_in_field": false,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.231
+      }
+     ]
+    }
+   ],
+   "scenes_read": 401,
+   "scenes_usable": 212
+  },
+  {
+   "field_id": "b20f28194396",
+   "name": "Garden City, Kansas (dryland)",
+   "available": true,
+   "years": [
+    {
+     "year": 2022,
+     "cdl_crop": "fallow",
+     "comparable": true,
+     "note": "fallow year: model has no cash crop (fall wheat planting not in the card window)",
+     "months_with_clear_scene": 12,
+     "agree_months": 10,
+     "agreement": 0.833,
+     "agreement_at_0_30": 0.917,
+     "months": [
+      {
+       "month": 1,
+       "model_crop_in_field": false,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.231
+      },
+      {
+       "month": 2,
+       "model_crop_in_field": false,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.207
+      },
+      {
+       "month": 3,
+       "model_crop_in_field": false,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.197
+      },
+      {
+       "month": 4,
+       "model_crop_in_field": false,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.195
+      },
+      {
+       "month": 5,
+       "model_crop_in_field": false,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.185
+      },
+      {
+       "month": 6,
+       "model_crop_in_field": false,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.179
+      },
+      {
+       "month": 7,
+       "model_crop_in_field": false,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.198
+      },
+      {
+       "month": 8,
+       "model_crop_in_field": false,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.207
+      },
+      {
+       "month": 9,
+       "model_crop_in_field": false,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.212
+      },
+      {
+       "month": 10,
+       "model_crop_in_field": false,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.231
+      },
+      {
+       "month": 11,
+       "model_crop_in_field": false,
+       "hls_status": "green",
+       "hls_ndvi": 0.304
+      },
+      {
+       "month": 12,
+       "model_crop_in_field": false,
+       "hls_status": "green",
+       "hls_ndvi": 0.283
+      }
+     ]
+    },
+    {
+     "year": 2023,
+     "cdl_crop": "winter_wheat",
+     "comparable": true,
+     "note": "ok",
+     "months_with_clear_scene": 12,
+     "agree_months": 5,
+     "agreement": 0.417,
+     "agreement_at_0_30": 0.5,
+     "months": [
+      {
+       "month": 1,
+       "model_crop_in_field": true,
+       "hls_status": "green",
+       "hls_ndvi": 0.256
+      },
+      {
+       "month": 2,
+       "model_crop_in_field": true,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.225
+      },
+      {
+       "month": 3,
+       "model_crop_in_field": true,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.233
+      },
+      {
+       "month": 4,
+       "model_crop_in_field": true,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.231
+      },
+      {
+       "month": 5,
+       "model_crop_in_field": true,
+       "hls_status": "green",
+       "hls_ndvi": 0.321
+      },
+      {
+       "month": 6,
+       "model_crop_in_field": true,
+       "hls_status": "green",
+       "hls_ndvi": 0.592
+      },
+      {
+       "month": 7,
+       "model_crop_in_field": false,
+       "hls_status": "green",
+       "hls_ndvi": 0.334
+      },
+      {
+       "month": 8,
+       "model_crop_in_field": false,
+       "hls_status": "green",
+       "hls_ndvi": 0.321
+      },
+      {
+       "month": 9,
+       "model_crop_in_field": false,
+       "hls_status": "green",
+       "hls_ndvi": 0.273
+      },
+      {
+       "month": 10,
+       "model_crop_in_field": false,
+       "hls_status": "green",
+       "hls_ndvi": 0.263
+      },
+      {
+       "month": 11,
+       "model_crop_in_field": false,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.244
+      },
+      {
+       "month": 12,
+       "model_crop_in_field": false,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.234
+      }
+     ]
+    },
+    {
+     "year": 2024,
+     "cdl_crop": "sorghum",
+     "comparable": true,
+     "note": "ok",
+     "months_with_clear_scene": 12,
+     "agree_months": 11,
+     "agreement": 0.917,
+     "agreement_at_0_30": 0.917,
+     "months": [
+      {
+       "month": 1,
+       "model_crop_in_field": false,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.249
+      },
+      {
+       "month": 2,
+       "model_crop_in_field": false,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.221
+      },
+      {
+       "month": 3,
+       "model_crop_in_field": false,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.218
+      },
+      {
+       "month": 4,
+       "model_crop_in_field": false,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.209
+      },
+      {
+       "month": 5,
+       "model_crop_in_field": false,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.211
+      },
+      {
+       "month": 6,
+       "model_crop_in_field": true,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.213
+      },
+      {
+       "month": 7,
+       "model_crop_in_field": true,
+       "hls_status": "green",
+       "hls_ndvi": 0.507
+      },
+      {
+       "month": 8,
+       "model_crop_in_field": true,
+       "hls_status": "green",
+       "hls_ndvi": 0.793
+      },
+      {
+       "month": 9,
+       "model_crop_in_field": true,
+       "hls_status": "green",
+       "hls_ndvi": 0.712
+      },
+      {
+       "month": 10,
+       "model_crop_in_field": true,
+       "hls_status": "green",
+       "hls_ndvi": 0.548
+      },
+      {
+       "month": 11,
+       "model_crop_in_field": false,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.243
+      },
+      {
+       "month": 12,
+       "model_crop_in_field": false,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.214
+      }
+     ]
+    }
+   ],
+   "scenes_read": 868,
+   "scenes_usable": 659
+  },
+  {
+   "field_id": "dd12f9cae7ba",
+   "name": "Garden City, Kansas (irrigated corn)",
+   "available": true,
+   "years": [
+    {
+     "year": 2022,
+     "cdl_crop": "corn",
+     "comparable": true,
+     "note": "ok",
+     "months_with_clear_scene": 12,
+     "agree_months": 10,
+     "agreement": 0.833,
+     "agreement_at_0_30": 0.833,
+     "months": [
+      {
+       "month": 1,
+       "model_crop_in_field": false,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.204
+      },
+      {
+       "month": 2,
+       "model_crop_in_field": false,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.192
+      },
+      {
+       "month": 3,
+       "model_crop_in_field": false,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.187
+      },
+      {
+       "month": 4,
+       "model_crop_in_field": true,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.187
+      },
+      {
+       "month": 5,
+       "model_crop_in_field": true,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.193
+      },
+      {
+       "month": 6,
+       "model_crop_in_field": true,
+       "hls_status": "green",
+       "hls_ndvi": 0.341
+      },
+      {
+       "month": 7,
+       "model_crop_in_field": true,
+       "hls_status": "green",
+       "hls_ndvi": 0.778
+      },
+      {
+       "month": 8,
+       "model_crop_in_field": true,
+       "hls_status": "green",
+       "hls_ndvi": 0.849
+      },
+      {
+       "month": 9,
+       "model_crop_in_field": true,
+       "hls_status": "green",
+       "hls_ndvi": 0.734
+      },
+      {
+       "month": 10,
+       "model_crop_in_field": true,
+       "hls_status": "green",
+       "hls_ndvi": 0.333
+      },
+      {
+       "month": 11,
+       "model_crop_in_field": false,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.24
+      },
+      {
+       "month": 12,
+       "model_crop_in_field": false,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.226
+      }
+     ]
+    },
+    {
+     "year": 2023,
+     "cdl_crop": "corn",
+     "comparable": true,
+     "note": "ok",
+     "months_with_clear_scene": 12,
+     "agree_months": 7,
+     "agreement": 0.583,
+     "agreement_at_0_30": 0.75,
+     "months": [
+      {
+       "month": 1,
+       "model_crop_in_field": false,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.213
+      },
+      {
+       "month": 2,
+       "model_crop_in_field": false,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.228
+      },
+      {
+       "month": 3,
+       "model_crop_in_field": false,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.217
+      },
+      {
+       "month": 4,
+       "model_crop_in_field": true,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.205
+      },
+      {
+       "month": 5,
+       "model_crop_in_field": true,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.229
+      },
+      {
+       "month": 6,
+       "model_crop_in_field": true,
+       "hls_status": "green",
+       "hls_ndvi": 0.526
+      },
+      {
+       "month": 7,
+       "model_crop_in_field": true,
+       "hls_status": "green",
+       "hls_ndvi": 0.846
+      },
+      {
+       "month": 8,
+       "model_crop_in_field": true,
+       "hls_status": "green",
+       "hls_ndvi": 0.798
+      },
+      {
+       "month": 9,
+       "model_crop_in_field": true,
+       "hls_status": "green",
+       "hls_ndvi": 0.609
+      },
+      {
+       "month": 10,
+       "model_crop_in_field": true,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.245
+      },
+      {
+       "month": 11,
+       "model_crop_in_field": false,
+       "hls_status": "green",
+       "hls_ndvi": 0.25
+      },
+      {
+       "month": 12,
+       "model_crop_in_field": false,
+       "hls_status": "green",
+       "hls_ndvi": 0.282
+      }
+     ]
+    },
+    {
+     "year": 2024,
+     "cdl_crop": "triticale",
+     "comparable": false,
+     "note": "triticale not in the card's 2-year window"
+    }
+   ],
+   "scenes_read": 371,
+   "scenes_usable": 307
+  },
+  {
+   "field_id": "6a41e1befbd9",
+   "name": "San Joaquin Valley, California",
+   "available": true,
+   "years": [
+    {
+     "year": 2022,
+     "cdl_crop": "cotton",
+     "comparable": true,
+     "note": "ok",
+     "months_with_clear_scene": 12,
+     "agree_months": 10,
+     "agreement": 0.833,
+     "agreement_at_0_30": 0.833,
+     "months": [
+      {
+       "month": 1,
+       "model_crop_in_field": false,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.217
+      },
+      {
+       "month": 2,
+       "model_crop_in_field": false,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.216
+      },
+      {
+       "month": 3,
+       "model_crop_in_field": false,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.204
+      },
+      {
+       "month": 4,
+       "model_crop_in_field": true,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.228
+      },
+      {
+       "month": 5,
+       "model_crop_in_field": true,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.231
+      },
+      {
+       "month": 6,
+       "model_crop_in_field": true,
+       "hls_status": "green",
+       "hls_ndvi": 0.505
+      },
+      {
+       "month": 7,
+       "model_crop_in_field": true,
+       "hls_status": "green",
+       "hls_ndvi": 0.765
+      },
+      {
+       "month": 8,
+       "model_crop_in_field": true,
+       "hls_status": "green",
+       "hls_ndvi": 0.786
+      },
+      {
+       "month": 9,
+       "model_crop_in_field": true,
+       "hls_status": "green",
+       "hls_ndvi": 0.706
+      },
+      {
+       "month": 10,
+       "model_crop_in_field": true,
+       "hls_status": "green",
+       "hls_ndvi": 0.367
+      },
+      {
+       "month": 11,
+       "model_crop_in_field": false,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.239
+      },
+      {
+       "month": 12,
+       "model_crop_in_field": false,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.22
+      }
+     ]
+    },
+    {
+     "year": 2023,
+     "cdl_crop": "fallow",
+     "comparable": true,
+     "note": "fallow year: model has no cash crop (fall wheat planting not in the card window)",
+     "months_with_clear_scene": 10,
+     "agree_months": 6,
+     "agreement": 0.6,
+     "agreement_at_0_30": 0.7,
+     "months": [
+      {
+       "month": 1,
+       "model_crop_in_field": false,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.203
+      },
+      {
+       "month": 2,
+       "model_crop_in_field": false,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.223
+      },
+      {
+       "month": 3,
+       "model_crop_in_field": false,
+       "hls_status": "green",
+       "hls_ndvi": 0.321
+      },
+      {
+       "month": 4,
+       "model_crop_in_field": false,
+       "hls_status": "no_clear_scene",
+       "hls_ndvi": null
+      },
+      {
+       "month": 5,
+       "model_crop_in_field": false,
+       "hls_status": "no_clear_scene",
+       "hls_ndvi": null
+      },
+      {
+       "month": 6,
+       "model_crop_in_field": false,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.247
+      },
+      {
+       "month": 7,
+       "model_crop_in_field": false,
+       "hls_status": "green",
+       "hls_ndvi": 0.371
+      },
+      {
+       "month": 8,
+       "model_crop_in_field": false,
+       "hls_status": "green",
+       "hls_ndvi": 0.277
+      },
+      {
+       "month": 9,
+       "model_crop_in_field": false,
+       "hls_status": "green",
+       "hls_ndvi": 0.318
+      },
+      {
+       "month": 10,
+       "model_crop_in_field": false,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.199
+      },
+      {
+       "month": 11,
+       "model_crop_in_field": false,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.195
+      },
+      {
+       "month": 12,
+       "model_crop_in_field": false,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.205
+      }
+     ]
+    },
+    {
+     "year": 2024,
+     "cdl_crop": "cotton",
+     "comparable": true,
+     "note": "ok",
+     "months_with_clear_scene": 12,
+     "agree_months": 10,
+     "agreement": 0.833,
+     "agreement_at_0_30": 0.833,
+     "months": [
+      {
+       "month": 1,
+       "model_crop_in_field": false,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.202
+      },
+      {
+       "month": 2,
+       "model_crop_in_field": false,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.249
+      },
+      {
+       "month": 3,
+       "model_crop_in_field": false,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.215
+      },
+      {
+       "month": 4,
+       "model_crop_in_field": true,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.221
+      },
+      {
+       "month": 5,
+       "model_crop_in_field": true,
+       "hls_status": "green",
+       "hls_ndvi": 0.317
+      },
+      {
+       "month": 6,
+       "model_crop_in_field": true,
+       "hls_status": "green",
+       "hls_ndvi": 0.63
+      },
+      {
+       "month": 7,
+       "model_crop_in_field": true,
+       "hls_status": "green",
+       "hls_ndvi": 0.826
+      },
+      {
+       "month": 8,
+       "model_crop_in_field": true,
+       "hls_status": "green",
+       "hls_ndvi": 0.81
+      },
+      {
+       "month": 9,
+       "model_crop_in_field": true,
+       "hls_status": "green",
+       "hls_ndvi": 0.718
+      },
+      {
+       "month": 10,
+       "model_crop_in_field": true,
+       "hls_status": "green",
+       "hls_ndvi": 0.435
+      },
+      {
+       "month": 11,
+       "model_crop_in_field": false,
+       "hls_status": "green",
+       "hls_ndvi": 0.33
+      },
+      {
+       "month": 12,
+       "model_crop_in_field": false,
+       "hls_status": "bare_or_residue",
+       "hls_ndvi": 0.236
+      }
+     ]
+    }
+   ],
+   "scenes_read": 294,
+   "scenes_usable": 214
+  }
+ ]
+}

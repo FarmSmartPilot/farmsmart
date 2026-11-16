@@ -1,0 +1,19 @@
+
+Running 2 tests using 1 worker
+
+desktop Field Studio: clean
+desktop Strategy Compare: clean
+desktop Climate Twins: clean
+desktop Drought Replay: clean
+desktop Alerts: clean
+desktop Sources & Methods: clean
+  ok 1 [desktop-chromium] › ..\qc\e2e\axe.spec.ts:34:3 › axe desktop (29.5s)
+mobile Field Studio: clean
+mobile Strategy Compare: clean
+mobile Climate Twins: clean
+mobile Drought Replay: clean
+mobile Alerts: clean
+mobile Sources & Methods: clean
+  ok 2 [desktop-chromium] › ..\qc\e2e\axe.spec.ts:34:3 › axe mobile (28.0s)
+
+  2 passed (58.5s)

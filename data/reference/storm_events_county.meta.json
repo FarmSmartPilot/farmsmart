@@ -1,0 +1,179 @@
+{
+ "source": "NOAA NCEI Storm Events Database",
+ "url": "https://www.ncei.noaa.gov/stormevents/",
+ "files_url": "https://www.ncei.noaa.gov/pub/data/swdi/stormevents/csvfiles/",
+ "citation": "NOAA National Centers for Environmental Information (NCEI), Storm Events Database, bulk CSV \"details\" files. https://www.ncei.noaa.gov/stormevents/",
+ "licence": "Public domain (US Government work)",
+ "years": [
+  1996,
+  2025
+ ],
+ "files": {
+  "1996": "StormEvents_details-ftp_v1.0_d1996_c20260323.csv.gz",
+  "1997": "StormEvents_details-ftp_v1.0_d1997_c20260323.csv.gz",
+  "1998": "StormEvents_details-ftp_v1.0_d1998_c20260323.csv.gz",
+  "1999": "StormEvents_details-ftp_v1.0_d1999_c20260323.csv.gz",
+  "2000": "StormEvents_details-ftp_v1.0_d2000_c20260323.csv.gz",
+  "2001": "StormEvents_details-ftp_v1.0_d2001_c20260323.csv.gz",
+  "2002": "StormEvents_details-ftp_v1.0_d2002_c20260323.csv.gz",
+  "2003": "StormEvents_details-ftp_v1.0_d2003_c20260323.csv.gz",
+  "2004": "StormEvents_details-ftp_v1.0_d2004_c20260323.csv.gz",
+  "2005": "StormEvents_details-ftp_v1.0_d2005_c20260323.csv.gz",
+  "2006": "StormEvents_details-ftp_v1.0_d2006_c20260323.csv.gz",
+  "2007": "StormEvents_details-ftp_v1.0_d2007_c20260323.csv.gz",
+  "2008": "StormEvents_details-ftp_v1.0_d2008_c20260323.csv.gz",
+  "2009": "StormEvents_details-ftp_v1.0_d2009_c20260323.csv.gz",
+  "2010": "StormEvents_details-ftp_v1.0_d2010_c20260323.csv.gz",
+  "2011": "StormEvents_details-ftp_v1.0_d2011_c20260323.csv.gz",
+  "2012": "StormEvents_details-ftp_v1.0_d2012_c20261026.csv.gz",
+  "2013": "StormEvents_details-ftp_v1.0_d2013_c20260323.csv.gz",
+  "2014": "StormEvents_details-ftp_v1.0_d2014_c20260323.csv.gz",
+  "2015": "StormEvents_details-ftp_v1.0_d2015_c20260323.csv.gz",
+  "2016": "StormEvents_details-ftp_v1.0_d2016_c20260323.csv.gz",
+  "2017": "StormEvents_details-ftp_v1.0_d2017_c20260519.csv.gz",
+  "2018": "StormEvents_details-ftp_v1.0_d2018_c20260323.csv.gz",
+  "2019": "StormEvents_details-ftp_v1.0_d2019_c20260323.csv.gz",
+  "2020": "StormEvents_details-ftp_v1.0_d2020_c20260323.csv.gz",
+  "2021": "StormEvents_details-ftp_v1.0_d2021_c20260323.csv.gz",
+  "2022": "StormEvents_details-ftp_v1.0_d2022_c20260625.csv.gz",
+  "2023": "StormEvents_details-ftp_v1.0_d2023_c20260323.csv.gz",
+  "2024": "StormEvents_details-ftp_v1.0_d2024_c20260728.csv.gz",
+  "2025": "StormEvents_details-ftp_v1.0_d2025_c20260819.csv.gz"
+ },
+ "zone_county_files": [
+  "https://web.archive.org/web/20080801144959id_/http://www.nws.noaa.gov:80/geodata/catalog/wsom/data/bp01ap08.dbx",
+  "https://web.archive.org/web/20080213225728id_/http://www.nws.noaa.gov:80/geodata/catalog/wsom/data/bp01au07.dbx",
+  "https://web.archive.org/web/20161215195739id_/http://www.nws.noaa.gov/geodata/catalog/wsom/data/bp01nv16.dbx",
+  "https://web.archive.org/web/20151024020427id_/http://www.nws.noaa.gov:80/geodata/catalog/wsom/data/bp01oc15.dbx",
+  "https://web.archive.org/web/20120620120635id_/http://www.nws.noaa.gov:80/geodata/catalog/wsom/data/bp03ap12.dbx",
+  "https://web.archive.org/web/20141107121349id_/http://www.nws.noaa.gov:80/geodata/catalog/wsom/data/bp03de14.dbx",
+  "https://www.weather.gov/source/gis/Shapefiles/County/bp03mr20.dbx",
+  "https://web.archive.org/web/20260124173932id_/https://www.weather.gov/source/gis/Shapefiles/County/bp03mr26.dbx",
+  "https://web.archive.org/web/20170508101340id_/http://www.nws.noaa.gov/geodata/catalog/wsom/data/bp04ap17.dbx",
+  "https://web.archive.org/web/20130206214019id_/http://www.nws.noaa.gov:80/geodata/catalog/wsom/data/bp04de12.dbx",
+  "https://web.archive.org/web/20150223210701id_/http://www.nws.noaa.gov:80/geodata/catalog/wsom/data/bp04fe15.dbx",
+  "https://www.weather.gov/source/gis/Shapefiles/County/bp05mr24.dbx",
+  "https://web.archive.org/web/20060409095441id_/http://www.nws.noaa.gov:80/geodata/catalog/wsom/data/bp06ja06.dbx",
+  "https://web.archive.org/web/20141107115206id_/http://www.nws.noaa.gov:80/geodata/catalog/wsom/data/bp07oc14.dbx",
+  "https://web.archive.org/web/20220805173608id_/https://www.weather.gov/source/gis/Shapefiles/County/bp07se22.dbx",
+  "https://www.weather.gov/source/gis/Shapefiles/County/bp08mr23.dbx",
+  "https://web.archive.org/web/20151024020856id_/http://www.nws.noaa.gov:80/geodata/catalog/wsom/data/bp08se15.dbx",
+  "https://www.weather.gov/source/gis/Shapefiles/County/bp08se21.dbx",
+  "https://web.archive.org/web/20160113223922id_/http://www.nws.noaa.gov:80/geodata/catalog/wsom/data/bp10nv15.dbx",
+  "https://www.weather.gov/source/gis/Shapefiles/County/bp10nv20.dbx",
+  "https://web.archive.org/web/20100205082925id_/http://www.nws.noaa.gov:80/geodata/catalog/wsom/data/bp11ja10.dbx",
+  "https://www.weather.gov/source/gis/Shapefiles/County/bp13se22.dbx",
+  "https://www.weather.gov/source/gis/Shapefiles/County/bp16ap26.dbx",
+  "https://web.archive.org/web/20160911145801id_/http://www.nws.noaa.gov:80/geodata/catalog/wsom/data/bp16jn16.dbx",
+  "https://web.archive.org/web/20060710195556id_/http://www.nws.noaa.gov:80/geodata/catalog/wsom/data/bp16mr06.dbx",
+  "https://www.weather.gov/source/gis/Shapefiles/County/bp18mr25.dbx",
+  "https://www.weather.gov/source/gis/Shapefiles/County/bp19se23.dbx",
+  "https://www.weather.gov/source/gis/Shapefiles/County/bp22mr22.dbx",
+  "https://web.archive.org/web/20050912045108id_/http://www.nws.noaa.gov/geodata/catalog/wsom/data/bp25my05.dbx",
+  "https://web.archive.org/web/20050912045115id_/http://www.nws.noaa.gov/geodata/catalog/wsom/data/bp28de04.dbx",
+  "https://www.weather.gov/source/gis/Shapefiles/County/bp30mr21.dbx",
+  "https://web.archive.org/web/20070711114526id_/http://www.nws.noaa.gov:80/geodata/catalog/wsom/data/bp31my07.dbx"
+ ],
+ "event_types": {
+  "hail": "Hail",
+  "thunderstorm_wind": "Thunderstorm Wind",
+  "tornado": "Tornado",
+  "flood": "Flood",
+  "flash_flood": "Flash Flood",
+  "heavy_rain": "Heavy Rain",
+  "drought": "Drought",
+  "frost_freeze": "Frost/Freeze",
+  "excessive_heat": "Excessive Heat",
+  "high_wind": "High Wind",
+  "winter_storm": "Winter Storm"
+ },
+ "rows": 1346787,
+ "rows_by_type": {
+  "drought": {
+   "county_rows": 4,
+   "zone_rows": 81379
+  },
+  "excessive_heat": {
+   "county_rows": 1,
+   "zone_rows": 21178
+  },
+  "flash_flood": {
+   "county_rows": 110227,
+   "zone_rows": 38
+  },
+  "flood": {
+   "county_rows": 53213,
+   "zone_rows": 16828
+  },
+  "frost_freeze": {
+   "county_rows": 16,
+   "zone_rows": 15123
+  },
+  "hail": {
+   "county_rows": 337795,
+   "zone_rows": 63
+  },
+  "heavy_rain": {
+   "county_rows": 29965,
+   "zone_rows": 1542
+  },
+  "high_wind": {
+   "county_rows": 35,
+   "zone_rows": 95758
+  },
+  "thunderstorm_wind": {
+   "county_rows": 450442,
+   "zone_rows": 163
+  },
+  "tornado": {
+   "county_rows": 42775,
+   "zone_rows": 0
+  },
+  "winter_storm": {
+   "county_rows": 119,
+   "zone_rows": 90123
+  }
+ },
+ "zone_rows": 322195,
+ "zone_rows_mapped": 305469,
+ "zones_seen": 5115,
+ "zones_mapped": 4385,
+ "counties": 3384,
+ "zone_releases": [
+  "bp01ap08.dbx",
+  "bp01au07.dbx",
+  "bp01nv16.dbx",
+  "bp01oc15.dbx",
+  "bp03ap12.dbx",
+  "bp03de14.dbx",
+  "bp03mr20.dbx",
+  "bp03mr26.dbx",
+  "bp04ap17.dbx",
+  "bp04de12.dbx",
+  "bp04fe15.dbx",
+  "bp05mr24.dbx",
+  "bp06ja06.dbx",
+  "bp07oc14.dbx",
+  "bp07se22.dbx",
+  "bp08mr23.dbx",
+  "bp08se15.dbx",
+  "bp08se21.dbx",
+  "bp10nv15.dbx",
+  "bp10nv20.dbx",
+  "bp11ja10.dbx",
+  "bp13se22.dbx",
+  "bp16ap26.dbx",
+  "bp16jn16.dbx",
+  "bp16mr06.dbx",
+  "bp18mr25.dbx",
+  "bp19se23.dbx",
+  "bp22mr22.dbx",
+  "bp25my05.dbx",
+  "bp28de04.dbx",
+  "bp30mr21.dbx",
+  "bp31my07.dbx"
+ ],
+ "zone_releases_failed": [],
+ "method": "County events (CZ_TYPE C) by county FIPS; zone events (CZ_TYPE Z) mapped to every county of the zone in the NWS zone-county correlation file releases listed, using only releases whose zone of that number carries the same name as the event's CZ_NAME (zones were renumbered in some states). A zone's crop damage is split equally between its counties. Crop damage is NCEI's reported estimate (DAMAGE_CROPS), nominal dollars.",
+ "built": "2026-11-15T16:29:14+00:00"
+}

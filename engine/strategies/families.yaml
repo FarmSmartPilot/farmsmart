@@ -1,0 +1,170 @@
+# FarmSmart strategy families (agronomy agent)
+# --------------------------------------------------------------------------
+# M9 builds candidates from each family and shows the best 2-4 from DIFFERENT
+# families beside the existing rotation (planning digest s.6.1). A family need
+# not produce a candidate for every field.
+# Generation recipe vocabulary:
+#   slot: where the change goes - bare_gap (between harvest and next planting),
+#         replace_year (swap one cash year), add_year (lengthen the rotation),
+#         underseed (sow into a growing crop), double_crop (second crop same year)
+#   pick: crop roles from crops.yaml (cash/cover/forage/legume/deep_root/drought_tolerant)
+#   every candidate then passes engine/rules/rules.yaml (hard filters first).
+# Effect sizes are quoted from the cited studies; they are context for the card,
+# not a promise for this field. Keys in `sources` resolve in rules.yaml or here.
+# --------------------------------------------------------------------------
+schema_version: 1
+
+sources:
+  davis2012: {cite: "Davis et al. 2012, PLoS ONE, Marsden Farm IA 2003-2011", url: "https://doi.org/10.1371/journal.pone.0047149"}
+  liebman2008: {cite: "Liebman et al. 2008, Agron J, Boone IA", url: "https://doi.org/10.2134/agronj2007.0222"}
+  mcdaniel2014: {cite: "McDaniel et al. 2014, Ecol Appl, 122 studies", url: "https://doi.org/10.1890/13-0616.1"}
+  bowles2020: {cite: "Bowles et al. 2020, One Earth, North American rotation diversity", url: "https://doi.org/10.1016/j.oneear.2020.02.007"}
+  renwick2021: {cite: "Renwick et al. 2021, Environ Res Lett, Ontario 36 yr", url: "https://doi.org/10.1088/1748-9326/ac1468"}
+  marini2020: {cite: "Marini et al. 2020, Environ Res Lett, 7 European LTEs", url: "https://doi.org/10.1088/1748-9326/abc651"}
+  gaudin2015: {cite: "Gaudin et al. 2015, PLoS ONE, Ontario 31 yr", url: "https://doi.org/10.1371/journal.pone.0113261"}
+  gan2015: {cite: "Gan et al. 2015, Sci Rep, Saskatchewan pulse-based vs summerfallow", url: "https://doi.org/10.1038/srep14625"}
+  baldock2014: {cite: "Baldock et al. 2014, Agron J, WICST", url: "https://doi.org/10.2134/agronj14.0004"}
+  stanger2008: {cite: "Stanger & Lauer 2008, Agron J, WI 35 yr", url: "https://doi.org/10.2134/agronj2007.0280"}
+  hendricks2014: {cite: "Hendricks et al. 2014, Am J Agric Econ", url: "https://doi.org/10.1093/ajae/aau024"}
+  weisberger2019: {cite: "Weisberger et al. 2019, PLoS ONE, 54 studies", url: "https://doi.org/10.1371/journal.pone.0219847"}
+  fao_iwm: {cite: "Brouwer & Heibloem 1986, FAO Irrigation Water Management Manual 3, Table 14", url: "https://www.fao.org/4/s2022e/s2022e07.htm"}
+  sare_rye: {cite: "SARE, Managing Cover Crops Profitably, Cereal Rye", url: "https://www.sare.org/publications/managing-cover-crops-profitably/nonlegume-cover-crops/cereal-rye/"}
+  sare_oats: {cite: "SARE, Managing Cover Crops Profitably, Oats", url: "https://www.sare.org/publications/managing-cover-crops-profitably/nonlegume-cover-crops/oats/"}
+
+strip_trial_default: &strip_trial_default
+  design: "Side-by-side strips: new practice vs current practice, each at least one planter or combine width wide and the full field length, repeated 3 or more times across the field (alternate order)."
+  measure: ["yield monitor or weigh wagon per strip", "planting and harvest dates", "stand counts", "soil cover photos in the bare-risk months"]
+  duration: "At least 2 seasons before judging; one year can mislead."
+  compare_with: "FarmSmart replays the same strips with NASA layers (HLS NDVI time series for cover, SMAP soil moisture, IMERG rain) so the result is checked against the weather the strips actually saw."
+
+families:
+  - id: fill_the_gap
+    name_en: "Fill the gap"
+    name_es: "Llenar el hueco"
+    definition_en: "Put a living cover into the months when the soil sits bare between cash crops, or change when an existing cover ends."
+    definition_es: "Sembrar una cobertura viva en los meses en que el suelo queda desnudo entre cultivos comerciales, o cambiar cuándo termina una cobertura existente."
+    recipe:
+      slot: bare_gap
+      pick: {roles_any: [cover], prefer: "winter-hardy grass (cereal_rye) where the gap spans winter; winter-killed covers (oats_winterkill, radish_cover) where spring workload or N tie-up is the concern; legume covers (hairy_vetch, crimson_clover) before corn"}
+      constraints: ["seed date fits calendars.yaml cover window for the region", "termination fits next planting (rules: cover_termination_insurance, rye_before_corn)", "dry-year water check (rules: water_budget_dry_year)"]
+    benefits:
+      - {en: "Soil carbon +8.5% and total N +12.8% when a cover is added to the rotation (meta-analysis; slow, cumulative)", es: "Carbono del suelo +8,5 % y nitrógeno total +12,8 % al agregar cobertura (metaanálisis; lento y acumulativo)", sources: [mcdaniel2014]}
+      - {en: "Cereal rye holds 25-50 lb N/acre over winter, up to 100", es: "El centeno retiene 25-50 lb N/acre en invierno, hasta 100", sources: [sare_rye]}
+      - {en: "Legume covers before corn +30-33% at low N or under no-till", es: "Coberturas de leguminosa antes del maíz +30-33 % con poco N o siembra directa", sources: [marcillo2017]}
+    risks:
+      - {en: "Cereal rye before corn: -6% corn yield at the economic optimum N rate (Iowa)", es: "Centeno antes del maíz: -6 % de rendimiento al nivel óptimo de N (Iowa)", sources: [pantoja2015]}
+      - {en: "Covers average -4% next-crop yield across 106 studies (mixtures +13%)", es: "Las coberturas promedian -4 % en el cultivo siguiente en 106 estudios (mezclas +13 %)", sources: [abdalla2019]}
+      - {en: "Uses spring soil water in dry springs", es: "Usa agua del suelo en primaveras secas", sources: [digest]}
+    try_it_small:
+      <<: *strip_trial_default
+      example_en: "Drill cereal rye after soybean harvest on 3 strips; end it at least 10 days before corn planting next spring."
+      example_es: "Siembre centeno después de cosechar soya en 3 franjas; termínelo al menos 10 días antes de sembrar maíz."
+    check_locally: [cover_termination_insurance_zone, rye_termination_10_days, herbicide_rotation_restriction, tile_and_spring_workability]
+
+  - id: extend_and_diversify
+    name_en: "Extend & diversify"
+    name_es: "Alargar y diversificar"
+    definition_en: "Add a third (or fourth) crop to the rotation, often a small grain with an underseeded legume, or a double crop where the season allows."
+    definition_es: "Agregar un tercer (o cuarto) cultivo a la rotación, a menudo un cereal de grano pequeño con leguminosa intersembrada, o un doble cultivo si la temporada lo permite."
+    recipe:
+      slot: add_year
+      pick: {roles_any: [cash], families_not_in_rotation: true, then: {slot: underseed, roles_all: [legume, forage]}}
+      constraints: ["new family not already in the rotation", "season_length_fit", "equipment_filter", "market_filter"]
+    benefits:
+      - {en: "Marsden Farm (Iowa): 3-year corn-soy-oat+red clover and 4-year (+alfalfa) matched or beat corn-soy yield and profit", es: "Granja Marsden (Iowa): rotaciones de 3 años (maíz-soya-avena+trébol rojo) y 4 años (+alfalfa) igualaron o superaron el rendimiento y la ganancia de maíz-soya", sources: [davis2012]}
+      - {en: "Synthetic N -59% / -74% and herbicide -76% / -82% (3-yr / 4-yr)", es: "N sintético -59 % / -74 % y herbicida -76 % / -82 % (3 / 4 años)", sources: [liebman2008]}
+      - {en: "Drought-year maize losses reduced 14-90% in more diverse rotations", es: "Pérdidas de maíz en años de sequía reducidas 14-90 % en rotaciones más diversas", sources: [bowles2020]}
+      - {en: "Maize drought loss reduced 17.1 +/- 6.1% (Ontario, 36 yr)", es: "Pérdida de maíz por sequía reducida 17,1 +/- 6,1 % (Ontario, 36 años)", sources: [renwick2021]}
+    risks:
+      - {en: "Thin markets for oats and hay; more crops means more workload and storage", es: "Mercados pequeños para avena y heno; más cultivos significa más trabajo y almacenamiento", sources: [digest]}
+      - {en: "Second cereal year in a row has a yield drag", es: "Un segundo año de cereal seguido reduce el rendimiento", sources: [wang2025]}
+    try_it_small:
+      <<: *strip_trial_default
+      example_en: "On one field, replace one corn or soybean year with oats underseeded with red clover; keep the rest of the farm as is."
+      example_es: "En un lote, reemplace un año de maíz o soya por avena con trébol rojo intersembrado; deje el resto de la finca igual."
+    check_locally: [buyer_within_hauling_distance, herbicide_rotation_restriction]
+
+  - id: water_wise_swap
+    name_en: "Water-wise swap"
+    name_es: "Cambio que ahorra agua"
+    definition_en: "Swap a thirsty crop for one that needs less water or tolerates drought better, or flex fallow based on planting-time soil moisture."
+    definition_es: "Cambiar un cultivo que usa mucha agua por uno que usa menos o tolera mejor la sequía, o decidir el barbecho según la humedad del suelo a la siembra."
+    recipe:
+      slot: replace_year
+      pick: {roles_any: [drought_tolerant], rank_by: "season_etc_mm (FAO-56) lowest first, then drought_tolerance"}
+      constraints: ["water_budget_dry_year must improve vs the replaced crop", "market_filter", "season_length_fit"]
+    benefits:
+      - {en: "FAO water needs: sorghum/millet 450-650 mm vs maize 500-800 mm per season; drought sensitivity low vs medium-high", es: "Necesidad de agua FAO: sorgo/mijo 450-650 mm frente a maíz 500-800 mm por temporada; sensibilidad a sequía baja frente a media-alta", sources: [fao_iwm]}
+      - {en: "Saskatchewan: pulse-based sequences vs summerfallow: grain +35.5%, protein +50.9%", es: "Saskatchewan: secuencias con leguminosas frente a barbecho: grano +35,5 %, proteína +50,9 %", sources: [gan2015]}
+    risks:
+      - {en: "Lower price or weaker basis than the crop replaced; more year-to-year yield variability", es: "Precio menor o base más débil que el cultivo reemplazado; más variación de rendimiento entre años", sources: [digest]}
+    try_it_small:
+      <<: *strip_trial_default
+      example_en: "Plant grain sorghum on the driest third of a field (lowest available water capacity in SSURGO) and corn on the rest."
+      example_es: "Siembre sorgo en el tercio más seco del lote (menor capacidad de agua disponible en SSURGO) y maíz en el resto."
+    check_locally: [irrigation_rights, buyer_within_hauling_distance, herbicide_rotation_restriction]
+
+  - id: integrate_forage
+    name_en: "Integrate forage"
+    name_es: "Integrar forraje"
+    definition_en: "Bring in a perennial forage (alfalfa, grass-legume hay) or graze a cover crop."
+    definition_es: "Incorporar un forraje perenne (alfalfa, heno de gramínea y leguminosa) o pastorear un cultivo de cobertura."
+    recipe:
+      slot: add_year
+      pick: {roles_all: [forage], prefer_roles: [legume, deep_root], years: [2, 4]}
+      constraints: ["livestock_filter", "equipment_filter (baler / forage_harvester)", "water_budget_dry_year (perennial ET)"]
+    benefits:
+      - {en: "First-year corn after alfalfa needed no added N; 2nd/3rd-year corn needed 224 kg N/ha", es: "El primer maíz después de alfalfa no necesitó N agregado; el de 2.o/3.er año necesitó 224 kg N/ha", sources: [stanger2008]}
+      - {en: "Corn after alfalfa +1.47 +/- 0.38 Mg/ha vs continuous corn; largest in stress years", es: "Maíz después de alfalfa +1,47 +/- 0,38 Mg/ha frente a maíz continuo; mayor en años de estrés", sources: [baldock2014]}
+      - {en: "Hay/pasture crop-type factor 0.02 vs 0.40 for grain corn (generalised USLE C)", es: "Factor de cultivo heno/pradera 0,02 frente a 0,40 para maíz grano (C generalizado de la USLE)", sources: [omafra_usle]}
+    risks:
+      - {en: "Alfalfa seasonal water need 800-1600 mm (perennial ET)", es: "La alfalfa necesita 800-1600 mm de agua por temporada (ET perenne)", sources: [fao_iwm]}
+      - {en: "Needs livestock or a hay buyer; establishment year has low yield", es: "Necesita ganado o comprador de heno; el año de establecimiento rinde poco", sources: [digest]}
+    try_it_small:
+      <<: *strip_trial_default
+      example_en: "Seed alfalfa or red clover with an oat nurse crop on one field near the livestock; compare the next corn's N need with a strip that gets full N."
+      example_es: "Siembre alfalfa o trébol rojo con avena acompañante en un lote cerca del ganado; compare la necesidad de N del maíz siguiente con una franja con N completo."
+    check_locally: [buyer_within_hauling_distance, tile_and_spring_workability]
+
+  - id: market_driven_add
+    name_en: "Market-driven add"
+    name_es: "Agregar por mercado"
+    definition_en: "Add a crop only where a real nearby buyer exists (food-grade, pulses, seed, contract crops)."
+    definition_es: "Agregar un cultivo solo donde exista un comprador real cercano (grado alimenticio, legumbres, semilla, cultivos por contrato)."
+    recipe:
+      slot: replace_year
+      pick: {crop_ids_from: farm.markets, roles_any: [cash]}
+      constraints: ["market_filter", "equipment_filter", "season_length_fit"]
+    benefits:
+      - {en: "Farmers return to rotation when prices allow, capturing the rotation benefit", es: "Los agricultores vuelven a rotar cuando los precios lo permiten y aprovechan el beneficio de la rotación", sources: [hendricks2014]}
+    risks:
+      - {en: "Grade discounts, delivery costs and buyer reliability; transition-year learning", es: "Descuentos por calidad, costo de entrega y confiabilidad del comprador; aprendizaje del primer año", sources: [digest]}
+    try_it_small:
+      <<: *strip_trial_default
+      example_en: "Grow the new crop on one field under a written contract before committing more area."
+      example_es: "Siembre el nuevo cultivo en un lote con contrato escrito antes de comprometer más superficie."
+    check_locally: [buyer_within_hauling_distance, herbicide_rotation_restriction]
+
+  - id: pest_cycle_break
+    name_en: "Pest-cycle break"
+    name_es: "Cortar el ciclo de plagas"
+    definition_en: "Insert a non-host crop where the same pest hosts have been grown year after year."
+    definition_es: "Insertar un cultivo no hospedero donde los mismos hospederos de plagas se han sembrado año tras año."
+    recipe:
+      slot: replace_year
+      pick: {pest_host_groups_disjoint_with: "history last 3 years", roles_any: [cash, forage]}
+      constraints: ["breaks the longest host run in CDL history", "canola_frequency", "pulses_back_to_back", "sunflower_sclerotinia_spacing"]
+    benefits:
+      - {en: "Continuous corn -4.3% and continuous soybean -10.3% yield vs rotated", es: "Maíz continuo -4,3 % y soya continua -10,3 % frente a rotados", sources: [seifert2017]}
+      - {en: "First-year corn after 5 years of soybean +15%; first-year soybean +17%", es: "Primer maíz tras 5 años de soya +15 %; primera soya +17 %", sources: [crookston1991]}
+      - {en: "Diverse rotations cut weed density 49% (not biomass)", es: "Las rotaciones diversas reducen 49 % la densidad de malezas (no la biomasa)", sources: [weisberger2019]}
+    risks:
+      - {en: "The break crop may host its own pests (e.g. Sclerotinia across sunflower, canola, beans)", es: "El cultivo de corte puede tener sus propias plagas (p. ej. Sclerotinia en girasol, canola, frijol)", sources: [mb_sclerotinia]}
+    try_it_small:
+      <<: *strip_trial_default
+      example_en: "On the field with the longest corn-on-corn run in the CDL history, grow soybean or a small grain in strips and compare the following corn."
+      example_es: "En el lote con más años de maíz tras maíz en el historial CDL, siembre soya o un cereal de grano pequeño en franjas y compare el maíz siguiente."
+    check_locally: [scn_test, aphanomyces_soil_test, herbicide_rotation_restriction]
+
+# Source keys reused from rules.yaml: digest, marcillo2017, pantoja2015, abdalla2019, wang2025,
+# seifert2017, crookston1991, mb_sclerotinia. omafra_usle is defined in crops.yaml.

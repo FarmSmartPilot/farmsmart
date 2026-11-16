@@ -1,0 +1,1138 @@
+{
+ "model_id": "M7",
+ "model_version": "0.1.0",
+ "kind": "process",
+ "field": {
+  "lat": 42.1,
+  "lon": -93.39
+ },
+ "periods": {
+  "baseline": [
+   1991,
+   2020
+  ],
+  "model_historical": [
+   1995,
+   2014
+  ],
+  "future": [
+   2041,
+   2060
+  ],
+  "analog_present_day": [
+   "20010101",
+   "20251231"
+  ]
+ },
+ "baseline": {
+  "indicators": {
+   "tmean_c": 9.16,
+   "tmax_warm_c": 28.54,
+   "tmin_cold_c": -11.61,
+   "precip_mm": 915.0,
+   "gdd10": 1830.0,
+   "hot_days_ge35": 3.1,
+   "frost_free_days": 169,
+   "frost_free_years": 0
+  },
+  "scale_label": "regional value (≈50 km, NASA POWER)",
+  "evidence_id": "power-0498202f060f"
+ },
+ "present_day_self_match": {
+  "lat": 42.5,
+  "lon": -93.5,
+  "country": "United States of America",
+  "iso3": "USA",
+  "admin1": "Iowa",
+  "near_town": "Ames",
+  "near_town_km": 53.0,
+  "cropland_share_pct": 70.2,
+  "distance": 0.048,
+  "km_from_field": 45.0
+ },
+ "scenarios": {
+  "ssp245": {
+   "available": true,
+   "n_models": 6,
+   "indicators": {
+    "tmean_c": {
+     "median": 11.18,
+     "min": 10.44,
+     "max": 12.2,
+     "n": 6
+    },
+    "tmax_warm_c": {
+     "median": 31.79,
+     "min": 30.26,
+     "max": 33.49,
+     "n": 6
+    },
+    "tmin_cold_c": {
+     "median": -9.95,
+     "min": -11.26,
+     "max": -7.96,
+     "n": 6
+    },
+    "precip_mm": {
+     "median": 885.5,
+     "min": 796.0,
+     "max": 1039.0,
+     "n": 6
+    },
+    "gdd10": {
+     "median": 2196.5,
+     "min": 2121.0,
+     "max": 2392.0,
+     "n": 6
+    },
+    "hot_days_ge35": {
+     "median": 11.9,
+     "min": 7.8,
+     "max": 25.8,
+     "n": 6
+    },
+    "frost_free_days": {
+     "median": 186.5,
+     "min": 174.0,
+     "max": 195.0,
+     "n": 6
+    },
+    "frost_free_years": {
+     "median": 0.0,
+     "min": 0.0,
+     "max": 0.0,
+     "n": 6
+    }
+   },
+   "deltas": {
+    "annual_d_tmax_c": {
+     "median": 2.23,
+     "min": 1.46,
+     "max": 3.38,
+     "n": 6
+    },
+    "annual_d_tmin_c": {
+     "median": 1.82,
+     "min": 1.12,
+     "max": 2.75,
+     "n": 6
+    },
+    "annual_pr_ratio": {
+     "median": 0.96,
+     "min": 0.87,
+     "max": 1.13,
+     "n": 6
+    }
+   },
+   "analogs": [
+    {
+     "lat": 40.5,
+     "lon": -95.5,
+     "country": "United States of America",
+     "iso3": "USA",
+     "admin1": "Missouri",
+     "near_town": "Bellevue",
+     "near_town_km": 78.0,
+     "cropland_share_pct": 67.1,
+     "distance": 0.101,
+     "km_from_field": 250.0,
+     "models_with_analog_within_km": [
+      "ACCESS-CM2",
+      "GFDL-ESM4",
+      "MIROC6",
+      "MPI-ESM1-2-HR",
+      "MRI-ESM2-0",
+      "UKESM1-0-LL"
+     ],
+     "n_models_agree": 6,
+     "crops": {
+      "scale": "country",
+      "label": "country value (FAOSTAT, national harvested area)",
+      "country": "United States of America",
+      "years": [
+       2020,
+       2024
+      ],
+      "total_harvested_ha": 99197348,
+      "top": [
+       {
+        "crop": "Soya beans",
+        "ha": 34269882,
+        "share": 0.3455
+       },
+       {
+        "crop": "Maize (corn)",
+        "ha": 33622862,
+        "share": 0.3389
+       },
+       {
+        "crop": "Wheat",
+        "ha": 14986480,
+        "share": 0.1511
+       },
+       {
+        "crop": "Seed cotton, unginned",
+        "ha": 3331658,
+        "share": 0.0336
+       },
+       {
+        "crop": "Sorghum",
+        "ha": 2256148,
+        "share": 0.0227
+       }
+      ]
+     },
+     "novel": false
+    },
+    {
+     "lat": 40.5,
+     "lon": -90.5,
+     "country": "United States of America",
+     "iso3": "USA",
+     "admin1": "Illinois",
+     "near_town": "Macomb",
+     "near_town_km": 15.0,
+     "cropland_share_pct": 58.0,
+     "distance": 0.169,
+     "km_from_field": 300.0,
+     "models_with_analog_within_km": [
+      "ACCESS-CM2",
+      "GFDL-ESM4",
+      "MIROC6",
+      "MPI-ESM1-2-HR",
+      "MRI-ESM2-0",
+      "UKESM1-0-LL"
+     ],
+     "n_models_agree": 6,
+     "crops": {
+      "scale": "country",
+      "label": "country value (FAOSTAT, national harvested area)",
+      "country": "United States of America",
+      "years": [
+       2020,
+       2024
+      ],
+      "total_harvested_ha": 99197348,
+      "top": [
+       {
+        "crop": "Soya beans",
+        "ha": 34269882,
+        "share": 0.3455
+       },
+       {
+        "crop": "Maize (corn)",
+        "ha": 33622862,
+        "share": 0.3389
+       },
+       {
+        "crop": "Wheat",
+        "ha": 14986480,
+        "share": 0.1511
+       },
+       {
+        "crop": "Seed cotton, unginned",
+        "ha": 3331658,
+        "share": 0.0336
+       },
+       {
+        "crop": "Sorghum",
+        "ha": 2256148,
+        "share": 0.0227
+       }
+      ]
+     },
+     "novel": false
+    },
+    {
+     "lat": 43.5,
+     "lon": 44.5,
+     "country": "Russia",
+     "iso3": "RUS",
+     "admin1": "North Ossetia",
+     "near_town": "Malgobek",
+     "near_town_km": 7.0,
+     "cropland_share_pct": 56.4,
+     "distance": 0.274,
+     "km_from_field": 9611.0,
+     "models_with_analog_within_km": [
+      "ACCESS-CM2",
+      "MIROC6",
+      "MPI-ESM1-2-HR",
+      "MRI-ESM2-0"
+     ],
+     "n_models_agree": 4,
+     "crops": {
+      "scale": "country",
+      "label": "country value (FAOSTAT, national harvested area)",
+      "country": "Russian Federation",
+      "years": [
+       2020,
+       2024
+      ],
+      "total_harvested_ha": 65428841,
+      "top": [
+       {
+        "crop": "Wheat",
+        "ha": 28372929,
+        "share": 0.4336
+       },
+       {
+        "crop": "Sunflower seed",
+        "ha": 9393306,
+        "share": 0.1436
+       },
+       {
+        "crop": "Barley",
+        "ha": 7631262,
+        "share": 0.1166
+       },
+       {
+        "crop": "Soya beans",
+        "ha": 3344129,
+        "share": 0.0511
+       },
+       {
+        "crop": "Maize (corn)",
+        "ha": 2647311,
+        "share": 0.0405
+       }
+      ]
+     },
+     "novel": true
+    }
+   ],
+   "agreement": {
+    "n_agree": 6,
+    "n_models": 6,
+    "radius_km": 500.0,
+    "cluster_centre": {
+     "lat": 40.5,
+     "lon": -92.5,
+     "country": "United States of America",
+     "admin1": "Missouri",
+     "near_town": "Kirksville"
+    },
+    "models_in_cluster": [
+     "ACCESS-CM2",
+     "GFDL-ESM4",
+     "MIROC6",
+     "MPI-ESM1-2-HR",
+     "MRI-ESM2-0",
+     "UKESM1-0-LL"
+    ]
+   },
+   "novel_climate": {
+    "flag": false,
+    "best_distance": 0.101,
+    "threshold": 0.234,
+    "models_novel": 0
+   },
+   "per_model": {
+    "ACCESS-CM2": {
+     "indicators": {
+      "tmean_c": 11.88,
+      "tmax_warm_c": 32.88,
+      "tmin_cold_c": -9.36,
+      "precip_mm": 806.0,
+      "gdd10": 2323.0,
+      "hot_days_ge35": 17.5,
+      "frost_free_days": 183,
+      "frost_free_years": 0
+     },
+     "annual_d_tmax_c": 3.38,
+     "annual_d_tmin_c": 2.01,
+     "annual_pr_ratio": 0.879,
+     "top_analog": {
+      "lat": 40.5,
+      "lon": -96.5,
+      "country": "United States of America",
+      "iso3": "USA",
+      "admin1": "Nebraska",
+      "near_town": "Lincoln",
+      "near_town_km": 36.0,
+      "cropland_share_pct": 51.6,
+      "distance": 0.115,
+      "km_from_field": 315.0
+     },
+     "novel": false
+    },
+    "GFDL-ESM4": {
+     "indicators": {
+      "tmean_c": 11.03,
+      "tmax_warm_c": 31.32,
+      "tmin_cold_c": -10.54,
+      "precip_mm": 1039.0,
+      "gdd10": 2134.0,
+      "hot_days_ge35": 8.3,
+      "frost_free_days": 195,
+      "frost_free_years": 0
+     },
+     "annual_d_tmax_c": 2.12,
+     "annual_d_tmin_c": 1.64,
+     "annual_pr_ratio": 1.134,
+     "top_analog": {
+      "lat": 40.5,
+      "lon": -92.5,
+      "country": "United States of America",
+      "iso3": "USA",
+      "admin1": "Missouri",
+      "near_town": "Kirksville",
+      "near_town_km": 35.0,
+      "cropland_share_pct": 57.9,
+      "distance": 0.089,
+      "km_from_field": 193.0
+     },
+     "novel": false
+    },
+    "MIROC6": {
+     "indicators": {
+      "tmean_c": 10.96,
+      "tmax_warm_c": 30.98,
+      "tmin_cold_c": -7.96,
+      "precip_mm": 839.0,
+      "gdd10": 2121.0,
+      "hot_days_ge35": 9.0,
+      "frost_free_days": 174,
+      "frost_free_years": 0
+     },
+     "annual_d_tmax_c": 2.22,
+     "annual_d_tmin_c": 1.42,
+     "annual_pr_ratio": 0.91,
+     "top_analog": {
+      "lat": 40.5,
+      "lon": -95.5,
+      "country": "United States of America",
+      "iso3": "USA",
+      "admin1": "Missouri",
+      "near_town": "Bellevue",
+      "near_town_km": 78.0,
+      "cropland_share_pct": 67.1,
+      "distance": 0.073,
+      "km_from_field": 250.0
+     },
+     "novel": false
+    },
+    "MPI-ESM1-2-HR": {
+     "indicators": {
+      "tmean_c": 11.34,
+      "tmax_warm_c": 32.26,
+      "tmin_cold_c": -8.95,
+      "precip_mm": 796.0,
+      "gdd10": 2238.0,
+      "hot_days_ge35": 14.8,
+      "frost_free_days": 187,
+      "frost_free_years": 0
+     },
+     "annual_d_tmax_c": 2.24,
+     "annual_d_tmin_c": 2.1,
+     "annual_pr_ratio": 0.868,
+     "top_analog": {
+      "lat": 39.5,
+      "lon": -90.5,
+      "country": "United States of America",
+      "iso3": "USA",
+      "admin1": "Illinois",
+      "near_town": "Jacksonville",
+      "near_town_km": 35.0,
+      "cropland_share_pct": 54.9,
+      "distance": 0.203,
+      "km_from_field": 378.0
+     },
+     "novel": false
+    },
+    "MRI-ESM2-0": {
+     "indicators": {
+      "tmean_c": 10.44,
+      "tmax_warm_c": 30.26,
+      "tmin_cold_c": -11.26,
+      "precip_mm": 980.0,
+      "gdd10": 2155.0,
+      "hot_days_ge35": 7.8,
+      "frost_free_days": 186,
+      "frost_free_years": 0
+     },
+     "annual_d_tmax_c": 1.46,
+     "annual_d_tmin_c": 1.12,
+     "annual_pr_ratio": 1.075,
+     "top_analog": {
+      "lat": 40.5,
+      "lon": -92.5,
+      "country": "United States of America",
+      "iso3": "USA",
+      "admin1": "Missouri",
+      "near_town": "Kirksville",
+      "near_town_km": 35.0,
+      "cropland_share_pct": 57.9,
+      "distance": 0.08,
+      "km_from_field": 193.0
+     },
+     "novel": false
+    },
+    "UKESM1-0-LL": {
+     "indicators": {
+      "tmean_c": 12.2,
+      "tmax_warm_c": 33.49,
+      "tmin_cold_c": -10.94,
+      "precip_mm": 932.0,
+      "gdd10": 2392.0,
+      "hot_days_ge35": 25.8,
+      "frost_free_days": 187,
+      "frost_free_years": 0
+     },
+     "annual_d_tmax_c": 3.26,
+     "annual_d_tmin_c": 2.75,
+     "annual_pr_ratio": 1.019,
+     "top_analog": {
+      "lat": 39.5,
+      "lon": -95.5,
+      "country": "United States of America",
+      "iso3": "USA",
+      "admin1": "Kansas",
+      "near_town": "Topeka",
+      "near_town_km": 53.0,
+      "cropland_share_pct": 49.1,
+      "distance": 0.177,
+      "km_from_field": 339.0
+     },
+     "novel": false
+    }
+   }
+  },
+  "ssp585": {
+   "available": true,
+   "n_models": 6,
+   "indicators": {
+    "tmean_c": {
+     "median": 11.46,
+     "min": 10.89,
+     "max": 14.07,
+     "n": 6
+    },
+    "tmax_warm_c": {
+     "median": 31.77,
+     "min": 30.52,
+     "max": 35.27,
+     "n": 6
+    },
+    "tmin_cold_c": {
+     "median": -8.19,
+     "min": -13.34,
+     "max": -5.89,
+     "n": 6
+    },
+    "precip_mm": {
+     "median": 956.0,
+     "min": 871.0,
+     "max": 1090.0,
+     "n": 6
+    },
+    "gdd10": {
+     "median": 2270.5,
+     "min": 2145.0,
+     "max": 2584.0,
+     "n": 6
+    },
+    "hot_days_ge35": {
+     "median": 12.0,
+     "min": 8.8,
+     "max": 46.3,
+     "n": 6
+    },
+    "frost_free_days": {
+     "median": 187.5,
+     "min": 176.0,
+     "max": 206.0,
+     "n": 6
+    },
+    "frost_free_years": {
+     "median": 0.0,
+     "min": 0.0,
+     "max": 0.0,
+     "n": 6
+    }
+   },
+   "deltas": {
+    "annual_d_tmax_c": {
+     "median": 2.35,
+     "min": 1.65,
+     "max": 5.23,
+     "n": 6
+    },
+    "annual_d_tmin_c": {
+     "median": 2.41,
+     "min": 1.72,
+     "max": 4.56,
+     "n": 6
+    },
+    "annual_pr_ratio": {
+     "median": 1.05,
+     "min": 0.95,
+     "max": 1.2,
+     "n": 6
+    }
+   },
+   "analogs": [
+    {
+     "lat": 39.5,
+     "lon": -93.5,
+     "country": "United States of America",
+     "iso3": "USA",
+     "admin1": "Missouri",
+     "near_town": "Liberty",
+     "near_town_km": 84.0,
+     "cropland_share_pct": 66.0,
+     "distance": 0.066,
+     "km_from_field": 289.0,
+     "models_with_analog_within_km": [
+      "ACCESS-CM2",
+      "GFDL-ESM4",
+      "MIROC6",
+      "MPI-ESM1-2-HR",
+      "MRI-ESM2-0",
+      "UKESM1-0-LL"
+     ],
+     "n_models_agree": 6,
+     "crops": {
+      "scale": "country",
+      "label": "country value (FAOSTAT, national harvested area)",
+      "country": "United States of America",
+      "years": [
+       2020,
+       2024
+      ],
+      "total_harvested_ha": 99197348,
+      "top": [
+       {
+        "crop": "Soya beans",
+        "ha": 34269882,
+        "share": 0.3455
+       },
+       {
+        "crop": "Maize (corn)",
+        "ha": 33622862,
+        "share": 0.3389
+       },
+       {
+        "crop": "Wheat",
+        "ha": 14986480,
+        "share": 0.1511
+       },
+       {
+        "crop": "Seed cotton, unginned",
+        "ha": 3331658,
+        "share": 0.0336
+       },
+       {
+        "crop": "Sorghum",
+        "ha": 2256148,
+        "share": 0.0227
+       }
+      ]
+     },
+     "novel": false
+    },
+    {
+     "lat": 40.5,
+     "lon": -88.5,
+     "country": "United States of America",
+     "iso3": "USA",
+     "admin1": "Illinois",
+     "near_town": "Normal",
+     "near_town_km": 42.0,
+     "cropland_share_pct": 70.1,
+     "distance": 0.248,
+     "km_from_field": 445.0,
+     "models_with_analog_within_km": [
+      "ACCESS-CM2",
+      "GFDL-ESM4",
+      "MIROC6",
+      "MPI-ESM1-2-HR",
+      "MRI-ESM2-0",
+      "UKESM1-0-LL"
+     ],
+     "n_models_agree": 6,
+     "crops": {
+      "scale": "country",
+      "label": "country value (FAOSTAT, national harvested area)",
+      "country": "United States of America",
+      "years": [
+       2020,
+       2024
+      ],
+      "total_harvested_ha": 99197348,
+      "top": [
+       {
+        "crop": "Soya beans",
+        "ha": 34269882,
+        "share": 0.3455
+       },
+       {
+        "crop": "Maize (corn)",
+        "ha": 33622862,
+        "share": 0.3389
+       },
+       {
+        "crop": "Wheat",
+        "ha": 14986480,
+        "share": 0.1511
+       },
+       {
+        "crop": "Seed cotton, unginned",
+        "ha": 3331658,
+        "share": 0.0336
+       },
+       {
+        "crop": "Sorghum",
+        "ha": 2256148,
+        "share": 0.0227
+       }
+      ]
+     },
+     "novel": true
+    },
+    {
+     "lat": 39.5,
+     "lon": -77.5,
+     "country": "United States of America",
+     "iso3": "USA",
+     "admin1": "Maryland",
+     "near_town": "Frederick",
+     "near_town_km": 12.0,
+     "cropland_share_pct": 41.6,
+     "distance": 0.255,
+     "km_from_field": 1366.0,
+     "models_with_analog_within_km": [
+      "ACCESS-CM2",
+      "MPI-ESM1-2-HR",
+      "MRI-ESM2-0",
+      "UKESM1-0-LL"
+     ],
+     "n_models_agree": 4,
+     "crops": {
+      "scale": "country",
+      "label": "country value (FAOSTAT, national harvested area)",
+      "country": "United States of America",
+      "years": [
+       2020,
+       2024
+      ],
+      "total_harvested_ha": 99197348,
+      "top": [
+       {
+        "crop": "Soya beans",
+        "ha": 34269882,
+        "share": 0.3455
+       },
+       {
+        "crop": "Maize (corn)",
+        "ha": 33622862,
+        "share": 0.3389
+       },
+       {
+        "crop": "Wheat",
+        "ha": 14986480,
+        "share": 0.1511
+       },
+       {
+        "crop": "Seed cotton, unginned",
+        "ha": 3331658,
+        "share": 0.0336
+       },
+       {
+        "crop": "Sorghum",
+        "ha": 2256148,
+        "share": 0.0227
+       }
+      ]
+     },
+     "novel": true
+    }
+   ],
+   "agreement": {
+    "n_agree": 6,
+    "n_models": 6,
+    "radius_km": 500.0,
+    "cluster_centre": {
+     "lat": 38.5,
+     "lon": -92.5,
+     "country": "United States of America",
+     "admin1": "Missouri",
+     "near_town": "Jefferson City"
+    },
+    "models_in_cluster": [
+     "ACCESS-CM2",
+     "GFDL-ESM4",
+     "MIROC6",
+     "MPI-ESM1-2-HR",
+     "MRI-ESM2-0",
+     "UKESM1-0-LL"
+    ]
+   },
+   "novel_climate": {
+    "flag": false,
+    "best_distance": 0.066,
+    "threshold": 0.234,
+    "models_novel": 0
+   },
+   "per_model": {
+    "ACCESS-CM2": {
+     "indicators": {
+      "tmean_c": 11.75,
+      "tmax_warm_c": 33.15,
+      "tmin_cold_c": -11.05,
+      "precip_mm": 958.0,
+      "gdd10": 2352.0,
+      "hot_days_ge35": 18.0,
+      "frost_free_days": 188,
+      "frost_free_years": 0
+     },
+     "annual_d_tmax_c": 2.67,
+     "annual_d_tmin_c": 2.46,
+     "annual_pr_ratio": 1.053,
+     "top_analog": {
+      "lat": 38.5,
+      "lon": -92.5,
+      "country": "United States of America",
+      "iso3": "USA",
+      "admin1": "Missouri",
+      "near_town": "Jefferson City",
+      "near_town_km": 30.0,
+      "cropland_share_pct": 34.9,
+      "distance": 0.187,
+      "km_from_field": 407.0
+     },
+     "novel": false
+    },
+    "GFDL-ESM4": {
+     "indicators": {
+      "tmean_c": 12.24,
+      "tmax_warm_c": 32.29,
+      "tmin_cold_c": -5.89,
+      "precip_mm": 871.0,
+      "gdd10": 2303.0,
+      "hot_days_ge35": 13.7,
+      "frost_free_days": 196,
+      "frost_free_years": 0
+     },
+     "annual_d_tmax_c": 3.27,
+     "annual_d_tmin_c": 2.89,
+     "annual_pr_ratio": 0.951,
+     "top_analog": {
+      "lat": 39.5,
+      "lon": -96.5,
+      "country": "United States of America",
+      "iso3": "USA",
+      "admin1": "Kansas",
+      "near_town": "Manhattan",
+      "near_town_km": 36.0,
+      "cropland_share_pct": 25.8,
+      "distance": 0.094,
+      "km_from_field": 390.0
+     },
+     "novel": false
+    },
+    "MIROC6": {
+     "indicators": {
+      "tmean_c": 11.06,
+      "tmax_warm_c": 31.24,
+      "tmin_cold_c": -7.38,
+      "precip_mm": 881.0,
+      "gdd10": 2149.0,
+      "hot_days_ge35": 10.3,
+      "frost_free_days": 176,
+      "frost_free_years": 0
+     },
+     "annual_d_tmax_c": 2.04,
+     "annual_d_tmin_c": 1.77,
+     "annual_pr_ratio": 0.959,
+     "top_analog": {
+      "lat": 40.5,
+      "lon": -95.5,
+      "country": "United States of America",
+      "iso3": "USA",
+      "admin1": "Missouri",
+      "near_town": "Bellevue",
+      "near_town_km": 78.0,
+      "cropland_share_pct": 67.1,
+      "distance": 0.046,
+      "km_from_field": 250.0
+     },
+     "novel": false
+    },
+    "MPI-ESM1-2-HR": {
+     "indicators": {
+      "tmean_c": 11.18,
+      "tmax_warm_c": 30.52,
+      "tmin_cold_c": -8.92,
+      "precip_mm": 1090.0,
+      "gdd10": 2145.0,
+      "hot_days_ge35": 9.4,
+      "frost_free_days": 187,
+      "frost_free_years": 0
+     },
+     "annual_d_tmax_c": 1.65,
+     "annual_d_tmin_c": 2.36,
+     "annual_pr_ratio": 1.195,
+     "top_analog": {
+      "lat": 39.5,
+      "lon": -92.5,
+      "country": "United States of America",
+      "iso3": "USA",
+      "admin1": "Missouri",
+      "near_town": "Columbia",
+      "near_town_km": 63.0,
+      "cropland_share_pct": 59.0,
+      "distance": 0.07,
+      "km_from_field": 299.0
+     },
+     "novel": false
+    },
+    "MRI-ESM2-0": {
+     "indicators": {
+      "tmean_c": 10.89,
+      "tmax_warm_c": 30.65,
+      "tmin_cold_c": -13.34,
+      "precip_mm": 1005.0,
+      "gdd10": 2238.0,
+      "hot_days_ge35": 8.8,
+      "frost_free_days": 187,
+      "frost_free_years": 0
+     },
+     "annual_d_tmax_c": 1.71,
+     "annual_d_tmin_c": 1.72,
+     "annual_pr_ratio": 1.101,
+     "top_analog": {
+      "lat": 40.5,
+      "lon": -93.5,
+      "country": "United States of America",
+      "iso3": "USA",
+      "admin1": "Missouri",
+      "near_town": "Kirksville",
+      "near_town_km": 85.0,
+      "cropland_share_pct": 62.3,
+      "distance": 0.127,
+      "km_from_field": 178.0
+     },
+     "novel": false
+    },
+    "UKESM1-0-LL": {
+     "indicators": {
+      "tmean_c": 14.07,
+      "tmax_warm_c": 35.27,
+      "tmin_cold_c": -7.46,
+      "precip_mm": 954.0,
+      "gdd10": 2584.0,
+      "hot_days_ge35": 46.3,
+      "frost_free_days": 206,
+      "frost_free_years": 0
+     },
+     "annual_d_tmax_c": 5.23,
+     "annual_d_tmin_c": 4.56,
+     "annual_pr_ratio": 1.042,
+     "top_analog": {
+      "lat": 37.5,
+      "lon": -95.5,
+      "country": "United States of America",
+      "iso3": "USA",
+      "admin1": "Kansas",
+      "near_town": "Pittsburg",
+      "near_town_km": 71.0,
+      "cropland_share_pct": 49.6,
+      "distance": 0.169,
+      "km_from_field": 542.0
+     },
+     "novel": false
+    }
+   }
+  }
+ },
+ "indicator_units": {
+  "tmean_c": "°C",
+  "tmax_warm_c": "°C",
+  "tmin_cold_c": "°C",
+  "precip_mm": "mm/yr",
+  "gdd10": "°C·day/yr (base 10, cap 30)",
+  "hot_days_ge35": "days/yr (Tmax ≥ 35 °C)",
+  "frost_free_days": "days (median last spring to first fall frost)"
+ },
+ "analog_method": {
+  "features": [
+   "Mean annual temperature (°C)",
+   "Mean temperature of the warmest month (°C)",
+   "Mean temperature of the coldest month (°C)",
+   "Annual precipitation (log mm)",
+   "Growing degree days base 10 °C from monthly means",
+   "Share of precipitation in the 6 warmest months"
+  ],
+  "distance": "RMS of z-scored feature differences (z by the global cropland candidate spread)",
+  "candidates": 3467,
+  "novel_threshold": {
+   "threshold": 0.2344617616458256,
+   "p50": 0.10435180473729563,
+   "p90": 0.1971270957942751,
+   "n": 3467,
+   "definition": "for every present-day cropland cell, the climate distance to its nearest cell more than 300 km away; threshold = P95"
+  },
+  "agreement_radius_km": 500.0,
+  "distinct_analog_km": 400.0
+ },
+ "sampling": {
+  "mode": "full",
+  "years": {
+   "hist": [
+    1995,
+    2000,
+    2005,
+    2010,
+    2014
+   ],
+   "fut": [
+    2041,
+    2045,
+    2050,
+    2055,
+    2060
+   ]
+  },
+  "variables": [
+   "tasmax",
+   "tasmin",
+   "pr"
+  ],
+  "n_files": 270,
+  "n_files_planned": 270,
+  "fetch_seconds": 190.7,
+  "from_cache": false,
+  "nex_cell": [
+   42.125,
+   -93.375
+  ],
+  "problems": []
+ },
+ "evidence_ids": {
+  "power": "power-0498202f060f",
+  "nex_gddp": "nex_gddp-e83de7adbc8d",
+  "candidates": "power_clim-e95aad419429",
+  "cropland_mask": "gaez_lc-cbe975a47fd6",
+  "crops": "faostat-f50eff6acff2"
+ },
+ "evidence": {
+  "power-0498202f060f": {
+   "id": "power-0498202f060f",
+   "source": "NASA POWER",
+   "product": "POWER Daily API (AG community)",
+   "version": "v2.x",
+   "is_nasa": true,
+   "observation_start": "1991-01-01",
+   "observation_end": "2020-12-31",
+   "publication_time": null,
+   "retrieval_time": "2026-11-14T09:55:42.896662Z",
+   "footprint": "POWER grid cell centred 42.00, -93.125 (≈50 km); field at 42.1000, -93.3900",
+   "native_res": "0.5° x 0.625° (≈50 km) meteorology; 1° solar",
+   "effective_res": "0.5° x 0.625° (≈50 km) meteorology; 1° solar",
+   "units": "°C, mm",
+   "qa_flags": [],
+   "transformation": "1991-2020 daily baseline; delta method adds NEX-GDDP monthly change",
+   "licence": "Public domain (NASA); attribution requested",
+   "citation": "NASA Langley Research Center POWER Project, funded through the NASA Earth Science Directorate Applied Science Program.",
+   "url": "https://power.larc.nasa.gov/",
+   "lineage": []
+  },
+  "nex_gddp-e83de7adbc8d": {
+   "id": "nex_gddp-e83de7adbc8d",
+   "source": "NASA NEX / NCCS",
+   "product": "NEX-GDDP-CMIP6 daily downscaled projections (tasmax, tasmin, pr)",
+   "version": "v1.x/v2.0 (per file)",
+   "is_nasa": true,
+   "observation_start": "1995-01-01",
+   "observation_end": "2060-12-31",
+   "publication_time": null,
+   "retrieval_time": "2026-11-14T09:58:53.613263Z",
+   "footprint": "NEX-GDDP 0.25° cell centred (42.125, -93.375)",
+   "native_res": "0.25° (≈25 km)",
+   "effective_res": "0.25° (≈25 km)",
+   "units": "K, kg m-2 s-1",
+   "qa_flags": [],
+   "transformation": "monthly ΔTmax/ΔTmin and precip ratio, 2041-2060 vs 1995-2014; sampled years {'hist': [1995, 2000, 2005, 2010, 2014], 'fut': [2041, 2045, 2050, 2055, 2060]}; models ['ACCESS-CM2', 'GFDL-ESM4', 'MIROC6', 'MPI-ESM1-2-HR', 'MRI-ESM2-0', 'UKESM1-0-LL']",
+   "licence": "Open (NASA); CMIP6 model terms CC BY 4.0",
+   "citation": "Thrasher, B., Wang, W., Michaelis, A., Melton, F., Lee, T., Nemani, R. (2022). NASA Global Daily Downscaled Projections, CMIP6. Scientific Data 9, 262. doi:10.1038/s41597-022-01393-4",
+   "url": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-gddp-cmip6",
+   "lineage": []
+  },
+  "power_clim-e95aad419429": {
+   "id": "power_clim-e95aad419429",
+   "source": "NASA POWER",
+   "product": "POWER Climatology regional API (T2M, T2M_MAX, T2M_MIN, PRECTOTCORR)",
+   "version": "v2.x",
+   "is_nasa": true,
+   "observation_start": "2001-01-01",
+   "observation_end": "2025-01-01",
+   "publication_time": null,
+   "retrieval_time": "2026-11-14T09:58:57.770062Z",
+   "footprint": "present-day cropland cells worldwide (1°)",
+   "native_res": "0.5° x 0.625° (≈50 km), MERRA-2",
+   "effective_res": "0.5° x 0.625° (≈50 km), MERRA-2",
+   "units": null,
+   "qa_flags": [],
+   "transformation": "monthly normals -> 6 analog indicators, z-scored",
+   "licence": "Public domain (NASA)",
+   "citation": "NASA Langley Research Center POWER Project.",
+   "url": "https://power.larc.nasa.gov/",
+   "lineage": []
+  },
+  "gaez_lc-cbe975a47fd6": {
+   "id": "gaez_lc-cbe975a47fd6",
+   "source": "FAO / IIASA",
+   "product": "GAEZ v4 land-cover share GLCSv11_02 (cropland %)",
+   "version": "v4",
+   "is_nasa": false,
+   "observation_start": null,
+   "observation_end": null,
+   "publication_time": null,
+   "retrieval_time": "2026-11-14T09:58:57.770062Z",
+   "footprint": "global, aggregated to 1°",
+   "native_res": "5 arc-min (≈9 km)",
+   "effective_res": "5 arc-min (≈9 km)",
+   "units": null,
+   "qa_flags": [],
+   "transformation": "cells with ≥15.0% cropland kept as analog candidates",
+   "licence": "CC BY-NC-SA 3.0 IGO (FAO)",
+   "citation": "FAO & IIASA (2021). Global Agro-Ecological Zones version 4 (GAEZ v4). https://gaez.fao.org",
+   "url": "https://gaez.fao.org/",
+   "lineage": []
+  },
+  "faostat-f50eff6acff2": {
+   "id": "faostat-f50eff6acff2",
+   "source": "FAO",
+   "product": "FAOSTAT Crops and livestock products, Area harvested",
+   "version": "bulk",
+   "is_nasa": false,
+   "observation_start": "2020-01-01",
+   "observation_end": "2024-12-31",
+   "publication_time": null,
+   "retrieval_time": "2026-11-14T09:58:57.772421Z",
+   "footprint": "country",
+   "native_res": "country",
+   "effective_res": "country",
+   "units": "ha harvested",
+   "qa_flags": [],
+   "transformation": "mean of years; top items by area; FAOSTAT aggregates removed",
+   "licence": "CC BY 4.0 (FAO)",
+   "citation": "FAO. FAOSTAT: Crops and livestock products. https://www.fao.org/faostat/en/#data/QCL",
+   "url": "https://www.fao.org/faostat/en/#data/QCL",
+   "lineage": []
+  }
+ },
+ "confidence": {
+  "level": "high",
+  "reasons": [
+   "SSP245: 6 of 6 models put their closest analog within 500 km of a common place (Missouri, United States of America).",
+   "SSP585: 6 of 6 models put their closest analog within 500 km of a common place (Missouri, United States of America).",
+   "6 CMIP6 models; 5 sampled years per period per model (full sampling); few sampled years let year-to-year weather leak into the monthly deltas.",
+   "Baseline is the NASA POWER regional value (≈50 km); future = baseline + model change (delta method).",
+   "Present-day self-check: the field's own 2001-2025 climate matches a cropland cell 45 km away (distance 0.048).",
+   "Crops at the analog are national FAOSTAT harvested areas (country scale), not what grows at that exact spot."
+  ]
+ },
+ "runtime_s": 195.8
+}

@@ -131,7 +131,7 @@ See [docs/METHODS.md §10](docs/METHODS.md). The main ones:
 - Rotation comparison works in every US state (state crop calendars from USDA NASS, 2010 dates) and at the pilots; Canada, Punjab and Mato Grosso are in progress. Environmental analysis works everywhere.
 
 ## SI use
-See [docs/SI_USE_DISCLOSURE.md](docs/SI_USE_DISCLOSURE.md).
+Built with SI assistance (code, text, video recording, music). Where and how: [SI_USE.md](SI_USE.md); full detail in [docs/SI_USE_DISCLOSURE.md](docs/SI_USE_DISCLOSURE.md).
 
 ## Licence
 Code: MIT. Project knowledge base: CC BY 4.0. Data: per source, see [docs/LICENSES.md](docs/LICENSES.md).

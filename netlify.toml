@@ -1,0 +1,22 @@
+# Netlify: builds the web app in web/ and serves web/dist. The API runs elsewhere (Render, see render.yaml);
+# /api calls are proxied to it, so the browser never needs a cross-site request.
+[build]
+  base = "web"
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# Proxy the API. If your Render address differs, change it here (and in vercel.json).
+[[redirects]]
+  from = "/api/*"
+  to = "https://farmsmart-api.onrender.com/api/:splat"
+  status = 200
+  force = true
+
+# Cesium's runtime files never change for a given version.
+[[headers]]
+  for = "/cesium/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

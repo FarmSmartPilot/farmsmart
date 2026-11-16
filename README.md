@@ -54,8 +54,8 @@ uvicorn fieldshift.api.main:app --port 8000
 cd web && npm ci && npm run dev  # http://localhost:5173 (calls the API through /api)
 ```
 
-## Put it online (GitHub + Render + Vercel)
-FarmSmart has two parts: the **web app** (static React site) and the **API** (Python, FastAPI). Vercel hosts the web app. The API needs a host that runs Python with its data, so it goes on Render (Docker). Vercel alone shows the pages but no results.
+## Put it online (GitHub + Render + Vercel or Netlify)
+FarmSmart has two parts: the **web app** (static React site) and the **API** (Python, FastAPI). Vercel or Netlify hosts the web app. The API needs a host that runs Python with its data, so it goes on Render (Docker). The web host alone shows the pages but no results.
 
 1. **GitHub.** Create an empty repository, then from this folder:
    ```bash
@@ -67,7 +67,9 @@ FarmSmart has two parts: the **web app** (static React site) and the **API** (Py
    `.env` is git-ignored, so your keys are never uploaded. Check with `git status` before the first push.
 2. **Render (API).** New → Blueprint → pick the repository. Render reads `render.yaml` and builds the `Dockerfile`. In the service's Environment tab add `EARTHDATA_TOKEN` and `NASS_API_KEY` (the others in `.env.example` are optional). When it is live, open `https://<your-service>.onrender.com/api/health`; it should say `"ok": true`.
 3. **Vercel (web).** Add New → Project → import the repository. Leave the Root Directory as the repository root; `vercel.json` sets the build (`web/`) and output (`web/dist`). If your Render address is not `farmsmart-api.onrender.com`, change the `/api` rewrite destination in `vercel.json` (and in `web/vercel.json`) to your address, commit and push. Vercel redeploys on every push.
-4. Open the Vercel address. The pilot fields and the sample farm load instantly from `data/precomputed`; a brand-new field is analysed on the API and takes a few minutes the first time.
+
+   **Or Netlify (web) instead of Vercel.** Add new site → Import an existing project → GitHub → pick the repository. `netlify.toml` sets everything (base `web`, build `npm run build`, publish `dist`, Node 22), so leave the build settings as Netlify fills them in and click Deploy. If your Render address differs, change the `/api/*` redirect in `netlify.toml`, commit and push.
+4. Open the Vercel (or Netlify) address. The pilot fields and the sample farm load instantly from `data/precomputed`; a brand-new field is analysed on the API and takes a few minutes the first time.
 
 Notes:
 - Render's free plan sleeps when idle (the first visit then takes about a minute) and has 512 MB of memory; the `starter` plan in `render.yaml` stays awake.

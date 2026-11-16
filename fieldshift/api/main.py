@@ -491,3 +491,20 @@ for _mod in ("routes_fieldsat", "routes_extras", "routes_money", "routes_markets
     except ModuleNotFoundError as _e:
         if _e.name != f"fieldshift.api.{_mod}":
             raise
+
+
+# The website: when the React app has been built (web/dist, done in the Docker image), the API serves it too, so one
+# service gives the whole site at one address. Registered last, so every /api route above wins. FS_WEB_DIST overrides
+# the folder (tests). Without a build (local dev), the Vite dev server serves the site as before.
+def _mount_web() -> None:
+    import os
+    from pathlib import Path
+
+    from fastapi.staticfiles import StaticFiles
+
+    dist = Path(os.environ.get("FS_WEB_DIST") or Path(__file__).resolve().parents[2] / "web" / "dist")
+    if (dist / "index.html").exists():
+        app.mount("/", StaticFiles(directory=dist, html=True), name="web")
+
+
+_mount_web()

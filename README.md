@@ -54,7 +54,13 @@ uvicorn fieldshift.api.main:app --port 8000
 cd web && npm ci && npm run dev  # http://localhost:5173 (calls the API through /api)
 ```
 
-## Put it online (GitHub + Render + Vercel or Netlify)
+## Put it online
+**Simplest: Render alone.** One Render web service (Docker) runs the API **and** serves the website: the `Dockerfile`
+builds the React app in `web/` with Node, and FastAPI serves it at `/` next to `/api`. In Render: New → Web Service →
+this repository → Language **Docker**, Health Check Path `/api/health`, environment variables `EARTHDATA_TOKEN` and
+`NASS_API_KEY`. Every push to `main` redeploys. Live: https://farmsmart-odo9.onrender.com
+
+### Other options (GitHub + Render API + Vercel or Netlify)
 FarmSmart has two parts: the **web app** (static React site) and the **API** (Python, FastAPI). Vercel or Netlify hosts the web app. The API needs a host that runs Python with its data, so it goes on Render (Docker). The web host alone shows the pages but no results.
 
 1. **GitHub.** Create an empty repository, then from this folder:

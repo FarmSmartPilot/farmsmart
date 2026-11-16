@@ -1,9 +1,14 @@
 .env
 .env.*
 .git
-web
 data/cache
 node_modules
 **/__pycache__
 alerts/outbox
 *.db
+web/node_modules
+web/dist
+web/public/cesium
+release
+qc/screenshots
+qc/video

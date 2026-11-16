@@ -301,6 +301,19 @@ def forecast_alerts(fid: str):
 
 
 @app.on_event("startup")
+def _limit_threads():
+    # Sync endpoints run in AnyIO's thread pool (40 threads by default). On a small host many heavy requests at once
+    # (a sample farm loads several fields) can exceed the memory limit; FS_THREADS caps them (unset: default).
+    import os
+
+    n = os.environ.get("FS_THREADS")
+    if n:
+        import anyio.to_thread
+
+        anyio.to_thread.current_default_thread_limiter().total_tokens = int(n)
+
+
+@app.on_event("startup")
 def _warm_kb():
     # Parse the agronomy YAML once at start-up, not inside the first farmer's request.
     def warm():

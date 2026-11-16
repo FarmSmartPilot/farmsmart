@@ -11,6 +11,9 @@ RUN npm run build
 # Stage 2: the FastAPI API, which also serves the built website.
 FROM python:3.11-slim
 ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 PIP_NO_CACHE_DIR=1
+# Small-memory hosts (Render 512 MB): glibc's per-thread malloc arenas make a threaded Python server grow far beyond
+# its real use; two arenas keep it compact. Fewer worker threads also cap how many heavy requests run at once.
+ENV MALLOC_ARENA_MAX=2 MALLOC_TRIM_THRESHOLD_=131072 FS_THREADS=8
 WORKDIR /app
 RUN apt-get update && apt-get install -y --no-install-recommends libgomp1 && rm -rf /var/lib/apt/lists/*
 COPY requirements.txt .

@@ -4,7 +4,7 @@
   "buildCommand": "cd web && npm run build",
   "outputDirectory": "web/dist",
   "rewrites": [
-    { "source": "/api/:path*", "destination": "https://farmsmart-api.onrender.com/api/:path*" }
+    { "source": "/api/:path*", "destination": "https://farmsmart-odo9.onrender.com/api/:path*" }
   ],
   "headers": [
     { "source": "/cesium/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }] }

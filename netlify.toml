@@ -8,13 +8,10 @@
 [build.environment]
   NODE_VERSION = "22"
 
-# Proxy the API.
-# TEMPORARY (15 Nov 2026): the API runs on the team's PC behind a Cloudflare quick tunnel, so the site works only
-# while that PC is on. When the API is on Render, change this line to
-#   to = "https://farmsmart-api.onrender.com/api/:splat"   (or your Render address), commit and push.
+# Proxy the API (FastAPI on Render, Docker; see render.yaml). If the Render address changes, change it here.
 [[redirects]]
   from = "/api/*"
-  to = "https://surprised-cheapest-genetics-generating.trycloudflare.com/api/:splat"
+  to = "https://farmsmart-odo9.onrender.com/api/:splat"
   status = 200
   force = true
 
